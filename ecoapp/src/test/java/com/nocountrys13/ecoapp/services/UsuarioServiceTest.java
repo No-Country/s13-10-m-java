@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,5 +84,75 @@ class UsuarioServiceTest {
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertEquals(usuario, responseEntity.getBody());
+    }
+
+    @Test
+    void updateUser_UsuarioExistente_UsuarioActualizado() {
+        UUID id = UUID.randomUUID();
+        UsuarioDto usuarioDto = new UsuarioDto("Pablo", "Aquino", "pablo@email.com", "123456");
+        Usuario usuario = new Usuario();
+        usuario.setNombre("Pablo");
+        usuario.setApellido("Aquino");
+        usuario.setEmail("pablo@email.com");
+        usuario.setPassword("123456");
+        usuario.setUserId(id);
+        when(usuarioRepository.findById(id)).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.save(usuario)).thenReturn(usuario);
+
+        ResponseEntity<Usuario> response = usuarioService.updateUser(id, usuarioDto);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(usuario, response.getBody());
+        verify(usuarioRepository, times(1)).findById(id);
+        verify(usuarioRepository, times(1)).save(usuario);
+    }
+
+    @Test
+    void updateUser_UsuarioNoExistente_ResponseStatusException() {
+        UUID id = UUID.randomUUID();
+        UsuarioDto usuarioDto = new UsuarioDto("Pablo", "Aquino", "pablo@email.com", "123456");
+
+        when(usuarioRepository.findById(id)).thenReturn(Optional.empty());
+
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> {
+            usuarioService.updateUser(id, usuarioDto);
+        });
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+        assertEquals("No se encontró el usuario buscado", exception.getReason());
+        verify(usuarioRepository, times(1)).findById(id);
+        verify(usuarioRepository, never()).save(any());
+    }
+
+    @Test
+    void deleteUser_UsuarioExistente_UsuarioEliminado() {
+        UUID id = UUID.randomUUID();
+        Usuario usuario = new Usuario();
+        usuario.setNombre("Pablo");
+        usuario.setApellido("Aquino");
+        usuario.setEmail("pablo@email.com");
+        usuario.setPassword("123456");
+        usuario.setUserId(id);
+        when(usuarioRepository.findById(id)).thenReturn(Optional.of(usuario));
+
+        ResponseEntity<Object> response = usuarioService.deleteUser(id);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("El usuario fue eliminado", response.getBody());
+        verify(usuarioRepository, times(1)).findById(id);
+        verify(usuarioRepository, times(1)).delete(usuario);
+    }
+
+    @Test
+    void deleteUser_UsuarioNoExistente_ResponseStatusException() {
+        UUID id = UUID.randomUUID();
+        when(usuarioRepository.findById(id)).thenReturn(Optional.empty());
+
+        ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> {
+            usuarioService.deleteUser(id);
+        });
+        assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
+        assertEquals("No se encontró el usuario buscado", exception.getReason());
+        verify(usuarioRepository, times(1)).findById(id);
+        verify(usuarioRepository, never()).delete(any());
     }
 }
