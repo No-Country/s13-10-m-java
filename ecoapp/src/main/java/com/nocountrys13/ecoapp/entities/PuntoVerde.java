@@ -20,7 +20,7 @@ public class PuntoVerde implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID puntoVerdeId;
     private String nombrePv;
-    private Object direccion;
+    private String direccion;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
