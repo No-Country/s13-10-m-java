@@ -34,5 +34,15 @@ public class UsuarioController {
         return usuarioService.getOneUser(id);
     }
 
+    @PutMapping("/usuario/{id}")
+    public ResponseEntity<Usuario> updateUser(@PathVariable(value = "id") UUID id, @RequestBody @Valid UsuarioDto usuarioDto) {
+        return usuarioService.updateUser(id, usuarioDto);
+    }
+
+    @DeleteMapping("/usuario/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable(value = "id") UUID id) {
+        return usuarioService.deleteUser(id);
+    }
+
 
 }
