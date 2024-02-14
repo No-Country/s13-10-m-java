@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthenticationController {
 
-   private final IAuthenticationService service;
+    private final IAuthenticationService service;
 
-   public AuthenticationController(IAuthenticationService service) {
-      this.service = service;
-   }
+    public AuthenticationController(IAuthenticationService service) {
+        this.service = service;
+    }
 
-   @PostMapping("/register")
-   public ResponseEntity<?> register(@RequestBody RegisterDTO dto) {
-      service.register(dto);
-      return ResponseEntity.status(201).build();
-   }
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody RegisterDTO dto) {
+        service.register(dto);
+        return ResponseEntity.status(201).build();
+    }
 
-   @PostMapping("/login")
-   public ResponseEntity<?> login(@RequestBody AuthenticationDTO dto) {
-      return ResponseEntity.ok(service.login(dto));
-   }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody AuthenticationDTO dto) {
+        return ResponseEntity.ok(service.login(dto));
+    }
 
 }

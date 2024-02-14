@@ -22,39 +22,39 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-   private final UserDetailsService service;
-   private final JwtProvider jwtProvider;
-   private final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
+    private final UserDetailsService service;
+    private final JwtProvider jwtProvider;
+    private final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
 
-   @Override
-   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
-      String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
-      String jwt;
+        String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
+        String jwt;
 
-      try {
+        try {
 
-         if (authorization != null && authorization.startsWith("Bearer")) {
+            if (authorization != null && authorization.startsWith("Bearer")) {
 
-            jwt = authorization.substring(7);
+                jwt = authorization.substring(7);
 
-            if (!jwtProvider.extractExpiration(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
+                if (!jwtProvider.extractExpiration(jwt) && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-               var userDetails = service.loadUserByUsername(jwtProvider.extractEmail(jwt));
+                    var userDetails = service.loadUserByUsername(jwtProvider.extractEmail(jwt));
 
-               var authRequest = new UsernamePasswordAuthenticationToken(
-                    userDetails, userDetails.getPassword(), userDetails.getAuthorities()
-               );
-               authRequest.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    var authRequest = new UsernamePasswordAuthenticationToken(
+                            userDetails, userDetails.getPassword(), userDetails.getAuthorities()
+                    );
+                    authRequest.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-               SecurityContextHolder.getContext().setAuthentication(authRequest);
+                    SecurityContextHolder.getContext().setAuthentication(authRequest);
+                }
+
             }
+        } catch (Exception e) {
+            throw new BadCredentialsException(e.getMessage());
+        }
 
-         }
-      } catch (Exception e) {
-         throw new BadCredentialsException(e.getMessage());
-      }
-
-      filterChain.doFilter(request, response);
-   }
+        filterChain.doFilter(request, response);
+    }
 }

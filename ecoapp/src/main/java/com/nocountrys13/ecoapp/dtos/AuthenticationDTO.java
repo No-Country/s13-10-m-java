@@ -4,6 +4,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public record AuthenticationDTO(
-     @NotBlank String email,
-     @NotBlank @Email String password
+        @NotBlank String email,
+        @NotBlank @Email String password
 ) {}

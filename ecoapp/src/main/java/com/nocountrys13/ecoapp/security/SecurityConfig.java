@@ -16,30 +16,28 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-   private final AuthenticationProvider authenticationProvider;
-   private final AuthenticationManager authenticationManager;
-   private final JwtFilter filter;
+    private final AuthenticationProvider authenticationProvider;
+    private final AuthenticationManager authenticationManager;
+    private final JwtFilter filter;
 
-   @Bean
-   public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
-      http
-           .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/auth/1").permitAll()
-                .requestMatchers(HttpMethod.GET, "/auth/2").hasAuthority(Role.USER.name())
-                .anyRequest().authenticated()
-           )
-           .cors(AbstractHttpConfigurer::disable)
-           .csrf(AbstractHttpConfigurer::disable)
-           .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-           .authenticationProvider(authenticationProvider)
-           .authenticationManager(authenticationManager)
-           .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+    @Bean
+    public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/auth/1").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/auth/2").hasAuthority(Role.USER.name())
+                        .anyRequest().authenticated()
+                )
+                .cors(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable)
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider)
+                .authenticationManager(authenticationManager)
+                .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
 
-      return http.build();
-   }
-
-
+        return http.build();
+    }
 
 
 }

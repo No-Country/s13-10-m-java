@@ -21,42 +21,42 @@ import java.util.List;
 @Component
 public class JwtProvider {
 
-   @Value("${jwt.secret}")
-   private String SECRET_KEY;
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
 
-   private SecretKey key;
+    private SecretKey key;
 
-   @PostConstruct
-   private void init() {
-      this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(this.SECRET_KEY));
-   }
+    @PostConstruct
+    private void init() {
+        this.key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(this.SECRET_KEY));
+    }
 
-   private Claims extractClaims(String token) {
-      try {
-         return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
-      } catch (Exception e) {
-         throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
-      }
-   }
+    private Claims extractClaims(String token) {
+        try {
+            return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
+        }
+    }
 
-   public String extractEmail(String token) {
-      return extractClaims(token).getSubject();
-   }
+    public String extractEmail(String token) {
+        return extractClaims(token).getSubject();
+    }
 
-   public boolean extractExpiration(String token) {
-      return extractClaims(token).getExpiration().before(new Date());
-   }
+    public boolean extractExpiration(String token) {
+        return extractClaims(token).getExpiration().before(new Date());
+    }
 
-   public Jwt generateToken(Usuario user) {
-      var token =  Jwts.builder()
-           .claim("ROLE", List.of(Role.USER.getAuthority()))
-           .setSubject(user.getEmail())
-           .setIssuedAt(new Date(System.currentTimeMillis()))
-           .setExpiration(new Date(System.currentTimeMillis() + 3 * 60 * 1000))
-           .signWith(key, SignatureAlgorithm.HS256)
-           .compact();
-      return new Jwt(token);
-   }
+    public Jwt generateToken(Usuario user) {
+        var token = Jwts.builder()
+                .claim("ROLE", List.of(Role.USER.getAuthority()))
+                .setSubject(user.getEmail())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 3 * 60 * 1000))
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+        return new Jwt(token);
+    }
 
 }
 

@@ -6,7 +6,7 @@ import com.nocountrys13.ecoapp.dtos.RegisterDTO;
 
 public interface IAuthenticationService {
 
-   void register(RegisterDTO dto);
-   Jwt login(AuthenticationDTO dto);
+    void register(RegisterDTO dto);
+    Jwt login(AuthenticationDTO dto);
 
 }

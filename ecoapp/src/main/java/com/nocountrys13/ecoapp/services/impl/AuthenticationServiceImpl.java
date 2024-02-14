@@ -20,33 +20,33 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements IAuthenticationService {
 
-   private final UsuarioRepository repository;
-   private final PasswordEncoder encoder;
-   private final JwtProvider jwtProvider;
+    private final UsuarioRepository repository;
+    private final PasswordEncoder encoder;
+    private final JwtProvider jwtProvider;
 
-   @Override
-   public void register(RegisterDTO dto) {
+    @Override
+    public void register(RegisterDTO dto) {
 
-      if(repository.existsByEmail(dto.email()))
-         throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya se encuentra registrado");
+        if (repository.existsByEmail(dto.email()))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya se encuentra registrado");
 
-      var user = new Usuario();
-      BeanUtils.copyProperties(dto, user);
-      user.setPassword( encoder.encode(dto.password()) );
+        var user = new Usuario();
+        BeanUtils.copyProperties(dto, user);
+        user.setPassword(encoder.encode(dto.password()));
 
-      repository.save(user);
-   }
+        repository.save(user);
+    }
 
-   @Override
-   public Jwt login(AuthenticationDTO dto) {
-      var user = Optional
-           .of(repository.findByEmail(dto.email()))
-           .orElseThrow( () -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Correo o contraseña incorrecta."));
+    @Override
+    public Jwt login(AuthenticationDTO dto) {
+        var user = Optional
+                .of(repository.findByEmail(dto.email()))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Correo o contraseña incorrecta."));
 
-      if(encoder.matches(dto.password(), user.getPassword()))
-         return jwtProvider.generateToken(user);
-      else
-         throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Correo o contraseña incorrecta.");
-   }
+        if (encoder.matches(dto.password(), user.getPassword()))
+            return jwtProvider.generateToken(user);
+        else
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Correo o contraseña incorrecta.");
+    }
 
 }
