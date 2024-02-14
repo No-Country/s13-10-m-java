@@ -1,25 +1,19 @@
 package com.nocountrys13.ecoapp.services;
 
 import com.nocountrys13.ecoapp.dtos.PuntoVerdeDto;
-import com.nocountrys13.ecoapp.entities.Direccion;
 import com.nocountrys13.ecoapp.entities.PuntoVerde;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.PuntoVerdeRepository;
 import com.nocountrys13.ecoapp.services.impl.PuntoVerdeServiceImpl;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -88,14 +82,13 @@ class PuntoVerdeServiceTest {
     }
 
     private PuntoVerdeDto nuevoPuntoVerdeDto (){
-        var direccion = new Direccion();
+
         var usuario = new Usuario();
         return new PuntoVerdeDto("Test","direccion",usuario);
     }
 
     private PuntoVerde nuevoPuntoVerdeEntity(){
         var puntoVerde = new PuntoVerde();
-        var direccion = new Direccion();
         var usuario = new Usuario();
 
         puntoVerde.setDireccion("direccion");
