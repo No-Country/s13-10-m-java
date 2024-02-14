@@ -3,6 +3,8 @@ package com.nocountrys13.ecoapp.services;
 import com.nocountrys13.ecoapp.dtos.UsuarioDto;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
+import com.nocountrys13.ecoapp.services.impl.UsuarioServiceImpl;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -20,13 +22,13 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class UsuarioServiceTest {
+class IUsuarioServiceTest {
 
     @Mock
     private UsuarioRepository usuarioRepository;
 
     @InjectMocks
-    private UsuarioService usuarioService;
+    private UsuarioServiceImpl usuarioService;
 
     @BeforeEach
     public void setUp() {
@@ -49,6 +51,8 @@ class UsuarioServiceTest {
         assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
         assertEquals(usuario, responseEntity.getBody());
     }
+    
+   
 
     @Test
     public void testGetAllUsers() {
