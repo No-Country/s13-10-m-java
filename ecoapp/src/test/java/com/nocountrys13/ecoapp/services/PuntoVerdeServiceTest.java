@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -33,7 +34,7 @@ class PuntoVerdeServiceTest {
     @Test
     void savePuntoVerde() {
         PuntoVerdeDto puntoVerdeDto = new PuntoVerdeDto("test","direccion",new Usuario());
-        PuntoVerde puntoVerdeEntity = new PuntoVerde();
+        PuntoVerde puntoVerdeEntity = nuevoPuntoVerdeEntity();
 
         when(puntoVerdeRepositoryMock.save(any())).thenReturn(puntoVerdeEntity);
 
@@ -56,7 +57,7 @@ class PuntoVerdeServiceTest {
 
         var puntoVerde2 = new PuntoVerde();
         puntoVerde2.setUsuario(new Usuario());
-        puntoVerde2.setDireccion("direccion");
+        puntoVerde2.setDireccion("direccion2");
         puntoVerde2.setNombrePv("test2");
 
         puntoVerdes.add(puntoVerde1);
@@ -64,8 +65,13 @@ class PuntoVerdeServiceTest {
 
         Mockito.when(puntoVerdeRepositoryMock.findAll()).thenReturn(puntoVerdes);
 
-        List<PuntoVerdeDto> puntoVerdeDtos = new ArrayList<>();
-        var puntoVerdeDto1 = new PuntoVerdeDto("test","direccion",new Usuario());
+
+        List<PuntoVerdeDto> puntoVerdeDtoList = puntoVerdeService.getAllPuntosVerde();
+
+        assertEquals(2, puntoVerdeDtoList.size());
+        assertEquals("test", puntoVerdeDtoList.get(0).nombre());
+        assertEquals("direccion", puntoVerdeDtoList.get(0).direccion());
+        verify(puntoVerdeRepositoryMock, times(1)).findAll();
 
 
 
@@ -73,12 +79,36 @@ class PuntoVerdeServiceTest {
 
     @Test
     void getPuntoVerdeById() {
+        UUID id = UUID.randomUUID();
+        PuntoVerde puntoVerde = new PuntoVerde();
+        puntoVerde.setPuntoVerdeId(id);
+        puntoVerde.setUsuario(new Usuario());
+        puntoVerde.setDireccion("direccion");
+        puntoVerde.setNombrePv("test");
 
+        Mockito.when(puntoVerdeRepositoryMock.findById(any())).thenReturn(java.util.Optional.of(puntoVerde));
+
+        PuntoVerdeDto puntoVerdeDto = puntoVerdeService.getPuntoVerdeById(id);
+
+        assertEquals(puntoVerdeDto.nombre(), puntoVerde.getNombrePv());
+        assertEquals(puntoVerdeDto.direccion(), puntoVerde.getDireccion());
+        assertEquals(puntoVerdeDto.usuario(), puntoVerde.getUsuario());
+
+        verify(puntoVerdeRepositoryMock, times(1)).findById(any());
+        verifyNoMoreInteractions(puntoVerdeRepositoryMock);
+
+        assertNotNull(puntoVerdeDto);
+        assertEquals(puntoVerdeDto.nombre(), puntoVerde.getNombrePv());
 
     }
 
     @Test
     void deletePuntoVerde() {
+        UUID id = UUID.randomUUID();
+
+        puntoVerdeService.deletePuntoVerde(id);
+
+        verify(puntoVerdeRepositoryMock).deleteById(id);
     }
 
     private PuntoVerdeDto nuevoPuntoVerdeDto (){
