@@ -24,8 +24,9 @@ public class Usuario implements Serializable {
     private String apellido;
     private String email;
     private String password;
-    private Boolean notificacion;
+    private Boolean validEmail; 
     private Integer puntos;
+    private String imgUrl;
 
     @OneToMany
     private List<PuntoVerde> puntosVerdes;

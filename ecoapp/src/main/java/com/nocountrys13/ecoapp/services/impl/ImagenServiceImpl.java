@@ -1,4 +1,4 @@
-package com.nocountrys13.ecoapp.services;
+package com.nocountrys13.ecoapp.services.impl;
 
 import java.io.IOException;
 import java.util.Map;
@@ -8,7 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nocountrys13.ecoapp.entities.Imagen;
 import com.nocountrys13.ecoapp.repositories.ImagenRepository;
-import com.nocountrys13.ecoapp.services.ClaudinaryService.CloudinaryService;
+import com.nocountrys13.ecoapp.services.ImagenService;
+import com.nocountrys13.ecoapp.services.impl.ClaudinaryServiceImpl.CloudinaryService;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.nocountrys13.ecoapp.services;
+package com.nocountrys13.ecoapp.services.impl;
 
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -14,6 +14,7 @@ import org.thymeleaf.context.Context;
 
 import com.nocountrys13.ecoapp.entities.EmailVerification;
 import com.nocountrys13.ecoapp.entities.Usuario;
+import com.nocountrys13.ecoapp.services.IEmailService;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -21,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class EmailService {
+public class EmailServiceImpl implements IEmailService {
 
 	private final JavaMailSender emailSender;
 	private final TemplateEngine templateEngine;

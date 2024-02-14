@@ -1,4 +1,4 @@
-package com.nocountrys13.ecoapp.services;
+package com.nocountrys13.ecoapp.services.impl;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -13,7 +13,7 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 
 @Service
-public class ClaudinaryService {
+public class ClaudinaryServiceImpl {
 
 	@Service
 	public class CloudinaryService {

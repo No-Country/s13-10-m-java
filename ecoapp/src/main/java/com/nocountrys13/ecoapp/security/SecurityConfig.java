@@ -24,7 +24,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login" ).permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth/1").permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth/2").hasAuthority(Role.USER.name())
                         .anyRequest().authenticated()
