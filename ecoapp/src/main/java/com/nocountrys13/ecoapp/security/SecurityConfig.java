@@ -27,6 +27,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login" ).permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth/1").permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth/2").hasAuthority(Role.USER.name())
+                        .requestMatchers("swagger-ui/**", "swagger-ui**", "/v3/api-docs/**", "/v3/api-docs**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .cors(AbstractHttpConfigurer::disable)
