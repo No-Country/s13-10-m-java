@@ -2,6 +2,7 @@ package com.nocountrys13.ecoapp.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -20,7 +22,7 @@ public class PuntoVerde implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID puntoVerdeId;
     private String nombrePv;
-    private Object direccion;
+    private String direccion;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
