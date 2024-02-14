@@ -1,6 +1,10 @@
-package com.nocountrys13.ecoapp.security;
+package com.nocountrys13.ecoapp.config;
 
+import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
+import com.nocountrys13.ecoapp.security.Role;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -16,7 +20,11 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
+@Configuration
+@RequiredArgsConstructor
 public class BeansConfiguration {
+
+   private final UsuarioRepository repository;
 
    @Bean
    public PasswordEncoder passwordEncoder() {
@@ -25,19 +33,19 @@ public class BeansConfiguration {
 
    @Bean
    public UserDetailsService userDetailsService() {
-      return string -> Optional
-           .of("")
+      return email -> Optional
+           .of(repository.findByEmail(email))
            .map(user -> new User(
-                "",
-                "",
-                List.of(new SimpleGrantedAuthority(""))
-           ))
+                user.getEmail(),
+                user.getPassword(),
+                List.of(new SimpleGrantedAuthority(Role.USER.name())))
+           )
            .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
    }
 
    @Bean
    public AuthenticationProvider authenticationProvider() {
-      var authenticationProvider = new DaoAuthenticationProvider();
+      DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
       authenticationProvider.setUserDetailsService(userDetailsService());
       authenticationProvider.setPasswordEncoder(passwordEncoder());
       return authenticationProvider;
@@ -47,4 +55,5 @@ public class BeansConfiguration {
    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
       return configuration.getAuthenticationManager();
    }
+
 }

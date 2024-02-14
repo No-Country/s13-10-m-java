@@ -11,35 +11,36 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/usuario")
 public class UsuarioController {
+
     private final UsuarioService usuarioService;
 
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
 
-    @PostMapping("/usuario")
+    @PostMapping
     public ResponseEntity<Usuario> saveUser(@RequestBody @Valid UsuarioDto usuarioDto) {
         return usuarioService.saveUser(usuarioDto);
     }
 
-    @GetMapping("/usuarios")
+    @GetMapping
     public ResponseEntity<List<Usuario>> getAllUsers() {
         return usuarioService.getAllUsers();
     }
 
-    @GetMapping("/usuario/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Usuario> getOneUser(@PathVariable(value = "id") UUID id) {
         return usuarioService.getOneUser(id);
     }
 
-    @PutMapping("/usuario/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Usuario> updateUser(@PathVariable(value = "id") UUID id, @RequestBody @Valid UsuarioDto usuarioDto) {
         return usuarioService.updateUser(id, usuarioDto);
     }
 
-    @DeleteMapping("/usuario/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Object> deleteUser(@PathVariable(value = "id") UUID id) {
         return usuarioService.deleteUser(id);
     }
