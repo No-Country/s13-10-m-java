@@ -61,4 +61,5 @@ public class UsuarioService {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }
+
 }
