@@ -63,7 +63,7 @@ public class EmailServiceImpl implements IEmailService {
 			
 			//setiamos los datos del email
 			helper.setFrom("leonardovargas5d2017@gmail.com");
-			helper.setTo("leonardovargasfp@gmail.com");
+			helper.setTo(user.getEmail());
 			helper.setSubject("ECOAPP");
 			helper.setText(htmlContent, true);
 
