@@ -1,4 +1,11 @@
-FROM openjdk:17
+FROM maven:3.8.3-openjdk-17 AS build
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17-jdk-slim
+WORKDIR /app
+COPY --from=build /app/target/ecoapp-0.0.1-SNAPSHOT.jar ecoapp.jar
+
 EXPOSE 8080
-ADD target/ecoapp-0.0.1-SNAPSHOT.jar eco-app.jar
-ENTRYPOINT ["java", "-jar", "eco-app.jar"]
+ENTRYPOINT ["java","-jar","ecoapp.jar"]
