@@ -1,7 +1,6 @@
 package com.nocountrys13.ecoapp.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,11 +22,11 @@ public class Usuario implements Serializable {
     private UUID userId;
     private String nombre;
     private String apellido;
-    @Email
     private String email;
     private String password;
-    private Boolean notificacion;
+    private Boolean validEmail; 
     private Integer puntos;
+    private String imgUrl;
 
     @OneToMany
     private List<PuntoVerde> puntosVerdes;

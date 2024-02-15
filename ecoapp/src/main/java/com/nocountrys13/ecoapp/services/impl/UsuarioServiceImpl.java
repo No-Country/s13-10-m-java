@@ -1,8 +1,12 @@
-package com.nocountrys13.ecoapp.services;
+package com.nocountrys13.ecoapp.services.impl;
 
 import com.nocountrys13.ecoapp.dtos.UsuarioDto;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
+import com.nocountrys13.ecoapp.services.IUsuarioService;
+
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,19 +18,17 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class UsuarioService {
+@RequiredArgsConstructor
+public class UsuarioServiceImpl implements IUsuarioService{
+	
     private final UsuarioRepository usuarioRepository;
-
-    public UsuarioService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
-
+ 
     public ResponseEntity<Usuario> saveUser(UsuarioDto usuarioDto) {
         var usuario = new Usuario();
         BeanUtils.copyProperties(usuarioDto, usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
-
+    
     public ResponseEntity<List<Usuario>> getAllUsers() {
         List<Usuario> usuarios = usuarioRepository.findAll();
         if (!usuarios.isEmpty()) {
@@ -61,5 +63,7 @@ public class UsuarioService {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }
+
+	
 
 }
