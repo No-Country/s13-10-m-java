@@ -1,8 +1,10 @@
 package com.nocountrys13.ecoapp.services.impl;
 
 import com.nocountrys13.ecoapp.dtos.ReciclajeDTO;
+import com.nocountrys13.ecoapp.entities.PuntoVerde;
 import com.nocountrys13.ecoapp.entities.Reciclaje;
 import com.nocountrys13.ecoapp.entities.Usuario;
+import com.nocountrys13.ecoapp.repositories.PuntoVerdeRepository;
 import com.nocountrys13.ecoapp.repositories.ReciclajeRepository;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
 import com.nocountrys13.ecoapp.services.IReciclajeService;
@@ -20,20 +22,20 @@ import java.util.UUID;
 public class ReciclajeService implements IReciclajeService {
 
     private final ReciclajeRepository reciclajeRepository;
-//  private final UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
     @Override
     public Reciclaje save(ReciclajeDTO newReciclaje) {
 
         if(Objects.isNull(newReciclaje))
             throw new RuntimeException("El Reciclaje no puede ser nulo.");
 
-//      Usuario actualUsuario = usuarioRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-//      PuntoVerde puntoVerde = PuntoVerdeRepository.findByName(actualUser.getNombrePv().getName()).get();
+        Usuario actualUsuario = usuarioRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        //PuntoVerde puntoVerde = PuntoVerdeRepository.findByName(actualUsuario.getNombre());
 
         Reciclaje reciclaje = new Reciclaje();
         BeanUtils.copyProperties(newReciclaje, reciclaje);
-//      reciclaje.setUsuario(actualUsuario);
-//      reciclaje.setPuntoVerde(puntoVerde);
+        reciclaje.setUsuario(actualUsuario);
+        //reciclaje.setPuntoVerde(puntoVerde);
         return reciclajeRepository.save(reciclaje);
     }
 
