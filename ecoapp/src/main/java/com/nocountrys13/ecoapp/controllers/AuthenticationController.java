@@ -1,10 +1,8 @@
 package com.nocountrys13.ecoapp.controllers;
 
 import com.nocountrys13.ecoapp.dtos.AuthenticationDTO;
-import com.nocountrys13.ecoapp.dtos.RegisterDTO;
+import com.nocountrys13.ecoapp.dtos.request.RegisterDtoRequest;
 import com.nocountrys13.ecoapp.services.IAuthenticationService;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Role;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +17,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterDTO dto) {
-        service.register(dto);
-        return ResponseEntity.status(201).build();
+    public ResponseEntity<?> register(@RequestBody RegisterDtoRequest dto) {
+        
+        return ResponseEntity.status(201).body(service.register(dto));
     }
 
     @PostMapping("/login")
