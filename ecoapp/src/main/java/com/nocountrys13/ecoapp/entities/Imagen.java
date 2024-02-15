@@ -28,9 +28,9 @@ public class Imagen implements Serializable{
 	private String name;
 	private String imagenUrl;
 	private String cloudinaryId;
-/*
+
 	@ManyToOne
-	 @JoinColumn(name = "user_id")
-	Usuario userId;
-	*/
+	@JoinColumn(name = "user_id")
+	Usuario usuario;
+	
 }
