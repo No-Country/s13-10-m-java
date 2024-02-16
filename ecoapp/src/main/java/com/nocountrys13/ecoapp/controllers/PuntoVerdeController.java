@@ -40,6 +40,10 @@ public class PuntoVerdeController {
         return ResponseEntity.ok().body(puntoVerdeService.getPuntosVerdeByUsuario(id));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updatePuntoVerde(@PathVariable UUID id, @RequestBody PuntoVerdeDto puntoVerdeDto){
+        return ResponseEntity.ok().body(puntoVerdeService.updatePuntoVerde(id, puntoVerdeDto));
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePuntoVerde(@PathVariable UUID id){
