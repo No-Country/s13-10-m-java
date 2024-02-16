@@ -11,13 +11,13 @@
       </button>
       <!-- Mobile menu -->
       <div class=" w-full absolute top-7 right-16 " *ngIf="isMenuOpen">
-        <a routerLink="/login" class="block py-2 px-4 text-gray-700">Ingresar</a>
-        <a routerLink="/register" class="block py-2 px-4 text-gray-700">Registrarse</a>
+        <a routerLink="/auth/login" class="block py-2 px-4 text-gray-700">Ingresar</a>
+        <a routerLink="/auth/register" class="block py-2 px-4 text-gray-700">Registrarse</a>
       </div>
     </div>
     <div class="hidden lg:flex gap-5 uppercase">
-      <a routerLink="/login">Ingresar</a>
-      <a routerLink="/register">Registrarse</a>
+      <a routerLink="/auth/login">Ingresar</a>
+      <a routerLink="/auth/register">Registrarse</a>
     </div>
   </nav>
 
