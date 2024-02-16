@@ -3,13 +3,18 @@
     <h1 class="text-center">REGISTRO</h1>
   </header>
   <section>
-    <form class="flex flex-col gap-8">
+    <form
+      class="flex flex-col gap-8"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
       <div>
         <label for="name" class="block text-lg text-gray-900">Nombre</label>
         <input
           type="text"
           id="name"
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="name"
         />
       </div>
       <div>
@@ -20,6 +25,7 @@
           type="text"
           id="lastName"
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="lastName"
         />
       </div>
       <div>
@@ -28,6 +34,7 @@
           type="email"
           id="email"
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="email"
         />
       </div>
       <div>
@@ -38,6 +45,7 @@
           type="password"
           id="password"
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="password"
         />
       </div>
       <div>
@@ -48,6 +56,7 @@
           type="password"
           id="repeatPassword"
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="repeatPassword"
         />
       </div>
       <button
