@@ -4,7 +4,7 @@
   </header>
   <section>
     <form
-      class="flex flex-col gap-8"
+      class="flex flex-col gap-6"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
     >
@@ -16,6 +16,11 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="name"
         />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('name', 'required')"
+          >El nombre es requerido</strong
+        >
       </div>
       <div>
         <label for="lastName" class="block text-lg text-gray-900"
@@ -27,6 +32,11 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="lastName"
         />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('lastName', 'required')"
+          >El apellido es requerido</strong
+        >
       </div>
       <div>
         <label for="email" class="block text-lg text-gray-900">E-mail</label>
@@ -36,6 +46,16 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="email"
         />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('email', 'required')"
+          >El email es requerido</strong
+        >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('email', 'email')"
+          >Ingresa un email válido</strong
+        >
       </div>
       <div>
         <label for="password" class="block text-lg text-gray-900"
@@ -47,6 +67,11 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="password"
         />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('password', 'required')"
+          >La contraseña es requerida</strong
+        >
       </div>
       <div>
         <label for="repeatPassword" class="block text-lg text-gray-900"
@@ -58,6 +83,11 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="repeatPassword"
         />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('repeatPassword', 'required')"
+          >Por favor, confirma tu contraseña</strong
+        >
       </div>
       <button
         type="submit"

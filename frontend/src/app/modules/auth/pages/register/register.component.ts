@@ -26,4 +26,11 @@ export class RegisterComponent {
 
     console.log(this.form.value);
   }
+
+  hasError(name: string, error: string) {
+    return (
+      this.form.controls[name].touched &&
+      this.form.controls[name].hasError(error)
+    );
+  }
 }
