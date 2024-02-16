@@ -23,10 +23,6 @@ public interface PuntoVerdeService {
 
     void deletePuntoVerde(UUID id);
 
-    void recibirReciclables(Reciclaje reciclaje); //cambiarlo a dto despues
-
-    void modificarPremios(Premio premio); ////cambiarlo a dto despues
-
 
 
 }
