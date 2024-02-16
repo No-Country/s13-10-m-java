@@ -1,7 +1,7 @@
 package com.nocountrys13.ecoapp.services.impl;
 
 import com.nocountrys13.ecoapp.dtos.AuthenticationDTO;
-import com.nocountrys13.ecoapp.dtos.Jwt;
+import com.nocountrys13.ecoapp.dtos.response.Jwt;
 import com.nocountrys13.ecoapp.dtos.request.RegisterDtoRequest;
 import com.nocountrys13.ecoapp.dtos.response.RegisterDtoResponse;
 import com.nocountrys13.ecoapp.entities.Usuario;
@@ -39,23 +39,16 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya se encuentra registrado");
 
         var user = new Usuario();
+
         BeanUtils.copyProperties(dto, user);
         user.setPassword(encoder.encode(dto.password()));
-        
-        //seteo de imagen por defecto
         user.setImgUrl(imgDefaultUrl);
-        
-        String jwtToken= jwtProvider.generateToken(user).toString();
-        
-        //instancia de entidad a retornar
-        RegisterDtoResponse registerResponse = new RegisterDtoResponse(dto, imgDefaultUrl, jwtToken );
-       
-        //enviar el email de bienvenida
+
         emailService.sendVerificationEmail(user);
-        
+
         repository.save(user);
         
-        return registerResponse;
+        return new RegisterDtoResponse(dto, imgDefaultUrl, jwtProvider.generateToken(user).token() );
     }
 
     
