@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
+  currentYear: number = new Date().getFullYear();
 
 }
