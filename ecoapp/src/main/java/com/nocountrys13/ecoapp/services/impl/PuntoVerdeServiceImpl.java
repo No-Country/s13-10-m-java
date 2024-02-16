@@ -76,10 +76,15 @@ public class PuntoVerdeServiceImpl implements PuntoVerdeService {
 
     @Override
     public PuntoVerdeDto updatePuntoVerde(UUID id, PuntoVerdeDto puntoVerdeDto) {
-        var puntoVerdeEncontrado = findById(id);
+        PuntoVerde puntoVerdeActualizar;
+        try {
+            var puntoVerdeEncontrado = findById(id);
+            puntoVerdeActualizar = puntoVerdeDtoAEntity(puntoVerdeDto);
+            puntoVerdeActualizar.setPuntoVerdeId(id);
+        } catch (ResponseStatusException e) {
+            throw e;
+        }
 
-        var puntoVerdeActualizar = puntoVerdeDtoAEntity(puntoVerdeDto);
-        puntoVerdeActualizar.setPuntoVerdeId(id);
         return puntoVerdeEntityADto(puntoVerdeRepository.save(puntoVerdeActualizar));
     }
 
