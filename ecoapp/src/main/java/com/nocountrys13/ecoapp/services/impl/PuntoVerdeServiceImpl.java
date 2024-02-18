@@ -28,7 +28,8 @@ public class PuntoVerdeServiceImpl implements PuntoVerdeService {
 
     @Override
     public PuntoVerdeDto savePuntoVerde(CrearPuntoVerdeDto crearPuntoVerdeDto) {
-        Usuario usuario = usuarioRepository.findById(crearPuntoVerdeDto.userId()).orElseThrow();
+        Usuario usuario = usuarioRepository.findById(crearPuntoVerdeDto.userId())
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario no existe"));
         PuntoVerde  puntoVerde = new PuntoVerde();
         puntoVerde.setUsuario(usuario);
         puntoVerde.setNombrePv(crearPuntoVerdeDto.nombre());
@@ -41,6 +42,9 @@ public class PuntoVerdeServiceImpl implements PuntoVerdeService {
     @Override
     public List<PuntoVerdeDto> getAllPuntosVerde() {
         var puntosVerdes = puntoVerdeRepository.findAll();
+        if(puntosVerdes.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontraron puntos verdes.");
+        }
         return puntosVerdes.stream()
                 .map(this::puntoVerdeEntityADto)
                 .collect(Collectors.toList());
@@ -48,8 +52,7 @@ public class PuntoVerdeServiceImpl implements PuntoVerdeService {
 
     @Override
     public PuntoVerdeDto getPuntoVerdeById(UUID id) {
-        var puntoVerde = puntoVerdeRepository.findById(id)
-                .orElseThrow();
+        var puntoVerde = findById(id);
 
         return puntoVerdeEntityADto(puntoVerde);
     }
@@ -57,14 +60,31 @@ public class PuntoVerdeServiceImpl implements PuntoVerdeService {
 
     @Override
     public void deletePuntoVerde(UUID id) {
-        puntoVerdeRepository.deleteById(id);
+        try {
+            var puntoVerde = findById(id);
+            puntoVerdeRepository.deleteById(id);
+        } catch (ResponseStatusException e) {
+            throw e;
+        }
+    }
+
+    private PuntoVerde findById(UUID id) {
+        return puntoVerdeRepository.findById(id)
+                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "No se encontro el punto verde con el id: "+id.toString() + "."));
     }
 
     @Override
     public PuntoVerdeDto updatePuntoVerde(UUID id, PuntoVerdeDto puntoVerdeDto) {
-        var puntoVerdeEncontrado = puntoVerdeRepository.findById(id).orElseThrow();
-        var puntoVerdeActualizar = puntoVerdeDtoAEntity(puntoVerdeDto);
-        puntoVerdeActualizar.setPuntoVerdeId(id);
+        PuntoVerde puntoVerdeActualizar;
+        try {
+            var puntoVerdeEncontrado = findById(id);
+            puntoVerdeActualizar = puntoVerdeDtoAEntity(puntoVerdeDto);
+            puntoVerdeActualizar.setPuntoVerdeId(id);
+        } catch (ResponseStatusException e) {
+            throw e;
+        }
+
         return puntoVerdeEntityADto(puntoVerdeRepository.save(puntoVerdeActualizar));
     }
 
@@ -92,13 +112,4 @@ public class PuntoVerdeServiceImpl implements PuntoVerdeService {
                 ,puntoVerde.getDireccion());
     }
 
-    @Override
-    public void recibirReciclables(Reciclaje reciclaje) {
-
-    }
-
-    @Override
-    public void modificarPremios(Premio premio) {
-
-    }
 }
