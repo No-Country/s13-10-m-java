@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,10 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent {
   form: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) {
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService
+  ) {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       repeatPassword: ['', Validators.required],
@@ -24,7 +28,10 @@ export class RegisterComponent {
       return this.form.markAllAsTouched();
     }
 
-    console.log(this.form.value);
+    this.authService.register(this.form.value).subscribe({
+      next: (res) => console.log(res),
+      error: (error) => console.log(error),
+    });
   }
 
   hasError(name: string, error: string) {

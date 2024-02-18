@@ -14,11 +14,11 @@
           type="text"
           id="name"
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-          formControlName="name"
+          formControlName="nombre"
         />
         <strong
           class="text-sm font-semibold text-red-700"
-          *ngIf="hasError('name', 'required')"
+          *ngIf="hasError('nombre', 'required')"
           >El nombre es requerido</strong
         >
       </div>
@@ -30,11 +30,11 @@
           type="text"
           id="lastName"
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-          formControlName="lastName"
+          formControlName="apellido"
         />
         <strong
           class="text-sm font-semibold text-red-700"
-          *ngIf="hasError('lastName', 'required')"
+          *ngIf="hasError('apellido', 'required')"
           >El apellido es requerido</strong
         >
       </div>
