@@ -15,6 +15,8 @@ public interface IUsuarioService {
 	public ResponseEntity<List<Usuario>> getAllUsers();
 
 	public ResponseEntity<Usuario> getOneUser(UUID id);
+	
+	public Usuario findByEmail(String email);
 
 	public ResponseEntity<Usuario> updateUser(UUID id, UsuarioDto usuarioDto);
 

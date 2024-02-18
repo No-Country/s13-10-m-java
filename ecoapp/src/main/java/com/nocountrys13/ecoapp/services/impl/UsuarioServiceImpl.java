@@ -64,6 +64,11 @@ public class UsuarioServiceImpl implements IUsuarioService{
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }
 
+	@Override
+	public Usuario findByEmail(String email) {
+		return usuarioRepository.findByEmail(email);
+	}
+
 	
 
 }
