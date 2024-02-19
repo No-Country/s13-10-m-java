@@ -1,6 +1,7 @@
 package com.nocountrys13.ecoapp.controllers;
 
-import com.nocountrys13.ecoapp.dtos.ReciclajeDTO;
+import com.nocountrys13.ecoapp.dtos.request.ReciclajeDTO;
+import com.nocountrys13.ecoapp.dtos.response.ReciclajeDtoResponse;
 import com.nocountrys13.ecoapp.entities.Reciclaje;
 import com.nocountrys13.ecoapp.services.IReciclajeService;
 import jakarta.validation.Valid;
@@ -9,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -20,9 +20,9 @@ public class ReciclajeController {
     private final IReciclajeService iReciclajeService;
 
     @PostMapping(value = "/save")
-    public ResponseEntity<?> saveVehicle(@Valid @RequestBody ReciclajeDTO newReciclajeDTO){
+    public ResponseEntity<?> saveVehicle(@Valid @RequestBody ReciclajeDTO newReciclajeDTO, UUID idPuntoVerde){
         try {
-            return new ResponseEntity<>(iReciclajeService.save(newReciclajeDTO), HttpStatus.CREATED);
+            return new ResponseEntity<>(iReciclajeService.save(newReciclajeDTO, idPuntoVerde), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al crear el objeto reciclaje:" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -50,7 +50,7 @@ public class ReciclajeController {
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable UUID id, @RequestBody @Valid ReciclajeDTO reciclajeDTO){
         try {
-            Reciclaje updateReciclaje = iReciclajeService.update(id, reciclajeDTO);
+            ReciclajeDtoResponse updateReciclaje = iReciclajeService.update(id, reciclajeDTO);
             return new ResponseEntity<>("Reciclaje actualizado exitosamente, "+ updateReciclaje, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>("Error al actualizar el reciclaje", HttpStatus.BAD_REQUEST);
