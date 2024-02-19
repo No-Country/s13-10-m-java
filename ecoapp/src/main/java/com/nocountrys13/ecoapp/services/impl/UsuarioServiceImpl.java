@@ -29,7 +29,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         var usuario = new Usuario();
         BeanUtils.copyProperties(usuarioDtoRequest, usuario);
         usuario = usuarioRepository.save(usuario);
-        return new UsuarioDtoResponse(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
     }
 
     public List<UsuarioDtoResponse> getAllUsers() {
@@ -43,14 +43,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     private UsuarioDtoResponse convertToDto(Usuario usuario) {
-        return new UsuarioDtoResponse(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
     }
 
     public UsuarioDtoResponse getOneUser(UUID id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
             var usuarioResp = usuario.get();
-            return new UsuarioDtoResponse(usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail());
+            return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
     }
@@ -61,7 +61,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
             var usuario = usuarioBuscado.get();
             BeanUtils.copyProperties(usuarioDtoRequest, usuario);
             usuario = usuarioRepository.save(usuario);
-            return new UsuarioDtoResponse(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+            return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }

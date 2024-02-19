@@ -27,7 +27,7 @@ public class PremioServiceImpl implements IPremioService {
         var premio = new Premio();
         BeanUtils.copyProperties(premioDtoRequest, premio);
         premio = premioRepository.save(premio);
-        return new PremioDtoResponse(premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos());
+        return new PremioDtoResponse(premio.getPremioId(), premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos());
     }
 
     @Override
@@ -42,7 +42,7 @@ public class PremioServiceImpl implements IPremioService {
     }
 
     private PremioDtoResponse convertToDto(Premio premio) {
-        return new PremioDtoResponse(premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos());
+        return new PremioDtoResponse(premio.getPremioId(), premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos());
     }
 
     @Override
@@ -50,7 +50,7 @@ public class PremioServiceImpl implements IPremioService {
         Optional<Premio> premio = premioRepository.findById(id);
         if (premio.isPresent()) {
             var premioResp = premio.get();
-            return new PremioDtoResponse(premioResp.getNombrePremio(), premioResp.getCantidad(), premioResp.getPuntos());
+            return new PremioDtoResponse(premioResp.getPremioId(), premioResp.getNombrePremio(), premioResp.getCantidad(), premioResp.getPuntos());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Premio no encontrado");
     }
@@ -62,7 +62,7 @@ public class PremioServiceImpl implements IPremioService {
             var premio = premioBuscado.get();
             BeanUtils.copyProperties(premioDtoRequest, premio);
             premio = premioRepository.save(premio);
-            return new PremioDtoResponse(premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos());
+            return new PremioDtoResponse(premio.getPremioId(), premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el premio buscado");
     }
