@@ -1,1 +1,69 @@
-<p>login works!</p>
+<div class="px-8 w-full h-screen gap-2">
+  <div class="h-full grid-cols-12">
+    <div class="form-group flex bg-white h-screen">
+      <form
+        [formGroup]="loginForm"
+        (ngSubmit)="onSubmit()"
+        class="w-3/5 py-4 pt-9 justify-items-"
+      >
+        <h2 class="text-2xl font-semibold text-gray-700 text-center pt-12">
+          INICIO DE SESION
+        </h2>
+        <!--<p class="text-xl text-gray-600 text-center">Welcome back!</p>-->
+
+        <div class="mt-4">
+          <label
+            class="block text-gray-700 text-sm font-bold mb-2 text-start pt-44"
+            >Identificacion</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            name="required"
+            placeholder="Introduce tu email"
+          />
+        </div>
+        <div class="input-container">
+          <div class="flex justify-between">
+            <label class="text-gray-700 text-sm font-bold mb-2 text-start pt-4"
+              >Contraseña</label
+            >
+          </div>
+          <input
+            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            name="required"
+            minLength="8"
+            placeholder="Introduce tu contraseña"
+          />
+          <span class="icon"><i class="fa-solid fa-eye-low-vision"></i></span>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center pt-56">
+          <button
+            class="bg-green-700 text-white font-bold py-2 px-4 w-2/5 text-center rounded hover:bg-gray-600"
+          >
+            INICIAR SESION
+          </button>
+        </div>
+        <div class="mt-4 text-center justify-between">
+          <span class="w-full md:w-1/4"></span>
+          <a href="#" class="text-2x font-bold text-black"
+            >Si aun no tienes tu cuenta
+            <span href="#" class="text-green-700">registrate aqui. </span></a
+          >
+          <span class="border-b w-1/5 md:w-1/4"></span>
+        </div>
+      </form>
+      <div
+        class="lg:w-4/5 md:w-3/5 xs:hidden max-w-6xl px-4 bg-cover gap-4"
+        style="background-image: url('../../../../../assets/img/Group 23.png')"
+      ></div>
+    </div>
+  </div>
+</div>

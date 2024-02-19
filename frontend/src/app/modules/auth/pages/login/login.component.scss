@@ -1,0 +1,26 @@
+.input-container {
+  position: relative;
+}
+
+.input-container input {
+  padding-right: 30px;
+  /* Ajusta el espacio para el icono */
+}
+
+.input-container .icon {
+  position: end;
+  top: 50%;
+  right: 10px;
+  /* Ajusta la posición horizontal del icono */
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.form-control{
+  text-align: center;
+  color: black;
+  border-bottom: 10px;
+  width: 400px;
+  font-size: 20PX;
+  display:inline-flex;
+
+}
