@@ -16,6 +16,8 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.crypto.SecretKey;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @Component
 public class JwtProvider {
@@ -46,14 +48,26 @@ public class JwtProvider {
         return extractClaims(token).getExpiration().before(new Date());
     }
 
+    public UUID extractUserId(String token) {
+        var id = extractClaims(token.substring(7)).get("USER_ID", String.class);
+        return UUID.fromString(id);
+    }
+
     public Jwt generateToken(Usuario user) {
+
+        var claims = Map.of(
+             "ROLE", List.of(Role.USER.getAuthority()),
+             "USER_ID", user.getUserId()
+        );
+
         var token = Jwts.builder()
-                .claim("ROLE", List.of(Role.USER.getAuthority()))
+                .setClaims(claims)
                 .setSubject(user.getEmail())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
+
         return new Jwt(token);
     }
 
