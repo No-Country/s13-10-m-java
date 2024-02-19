@@ -1,6 +1,7 @@
 package com.nocountrys13.ecoapp.controllers;
 
-import com.nocountrys13.ecoapp.dtos.PremioDto;
+import com.nocountrys13.ecoapp.dtos.request.PremioDtoRequest;
+import com.nocountrys13.ecoapp.dtos.response.PremioDtoResponse;
 import com.nocountrys13.ecoapp.entities.Premio;
 import com.nocountrys13.ecoapp.services.IPremioService;
 import jakarta.validation.Valid;
@@ -20,24 +21,24 @@ public class PremioController {
     private final IPremioService premioService;
 
     @PostMapping
-    public ResponseEntity<Premio> savePrize(@RequestBody @Valid PremioDto premioDto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(premioService.savePrize(premioDto));
+    public ResponseEntity<PremioDtoResponse> savePrize(@RequestBody @Valid PremioDtoRequest premioDtoRequest) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(premioService.savePrize(premioDtoRequest));
     }
 
     @GetMapping
-    public ResponseEntity<List<Premio>> getAllPrize() {
+    public ResponseEntity<List<PremioDtoResponse>> getAllPrize() {
         return ResponseEntity.status(HttpStatus.OK).body(premioService.getAllPrize());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Premio> getOnePrize(@PathVariable(value = "id") UUID id) {
+    public ResponseEntity<PremioDtoResponse> getOnePrize(@PathVariable(value = "id") UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(premioService.getOnePrize(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Premio> updatePrize(@PathVariable(value = "id") UUID id,
-                                              @RequestBody @Valid PremioDto premioDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(premioService.updatePrize(id, premioDto));
+    public ResponseEntity<PremioDtoResponse> updatePrize(@PathVariable(value = "id") UUID id,
+                                              @RequestBody @Valid PremioDtoRequest premioDtoRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(premioService.updatePrize(id, premioDtoRequest));
     }
 
     @DeleteMapping("/{id}")

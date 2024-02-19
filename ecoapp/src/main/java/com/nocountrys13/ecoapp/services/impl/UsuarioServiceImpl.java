@@ -1,6 +1,7 @@
 package com.nocountrys13.ecoapp.services.impl;
 
-import com.nocountrys13.ecoapp.dtos.UsuarioDto;
+import com.nocountrys13.ecoapp.dtos.request.UsuarioDtoRequest;
+import com.nocountrys13.ecoapp.dtos.response.UsuarioDtoResponse;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
 import com.nocountrys13.ecoapp.services.IUsuarioService;
@@ -16,59 +17,68 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class UsuarioServiceImpl implements IUsuarioService{
-	
+public class UsuarioServiceImpl implements IUsuarioService {
+
     private final UsuarioRepository usuarioRepository;
- 
-    public ResponseEntity<Usuario> saveUser(UsuarioDto usuarioDto) {
+
+    public UsuarioDtoResponse saveUser(UsuarioDtoRequest usuarioDtoRequest) {
         var usuario = new Usuario();
-        BeanUtils.copyProperties(usuarioDto, usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
-    }
-    
-    public ResponseEntity<List<Usuario>> getAllUsers() {
-        List<Usuario> usuarios = usuarioRepository.findAll();
-        if (!usuarios.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.OK).body(usuarios);
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La lista de usuarios está vacía");
+        BeanUtils.copyProperties(usuarioDtoRequest, usuario);
+        usuario = usuarioRepository.save(usuario);
+        return new UsuarioDtoResponse(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
     }
 
-    public ResponseEntity<Usuario> getOneUser(UUID id) {
+    public List<UsuarioDtoResponse> getAllUsers() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        if (usuarios.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La lista de usuarios está vacía");
+        }
+        return usuarios.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    private UsuarioDtoResponse convertToDto(Usuario usuario) {
+        return new UsuarioDtoResponse(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+    }
+
+    public UsuarioDtoResponse getOneUser(UUID id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
-            return ResponseEntity.status(HttpStatus.OK).body(usuario.get());
+            var usuarioResp = usuario.get();
+            return new UsuarioDtoResponse(usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
     }
 
-    public ResponseEntity<Usuario> updateUser(UUID id, UsuarioDto usuarioDto) {
+    public UsuarioDtoResponse updateUser(UUID id, UsuarioDtoRequest usuarioDtoRequest) {
         Optional<Usuario> usuarioBuscado = usuarioRepository.findById(id);
         if (usuarioBuscado.isPresent()) {
             var usuario = usuarioBuscado.get();
-            BeanUtils.copyProperties(usuarioDto, usuario);
-            return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
+            BeanUtils.copyProperties(usuarioDtoRequest, usuario);
+            usuario = usuarioRepository.save(usuario);
+            return new UsuarioDtoResponse(usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }
 
-    public ResponseEntity<Object> deleteUser(UUID id) {
+    public String deleteUser(UUID id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
             usuarioRepository.delete(usuario.get());
-            return ResponseEntity.status(HttpStatus.OK).body("El usuario fue eliminado");
+            return "El usuario fue eliminado";
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }
 
-	@Override
-	public Usuario findByEmail(String email) {
-		return usuarioRepository.findByEmail(email);
-	}
+    @Override
+    public Usuario findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
 
-	
 
 }
