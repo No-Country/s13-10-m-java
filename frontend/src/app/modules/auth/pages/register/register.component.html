@@ -1,1 +1,100 @@
-<p>register works!</p>
+<main>
+  <header class="mb-16 text-4xl font-semibold">
+    <h1 class="text-center">REGISTRO</h1>
+  </header>
+  <section>
+    <form
+      class="flex flex-col gap-6"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div>
+        <label for="name" class="block text-lg text-gray-900">Nombre</label>
+        <input
+          type="text"
+          id="name"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="nombre"
+        />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('nombre', 'required')"
+          >El nombre es requerido</strong
+        >
+      </div>
+      <div>
+        <label for="lastName" class="block text-lg text-gray-900"
+          >Apellido</label
+        >
+        <input
+          type="text"
+          id="lastName"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="apellido"
+        />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('apellido', 'required')"
+          >El apellido es requerido</strong
+        >
+      </div>
+      <div>
+        <label for="email" class="block text-lg text-gray-900">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="email"
+        />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('email', 'required')"
+          >El email es requerido</strong
+        >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('email', 'email')"
+          >Ingresa un email válido</strong
+        >
+      </div>
+      <div>
+        <label for="password" class="block text-lg text-gray-900"
+          >Contraseña</label
+        >
+        <input
+          type="password"
+          id="password"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="password"
+        />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('password', 'required')"
+          >La contraseña es requerida</strong
+        >
+      </div>
+      <div>
+        <label for="repeatPassword" class="block text-lg text-gray-900"
+          >Confirmación de contraseña</label
+        >
+        <input
+          type="password"
+          id="repeatPassword"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="repeatPassword"
+        />
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('repeatPassword', 'required')"
+          >Por favor, confirma tu contraseña</strong
+        >
+      </div>
+      <button
+        type="submit"
+        class="bg-green-600 text-white text-lg font-semibold w-max py-2 px-5 rounded-3xl mt-5 m-auto duration-100 ease-in-out hover:bg-green-700 active:bg-green-800"
+      >
+        CREAR CUENTA
+      </button>
+    </form>
+  </section>
+</main>
