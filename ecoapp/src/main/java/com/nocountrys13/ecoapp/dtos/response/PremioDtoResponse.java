@@ -2,7 +2,9 @@ package com.nocountrys13.ecoapp.dtos.response;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record PremioDtoResponse(@NotBlank String nombrePremio,
+import java.util.UUID;
+
+public record PremioDtoResponse(@NotBlank UUID premioId, @NotBlank String nombrePremio,
                                 @NotBlank Integer cantidad,
 
                                 @NotBlank Integer puntos) {

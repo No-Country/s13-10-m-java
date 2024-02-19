@@ -48,7 +48,6 @@ class PremioServiceImplTest {
 
         PremioDtoResponse savedPrize = premioService.savePrize(premioDtoRequest);
 
-        // Assert
         assertEquals("Nombre de Premio", savedPrize.nombrePremio());
         assertEquals(10, savedPrize.cantidad());
         assertEquals(100, savedPrize.puntos());
@@ -63,10 +62,8 @@ class PremioServiceImplTest {
         premios.add(premio2);
         when(premioRepository.findAll()).thenReturn(premios);
 
-        // Act
         List<PremioDtoResponse> result = premioService.getAllPrize();
 
-        // Assert
         assertEquals(premios.size(), result.size());
         assertEquals("Premio 1", result.get(0).nombrePremio());
         assertEquals(100, result.get(0).cantidad());
