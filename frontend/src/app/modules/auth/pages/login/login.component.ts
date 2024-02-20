@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-//import { LoginService } from '../services/login.service';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { LoginService } from '../../../../core/services/login.service';
 import { Router } from '@angular/router';
-//import { Login } from '../../../shared/models/login.model';
+import { Login } from '../../../../core/models/login.model';
 
-import { NotifyService } from 'src/app/services/notify.service';
+import { NotifyService } from '../../../../services/notify.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
@@ -22,7 +26,7 @@ export class LoginComponent {
   });
 
   constructor(
-    //private loginService: LoginService,
+    private loginService: LoginService,
     private notifySvc: NotifyService,
     private router: Router
   ) {}
@@ -35,13 +39,13 @@ export class LoginComponent {
   }
 
   login() {
-    //this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
-    //this.loginService.id = res.id;
-    //this.loginService.token = res.token;
-    //localStorage.setItem('id', res.id);
-    //localStorage.setItem('token', res.token);
-    //this.router.navigate(['quantum/home']);
-    //});
+    this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
+      this.loginService.id = res.id;
+      this.loginService.token = res.token;
+      localStorage.setItem('id', res.id);
+      localStorage.setItem('token', res.token);
+      this.router.navigate(['home']);
+    });
 
     console.log(this.loginForm.value);
     console.log('conexion completada  redirigido a home');
@@ -61,11 +65,11 @@ export class LoginComponent {
 
       return;
     }
-    /* const user: Login = {
+    const user: Login = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
-    };  */
-    /* this.loginService.Login(user).subscribe({
+    };
+    this.loginService.Login(user).subscribe({
       next: () => {
         this.notifySvc.showSuccess(
           'Inicio de sesión exitoso',
@@ -82,6 +86,6 @@ export class LoginComponent {
           'Error con tus datos'
         );
       },
-    }); */
+    });
   }
 }
