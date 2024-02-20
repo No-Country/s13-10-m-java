@@ -1,4 +1,4 @@
-<main>
+<main class="w-full">
   <header class="mb-16 text-4xl font-semibold">
     <h1 class="text-center">REGISTRO</h1>
   </header>
@@ -16,11 +16,11 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="nombre"
         />
-        <strong
-          class="text-sm font-semibold text-red-700"
-          *ngIf="hasError('nombre', 'required')"
-          >El nombre es requerido</strong
-        >
+          <strong
+            class="text-sm font-semibold text-red-700"
+            *ngIf="hasError('nombre', 'required')"
+            >El nombre es requerido</strong
+          >
       </div>
       <div>
         <label for="lastName" class="block text-lg text-gray-900"
