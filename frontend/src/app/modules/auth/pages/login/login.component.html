@@ -1,24 +1,24 @@
-<div class="px-8 w-full h-screen gap-2">
+<div class="w-full h-screen gap-2">
   <div class="h-full grid-cols-12">
-    <div class="form">
-      <form>
-        <h2 class="text-2xl font-semibold text-gray-700 text-center pt-24">
-          INICIO DE SESION
-        </h2>
+    <div class="form w-full">
+      <h1 class="text-4xl font-semibold text-gray-700 text-center pt-24">
+        INICIO DE SESION
+      </h1>
+      <form [formGroup]="loginForm" ngSubmit="(onSubmit)">
         <!--<p class="text-xl text-gray-600 text-center">Welcome back!</p>-->
 
-        <div class="mt-4 pt-32 justify-center border-b-4">
-          <label for="email">Correo electronico</label>
+        <div class="mt-4 pt-28 pb-5 content-between">
+          <label for="email" class="text-lg text-gray-900">E-mail</label>
           <input
             type="email"
-            class="form-control"
+            class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
             id="email"
             formControlName="email"
             name="required"
-            placeholder="Introduce tu email"
           />
 
-          <!--<span
+          <span
+            class="form-text text-danger"
             *ngIf="
               loginForm.controls['email'].getError('required') &&
               loginForm.controls['email'].touched
@@ -33,24 +33,25 @@
             "
             class="form-text"
             >Ingresa correo electronico valido
-          </span>-->
+          </span>
         </div>
-        <div class="input-container">
+        <div>
           <div class="flex justify-between">
-            <label for="password">Contraseña</label>
+            <label for="password" class="text-lg text-gray-900"
+              >Contraseña</label
+            >
           </div>
           <input
-            class="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+            class="text-lg text-gray-900"
             type="password"
-            class="form-control"
+            class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
             id="password"
             formControlName="password"
             name="required"
             minLength="8"
-            placeholder="Introduce tu contraseña"
           />
 
-          <!--<span
+          <span
             *ngIf="
               loginForm.controls['password'].getError('minLength(8)') &&
               loginForm.controls['password'].touched
@@ -65,14 +66,14 @@
             "
             class="form-text"
             >La contraseña es obligatoria.</span
-          >-->
+          >
         </div>
 
-        <div class="mt-8 flex items-center justify-center pt-56">
+        <div class="mt-8 flex items-center justify-center pt-52">
           <button
             type="submit"
             (click)="(login)"
-            class="bg-green-700 text-white font-bold py-2 px-4 w-2/5 text-center rounded hover:bg-gray-600"
+            class="bg-green-700 text-white font-bold py-2 px-4 w-4/5 text-center rounded hover:bg-gray-600"
           >
             INICIAR SESION
           </button>
@@ -81,15 +82,13 @@
           <span class="w-full md:w-1/4"></span>
           <a href="#" class="text-2x font-bold text-black"
             >Si aun no tienes tu cuenta
-            <span href="#" class="text-green-700">registrate aqui. </span></a
+            <a href="#" id="register" class="text-green-700"
+              >registrate aqui.
+            </a></a
           >
           <span class="border-b w-1/5 md:w-1/4"></span>
         </div>
       </form>
-      <div
-        class="lg:w-4/5 md:w-3/5 xs:hidden max-w-6xl px-4 bg-cover gap-4"
-        style="background-image: url('../../../../../assets/img/Group 23.png')"
-      ></div>
     </div>
   </div>
 </div>
