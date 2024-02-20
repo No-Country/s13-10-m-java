@@ -40,7 +40,7 @@ public class ImagenServiceImpl implements ImagenService {
 				
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cargue una imagen");
 			}
-		  
+			
 			Usuario UsuarioLoguado= usuariService.findByEmail(userDetails.getUsername());
 			
 			//guardo la imagen en cloudinary
