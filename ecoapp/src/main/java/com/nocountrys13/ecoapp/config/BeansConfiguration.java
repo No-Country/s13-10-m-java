@@ -15,6 +15,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -55,5 +58,21 @@ public class BeansConfiguration {
    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
       return configuration.getAuthenticationManager();
    }
+
+   @Bean
+   public CorsConfigurationSource corsConfigurationSource() {
+
+      var corsConfiguration = new CorsConfiguration();
+
+      corsConfiguration.setAllowedOrigins(List.of("*"));
+      corsConfiguration.setAllowedHeaders(List.of("*"));
+      corsConfiguration.setAllowedMethods(List.of("*"));
+
+      var source = new UrlBasedCorsConfigurationSource();
+      source.registerCorsConfiguration("/**", corsConfiguration);
+
+      return source;
+   }
+
 
 }

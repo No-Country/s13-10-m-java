@@ -1,20 +1,20 @@
 package com.nocountrys13.ecoapp.services;
 
-import com.nocountrys13.ecoapp.dtos.PremioDto;
-import com.nocountrys13.ecoapp.entities.Premio;
+import com.nocountrys13.ecoapp.dtos.request.PremioDtoRequest;
+import com.nocountrys13.ecoapp.dtos.response.PremioDtoResponse;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface IPremioService {
 
-    public Premio savePrize(PremioDto premioDto);
+    public PremioDtoResponse savePrize(PremioDtoRequest premioDtoRequest);
 
-    public List<Premio> getAllPrize();
+    public List<PremioDtoResponse> getAllPrize();
 
-    public Premio getOnePrize(UUID id);
+    public PremioDtoResponse getOnePrize(UUID id);
 
-    public Premio updatePrize(UUID id, PremioDto premioDto);
+    public PremioDtoResponse updatePrize(UUID id, PremioDtoRequest premioDtoRequest);
 
     public String deletePrize(UUID id);
 

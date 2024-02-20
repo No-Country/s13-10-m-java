@@ -1,6 +1,7 @@
 package com.nocountrys13.ecoapp.services;
 
-import com.nocountrys13.ecoapp.dtos.UsuarioDto;
+import com.nocountrys13.ecoapp.dtos.request.UsuarioDtoRequest;
+import com.nocountrys13.ecoapp.dtos.response.UsuarioDtoResponse;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import org.springframework.http.ResponseEntity;
 
@@ -9,16 +10,15 @@ import java.util.UUID;
 
 public interface IUsuarioService {
 
-	
-	public ResponseEntity<Usuario> saveUser(UsuarioDto usuarioDto);
+    public UsuarioDtoResponse saveUser(UsuarioDtoRequest usuarioDtoRequest);
 
-	public ResponseEntity<List<Usuario>> getAllUsers();
+    public List<UsuarioDtoResponse> getAllUsers();
 
-	public ResponseEntity<Usuario> getOneUser(UUID id);
-	
-	public Usuario findByEmail(String email);
+    public UsuarioDtoResponse getOneUser(UUID id);
 
-	public ResponseEntity<Usuario> updateUser(UUID id, UsuarioDto usuarioDto);
+    public Usuario findByEmail(String email);
 
-	public ResponseEntity<Object> deleteUser(UUID id);
+    public UsuarioDtoResponse updateUser(UUID id, UsuarioDtoRequest usuarioDtoRequest);
+
+    public String deleteUser(UUID id);
 }

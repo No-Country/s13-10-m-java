@@ -1,17 +1,15 @@
-package com.nocountrys13.ecoapp.services;
+package com.nocountrys13.ecoapp.services.impl;
 
-import com.nocountrys13.ecoapp.dtos.UsuarioDto;
+import com.nocountrys13.ecoapp.dtos.request.UsuarioDtoRequest;
+import com.nocountrys13.ecoapp.dtos.response.UsuarioDtoResponse;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
-import com.nocountrys13.ecoapp.services.impl.UsuarioServiceImpl;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -20,9 +18,10 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class IUsuarioServiceTest {
+class UsuarioServiceImplTest {
 
     @Mock
     private UsuarioRepository usuarioRepository;
@@ -37,22 +36,22 @@ class IUsuarioServiceTest {
 
     @Test
     public void testSaveUser() {
-        UsuarioDto usuarioDto = new UsuarioDto("Pablo", "Aquino", "pablo@email.com", "123456");
+        UsuarioDtoRequest usuarioDtoRequest = new UsuarioDtoRequest("John", "Doe", "john.doe@example.com", "123456");
         Usuario usuario = new Usuario();
-        usuario.setNombre("Pablo");
-        usuario.setApellido("Aquino");
-        usuario.setEmail("pablo@email.com");
-        usuario.setPassword("123456");
+        usuario.setNombre(usuarioDtoRequest.nombre());
+        usuario.setApellido(usuarioDtoRequest.apellido());
+        usuario.setEmail(usuarioDtoRequest.email());
+        usuario.setPassword(usuarioDtoRequest.password());
 
         when(usuarioRepository.save(usuario)).thenReturn(usuario);
 
-        ResponseEntity<Usuario> responseEntity = usuarioService.saveUser(usuarioDto);
+        UsuarioDtoResponse usuarioDtoResponse = usuarioService.saveUser(usuarioDtoRequest);
 
-        assertEquals(HttpStatus.CREATED, responseEntity.getStatusCode());
-        assertEquals(usuario, responseEntity.getBody());
+
+        assertEquals("John", usuarioDtoResponse.nombre());
+        assertEquals("Doe", usuarioDtoResponse.apellido());
+        assertEquals("john.doe@example.com", usuarioDtoResponse.email());
     }
-    
-   
 
     @Test
     public void testGetAllUsers() {
@@ -66,11 +65,13 @@ class IUsuarioServiceTest {
 
         when(usuarioRepository.findAll()).thenReturn(usuarios);
 
-        ResponseEntity<List<Usuario>> responseEntity = usuarioService.getAllUsers();
+        List<UsuarioDtoResponse> usuarioDtoResponses = usuarioService.getAllUsers();
 
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(usuarios, responseEntity.getBody());
-
+        assertNotNull(usuarioDtoResponses);
+        assertEquals(usuarios.size(), usuarioDtoResponses.size());
+        for (int i = 0; i < usuarios.size(); i++) {
+            assertEquals(usuarios.get(i).getNombre(), usuarioDtoResponses.get(i).nombre());
+        }
         verify(usuarioRepository, times(1)).findAll();
     }
 
@@ -84,29 +85,33 @@ class IUsuarioServiceTest {
 
         when(usuarioRepository.findById(id)).thenReturn(Optional.of(usuario));
 
-        ResponseEntity<Usuario> responseEntity = usuarioService.getOneUser(id);
+        UsuarioDtoResponse usuarioDtoResponse = usuarioService.getOneUser(id);
 
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(usuario, responseEntity.getBody());
+        assertNotNull(usuarioDtoResponse);
+        assertEquals("Usuario de prueba", usuarioDtoResponse.nombre());
     }
 
     @Test
     void updateUser_UsuarioExistente_UsuarioActualizado() {
         UUID id = UUID.randomUUID();
-        UsuarioDto usuarioDto = new UsuarioDto("Pablo", "Aquino", "pablo@email.com", "123456");
+        UsuarioDtoRequest usuarioDtoRequest = new UsuarioDtoRequest("Pablo", "Aquino", "pablo@email.com", "123456");
         Usuario usuario = new Usuario();
-        usuario.setNombre("Pablo");
+        usuario.setNombre("José");
         usuario.setApellido("Aquino");
-        usuario.setEmail("pablo@email.com");
-        usuario.setPassword("123456");
+        usuario.setEmail("jose@email.com");
+        usuario.setPassword("67891");
         usuario.setUserId(id);
         when(usuarioRepository.findById(id)).thenReturn(Optional.of(usuario));
         when(usuarioRepository.save(usuario)).thenReturn(usuario);
 
-        ResponseEntity<Usuario> response = usuarioService.updateUser(id, usuarioDto);
+        UsuarioDtoResponse usuarioDtoResponse = usuarioService.updateUser(id, usuarioDtoRequest);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(usuario, response.getBody());
+        assertNotNull(usuarioDtoResponse);
+
+        assertEquals(usuarioDtoRequest.nombre(), usuarioDtoResponse.nombre());
+        assertEquals(usuarioDtoRequest.apellido(), usuarioDtoResponse.apellido());
+        assertEquals(usuarioDtoRequest.email(), usuarioDtoResponse.email());
+
         verify(usuarioRepository, times(1)).findById(id);
         verify(usuarioRepository, times(1)).save(usuario);
     }
@@ -114,12 +119,12 @@ class IUsuarioServiceTest {
     @Test
     void updateUser_UsuarioNoExistente_ResponseStatusException() {
         UUID id = UUID.randomUUID();
-        UsuarioDto usuarioDto = new UsuarioDto("Pablo", "Aquino", "pablo@email.com", "123456");
+        UsuarioDtoRequest usuarioDtoRequest = new UsuarioDtoRequest("Pablo", "Aquino", "pablo@email.com", "123456");
 
         when(usuarioRepository.findById(id)).thenReturn(Optional.empty());
 
         ResponseStatusException exception = assertThrows(ResponseStatusException.class, () -> {
-            usuarioService.updateUser(id, usuarioDto);
+            usuarioService.updateUser(id, usuarioDtoRequest);
         });
         assertEquals(HttpStatus.NOT_FOUND, exception.getStatusCode());
         assertEquals("No se encontró el usuario buscado", exception.getReason());
@@ -130,20 +135,13 @@ class IUsuarioServiceTest {
     @Test
     void deleteUser_UsuarioExistente_UsuarioEliminado() {
         UUID id = UUID.randomUUID();
-        Usuario usuario = new Usuario();
-        usuario.setNombre("Pablo");
-        usuario.setApellido("Aquino");
-        usuario.setEmail("pablo@email.com");
-        usuario.setPassword("123456");
-        usuario.setUserId(id);
-        when(usuarioRepository.findById(id)).thenReturn(Optional.of(usuario));
+        when(usuarioRepository.findById(id)).thenReturn(Optional.of(new Usuario()));
 
-        ResponseEntity<Object> response = usuarioService.deleteUser(id);
+        String result = usuarioService.deleteUser(id);
 
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("El usuario fue eliminado", response.getBody());
+        assertEquals("El usuario fue eliminado", result);
         verify(usuarioRepository, times(1)).findById(id);
-        verify(usuarioRepository, times(1)).delete(usuario);
+        verify(usuarioRepository, times(1)).delete(any(Usuario.class));
     }
 
     @Test

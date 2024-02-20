@@ -1,4 +1,4 @@
-package com.nocountrys13.ecoapp.dtos;
+package com.nocountrys13.ecoapp.dtos.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
