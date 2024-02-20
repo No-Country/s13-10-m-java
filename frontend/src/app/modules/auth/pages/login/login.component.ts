@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginService } from '../../../../core/services/login.service';
 import { Router } from '@angular/router';
 import { Login } from '../../../../core/models/login.model';
