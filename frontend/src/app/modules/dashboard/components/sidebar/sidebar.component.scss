@@ -1,0 +1,24 @@
+@import "/src/app/core/styles/mixin";
+@import "/src/app/core/styles/variable";
+@import "/src/app/core/styles/breakpoints";
+:host{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  @include transition(0.3s);
+  @include md {
+    position: static;
+    width: auto;
+  }
+}
+.sidebarShadow{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.active{
+  background-color: map-get($colors , secondary);
+}
+.iconActive{
+  @include changeColorImg(white);
+}
