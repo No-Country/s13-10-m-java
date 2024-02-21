@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,7 +39,7 @@ public class ImagenServiceImpl implements ImagenService {
 				
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cargue una imagen");
 			}
-		  
+			
 			Usuario UsuarioLoguado= usuariService.findByEmail(userDetails.getUsername());
 			
 			//guardo la imagen en cloudinary
