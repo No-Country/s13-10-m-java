@@ -21,6 +21,11 @@
           *ngIf="hasError('nombre', 'required')"
           >El nombre es requerido</strong
         >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('nombre', 'invalidChar')"
+          >No se admiten caracteres especiales</strong
+        >
       </div>
       <div>
         <label for="lastName" class="block text-lg text-gray-900"

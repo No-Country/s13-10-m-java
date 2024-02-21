@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { textValidator } from 'src/app/core/utils/validator';
 
 @Component({
   selector: 'app-register',
@@ -15,11 +16,27 @@ export class RegisterComponent {
     private readonly authService: AuthService
   ) {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
+      nombre: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(60),
+          textValidator,
+        ],
+      ],
+      apellido: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(60),
+          textValidator,
+        ],
+      ],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      repeatPassword: ['', Validators.required],
+      repeatPassword: ['', [Validators.required, textValidator]],
     });
   }
 
