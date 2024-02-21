@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 import {
-  numericSpecialCharacter,
-  password,
+  emailValidator,
+  numericSpecialCharacterValidator,
+  passwordValidator,
 } from 'src/app/core/utils/validator';
 
 @Component({
@@ -25,7 +26,7 @@ export class RegisterComponent {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(60),
-          numericSpecialCharacter,
+          numericSpecialCharacterValidator,
         ],
       ],
       apellido: [
@@ -34,17 +35,25 @@ export class RegisterComponent {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(60),
-          numericSpecialCharacter,
+          numericSpecialCharacterValidator,
         ],
       ],
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(255),
+          emailValidator,
+        ],
+      ],
       password: [
         '',
         [
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(128),
-          password,
+          passwordValidator,
         ],
       ],
       repeatPassword: ['', Validators.required],
