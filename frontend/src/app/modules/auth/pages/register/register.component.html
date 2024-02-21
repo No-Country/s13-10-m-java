@@ -23,8 +23,15 @@
         >
         <strong
           class="text-sm font-semibold text-red-700"
-          *ngIf="hasError('nombre', 'invalidChar')"
-          >No se admiten caracteres especiales</strong
+          *ngIf="hasError('nombre', 'numericSpecialCharacter')"
+          >No se admiten caracteres numéricos ni especiales</strong
+        >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="
+            hasError('nombre', 'minlength') || hasError('nombre', 'maxlength')
+          "
+          >Debe tener entre 2 y 60 caracteres</strong
         >
       </div>
       <div>
@@ -41,6 +48,19 @@
           class="text-sm font-semibold text-red-700"
           *ngIf="hasError('apellido', 'required')"
           >El apellido es requerido</strong
+        >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('apellido', 'numericSpecialCharacter')"
+          >No se admiten caracteres numéricos ni especiales</strong
+        >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="
+            hasError('apellido', 'minlength') ||
+            hasError('apellido', 'maxlength')
+          "
+          >Debe tener entre 2 y 60 caracteres</strong
         >
       </div>
       <div>
@@ -76,6 +96,18 @@
           class="text-sm font-semibold text-red-700"
           *ngIf="hasError('password', 'required')"
           >La contraseña es requerida</strong
+        >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="
+            hasError('nombre', 'minlength') || hasError('nombre', 'maxlength')
+          "
+          >Debe tener entre 8 y 128 caracteres</strong
+        >
+        <strong
+          class="text-sm font-semibold text-red-700"
+          *ngIf="hasError('password', 'password')"
+          >Debe tener entre 2 y 60 caracteres</strong
         >
       </div>
       <div>

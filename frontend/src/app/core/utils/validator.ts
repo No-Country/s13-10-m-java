@@ -1,13 +1,27 @@
 import { AbstractControl } from '@angular/forms';
 
-export function textValidator(control: AbstractControl) {
-  const specialCharacter = /[^a-zA-Z0-9á-ýÁ-Ý\s]/g;
+export function numericSpecialCharacter(control: AbstractControl) {
+  const specialCharacter = /[^a-zA-Zá-ýÁ-Ý\s]/g;
 
   const value = control.value as string;
 
   if (specialCharacter.test(value)) {
     return {
-      invalidChar: true,
+      numericSpecialCharacter: true,
+    };
+  }
+
+  return null;
+}
+
+export function password(control: AbstractControl) {
+  const specialCharacter = /[^[a-z][A-Z]*\d)[^\w\d\s]/g;
+
+  const value = control.value as string;
+
+  if (specialCharacter.test(value)) {
+    return {
+      password: true,
     };
   }
 
