@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import {
   emailValidator,
   numericSpecialCharacterValidator,
-  passwordValidator,
+  customPasswordValidator,
 } from 'src/app/core/utils/validator';
 
 @Component({
@@ -53,7 +53,7 @@ export class RegisterComponent {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(128),
-          passwordValidator,
+          customPasswordValidator,
         ],
       ],
       repeatPassword: ['', Validators.required],
