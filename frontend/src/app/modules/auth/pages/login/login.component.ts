@@ -37,8 +37,8 @@ export class LoginComponent {
     this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
       this.loginService.id = res.id;
       this.loginService.token = res.token;
-      localStorage.setItem('id', res.id);
-      localStorage.setItem('token', res.token);
+      //localStorage.setItem('id', res.id);
+      //localStorage.setItem('token', res.token);
       this.router.navigate(['home']);
     });
 
@@ -47,7 +47,7 @@ export class LoginComponent {
   }
 
   register() {
-    this.router.navigate(['quantum/home']);
+    this.router.navigate(['home']);
   }
 
   onSubmit() {
@@ -64,7 +64,7 @@ export class LoginComponent {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-    this.loginService.Login(user).subscribe({
+    /* this.loginService.Login(user).subscribe({
       next: () => {
         this.notifySvc.showSuccess(
           'Inicio de sesión exitoso',
@@ -81,6 +81,6 @@ export class LoginComponent {
           'Error con tus datos'
         );
       },
-    });
+    }); */
   }
 }
