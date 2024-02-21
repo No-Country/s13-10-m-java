@@ -19,7 +19,6 @@ public class GeoLocationController {
 	
 	@GetMapping("/{address}")
 	public CoordenadasResponseDto getcoordenadas(@PathVariable String address){
-		System.out.println("entro al controller");
 		return geoLocationService.getCoordenadas(address);
 		
 	}
