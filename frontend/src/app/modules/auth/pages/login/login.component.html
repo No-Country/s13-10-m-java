@@ -1,1 +1,94 @@
-<p>login works!</p>
+<div class="w-full h-screen gap-2">
+  <div class="h-full grid-cols-12">
+    <div class="form w-full">
+      <h1 class="text-4xl font-semibold text-gray-700 text-center pt-24">
+        INICIO DE SESION
+      </h1>
+      <form [formGroup]="loginForm" ngSubmit="(onSubmit)">
+        <!--<p class="text-xl text-gray-600 text-center">Welcome back!</p>-->
+
+        <div class="mt-4 pt-28 pb-5 content-between">
+          <label for="email" class="text-lg text-gray-900">E-mail</label>
+          <input
+            type="email"
+            class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            id="email"
+            formControlName="email"
+            name="required"
+          />
+
+          <span
+            class="form-text text-danger"
+            *ngIf="
+              loginForm.controls['email'].getError('required') &&
+              loginForm.controls['email'].touched
+            "
+            class="form-text"
+            >El email es obligatorio.
+          </span>
+          <span
+            *ngIf="
+              loginForm.controls['email'].getError('email') &&
+              loginForm.controls['email'].touched
+            "
+            class="form-text"
+            >Ingresa correo electronico valido
+          </span>
+        </div>
+        <div>
+          <div class="flex justify-between">
+            <label for="password" class="text-lg text-gray-900"
+              >Contraseña</label
+            >
+          </div>
+          <input
+            class="text-lg text-gray-900"
+            type="password"
+            class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            id="password"
+            formControlName="password"
+            name="required"
+            minLength="8"
+          />
+
+          <span
+            *ngIf="
+              loginForm.controls['password'].getError('minLength(8)') &&
+              loginForm.controls['password'].touched
+            "
+            class="form-text"
+            >La contraseña debe tener al menos 8 caracteres.
+          </span>
+          <span
+            *ngIf="
+              loginForm.controls['password'].getError('required') &&
+              loginForm.controls['password'].touched
+            "
+            class="form-text"
+            >La contraseña es obligatoria.</span
+          >
+        </div>
+
+        <div class="mt-8 flex items-center justify-center pt-52">
+          <button
+            type="submit"
+            (click)="(login)"
+            class="bg-green-700 text-white font-bold py-2 px-4 w-4/5 text-center rounded hover:bg-gray-600"
+          >
+            INICIAR SESION
+          </button>
+        </div>
+        <div class="mt-4 text-center justify-between">
+          <span class="w-full md:w-1/4"></span>
+          <a href="#" class="text-2x font-bold text-black"
+            >Si aun no tienes tu cuenta
+            <a href="#" id="register" class="text-green-700"
+              >registrate aqui.
+            </a></a
+          >
+          <span class="border-b w-1/5 md:w-1/4"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
