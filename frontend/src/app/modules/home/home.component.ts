@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.services';
 
 @Component({
   selector: 'app-home',
@@ -6,9 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  constructor(private _apiService: ApiService){};
   isMenuOpen: boolean = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  clickRequest(): void {
+		this._apiService.getDitto().subscribe();
+		this._apiService.getCharizard().subscribe();
+		this._apiService.getDitto().subscribe();
+	}
 }
