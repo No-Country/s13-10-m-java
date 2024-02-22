@@ -30,26 +30,33 @@ public class ReciclajeService implements IReciclajeService {
     private final UsuarioRepository usuarioRepository;
     private final PuntoVerdeRepository PuntoVerdeRepository;
     @Override
-    public ReciclajeDtoResponse save(ReciclajeDTO newReciclaje, UUID idPuntoVerde) {
+    public ReciclajeDtoResponse save(ReciclajeDTO newReciclaje, String emailUsuario, UUID idPuntoVerde) {
 
         if(Objects.isNull(newReciclaje))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El Reciclaje no puede ser nulo.");
 
-        Usuario actualUsuario = usuarioRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        Usuario usuarioEncontrado = usuarioRepository.findByEmail(emailUsuario);
+
+        if(Objects.isNull(usuarioEncontrado))
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario con el email: " + emailUsuario + " no existe");
+
+        int puntos = usuarioEncontrado.getPuntos() + 5;
+        usuarioEncontrado.setPuntos(puntos);
+        usuarioRepository.save(usuarioEncontrado);
 
         PuntoVerde puntoVerde = PuntoVerdeRepository.findById(idPuntoVerde).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "El punto verde con el id: " + idPuntoVerde+ " no existe"));
 
         Reciclaje reciclaje = new Reciclaje();
         BeanUtils.copyProperties(newReciclaje, reciclaje);
-        reciclaje.setUsuario(actualUsuario);
+        reciclaje.setUsuario(usuarioEncontrado);
         reciclaje.setPuntoVerde(puntoVerde);
         reciclajeRepository.save(reciclaje);
 
         return new ReciclajeDtoResponse(newReciclaje, reciclaje);
     }
 
-    @Override
+    /*@Override
     public List<ReciclajeDtoResponse> getAll() {
 
         List<Reciclaje> listReciclaje = reciclajeRepository.findAll();
@@ -70,21 +77,35 @@ public class ReciclajeService implements IReciclajeService {
                             return new ReciclajeDtoResponse(reciclaje);
                         })
                 .toList();
-    }
+    }*/
 
     @Override
-    public ReciclajeDtoResponse getReciclajeByID(UUID id) {
+    public List<ReciclajeDtoResponse> getAllReciclajeByIdUsuario(UUID idUsuario) {
 
-        var reciclajeEncontrado = reciclajeRepository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Reciclaje no encontrado con el id: " + id));
+        usuarioRepository.findById(idUsuario).orElseThrow(() ->
+                new IllegalArgumentException("Reciclaje no encontrado con el id: " + idUsuario));
 
-        Reciclaje reciclaje = new Reciclaje();
-        BeanUtils.copyProperties(reciclajeEncontrado, reciclaje);
+        List<Reciclaje> listReciclaje = reciclajeRepository.getReciclajeByUsuario_UserId(idUsuario);
 
-        return new ReciclajeDtoResponse(reciclaje);
+        return listReciclaje.stream()
+                .map(
+                        r -> {
+                            Reciclaje reciclaje = new Reciclaje();
+
+                            reciclaje.setTipoMateriales(r.getTipoMateriales());
+                            reciclaje.setReciclajeId(r.getReciclajeId());
+                            reciclaje.setCantidadCarton(r.getCantidadCarton());
+                            reciclaje.setCantidadElectronico(r.getCantidadElectronico());
+                            reciclaje.setCantidadMetal(r.getCantidadMetal());
+                            reciclaje.setCantidadPapel(r.getCantidadPapel());
+                            reciclaje.setCantidadVidrio(r.getCantidadVidrio());
+                            reciclaje.setCantidadPlastico(r.getCantidadPlastico());
+                            return new ReciclajeDtoResponse(reciclaje);
+                        })
+                .toList();
     }
 
-    @Override
+    /*@Override
     public ReciclajeDtoResponse update(UUID id, ReciclajeDTO updateReciclaje) {
 
         var reciclaje = reciclajeRepository.findById(id).orElseThrow(() ->
@@ -102,5 +123,5 @@ public class ReciclajeService implements IReciclajeService {
         }
         reciclajeRepository.deleteById(id);
         return true;
-    }
+    }*/
 }
