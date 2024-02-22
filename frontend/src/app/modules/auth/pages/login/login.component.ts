@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from '../../../../core/services/login.service';
 import { Router } from '@angular/router';
 import { Login } from '../../../../core/models/login.model';
+import {
+  emailValidator,
+  passwordValidator,
+} from 'src/app/core/utils/validator';
 
 import { NotifyService } from '../../../../services/notify.service';
 
@@ -12,19 +16,37 @@ import { NotifyService } from '../../../../services/notify.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
-  });
+  loginForm: FormGroup;
 
   constructor(
     private loginService: LoginService,
+    private readonly fb: FormBuilder,
     private notifySvc: NotifyService,
     private router: Router
-  ) {}
+  ) {
+    this.loginForm = this.fb.group({
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(255),
+          emailValidator,
+        ],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(128),
+          passwordValidator,
+        ],
+      ],
+    });
+    console.log(this.loginForm.value);
+    console.log('conexion completada  redirigido a home');
+  }
 
   get email() {
     return this.loginForm.get('email');
@@ -37,17 +59,14 @@ export class LoginComponent {
     this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
       this.loginService.id = res.id;
       this.loginService.token = res.token;
-      //localStorage.setItem('id', res.id);
-      //localStorage.setItem('token', res.token);
-      this.router.navigate(['home']);
+      localStorage.setItem('id', res.id);
+      localStorage.setItem('token', res.token);
+      this.router.navigate(['/home']);
     });
-
-    console.log(this.loginForm.value);
-    console.log('conexion completada  redirigido a home');
   }
 
   register() {
-    this.router.navigate(['home']);
+    this.router.navigate(['/home']);
   }
 
   onSubmit() {
@@ -64,15 +83,15 @@ export class LoginComponent {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-    /* this.loginService.Login(user).subscribe({
+    this.loginService.Login(user).subscribe({
       next: () => {
         this.notifySvc.showSuccess(
           'Inicio de sesión exitoso',
-          'Bienvenido a QuantumGamer'
+          'Bienvenido a EcoApp'
         );
         this.router.navigate(['']);
         setTimeout(() => {
-          location.href = '/quantum/home';
+          location.href = '/home';
         }, 3000);
       },
       error: (err) => {
@@ -81,6 +100,6 @@ export class LoginComponent {
           'Error con tus datos'
         );
       },
-    }); */
+    });
   }
 }

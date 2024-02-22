@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject, tap } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Login } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8080/auth/signin';
+  private apiUrl = 'https://s13-10-m-java.onrender.com/auth';
   public id?: number;
   public token?: string;
   private isLogedIn = new BehaviorSubject<boolean>(false);
@@ -27,6 +27,6 @@ export class LoginService {
   }
 
   Login(login: Login): Observable<any> {
-    return this.http.post(`${this.apiUrl}/sign-in`, login);
+    return this.http.post(`${this.apiUrl}/login`, login);
   }
 }
