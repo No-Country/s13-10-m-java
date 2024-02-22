@@ -20,14 +20,14 @@ public class ReciclajeController {
     private final IReciclajeService iReciclajeService;
 
     @PostMapping(value = "/save")
-    public ResponseEntity<?> saveVehicle(@Valid @RequestBody ReciclajeDTO newReciclajeDTO, UUID idPuntoVerde){
+    public ResponseEntity<?> saveVehicle(@Valid @RequestBody ReciclajeDTO newReciclajeDTO, String emailUsuario, UUID idPuntoVerde){
         try {
-            return new ResponseEntity<>(iReciclajeService.save(newReciclajeDTO, idPuntoVerde), HttpStatus.CREATED);
+            return new ResponseEntity<>(iReciclajeService.save(newReciclajeDTO, emailUsuario, idPuntoVerde), HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>("Error al crear el objeto reciclaje:" + e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
+/*
     @GetMapping(value = "/getAll")
     public ResponseEntity<?> getAll(){
         try {
@@ -35,19 +35,18 @@ public class ReciclajeController {
         }catch (Exception e){
             return new ResponseEntity<>("Error al traer todos los reciclajes", HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
-    @PostMapping("/{id}")
-    public ResponseEntity<?> ReciclajeById(@PathVariable UUID id){
+    @PostMapping("/{idUsuario}")
+    public ResponseEntity<?> AllReciclajesByIdUsuario(@PathVariable UUID idUsuario){
         try {
-            var reciclajeById = iReciclajeService.getReciclajeByID(id);
-            return new ResponseEntity<>("Reciclaje encontrado exitosamente, "+ reciclajeById, HttpStatus.OK);
+            return new ResponseEntity<>(iReciclajeService.getAllReciclajeByIdUsuario(idUsuario), HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>("Error al encontrar el Reciclaje", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error al encontrar los Reciclajes", HttpStatus.BAD_REQUEST);
         }
     }
 
-    @PutMapping("/{id}")
+/*    @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable UUID id, @RequestBody @Valid ReciclajeDTO reciclajeDTO){
         try {
             ReciclajeDtoResponse updateReciclaje = iReciclajeService.update(id, reciclajeDTO);
@@ -60,5 +59,5 @@ public class ReciclajeController {
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<?> delete(@PathVariable UUID id) {
         return new ResponseEntity<>(this.iReciclajeService.delete(id) ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
+    }*/
 }
