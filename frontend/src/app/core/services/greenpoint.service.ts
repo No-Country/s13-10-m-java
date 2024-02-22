@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class GreenpointService {
-  private readonly URL = environment.productionUrl+"/api/puntosVerde";
+  // private readonly URL = environment.productionUrl+"/api/puntosVerde";
 
   constructor(
     private http:HttpClient
