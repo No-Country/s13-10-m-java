@@ -16,23 +16,25 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="nombre"
         />
-        <strong
-          class="text-sm font-semibold text-red-700"
-          *ngIf="hasError('nombre', 'required')"
-          >El nombre es requerido</strong
-        >
-        <strong
-          class="text-sm font-semibold text-red-700"
-          *ngIf="hasError('nombre', 'numericSpecialCharacter')"
-          >No se admiten caracteres numéricos ni especiales</strong
-        >
-        <strong
-          class="text-sm font-semibold text-red-700"
-          *ngIf="
-            hasError('nombre', 'minlength') || hasError('nombre', 'maxlength')
-          "
-          >Debe tener entre 2 y 60 caracteres</strong
-        >
+        <div class="flex flex-col gap-1">
+          <strong
+            class="text-sm font-semibold text-red-700"
+            *ngIf="hasError('nombre', 'required')"
+            >El nombre es requerido</strong
+          >
+          <strong
+            class="text-sm font-semibold text-red-700"
+            *ngIf="hasError('nombre', 'numericSpecialCharacter')"
+            >No se admiten caracteres numéricos ni especiales</strong
+          >
+          <strong
+            class="text-sm font-semibold text-red-700"
+            *ngIf="
+              hasError('nombre', 'minlength') || hasError('nombre', 'maxlength')
+            "
+            >Debe tener entre 2 y 60 caracteres</strong
+          >
+        </div>
       </div>
       <div>
         <label for="lastName" class="block text-lg text-gray-900"
@@ -44,7 +46,7 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="apellido"
         />
-        <div class="flex flex-col gap-3">
+        <div class="flex flex-col gap-1">
           <strong
             class="text-sm font-semibold text-red-700"
             *ngIf="hasError('apellido', 'required')"
@@ -97,12 +99,21 @@
         <label for="password" class="block text-lg text-gray-900"
           >Contraseña</label
         >
-        <input
-          type="text"
-          id="password"
-          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-          formControlName="password"
-        />
+        <div class="relative">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            formControlName="password"
+          />
+          <button
+            class="material-symbols-outlined absolute right-2 cursor-pointer"
+            (click)="handleShowPassword()"
+            type="button"
+          >
+            {{ showPassword ? "visibility" : "visibility_off" }}
+          </button>
+        </div>
         <div class="flex flex-col gap-1">
           <strong
             class="text-sm font-semibold text-red-700"
@@ -129,12 +140,21 @@
         <label for="repeatPassword" class="block text-lg text-gray-900"
           >Confirmación de contraseña</label
         >
-        <input
-          type="password"
-          id="repeatPassword"
-          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-          formControlName="repeatPassword"
-        />
+        <div class="relative">
+          <input
+            [type]="showRepeatPassword ? 'text' : 'password'"
+            id="repeatPassword"
+            class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            formControlName="repeatPassword"
+          />
+          <button
+            class="material-symbols-outlined absolute right-2 cursor-pointer"
+            (click)="handleShowRepeatPassword()"
+            type="button"
+          >
+            {{ showRepeatPassword ? "visibility" : "visibility_off" }}
+          </button>
+        </div>
         <strong
           class="text-sm font-semibold text-red-700"
           *ngIf="hasError('repeatPassword', 'required')"
@@ -143,7 +163,7 @@
       </div>
       <button
         type="submit"
-        class="bg-green-600 text-white text-lg font-semibold w-max py-2 px-5 rounded-3xl mt-5 m-auto duration-100 ease-in-out hover:bg-green-700 active:bg-green-800"
+        class="bg-green-600 text-white text-lg font-semibold w-max py-2 px-5 mt-5 m-auto duration-100 ease-in-out hover:bg-green-700 active:bg-green-800"
       >
         CREAR CUENTA
       </button>
