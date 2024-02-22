@@ -13,9 +13,9 @@ export class HomeComponent {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
-  clickRequest(): void {
-		this._apiService.getDitto().subscribe();
-		this._apiService.getCharizard().subscribe();
-		this._apiService.getDitto().subscribe();
+  clickRequest(): void {/* 
+		this._apiService.getDitto().subscribe(); */
+		this._apiService.getCharizard().subscribe();/* 
+		this._apiService.getDitto().subscribe(); */
 	}
 }
