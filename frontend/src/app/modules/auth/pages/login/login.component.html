@@ -41,16 +41,24 @@
               >Contraseña</label
             >
           </div>
-          <input
-            class="text-lg text-gray-900"
-            type="password"
-            class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-            id="password"
-            formControlName="password"
-            name="required"
-            minLength="8"
-          />
-
+          <div class="relative">
+            <input
+              class="text-lg text-gray-900"
+              [type]="showPassword ? 'text' : 'password'"
+              class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+              id="password"
+              formControlName="password"
+              name="required"
+              minLength="8"
+            />
+            <button
+              class="material-symbols-outlined absolute right-2 cursor-pointer"
+              (click)="handleShowPassword()"
+              type="button"
+            >
+              {{ showPassword ? "visibility" : "visibility_off" }}
+            </button>
+          </div>
           <span
             *ngIf="
               loginForm.controls['password'].getError('minLength(8)') &&

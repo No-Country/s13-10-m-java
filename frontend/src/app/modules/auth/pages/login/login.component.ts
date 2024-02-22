@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { Login } from '../../../../core/models/login.model';
 import {
   emailValidator,
-  passwordValidator,
+  numericSpecialCharacterValidator,
+  customPasswordValidator,
 } from 'src/app/core/utils/validator';
 
 import { NotifyService } from '../../../../services/notify.service';
@@ -17,6 +18,7 @@ import { NotifyService } from '../../../../services/notify.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  showPassword: boolean = false;
 
   constructor(
     private loginService: LoginService,
@@ -40,7 +42,7 @@ export class LoginComponent {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(128),
-          passwordValidator,
+          customPasswordValidator,
         ],
       ],
     });
@@ -79,6 +81,7 @@ export class LoginComponent {
 
       return;
     }
+
     const user: Login = {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
@@ -101,5 +104,8 @@ export class LoginComponent {
         );
       },
     });
+  }
+  handleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }
