@@ -9,7 +9,7 @@ const routes: Routes = [
     },
     {
       path:"principal",
-      loadChildren: ()=>import("./pages/home/home-routing.module").then(m=>m.HomeRoutingModule)
+      loadChildren: ()=>import("./pages/principal/principal.module").then(m=>m.PrincipalModule)
     },
     {
       path:"profile",
