@@ -1,0 +1,7 @@
+@mixin transition($time){
+  transition: cubic-bezier(0.250, 0.460, 0.450, 0.940) all $time;
+}
+@mixin changeColorImg ($color){
+  filter: drop-shadow(0 100px 0 $color);
+  transform: translateY(-100px);
+}

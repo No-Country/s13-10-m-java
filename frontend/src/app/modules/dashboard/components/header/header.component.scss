@@ -1,0 +1,12 @@
+@import "/src/app/core/styles/variable";
+:host{
+  display: flex;
+  width: 100%;
+  padding-inline: 0.5rem;
+  align-items: center;
+  padding-block: 0.5rem;
+}
+.greenpoint>button{
+  background-color: map-get($colors, third);
+  padding: 0.25rem;
+}
