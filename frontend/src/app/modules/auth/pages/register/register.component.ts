@@ -14,6 +14,8 @@ import {
 })
 export class RegisterComponent {
   form: FormGroup;
+  showPassword: boolean = false;
+  showRepeatPassword: boolean = false;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -81,6 +83,14 @@ export class RegisterComponent {
       next: (res) => console.log(res),
       error: (error) => console.log(error),
     });
+  }
+
+  handleShowPassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  handleShowRepeatPassword(): void {
+    this.showRepeatPassword = !this.showRepeatPassword;
   }
 
   hasError(name: string, error: string) {

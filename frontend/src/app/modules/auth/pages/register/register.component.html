@@ -99,13 +99,20 @@
         <label for="password" class="block text-lg text-gray-900"
           >Contraseña</label
         >
-        <div>
+        <div class="relative">
           <input
-            type="text"
+            [type]="showPassword ? 'text' : 'password'"
             id="password"
-            class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
             formControlName="password"
           />
+          <button
+            class="material-symbols-outlined absolute right-2 cursor-pointer"
+            (click)="handleShowPassword()"
+            type="button"
+          >
+            {{ showPassword ? "visibility" : "visibility_off" }}
+          </button>
         </div>
         <div class="flex flex-col gap-1">
           <strong
@@ -133,12 +140,21 @@
         <label for="repeatPassword" class="block text-lg text-gray-900"
           >Confirmación de contraseña</label
         >
-        <input
-          type="password"
-          id="repeatPassword"
-          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-          formControlName="repeatPassword"
-        />
+        <div class="relative">
+          <input
+            [type]="showRepeatPassword ? 'text' : 'password'"
+            id="repeatPassword"
+            class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            formControlName="repeatPassword"
+          />
+          <button
+            class="material-symbols-outlined absolute right-2 cursor-pointer"
+            (click)="handleShowRepeatPassword()"
+            type="button"
+          >
+            {{ showRepeatPassword ? "visibility" : "visibility_off" }}
+          </button>
+        </div>
         <strong
           class="text-sm font-semibold text-red-700"
           *ngIf="hasError('repeatPassword', 'required')"
