@@ -5,6 +5,10 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+::-ms-reveal {
+  display: none;
+}
+
 * {
   padding: 0;
   margin: 0;
