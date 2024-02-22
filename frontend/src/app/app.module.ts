@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotFoundComponent } from './modules/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ShowsidebarDirective } from './modules/dashboard/components/showsidebar.directive';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],

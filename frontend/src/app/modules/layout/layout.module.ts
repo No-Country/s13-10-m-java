@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
+import { ConfirmAccountComponent } from './components/confirm-account/confirm-account.component';
 
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    ConfirmAccountComponent
   ],
   imports: [
     CommonModule,

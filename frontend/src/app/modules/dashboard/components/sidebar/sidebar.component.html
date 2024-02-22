@@ -1,22 +1,44 @@
 <div class="sidebarContainer basis-9/12 md:basis-auto p-3 bg-slate-50">
   <img class="mb-3" src="assets/img/logo_sidebar.svg" alt="logo-icon" />
   <!-- link to dashboard------------------------------------------------ -->
-  <a
-    class="flex items-center mb-2 rounded-xl px-2"
-    routerLink="principal"
-    routerLinkActive="active text-white"
-    (click)="hiddenSidebar()"
-  >
-    <div class="overflow-y-hidden">
-      <img
-        routerLinkActive="iconActive"
-        class="icon mr-2 w-6"
-        src="assets/img/dashboard_icon.svg"
-        alt="dashboard_icon"
-      />
-    </div>
-    <span>Dashboard</span>
-  </a>
+  <ul>
+    <li>
+      <a
+        class="flex items-center mb-2 rounded-xl px-2"
+        routerLink="principal"
+        routerLinkActive="active text-white"
+        (click)="hiddenSidebar()"
+      >
+        <div class="overflow-y-hidden">
+          <img
+            routerLinkActive="iconActive"
+            class="icon mr-2 w-6"
+            src="assets/img/dashboard_icon.svg"
+            alt="dashboard_icon"
+          />
+        </div>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a
+        class="flex items-center mb-2 rounded-xl px-2"
+        routerLink="../home"
+        routerLinkActive="active text-white"
+        (click)="hiddenSidebar()"
+      >
+        <div class="overflow-y-hidden">
+          <img
+            routerLinkActive="iconActive"
+            class="icon mr-2 w-6"
+            src="assets/img/home_icon.svg"
+            alt="home_icon"
+          />
+        </div>
+        <span>Volver al home</span>
+      </a>
+    </li>
+  </ul>
 
   <div class="border-t-2 pt-2">
     <h4 class="mb-2 text-sm">Administrador de reciclajes</h4>
@@ -36,13 +58,17 @@
               alt="list_icon"
             />
           </div>
-          <span>Reciclados</span>
+          <span>Lista de Reciclados</span>
         </a>
       </li>
-      <li class="mb-2 text-sm rounded-xl px-2" (click)="hiddenSidebar()">
-        <a class="flex items-center">
+      <li
+      routerLinkActive="active text-white"
+      class="mb-2 text-sm rounded-xl px-2"
+      (click)="hiddenSidebar()">
+        <a class="flex items-center" routerLink="report">
           <div class="overflow-y-hidden">
             <img
+              routerLinkActive="iconActive"
               class="icon mr-2 w-6"
               src="assets/img/flag_icon.svg"
               alt="flag_icon"
@@ -51,16 +77,33 @@
           <span>Reportes</span>
         </a>
       </li>
-      <li class="mb-2 text-sm rounded-xl px-2">
-        <a class="flex items-center" routerLink="../home">
-          <div>
+      <li routerLinkActive="active text-white" class="mb-2 text-sm rounded-xl px-2" (click)="hiddenSidebar()">
+        <a class="flex items-center" routerLink="award">
+          <div class="overflow-y-hidden">
             <img
+            routerLinkActive="iconActive"
               class="icon mr-2 w-6"
-              src="assets/img/home_icon.svg"
-              alt="home_icon"
+              src="assets/img/award-icon.svg"
+              alt="award-icon"
             />
           </div>
-          <span>Home</span>
+          <span>Premios</span>
+        </a>
+      </li>
+    </ul>
+    <h4 class="mb-2 text-sm">Administrador de puntos</h4>
+    <ul>
+      <li routerLinkActive="active text-white"  class="mb-2 text-sm rounded-xl px-2" (click)="hiddenSidebar()">
+        <a class="flex items-center" routerLink="greenpoints">
+          <div class="overflow-y-hidden">
+            <img
+            routerLinkActive="iconActive"
+              class="icon mr-2 w-6"
+              src="assets/img/pin-map-icon.svg"
+              alt="pin-map-icon"
+            />
+          </div>
+          <span>Mis puntos verdes</span>
         </a>
       </li>
     </ul>
