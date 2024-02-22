@@ -74,10 +74,10 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.invalid) {
       // Realizar la lógica de inicio de sesión
-      this.notifySvc.showError(
+      /* this.notifySvc.showError(
         'Error al iniciar sesión',
         'Error con tus datos'
-      );
+      ); */
 
       return;
     }
@@ -86,9 +86,9 @@ export class LoginComponent {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-    this.loginService.Login(user).subscribe({
+    /* this.loginService.Login(user).subscribe({
       next: () => {
-        this.notifySvc.showSuccess(
+        this.notifySvc.(
           'Inicio de sesión exitoso',
           'Bienvenido a EcoApp'
         );
@@ -103,7 +103,7 @@ export class LoginComponent {
           'Error con tus datos'
         );
       },
-    });
+    }); */
   }
   handleShowPassword(): void {
     this.showPassword = !this.showPassword;
