@@ -2,6 +2,7 @@ import {
   Component,
   ElementRef,
   Input,
+  SimpleChange,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
@@ -24,13 +25,14 @@ export class CustomMapComponent {
   constructor(private mapService: MapService) {}
 
   ngAfterViewInit() {
-    this.mapService
-      .createMap(this.mapContainer.nativeElement)
-      .then((res) => (this.map = res));
+    this.mapService.createMap(this.mapContainer.nativeElement).then((map) => {
+      this.map = map;
+      this.greenPoints.forEach((point) => this.addMarkerToMap(point));
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['greenPoints']) {
+    if (changes['greenPoints'] && this.map) {
       this.greenPoints.forEach((point) => this.addMarkerToMap(point));
     }
     if (changes['filters']) {
