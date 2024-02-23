@@ -106,7 +106,7 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
     }
 
     private  PuntoVerdeDtoResponse  puntoVerdeEntityADtoResponse(PuntoVerde puntoVerde){
-        return new PuntoVerdeDtoResponse(puntoVerde.getNombrePv(),
+        return new PuntoVerdeDtoResponse(puntoVerde.getPuntoVerdeId(),puntoVerde.getNombrePv(),
                 puntoVerde.getHorariosAtencion(), puntoVerde.getDiasAtencion(), puntoVerde.getLatitud(),
                 puntoVerde.getLongitud(),puntoVerde.getDireccion() ,puntoVerde.getTelefono(), puntoVerde.getMaterialesAceptados());
     }

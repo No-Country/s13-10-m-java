@@ -41,7 +41,7 @@ public class BeansConfiguration {
            .map(user -> new User(
                 user.getEmail(),
                 user.getPassword(),
-                List.of(new SimpleGrantedAuthority(Role.USER.name())))
+                List.of(new SimpleGrantedAuthority(Role.USER.getAuthority())))
            )
            .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
    }

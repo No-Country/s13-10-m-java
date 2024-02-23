@@ -12,15 +12,12 @@ import com.nocountrys13.ecoapp.services.IReciclajeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -56,29 +53,6 @@ public class ReciclajeService implements IReciclajeService {
         return new ReciclajeDtoResponse(newReciclaje, reciclaje);
     }
 
-    /*@Override
-    public List<ReciclajeDtoResponse> getAll() {
-
-        List<Reciclaje> listReciclaje = reciclajeRepository.findAll();
-
-        return listReciclaje.stream()
-                .map(
-                        r -> {
-                            Reciclaje reciclaje = new Reciclaje();
-
-                            reciclaje.setTipoMateriales(r.getTipoMateriales());
-                            reciclaje.setReciclajeId(r.getReciclajeId());
-                            reciclaje.setCantidadCarton(r.getCantidadCarton());
-                            reciclaje.setCantidadElectronico(r.getCantidadElectronico());
-                            reciclaje.setCantidadMetal(r.getCantidadMetal());
-                            reciclaje.setCantidadPapel(r.getCantidadPapel());
-                            reciclaje.setCantidadVidrio(r.getCantidadVidrio());
-                            reciclaje.setCantidadPlastico(r.getCantidadPlastico());
-                            return new ReciclajeDtoResponse(reciclaje);
-                        })
-                .toList();
-    }*/
-
     @Override
     public List<ReciclajeDtoResponse> getAllReciclajeByIdUsuario(UUID idUsuario) {
 
@@ -105,23 +79,4 @@ public class ReciclajeService implements IReciclajeService {
                 .toList();
     }
 
-    /*@Override
-    public ReciclajeDtoResponse update(UUID id, ReciclajeDTO updateReciclaje) {
-
-        var reciclaje = reciclajeRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("Reciclaje no encontrado con el id: " + id));
-
-        BeanUtils.copyProperties(updateReciclaje, reciclaje);
-
-        return new ReciclajeDtoResponse(updateReciclaje, reciclaje);
-    }
-
-    @Override
-    public boolean delete(UUID id) {
-        if(reciclajeRepository.findById(id).isEmpty()){
-            return false;
-        }
-        reciclajeRepository.deleteById(id);
-        return true;
-    }*/
 }
