@@ -3,6 +3,7 @@ package com.nocountrys13.ecoapp.controllers;
 import java.io.IOException;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +17,12 @@ import com.nocountrys13.ecoapp.services.ImagenService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
+import static com.nocountrys13.ecoapp.controllers.ApiConstant.*;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/img")
+@PreAuthorize(ROLE_USER)
 public class ImageController {
 
 	private final ImagenService imagenService;
