@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import {
   emailValidator,
   numericSpecialCharacterValidator,
-  passwordValidator,
+  customPasswordValidator,
 } from 'src/app/core/utils/validator';
 
 @Component({
@@ -14,6 +14,8 @@ import {
 })
 export class RegisterComponent {
   form: FormGroup;
+  showPassword: boolean = false;
+  showRepeatPassword: boolean = false;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -53,7 +55,7 @@ export class RegisterComponent {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(128),
-          passwordValidator,
+          customPasswordValidator,
         ],
       ],
       repeatPassword: ['', Validators.required],
@@ -81,6 +83,14 @@ export class RegisterComponent {
       next: (res) => console.log(res),
       error: (error) => console.log(error),
     });
+  }
+
+  handleShowPassword(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  handleShowRepeatPassword(): void {
+    this.showRepeatPassword = !this.showRepeatPassword;
   }
 
   hasError(name: string, error: string) {

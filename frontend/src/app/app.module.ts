@@ -11,6 +11,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ShowsidebarDirective } from './modules/dashboard/components/showsidebar.directive';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
