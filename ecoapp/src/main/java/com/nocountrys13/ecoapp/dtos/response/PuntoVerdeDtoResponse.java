@@ -4,8 +4,13 @@ import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.validation.constraints.*;
 
 import java.util.List;
+import java.util.UUID;
 
 public record PuntoVerdeDtoResponse(
+
+
+        @NotNull UUID puntoVerdeId,
+
         @NotBlank String nombre,
         @NotBlank @Size(max = 255) String horarioAtencion,
         @NotBlank @Size(max = 255) String diasAtencion,
