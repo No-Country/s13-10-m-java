@@ -43,6 +43,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         BeanUtils.copyProperties(dto, user);
         user.setPassword(encoder.encode(dto.password()));
         user.setImgUrl(imgDefaultUrl);
+        user.setPuntos(0);
 
 //        emailService.sendVerificationEmail(user);
 
