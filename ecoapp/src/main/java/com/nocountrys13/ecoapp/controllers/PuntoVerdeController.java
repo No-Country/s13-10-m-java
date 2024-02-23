@@ -9,13 +9,17 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import static com.nocountrys13.ecoapp.controllers.ApiConstant.*;
+
 @RestController
 @RequestMapping("/api/puntosVerde")
 @RequiredArgsConstructor
+@PreAuthorize(ROLE_USER)
 public class PuntoVerdeController {
 
     private final IPuntoVerdeService IPuntoVerdeService;

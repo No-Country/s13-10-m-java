@@ -10,22 +10,21 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
+import static com.nocountrys13.ecoapp.controllers.ApiConstant.*;
+
 @RestController
 @RequestMapping("/api/usuario")
 @RequiredArgsConstructor
+@PreAuthorize(ROLE_USER)
 public class UsuarioController {
 
     private final IUsuarioService usuarioService;
-
-    @PostMapping
-    public ResponseEntity<UsuarioDtoResponse> saveUser(@RequestBody @Valid UsuarioDtoRequest usuarioDtoRequest) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.saveUser(usuarioDtoRequest));
-    }
 
     @GetMapping
     public ResponseEntity<List<UsuarioDtoResponse>> getAllUsers() {
