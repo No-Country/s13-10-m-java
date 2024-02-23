@@ -11,4 +11,10 @@ export class HomeComponent {
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  isLogged = false;
+
+  constructor() {
+    // Verifica si hay un token presente en el localStorage al inicializar el componente
+    this.isLogged = !!localStorage.getItem('token');
+  }
 }

@@ -2,14 +2,12 @@
 
   <nav class="flex justify-between items-center mt-5 px-4 lg:px-8 py-3 ">
     <i class="logo-ecoapp text-2xl lg:text-3xl"></i>
-    <div class="lg:hidden relative">
-      <!-- Burger icon -->
+    <!-- <div class="lg:hidden relative">
       <button id="burgerButton" class="text-gray-700 focus:outline-none" (click)="toggleMenu()">
         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </button>
-      <!-- Mobile menu -->
       <div class=" w-full absolute top-7 right-16 " *ngIf="isMenuOpen">
         <a routerLink="/auth/login" class="block py-2 px-4 text-gray-700">Ingresar</a>
         <a routerLink="/auth/register" class="block py-2 px-4 text-gray-700">Registrarse</a>
@@ -18,6 +16,35 @@
     <div class="hidden lg:flex gap-5 uppercase">
       <a routerLink="/auth/login">Ingresar</a>
       <a routerLink="/auth/register">Registrarse</a>
+    </div> -->
+    <div class="lg:hidden relative">
+      <!-- Burger icon -->
+      <button id="burgerButton" class="text-gray-700 focus:outline-none" (click)="toggleMenu()">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <!-- Mobile menu -->
+      <div class="w-full absolute top-7 right-16" *ngIf="isMenuOpen">
+        <!-- Mostrar el botón del Dashboard si el usuario está logueado -->
+        <a *ngIf="isLogged" routerLink="/dashboard" class="block py-2 px-4 text-gray-700">Dashboard</a>
+        <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
+        <ng-container *ngIf="!isLogged">
+          <a routerLink="/auth/login" class="block py-2 px-4 text-gray-700">Ingresar</a>
+          <a routerLink="/auth/register" class="block py-2 px-4 text-gray-700">Registrarse</a>
+        </ng-container>
+      </div>
+    </div>
+    <div class="hidden lg:flex gap-5 uppercase">
+      <!-- Mostrar solo el enlace de Dashboard si el usuario está logueado -->
+      <ng-container *ngIf="isLogged">
+        <a routerLink="/dashboard">Dashboard</a>
+      </ng-container>
+      <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
+      <ng-container *ngIf="!isLogged">
+        <a routerLink="/auth/login">Ingresar</a>
+        <a routerLink="/auth/register">Registrarse</a>
+      </ng-container>
     </div>
   </nav>
 
@@ -156,7 +183,7 @@
 
     <section class="flex items-center flex-col gap-3 my-20">
       <h2 class="text-black text-center font-space-grotesk text-2xl font-medium my-4">ANIMATE A HACER LA DIFERENCIA</h2>
-      <a href="/auth/register" class="inline-flex px-12 py-2 items-center gap-2 bg-[#006C34] text-white">
+      <a routerLink="/auth/register" class="inline-flex px-12 py-2 items-center gap-2 bg-[#006C34] text-white">
         REGISTRARSE
       </a>
 
