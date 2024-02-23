@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -29,7 +28,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         var usuario = new Usuario();
         BeanUtils.copyProperties(usuarioDtoRequest, usuario);
         usuario = usuarioRepository.save(usuario);
-        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getPuntos());
     }
 
     public List<UsuarioDtoResponse> getAllUsers() {
@@ -43,14 +42,14 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     private UsuarioDtoResponse convertToDto(Usuario usuario) {
-        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getPuntos());
     }
 
     public UsuarioDtoResponse getOneUser(UUID id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
             var usuarioResp = usuario.get();
-            return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail());
+            return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail(), usuarioResp.getPuntos());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
     }
@@ -61,7 +60,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
             var usuario = usuarioBuscado.get();
             BeanUtils.copyProperties(usuarioDtoRequest, usuario);
             usuario = usuarioRepository.save(usuario);
-            return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail());
+            return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getPuntos());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }

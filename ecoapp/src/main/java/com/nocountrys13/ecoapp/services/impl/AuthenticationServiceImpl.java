@@ -44,7 +44,7 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         user.setPassword(encoder.encode(dto.password()));
         user.setImgUrl(imgDefaultUrl);
 
-        emailService.sendVerificationEmail(user);
+//        emailService.sendVerificationEmail(user);
 
         repository.save(user);
         
