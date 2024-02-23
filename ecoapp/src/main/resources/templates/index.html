@@ -4,81 +4,86 @@
 <head>
 	<title>Bienvenda</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	
-<style>
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: #f9f9f9;
-      font-family: Arial, sans-serif;
-    }
 
-    h1 {
-      font-size: 24px;
-      text-align: center;
-    }
+	<style>
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #f9f9f9;
+			font-family: Arial, sans-serif;
+		}
 
-    p {
-      font-size: 16px;
-      margin: 10px 0;
-    }
-    
-    span {
-        font-weight: bold;
-    }
-    
-    .codigo {
-      font-weight: bold;
-      color: red;
-    }
+		h1 {
+			font-size: 24px;
+			text-align: center;
+		}
 
-    a {
-      display: block;
-      text-align: center;
-      background-color: #007bff;
-      border-radius: 10px;
-      font-size: 14px;
-      text-decoration: none;
-      padding: 5px;
-      margin: auto;
-      width: 30%;
-      font-weight: bold;
-      color: red !important;
-    }
-    
-    a:hover{
-        background-color: crimson;
-        color: white !important;
-    }
-    
-    .nombre {
-        color: #007bff;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-    img{
-	width: 50px;
-	height: 50px;
-	}
-    
-  </style>
+		p {
+			font-size: 16px;
+			margin: 10px 0;
+		}
+
+		span {
+			font-weight: bold;
+		}
+
+		.alert {
+			font-weight: bold;
+			color: red;
+		}
+
+		a {
+			display: block;
+			text-align: center;
+			background-color: #007bff;
+			border-radius: 10px;
+			font-size: 14px;
+			text-decoration: none;
+			padding: 5px;
+			margin: auto;
+			width: 30%;
+			font-weight: bold;
+			color: red !important;
+		}
+
+		a:hover {
+			background-color: crimson;
+			color: white !important;
+		}
+
+		.nombre {
+			color: #007bff;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		img {
+			width: 50px;
+			height: 50px;
+		}
+	</style>
 
 </head>
 
 <body>
 	<div class="container">
-	
+
 		<img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1707854788/Fotos/reirlpjlwbcdqfm1poxb.jpg">
-		
+
 		<h1>BIENVENIDO A ECOAPP:<span class="nombre"> [[${userName}]]</span></h1>
-		<p>Esto es un test email de bienvenida el codigo tiene una duracion de 10 min</p>
+		<p>Estamos emocionados de tenerte como parte de nuestra comunidad comprometida con el medio ambiente. Al unirte
+			a nosotros, estás contribuyendo activamente a la conservación de nuestro planeta. En nuestra aplicación de
+			reciclaje, encontrarás herramientas intuitivas y recursos útiles para fomentar prácticas sostenibles.
+			<br>
+			<span class="alert"> El código tiene una duracion de 10 min]</span>
+		</p>
 
-		<p><span>CODIGO: </span><span class="codigo">[[${token}]] </span></p>
 
-		<a href="#" >Verificar codigo</a>
+		<a th:href="@{|http://localhost:8080/email/verify?token=${token}&userId=${userId}|}">Verificar Correo
+			Electrónico</a>
+
 	</div>
-
 
 </body>
 

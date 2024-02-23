@@ -11,10 +11,8 @@ import com.nocountrys13.ecoapp.dtos.response.ApiResponse;
 import com.nocountrys13.ecoapp.dtos.response.CoordenadasResponseDto;
 import com.nocountrys13.ecoapp.services.IGeoLocationService;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class GeoLocationServiceImpl implements IGeoLocationService {
 
 	@Value("${google.maps.apiKey}")

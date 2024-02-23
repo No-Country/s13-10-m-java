@@ -14,6 +14,7 @@ import org.thymeleaf.context.Context;
 
 import com.nocountrys13.ecoapp.entities.EmailVerification;
 import com.nocountrys13.ecoapp.entities.Usuario;
+import com.nocountrys13.ecoapp.repositories.EmailRepository;
 import com.nocountrys13.ecoapp.services.IEmailService;
 
 import jakarta.mail.MessagingException;
@@ -26,19 +27,18 @@ public class EmailServiceImpl implements IEmailService {
 
 	private final JavaMailSender emailSender;
 	private final TemplateEngine templateEngine;
-	//private final EmailRepository emailRepository;
+	private final EmailRepository emailRepository;
 
+	@Override
 	public void sendVerificationEmail(Usuario user) {
 
 		// creamos el tken de verificacion
-		String token = generateVerificationCode();
-
-		// para monitorizar el cdigo borrar en la refactorzación
-		System.out.println(token);
+		String token = generateVerificationCode() ;
 
 		// guardamos el nombre dl user en esta variable para utilizarlo en el contexto
 		String userName = user.getNombre() + " " + user.getApellido();
-
+		String userId= String.valueOf(user.getUserId());
+		
 		// creamos una instancia de la entidad emailverification y seteamos valores
 		EmailVerification emailVeridication = new EmailVerification();
 
@@ -52,8 +52,9 @@ public class EmailServiceImpl implements IEmailService {
 		Context context = new Context();
 		context.setVariable("token", token);
 		context.setVariable("userName", userName);
+		context.setVariable("userId", userId);
 
-		// con template egine procesamos nuestra plantilla y la agregamos al conte
+		// con template engine procesamos nuestra plantilla y le agregamos el context para acceder a las variables
 		String htmlContent = templateEngine.process("index", context);
 
 		try {
@@ -70,12 +71,7 @@ public class EmailServiceImpl implements IEmailService {
 			// enviamos el email
 			emailSender.send(message);
 			
-
-			//System.out.println("Correo enviado con éxito.");
-			
-			//todo guardar en la db
-			
-			//emailRepository.save(emailVeridication);
+			emailRepository.save(emailVeridication);
 
 		} catch (MailSendException e) {
             // Excepción lanzada por Spring cuando no se puede entregar el correo
@@ -89,11 +85,21 @@ public class EmailServiceImpl implements IEmailService {
 
 	}
 
-	// Generar un código aleatorio de 6 dígitos
-	private String generateVerificationCode() {
-		Random random = new Random();
-		int code = 100000 + random.nextInt(900000);
-		return String.valueOf(code);
+	
+	@Override
+	public void verifyEmail(String token, String userId) {
+
+		//to-do --> implementar esta logica verificacion buscar el usuario y cambiarel estado de la variable validemail a true
+		
+		
 	}
+	
+	// Generar un código aleatorio 
+		private String generateVerificationCode() {
+			Random random = new Random();
+			Long code = random.nextLong(900000000);
+			return String.valueOf(code);
+		}
+
 
 }
