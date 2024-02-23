@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout.component';
+import { ConfirmAccountComponent } from './components/confirm-account/confirm-account.component';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       {
         path: 'auth',
         loadChildren: () =>
@@ -23,6 +24,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('src/app/modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
+      { path:"account-verified", component:ConfirmAccountComponent}
     ],
   },
 ];
