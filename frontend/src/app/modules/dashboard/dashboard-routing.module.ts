@@ -9,7 +9,7 @@ const routes: Routes = [
     },
     {
       path:"principal",
-      loadChildren: ()=>import("./pages/home/home-routing.module").then(m=>m.HomeRoutingModule)
+      loadChildren: ()=>import("./pages/principal/principal.module").then(m=>m.PrincipalModule)
     },
     {
       path:"profile",
@@ -18,6 +18,18 @@ const routes: Routes = [
     {
       path:"recycled",
       loadChildren: ()=>import("./pages/recycled/recycled-routing.module").then(m=>m.RecycledRoutingModule)
+    },
+    {
+      path:"award",
+      loadChildren: ()=>import("./pages/award/award-routing.module").then(m=>m.AwardRoutingModule)
+    },
+    {
+      path:"report",
+      loadChildren: ()=>import("./pages/report/report-routing.module").then(m=>m.ReportRoutingModule)
+    },
+    {
+      path:"greenpoints",
+      loadChildren: ()=>import("./pages/greenpoints/greenpoints-routing.module").then(m=>m.GreenpointsRoutingModule)
     },
   ]}
 ];
