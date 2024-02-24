@@ -31,8 +31,9 @@ public class ImagenServiceImpl implements ImagenService {
 	private final ImagenRepository imagenRepository;
 	private final IUsuarioService usuariService;
 	private final UsuarioRepository usuarioRepository;
+
 	
-	  public Imagen save(MultipartFile multipartFile, UserDetails userDetails) throws IOException{
+	  public Imagen save(MultipartFile multipartFile , UserDetails userDetails) throws IOException{
 	    	
 		  BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
 			if (bi == null) {

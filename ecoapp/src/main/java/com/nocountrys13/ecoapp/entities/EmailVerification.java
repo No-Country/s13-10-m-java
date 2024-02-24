@@ -33,7 +33,7 @@ public class EmailVerification implements Serializable {
 	private LocalDateTime creationTime;
 	private LocalDateTime expirationTime;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
 	private Usuario usuario;
 }

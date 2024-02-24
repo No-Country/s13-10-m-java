@@ -12,6 +12,8 @@
 			padding: 20px;
 			background-color: #f9f9f9;
 			font-family: Arial, sans-serif;
+			border-radius: 20px;
+			color:black;
 		}
 
 		h1 {
@@ -22,6 +24,7 @@
 		p {
 			font-size: 16px;
 			margin: 10px 0;
+			text-align: justify;
 		}
 
 		span {
@@ -30,38 +33,62 @@
 
 		.alert {
 			font-weight: bold;
-			color: red;
+			color:red;
+			font-size: small;
 		}
 
 		a {
 			display: block;
 			text-align: center;
-			background-color: #007bff;
+			background-color:  #006C34;
 			border-radius: 10px;
 			font-size: 14px;
 			text-decoration: none;
 			padding: 5px;
 			margin: auto;
-			width: 30%;
+			width: 40%;
 			font-weight: bold;
-			color: red !important;
-		}
-
-		a:hover {
-			background-color: crimson;
 			color: white !important;
 		}
 
+		a:hover {
+			background-color: #FFC107;
+			color: #006C34 !important;
+		}
+
 		.nombre {
-			color: #007bff;
+			
+			color: #006C34;
 			font-weight: bold;
 			text-transform: uppercase;
 		}
 
-		img {
-			width: 50px;
-			height: 50px;
+		
+		.nota {
+			font-size: small;
 		}
+		
+		.about {
+			color: grey;
+			text-align: center;
+		}
+		
+		 .icono-logo {
+			height: 80px;
+			width: 80px;
+			filter: grayscale(100%)!important;
+			display: block;
+			margin: 0 auto;
+			
+		}
+		.logo-completo {
+			width: 200px;
+			display: block;
+			margin: 0 auto;
+			
+		}
+	
+	
 	</style>
 
 </head>
@@ -69,19 +96,42 @@
 <body>
 	<div class="container">
 
-		<img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1707854788/Fotos/reirlpjlwbcdqfm1poxb.jpg">
+		<img class="logo-completo" src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718823/Fotos/bq9s2qlhy1q9cdg5q6un.png">
 
 		<h1>BIENVENIDO A ECOAPP:<span class="nombre"> [[${userName}]]</span></h1>
 		<p>Estamos emocionados de tenerte como parte de nuestra comunidad comprometida con el medio ambiente. Al unirte
 			a nosotros, estás contribuyendo activamente a la conservación de nuestro planeta. En nuestra aplicación de
 			reciclaje, encontrarás herramientas intuitivas y recursos útiles para fomentar prácticas sostenibles.
-			<br>
-			<span class="alert"> El código tiene una duracion de 10 min]</span>
+			<br><br>
+			<span class="alert"> El código tiene una duracion de 10 min</span>
 		</p>
 
 
 		<a th:href="@{|http://localhost:8080/email/verify?token=${token}&userId=${userId}|}">Verificar Correo
 			Electrónico</a>
+			
+			<br>
+		
+		<hr>
+			<p class="nota">
+				<b>Nota:</b> Esta invitación fue enviada por motivos de registro en nuestra plataforma
+				<b>GREENPOINT</b>. Si no reconoces esta información, puedes ignorar
+				este correo electrónico. No es necesario que respondas a este mensaje.
+			</p>
+			
+
+			<img class="icono-logo" src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png">
+
+		<div class="about">
+			<h1>ECOAPP</h1>
+			<h5>
+				88 Colin P Kelly Jr Street
+			</h5>
+			<h5>
+				San Francisco, CA 94107
+			</h5>
+
+		</div>
 
 	</div>
 

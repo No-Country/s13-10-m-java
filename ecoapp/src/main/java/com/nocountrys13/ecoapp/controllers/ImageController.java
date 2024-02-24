@@ -26,7 +26,8 @@ public class ImageController {
 	@PostMapping
 	@Transactional
 	public ResponseEntity<String> upload(@RequestParam("imagen") MultipartFile multipartFile,
-			@AuthenticationPrincipal UserDetails userDetails) throws IOException {
+			@AuthenticationPrincipal UserDetails userDetails
+			) throws IOException {
 
 		imagenService.save(multipartFile, userDetails);
 

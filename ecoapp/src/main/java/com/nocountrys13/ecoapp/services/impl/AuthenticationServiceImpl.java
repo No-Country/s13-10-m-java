@@ -34,23 +34,20 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
 
     @Override
     public RegisterDtoResponse register(RegisterDtoRequest dto) {
-/*
+
         if (repository.existsByEmail(dto.email()))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El email ya se encuentra registrado");
-*/
+
         var user = new Usuario();
 
         BeanUtils.copyProperties(dto, user);
         user.setPassword(encoder.encode(dto.password()));
         user.setImgUrl(imgDefaultUrl);
-
-       
-
-        repository.save(user);
         
+        repository.save(user);
         emailService.sendVerificationEmail(user);
         
-        return new RegisterDtoResponse(dto, imgDefaultUrl, jwtProvider.generateToken(user).token() );
+        return new RegisterDtoResponse(user, imgDefaultUrl, jwtProvider.generateToken(user).token() );
     }
 
     
