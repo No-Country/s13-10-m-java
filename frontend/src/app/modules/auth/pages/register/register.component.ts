@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from '@services/auth.service';
 import {
   emailValidator,
   numericSpecialCharacterValidator,
-  customPasswordValidator,
-} from 'src/app/core/utils/validator';
+  passwordValidator,
+} from '@utils/validator';
 
 @Component({
   selector: 'app-register',
@@ -55,7 +55,7 @@ export class RegisterComponent {
           Validators.required,
           Validators.minLength(8),
           Validators.maxLength(128),
-          customPasswordValidator,
+          passwordValidator,
         ],
       ],
       repeatPassword: ['', Validators.required],

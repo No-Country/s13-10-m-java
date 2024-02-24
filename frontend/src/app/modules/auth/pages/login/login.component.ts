@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from '../../../../core/services/login.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { LoginService } from '@services/login.service';
 import { Router } from '@angular/router';
-import { Login } from '../../../../core/models/login.model';
-import {
-  emailValidator,
-  numericSpecialCharacterValidator,
-  customPasswordValidator,
-} from 'src/app/core/utils/validator';
+import { Login } from '@models/login.model';
 
-import { NotifyService } from '../../../../services/notify.service';
+import { NotifyService } from '@services/notify.service';
+import { emailValidator } from '@utils/validator';
 
 @Component({
   selector: 'app-login',
@@ -27,27 +23,9 @@ export class LoginComponent {
     private router: Router
   ) {
     this.loginForm = this.fb.group({
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(255),
-          emailValidator,
-        ],
-      ],
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(128),
-          customPasswordValidator,
-        ],
-      ],
+      email: ['', [Validators.required, emailValidator]],
+      password: ['', Validators.required, Validators.minLength(8)],
     });
-    console.log(this.loginForm.value);
-    console.log('conexion completada  redirigido a home');
   }
 
   get email() {
@@ -58,6 +36,10 @@ export class LoginComponent {
   }
 
   login() {
+    if (this.loginForm.invalid) {
+      return this.loginForm.markAllAsTouched();
+    }
+
     this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
       this.loginService.id = res.id;
       this.loginService.token = res.token;

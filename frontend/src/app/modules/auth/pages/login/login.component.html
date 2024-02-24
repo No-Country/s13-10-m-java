@@ -1,7 +1,7 @@
 <form
   class="h-full py-20 px-4 flex flex-col"
   [formGroup]="loginForm"
-  ngSubmit="(onSubmit)"
+  (ngSubmit)="login()"
 >
   <h1 class="text-4xl font-semibold text-gray-700 text-center">
     INICIO DE SESION
@@ -35,17 +35,24 @@
         >Ingresa correo electronico valido
       </span>
     </div>
-    <div class="field">
+    <div class="relative">
       <label for="password" class="text-lg text-gray-900">Contraseña</label>
       <input
         class="text-lg text-gray-900"
-        type="password"
+        [type]="showPassword ? 'text' : 'password'"
         class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
         id="password"
         formControlName="password"
         name="required"
         minLength="8"
       />
+      <button
+        class="material-symbols-outlined absolute right-2 cursor-pointer"
+        (click)="handleShowPassword()"
+        type="button"
+      >
+        {{ showPassword ? "visibility" : "visibility_off" }}
+      </button>
       <span
         *ngIf="
           loginForm.controls['password'].getError('minLength(8)') &&
@@ -65,13 +72,9 @@
     </div>
   </div>
   <div class="button flex flex-col items-center justify-center">
-    <button
-      type="submit"
-      (click)="(login)"
-      class="bg-green-700 text-white font-bold py-2 px-4 text-center rounded hover:bg-gray-600"
+    <app-button type="submit" color="success" class="m-auto"
+      >INICIAR SESIÓN</app-button
     >
-      INICIAR SESION
-    </button>
     <p class="font-bold text-gray-800 mt-3">
       Si aun no tienes tu cuenta
       <a

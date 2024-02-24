@@ -22,9 +22,11 @@ const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('src/app/modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
+          import('../dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
       },
-      { path:"account-verified", component:ConfirmAccountComponent}
+      { path: 'account-verified', component: ConfirmAccountComponent },
     ],
   },
 ];

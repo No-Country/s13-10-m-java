@@ -29,7 +29,7 @@ export function emailValidator(control: AbstractControl) {
   return null;
 }
 
-export function customPasswordValidator(control: AbstractControl) {
+export function passwordValidator(control: AbstractControl) {
   const regex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_+|!@#$%^&.])[A-Za-z\d_+\-|¡!@#$%^&\.]+$/g;
 
@@ -37,7 +37,7 @@ export function customPasswordValidator(control: AbstractControl) {
   const isValid = regex.test(value);
 
   if (!isValid) {
-    return { password: true};
+    return { password: true };
   }
 
   return null;
