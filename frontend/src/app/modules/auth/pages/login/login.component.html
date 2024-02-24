@@ -1,7 +1,8 @@
 <form
-class="h-full py-20 px-4 flex flex-col"
-[formGroup]="loginForm"
-ngSubmit="(onSubmit)">
+  class="h-full py-20 px-4 flex flex-col"
+  [formGroup]="loginForm"
+  (ngSubmit)="login()"
+>
   <h1 class="text-4xl font-semibold text-gray-700 text-center">
     INICIO DE SESION
   </h1>
@@ -64,13 +65,9 @@ ngSubmit="(onSubmit)">
     </div>
   </div>
   <div class="button flex flex-col items-center justify-center">
-    <button
-      type="submit"
-      (click)="(login)"
-      class="bg-green-700 text-white font-bold py-2 px-4 text-center rounded hover:bg-gray-600"
+    <app-button type="submit" color="success" class="m-auto"
+      >INICIAR SESIÓN</app-button
     >
-      INICIAR SESION
-    </button>
     <p class="font-bold text-gray-800 mt-3">
       Si aun no tienes tu cuenta
       <a
