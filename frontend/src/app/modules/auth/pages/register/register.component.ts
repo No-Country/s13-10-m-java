@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@services/auth.service';
+import Swal from 'sweetalert2';
 import {
   emailValidator,
   numericSpecialCharacterValidator,
@@ -63,8 +64,6 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    console.log(this.form);
-
     if (this.form.invalid) {
       return this.form.markAllAsTouched();
     }
@@ -73,15 +72,24 @@ export class RegisterComponent {
       this.form.get('password')?.value !==
       this.form.get('repeatPassword')?.value
     ) {
-      alert('Las contraseñas no coinciden');
-      return;
+      return alert('Las contraseñas no coinciden');
     }
 
-    console.log(this.form.value);
-
     this.authService.register(this.form.value).subscribe({
-      next: (res) => console.log(res),
-      error: (error) => console.log(error),
+      next: () => {
+        Swal.fire({
+          title: '¡Registro exitoso!',
+          text: `¡Hola, ${this.form.value.nombre}! Hemos enviado a tu correo un enlace de confirmación, por favor ingresa para validar tu cuenta.`,
+          icon: 'success',
+        });
+      },
+      error: (error) => {
+        Swal.fire({
+          title: 'Ha ocurrido un error...',
+          text: error.error,
+          icon: 'error',
+        });
+      },
     });
   }
 
