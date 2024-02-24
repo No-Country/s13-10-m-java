@@ -31,7 +31,7 @@ export function emailValidator(control: AbstractControl) {
 
 export function passwordValidator(control: AbstractControl) {
   const regex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_+|!@#$%^&.])[A-Za-z\d_+\-|¡!@#$%^&\.]+$/g;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_+|!@#$%^&.])(?!.*[-*"/(){}[\]=?¡¿'`~;,:<>\°])[A-Za-z\d_+\-|¡!@#$%^&\.]+$/g;
 
   const value = control.value as string;
   const isValid = regex.test(value);
