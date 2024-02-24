@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [AuthComponent, RegisterComponent, LoginComponent],
@@ -15,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AuthRoutingModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    SharedModule,
   ],
 })
 export class AuthModule {}
