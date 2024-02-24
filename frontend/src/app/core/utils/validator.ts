@@ -1,4 +1,5 @@
-import { AbstractControl } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 export function numericSpecialCharacterValidator(control: AbstractControl) {
   const specialCharacter = /[^a-zA-Zá-ýÁ-Ý\s]/g;
@@ -41,4 +42,15 @@ export function passwordValidator(control: AbstractControl) {
   }
 
   return null;
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GeneralValidator {
+  hasError(form: FormGroup, control: string, error: string) {
+    return (
+      form.controls[control].touched && form.controls[control].hasError(error)
+    );
+  }
 }
