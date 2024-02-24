@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { LoginService } from '../../../../core/services/login.service';
+import { LoginService } from '@services/login.service';
 import { Router } from '@angular/router';
-import { Login } from '../../../../core/models/login.model';
+import { Login } from '@models/login.model';
 
-import { NotifyService } from '../../../../services/notify.service';
-import { emailValidator } from 'src/app/core/utils/validator';
+import { NotifyService } from '@services/notify.service';
+import { emailValidator } from '@utils/validator';
 
 @Component({
   selector: 'app-login',

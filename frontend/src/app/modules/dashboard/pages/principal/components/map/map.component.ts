@@ -7,8 +7,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { greenpoint } from 'src/app/core/models/greenpoint.model';
-import { MapService } from 'src/app/core/services/map.service';
+import { greenpoint } from '@models/greenpoint.model';
+import { MapService } from '@services/map.service';
 
 @Component({
   selector: 'app-customMap',

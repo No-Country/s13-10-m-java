@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/services/auth.service';
+import { AuthService } from '@services/auth.service';
 import {
   emailValidator,
   numericSpecialCharacterValidator,
   passwordValidator,
-} from 'src/app/core/utils/validator';
+} from '@utils/validator';
 
 @Component({
   selector: 'app-register',
