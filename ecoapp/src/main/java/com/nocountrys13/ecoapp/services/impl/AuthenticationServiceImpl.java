@@ -43,13 +43,13 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         BeanUtils.copyProperties(dto, user);
         user.setPassword(encoder.encode(dto.password()));
         user.setImgUrl(imgDefaultUrl);
+        user.setValidEmail(false);
         user.setPuntos(0);
 
-//        emailService.sendVerificationEmail(user);
-
         repository.save(user);
+        emailService.sendVerificationEmail(user);
         
-        return new RegisterDtoResponse(dto, imgDefaultUrl, jwtProvider.generateToken(user).token() );
+        return new RegisterDtoResponse(user, imgDefaultUrl, jwtProvider.generateToken(user).token() );
     }
 
     

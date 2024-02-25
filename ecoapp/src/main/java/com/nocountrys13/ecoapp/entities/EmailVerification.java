@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,8 +34,10 @@ public class EmailVerification implements Serializable {
 	private String token;
 	private LocalDateTime creationTime;
 	private LocalDateTime expirationTime;
-
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
-	private Usuario usuario;
+	
+	@OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
+	@JsonIgnore
+    private Usuario usuario;
+  
 }

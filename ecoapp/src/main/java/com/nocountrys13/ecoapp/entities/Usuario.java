@@ -30,5 +30,7 @@ public class Usuario implements Serializable {
 
     @OneToMany
     private List<PuntoVerde> puntosVerdes;
-
+    
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private EmailVerification emailVerification;
 }
