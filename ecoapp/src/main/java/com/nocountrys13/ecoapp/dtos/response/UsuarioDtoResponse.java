@@ -5,14 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
-public record UsuarioDtoResponse(@NotBlank UUID userId, @NotBlank String nombre,
+public record UsuarioDtoResponse(@NotBlank UUID userId, 
+								 @NotBlank String nombre,
                                  @NotBlank String apellido,
                                  @Email @NotBlank String email,
-<<<<<<< HEAD
-                                 @NotBlank Boolean validEmail ) {
-	
-=======
-                                 @NotBlank Integer puntos
-) {
->>>>>>> backend
+                                 @NotBlank boolean validEmail,
+                                 @NotBlank Integer puntos) {
+
 }
