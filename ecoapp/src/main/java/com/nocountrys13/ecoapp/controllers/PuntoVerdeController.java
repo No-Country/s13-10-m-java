@@ -1,57 +1,57 @@
 package com.nocountrys13.ecoapp.controllers;
 
-import com.nocountrys13.ecoapp.dtos.request.CrearPuntoVerdeDto;
-import com.nocountrys13.ecoapp.dtos.response.PuntoVerdeDto;
-import com.nocountrys13.ecoapp.services.PuntoVerdeService;
+import com.nocountrys13.ecoapp.dtos.request.CrearPuntoVerdeDtoRequest;
+import com.nocountrys13.ecoapp.dtos.request.UpdatePuntoVerdeDtoRequest;
+import com.nocountrys13.ecoapp.dtos.response.PuntoVerdeDtoResponse;
+import com.nocountrys13.ecoapp.services.IPuntoVerdeService;
+import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import static com.nocountrys13.ecoapp.controllers.ApiConstant.*;
+
 @RestController
 @RequestMapping("/api/puntosVerde")
 @RequiredArgsConstructor
+@PreAuthorize(ROLE_USER)
 public class PuntoVerdeController {
 
-    private final PuntoVerdeService puntoVerdeService;
+    private final IPuntoVerdeService IPuntoVerdeService;
 
     @GetMapping
     public ResponseEntity<?> getAllPuntosVerde(){
-       return ResponseEntity.ok().body(puntoVerdeService.getAllPuntosVerde());
+       return ResponseEntity.ok().body(IPuntoVerdeService.getAllPuntosVerde());
     }
 
     @PostMapping
-    public ResponseEntity<?> savePuntoVerde(@RequestBody @Valid CrearPuntoVerdeDto crearPuntoVerdeDto){
+    public ResponseEntity<?> savePuntoVerde(@RequestBody @Valid CrearPuntoVerdeDtoRequest crearPuntoVerdeDtoRequest){
 
-        PuntoVerdeDto puntoVerdeDto = puntoVerdeService.savePuntoVerde(crearPuntoVerdeDto);
+        PuntoVerdeDtoResponse puntoVerdeDto = IPuntoVerdeService.savePuntoVerde(crearPuntoVerdeDtoRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(puntoVerdeDto);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getPuntoVerde (@PathVariable  UUID id){
-        puntoVerdeService.getPuntoVerdeById(id);
-        return ResponseEntity.ok().body(puntoVerdeService.getPuntoVerdeById(id)) ;
-    }
 
     @GetMapping("/usuario/{id}")
     public ResponseEntity<?> getPuntosVerdeByUsuario(@PathVariable UUID id){
-        return ResponseEntity.ok().body(puntoVerdeService.getPuntosVerdeByUsuario(id));
+        return ResponseEntity.ok().body(IPuntoVerdeService.getPuntosVerdeByUsuario(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updatePuntoVerde(@PathVariable UUID id, @RequestBody @Valid PuntoVerdeDto puntoVerdeDto){
-        return ResponseEntity.ok().body(puntoVerdeService.updatePuntoVerde(id, puntoVerdeDto));
+    public ResponseEntity<?> updatePuntoVerde(@PathVariable UUID id, @RequestBody @Valid UpdatePuntoVerdeDtoRequest puntoVerdeDto){
+        return ResponseEntity.ok().body(IPuntoVerdeService.updatePuntoVerde(id, puntoVerdeDto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletePuntoVerde(@PathVariable UUID id){
-        puntoVerdeService.deletePuntoVerde(id);
+        IPuntoVerdeService.deletePuntoVerde(id);
         return ResponseEntity.ok().build();
     }
-
 
 
 

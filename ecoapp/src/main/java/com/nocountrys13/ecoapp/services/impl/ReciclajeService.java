@@ -12,15 +12,12 @@ import com.nocountrys13.ecoapp.services.IReciclajeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -30,19 +27,26 @@ public class ReciclajeService implements IReciclajeService {
     private final UsuarioRepository usuarioRepository;
     private final PuntoVerdeRepository PuntoVerdeRepository;
     @Override
-    public ReciclajeDtoResponse save(ReciclajeDTO newReciclaje, UUID idPuntoVerde) {
+    public ReciclajeDtoResponse save(ReciclajeDTO newReciclaje, String emailUsuario, UUID idPuntoVerde) {
 
         if(Objects.isNull(newReciclaje))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El Reciclaje no puede ser nulo.");
 
-        Usuario actualUsuario = usuarioRepository.findByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        Usuario usuarioEncontrado = usuarioRepository.findByEmail(emailUsuario);
+
+        if(Objects.isNull(usuarioEncontrado))
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario con el email: " + emailUsuario + " no existe");
+
+        int puntos = usuarioEncontrado.getPuntos() + 5;
+        usuarioEncontrado.setPuntos(puntos);
+        usuarioRepository.save(usuarioEncontrado);
 
         PuntoVerde puntoVerde = PuntoVerdeRepository.findById(idPuntoVerde).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "El punto verde con el id: " + idPuntoVerde+ " no existe"));
 
         Reciclaje reciclaje = new Reciclaje();
         BeanUtils.copyProperties(newReciclaje, reciclaje);
-        reciclaje.setUsuario(actualUsuario);
+        reciclaje.setUsuario(usuarioEncontrado);
         reciclaje.setPuntoVerde(puntoVerde);
         reciclajeRepository.save(reciclaje);
 
@@ -50,9 +54,12 @@ public class ReciclajeService implements IReciclajeService {
     }
 
     @Override
-    public List<ReciclajeDtoResponse> getAll() {
+    public List<ReciclajeDtoResponse> getAllReciclajeByIdUsuario(UUID idUsuario) {
 
-        List<Reciclaje> listReciclaje = reciclajeRepository.findAll();
+        usuarioRepository.findById(idUsuario).orElseThrow(() ->
+                new IllegalArgumentException("Reciclaje no encontrado con el id: " + idUsuario));
+
+        List<Reciclaje> listReciclaje = reciclajeRepository.getReciclajeByUsuario_UserId(idUsuario);
 
         return listReciclaje.stream()
                 .map(
@@ -72,35 +79,4 @@ public class ReciclajeService implements IReciclajeService {
                 .toList();
     }
 
-    @Override
-    public ReciclajeDtoResponse getReciclajeByID(UUID id) {
-
-        var reciclajeEncontrado = reciclajeRepository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Reciclaje no encontrado con el id: " + id));
-
-        Reciclaje reciclaje = new Reciclaje();
-        BeanUtils.copyProperties(reciclajeEncontrado, reciclaje);
-
-        return new ReciclajeDtoResponse(reciclaje);
-    }
-
-    @Override
-    public ReciclajeDtoResponse update(UUID id, ReciclajeDTO updateReciclaje) {
-
-        var reciclaje = reciclajeRepository.findById(id).orElseThrow(() ->
-                new IllegalArgumentException("Reciclaje no encontrado con el id: " + id));
-
-        BeanUtils.copyProperties(updateReciclaje, reciclaje);
-
-        return new ReciclajeDtoResponse(updateReciclaje, reciclaje);
-    }
-
-    @Override
-    public boolean delete(UUID id) {
-        if(reciclajeRepository.findById(id).isEmpty()){
-            return false;
-        }
-        reciclajeRepository.deleteById(id);
-        return true;
-    }
 }

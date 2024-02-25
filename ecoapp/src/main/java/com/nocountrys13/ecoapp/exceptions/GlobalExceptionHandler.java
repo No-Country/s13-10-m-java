@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
-public class GlobalExceptionHandeler {
+public class GlobalExceptionHandler {
 	
 	 //tratando los errores de campos del registro para que no se reciba campos nulos, vacio etc.
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)

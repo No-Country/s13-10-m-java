@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
     private String apellido;
     private String email;
     private String password;
-    private Boolean validEmail; 
+    private Boolean validEmail;
     private Integer puntos;
     private String imgUrl;
 

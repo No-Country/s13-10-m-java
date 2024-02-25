@@ -28,7 +28,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
         var usuario = new Usuario();
         BeanUtils.copyProperties(usuarioDtoRequest, usuario);
         usuario = usuarioRepository.save(usuario);
+<<<<<<< HEAD
         return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail());
+=======
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getPuntos());
+>>>>>>> backend
     }
 
     public List<UsuarioDtoResponse> getAllUsers() {
@@ -42,14 +46,22 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     private UsuarioDtoResponse convertToDto(Usuario usuario) {
+<<<<<<< HEAD
         return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail());
+=======
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getPuntos());
+>>>>>>> backend
     }
 
     public UsuarioDtoResponse getOneUser(UUID id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
             var usuarioResp = usuario.get();
+<<<<<<< HEAD
             return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail(), usuarioResp.getValidEmail());
+=======
+            return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail(), usuarioResp.getPuntos());
+>>>>>>> backend
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
     }
@@ -60,7 +72,11 @@ public class UsuarioServiceImpl implements IUsuarioService {
             var usuario = usuarioBuscado.get();
             BeanUtils.copyProperties(usuarioDtoRequest, usuario);
             usuario = usuarioRepository.save(usuario);
+<<<<<<< HEAD
             return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail());
+=======
+            return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getPuntos());
+>>>>>>> backend
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
     }

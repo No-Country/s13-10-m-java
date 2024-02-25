@@ -9,11 +9,11 @@ import java.util.UUID;
 
 public interface IReciclajeService {
 
-    ReciclajeDtoResponse save(ReciclajeDTO newReciclaje, UUID idPuntoVerde);
-    List<ReciclajeDtoResponse> getAll();
-    ReciclajeDtoResponse getReciclajeByID(UUID idReciclaje);
+    ReciclajeDtoResponse save(ReciclajeDTO newReciclaje, String email, UUID idPuntoVerde);
+    //List<ReciclajeDtoResponse> getAll();
+    List<ReciclajeDtoResponse> getAllReciclajeByIdUsuario(UUID idUsuario);
 
-    ReciclajeDtoResponse update(UUID id, ReciclajeDTO updateReciclaje);
+    //ReciclajeDtoResponse update(UUID id, ReciclajeDTO updateReciclaje);
 
-    boolean delete(UUID id);
+    //boolean delete(UUID id);
 }
