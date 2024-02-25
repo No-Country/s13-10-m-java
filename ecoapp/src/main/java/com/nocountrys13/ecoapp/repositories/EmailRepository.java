@@ -14,8 +14,10 @@ import com.nocountrys13.ecoapp.entities.EmailVerification;
 public interface EmailRepository extends JpaRepository<EmailVerification, UUID> {
 	
 	
-	@Query("SELECT ev FROM EmailVerification ev JOIN FETCH ev.usuario u WHERE ev.token = :token AND u.userId = :usuarioId")
-	Optional<EmailVerification> findByTokenAndUsuarioId(@Param("token") String token, @Param("usuarioId") UUID usuarioId);
+	@Query("SELECT ev FROM EmailVerification ev JOIN  ev.usuario u WHERE  u.userId = :usuarioId")
+	Optional<EmailVerification> findByTokenAndUsuarioId( @Param("usuarioId") UUID usuarioId);
+	
+
 	
 }
 
