@@ -6,7 +6,6 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -43,7 +42,7 @@ public class EmailServiceImpl implements IEmailService {
 			EmailVerification emailVeridication = new EmailVerification();
 			emailVeridication.setToken(generateVerificationCode());
 			emailVeridication.setCreationTime(LocalDateTime.now());
-			emailVeridication.setExpirationTime(LocalDateTime.now().plusMinutes(1));
+			emailVeridication.setExpirationTime(LocalDateTime.now().plusMinutes(10));
 			emailVeridication.setUsuario(user);
 			user.setEmailVerification(emailVeridication);
 			emailRepository.save(emailVeridication);
@@ -92,7 +91,7 @@ public class EmailServiceImpl implements IEmailService {
 		
 			
 		if (LocalDateTime.now().isAfter(email.getExpirationTime())) {
-			email.setExpirationTime(LocalDateTime.now().plusMinutes(2));
+			email.setExpirationTime(LocalDateTime.now().plusMinutes(10));
 			email.setCreationTime(LocalDateTime.now());
 			email.setToken(generateVerificationCode());
 			emailRepository.save(email);
