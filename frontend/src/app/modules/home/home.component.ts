@@ -7,7 +7,7 @@ import { ApiService } from '../../services/api.services';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private _apiService: ApiService){};
+  constructor(private _apiService: ApiService){this.isLogged = !!localStorage.getItem('token');};
   isMenuOpen: boolean = false;
 
   toggleMenu() {
@@ -18,4 +18,7 @@ export class HomeComponent {
 		this._apiService.getCharizard().subscribe();/* 
 		this._apiService.getDitto().subscribe(); */
 	}
+  isLogged = false;
+
+  
 }
