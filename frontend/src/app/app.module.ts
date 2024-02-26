@@ -7,8 +7,11 @@ import { MaterialModule } from './material/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NotFoundComponent } from './modules/not-found/not-found.component';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiInterceptor } from './interceptors/api.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { ShowsidebarDirective } from './modules/dashboard/components/showsidebar.directive';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent],
@@ -19,8 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
+    NgxUiLoaderModule
   ],
-  providers: [],
+	providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

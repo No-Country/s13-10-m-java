@@ -7,17 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  constructor(private readonly router: Router){
+    this.isLogged = !!localStorage.getItem('token');
+  };
   isMenuOpen: boolean = false;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
   isLogged = false;
-
-  constructor(private readonly router: Router) {
-    // Verifica si hay un token presente en el localStorage al inicializar el componente
-    this.isLogged = !!localStorage.getItem('token');
-  }
 
   goToRegister() {
     this.router.navigateByUrl('/auth/register');
