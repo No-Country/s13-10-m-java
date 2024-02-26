@@ -1,6 +1,5 @@
-<main class="w-11/12 max-w-[1000px]  m-auto">
-
-  <nav class="flex justify-between items-center mt-5 px-4 lg:px-8 py-3 ">
+<main class="w-11/12 max-w-[1000px] m-auto">
+  <nav class="flex justify-between items-center mt-5 px-4 lg:px-8 py-3">
     <i class="logo-ecoapp text-2xl lg:text-3xl"></i>
     <!-- <div class="lg:hidden relative">
       <button id="burgerButton" class="text-gray-700 focus:outline-none" (click)="toggleMenu()">
@@ -19,19 +18,42 @@
     </div> -->
     <div class="lg:hidden relative">
       <!-- Burger icon -->
-      <button id="burgerButton" class="text-gray-700 focus:outline-none" (click)="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      <button
+        id="burgerButton"
+        class="text-gray-700 focus:outline-none"
+        (click)="toggleMenu()"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"
+          ></path>
         </svg>
       </button>
       <!-- Mobile menu -->
       <div class="w-full absolute top-7 right-16" *ngIf="isMenuOpen">
         <!-- Mostrar el botón del Dashboard si el usuario está logueado -->
-        <a *ngIf="isLogged" routerLink="/dashboard" class="block py-2 px-4 text-gray-700">Dashboard</a>
+        <a
+          *ngIf="isLogged"
+          routerLink="/dashboard"
+          class="block py-2 px-4 text-gray-700"
+          >Dashboard</a
+        >
         <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
         <ng-container *ngIf="!isLogged">
-          <a routerLink="/auth/login" class="block py-2 px-4 text-gray-700">Ingresar</a>
-          <a routerLink="/auth/register" class="block py-2 px-4 text-gray-700">Registrarse</a>
+          <a routerLink="/auth/login" class="block py-2 px-4 text-gray-700"
+            >Ingresar</a
+          >
+          <a routerLink="/auth/register" class="block py-2 px-4 text-gray-700"
+            >Registrarse</a
+          >
         </ng-container>
       </div>
     </div>
@@ -50,44 +72,45 @@
 
 
 
-	<button class="cssbuttons-io" (click)="clickRequest()">
-		<span
-			><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M0 0h24v24H0z" fill="none"></path>
-				<path
-					d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
-					fill="currentColor"
-				></path>
-			</svg>
-			Realizar peticiones</span
-		>
-	</button>
-
-
   <section class="px-4 lg:px-8 xl:px-16 py-12 lg:py-24">
-    <div class="flex flex-col  items-center">
+    <div class="flex flex-col items-center">
       <i class="logo-ecohero text-5xl lg:text-6xl text-[#006C34]"></i>
-      <h1 class="text-4xl lg:text-6xl text-center lg:text-left">Puntos Verdes</h1>
+      <h1 class="text-4xl lg:text-6xl text-center lg:text-left">
+        Puntos Verdes
+      </h1>
     </div>
-    <p class="text-black font-roboto text-lg lg:text-2xl font-normal mt-8 lg:mt-12">
-      Nuestra misión es promover la conciencia ambiental y facilitar la participación activa de la comunidad en la
-      gestión responsable de los residuos. Nos esforzamos por crear un espacio donde los ciudadanos puedan encontrar
-      fácilmente los puntos verdes cercanos a su ubicación, así como información relevante sobre cómo separar y desechar
-      adecuadamente sus residuos. A través de esta plataforma, buscamos fomentar una cultura de reciclaje y
-      sostenibilidad, contribuyendo así a un ambiente más limpio y una comunidad más fuerte y comprometida con el
-      cuidado del planeta. Juntos, trabajamos por un futuro más verde y saludable para todos
+    <p
+      class="text-black font-roboto text-lg lg:text-2xl font-normal mt-8 lg:mt-12"
+    >
+      Nuestra misión es promover la conciencia ambiental y facilitar la
+      participación activa de la comunidad en la gestión responsable de los
+      residuos. Nos esforzamos por crear un espacio donde los ciudadanos puedan
+      encontrar fácilmente los puntos verdes cercanos a su ubicación, así como
+      información relevante sobre cómo separar y desechar adecuadamente sus
+      residuos. A través de esta plataforma, buscamos fomentar una cultura de
+      reciclaje y sostenibilidad, contribuyendo así a un ambiente más limpio y
+      una comunidad más fuerte y comprometida con el cuidado del planeta.
+      Juntos, trabajamos por un futuro más verde y saludable para todos
     </p>
   </section>
 
   <section>
     <article class="my-16">
-      <h2 class="text-black text-center font-space-grotesk text-2xl font-medium">¿QUÉ MATERIALES RECICLAMOS?</h2>
+      <h2
+        class="text-black text-center font-space-grotesk text-2xl font-medium"
+      >
+        ¿QUÉ MATERIALES RECICLAMOS?
+      </h2>
 
       <ul class="flex justify-around flex-wrap my-10">
         <li>
           <div class="flex flex-col items-center">
             <div class="flex w-44 h-44 p-3 md:p-4 items-start gap-2 md:gap-4">
-              <img src="../../../assets/img/metal.png" alt="#" class="w-full h-full object-cover">
+              <img
+                src="../../../assets/img/metal.png"
+                alt="#"
+                class="w-full h-full object-cover"
+              />
             </div>
 
             <span>Metales</span>
@@ -96,7 +119,11 @@
         <li>
           <div class="flex flex-col items-center">
             <div class="flex w-44 h-44 p-3 md:p-4 items-start gap-2 md:gap-4">
-              <img src="../../../assets/img/glasses.png" alt="#" class="w-full h-full object-cover">
+              <img
+                src="../../../assets/img/glasses.png"
+                alt="#"
+                class="w-full h-full object-cover"
+              />
             </div>
 
             <span>Vidrios</span>
@@ -105,7 +132,11 @@
         <li>
           <div class="flex flex-col items-center">
             <div class="flex w-44 h-44 p-3 md:p-4 items-start gap-2 md:gap-4">
-              <img src="../../../assets/img/plastics.png" alt="#" class="w-full h-full object-cover">
+              <img
+                src="../../../assets/img/plastics.png"
+                alt="#"
+                class="w-full h-full object-cover"
+              />
             </div>
 
             <span>Plasticos</span>
@@ -114,7 +145,11 @@
         <li>
           <div class="flex flex-col items-center">
             <div class="flex w-44 h-44 p-3 md:p-4 items-start gap-2 md:gap-4">
-              <img src="../../../assets/img/paper.png" alt="#" class="w-full h-full object-cover">
+              <img
+                src="../../../assets/img/paper.png"
+                alt="#"
+                class="w-full h-full object-cover"
+              />
             </div>
 
             <span>Papel y cartón</span>
@@ -123,82 +158,125 @@
       </ul>
     </article>
     <article class="my-16">
-      <h2 class="text-black text-center font-space-grotesk text-2xl font-medium my-6">BENEFICIOS DEL RECICLAJE</h2>
+      <h2
+        class="text-black text-center font-space-grotesk text-2xl font-medium my-6"
+      >
+        BENEFICIOS DEL RECICLAJE
+      </h2>
       <ol class="flex flex-col gap-5">
         <li class="flex flex-col lg:flex-row lg:items-center">
           <span
-            class="text-black text-center font-roboto text-4xl lg:text-6xl font-normal leading-9 lg:px-9 lg:py-3">1</span>
-          <p class="text-black font-roboto text-base lg:text-lg font-normal leading-normal py-2 lg:pl-4">
-            <strong>Conservación de recursos naturales:</strong> El reciclaje ayuda a conservar recursos naturales como
-            madera, agua y minerales al reducir la necesidad de extraer y procesar materias primas nuevas.
+            class="text-black text-center font-roboto text-4xl lg:text-6xl font-normal leading-9 lg:px-9 lg:py-3"
+            >1</span
+          >
+          <p
+            class="text-black font-roboto text-base lg:text-lg font-normal leading-normal py-2 lg:pl-4"
+          >
+            <strong>Conservación de recursos naturales:</strong> El reciclaje
+            ayuda a conservar recursos naturales como madera, agua y minerales
+            al reducir la necesidad de extraer y procesar materias primas
+            nuevas.
           </p>
         </li>
         <li class="flex flex-col lg:flex-row lg:items-center">
           <span
-            class="text-black text-center font-roboto text-4xl lg:text-6xl font-normal leading-9 lg:px-9 lg:py-3">2</span>
-          <p class="text-black font-roboto text-base lg:text-lg font-normal leading-normal py-2 lg:pl-4">
-            <strong>Reducción de la contaminación:</strong> Al reciclar, se reduce la cantidad de desechos que terminan
-            en vertederos o incineradoras, lo que ayuda a prevenir la contaminación del aire, agua y suelo.
+            class="text-black text-center font-roboto text-4xl lg:text-6xl font-normal leading-9 lg:px-9 lg:py-3"
+            >2</span
+          >
+          <p
+            class="text-black font-roboto text-base lg:text-lg font-normal leading-normal py-2 lg:pl-4"
+          >
+            <strong>Reducción de la contaminación:</strong> Al reciclar, se
+            reduce la cantidad de desechos que terminan en vertederos o
+            incineradoras, lo que ayuda a prevenir la contaminación del aire,
+            agua y suelo.
           </p>
         </li>
         <li class="flex flex-col lg:flex-row lg:items-center">
           <span
-            class="text-black text-center font-roboto text-4xl lg:text-6xl font-normal leading-9 lg:px-9 lg:py-3">3</span>
-          <p class="text-black font-roboto text-base lg:text-lg font-normal leading-normal py-2 lg:pl-4">
-            <strong>Ahorro de energía:</strong> La fabricación de productos a partir de materiales reciclados suele
-            requerir menos energía que la producción a partir de materias primas vírgenes, lo que ayuda a reducir las
-            emisiones de gases de efecto invernadero y el consumo de recursos energéticos.
+            class="text-black text-center font-roboto text-4xl lg:text-6xl font-normal leading-9 lg:px-9 lg:py-3"
+            >3</span
+          >
+          <p
+            class="text-black font-roboto text-base lg:text-lg font-normal leading-normal py-2 lg:pl-4"
+          >
+            <strong>Ahorro de energía:</strong> La fabricación de productos a
+            partir de materiales reciclados suele requerir menos energía que la
+            producción a partir de materias primas vírgenes, lo que ayuda a
+            reducir las emisiones de gases de efecto invernadero y el consumo de
+            recursos energéticos.
           </p>
         </li>
       </ol>
     </article>
   </section>
   <section class="my-16">
-    <h2 class="text-black text-center font-space-grotesk text-2xl font-medium my-16">GRACIAS AL ES EZFUERZO DE LA
-      COMUNIDAS
-      HEMOS AYUDADO A</h2>
+    <h2
+      class="text-black text-center font-space-grotesk text-2xl font-medium my-16"
+    >
+      GRACIAS AL ES EZFUERZO DE LA COMUNIDAS HEMOS AYUDADO A
+    </h2>
 
     <section class="mx-auto w-11/12 lg:w-8/12 max-w-full">
       <article class="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-4">
         <div class="flex justify-start lg:justify-start items-center">
-          <p class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide">Reducir las
-            emisiones de dióxido de carbono en un 95%</p>
+          <p
+            class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide"
+          >
+            Reducir las emisiones de dióxido de carbono en un 95%
+          </p>
         </div>
-        <img src="../../../assets/img/pollution-3.png" class="lg:w-[325px] w-full max-w-full h-32"
-          alt="Descripción de la imagen">
+        <img
+          src="../../../assets/img/pollution-3.png"
+          class="lg:w-[325px] w-full max-w-full h-32"
+          alt="Descripción de la imagen"
+        />
       </article>
 
-
-
-      <div class="flex lg:flex-row-reverse flex-col justify-between w-full lg:my-0 my-4 lg:gap-0 gap-4">
+      <div
+        class="flex lg:flex-row-reverse flex-col justify-between w-full lg:my-0 my-4 lg:gap-0 gap-4"
+      >
         <p
-          class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide lg:px-14 lg:py-2">
-          Ahorrar
-          hasta
-          5,774 kWh de energía</p>
-        <img src="../../../assets/img/pollution-2.png" class="lg:w-[305px] w-full max-w-full h-32"
-          alt="Descripción de la imagen">
+          class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide lg:px-14 lg:py-2"
+        >
+          Ahorrar hasta 5,774 kWh de energía
+        </p>
+        <img
+          src="../../../assets/img/pollution-2.png"
+          class="lg:w-[305px] w-full max-w-full h-32"
+          alt="Descripción de la imagen"
+        />
       </div>
-
-
 
       <article class="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-4">
         <div class="flex justify-start lg:justify-center items-center">
-          <p class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide">Ahorrar hasta
-            5,774 kWh de energía</p>
+          <p
+            class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide"
+          >
+            Ahorrar hasta 5,774 kWh de energía
+          </p>
         </div>
-        <img src="../../../assets/img/pollution.png" class="lg:w-[325px] w-full max-w-full h-32"
-          alt="Descripción de la imagen">
+        <img
+          src="../../../assets/img/pollution.png"
+          class="lg:w-[325px] w-full max-w-full h-32"
+          alt="Descripción de la imagen"
+        />
       </article>
     </section>
 
-
     <section class="flex items-center flex-col gap-3 my-20">
-      <h2 class="text-black text-center font-space-grotesk text-2xl font-medium my-4">ANIMATE A HACER LA DIFERENCIA</h2>
-      <a routerLink="/auth/register" class="inline-flex px-12 py-2 items-center gap-2 bg-[#006C34] text-white">
+      <h2
+        class="text-black text-center font-space-grotesk text-2xl font-medium my-4"
+      >
+        ANIMATE A HACER LA DIFERENCIA
+      </h2>
+      <app-button (click)="goToRegister()">REGISTRARSE</app-button>
+      <!-- <a
+        routerLink="/auth/register"
+        class="inline-flex px-12 py-2 items-center gap-2 bg-[#006C34] text-white"
+      >
         REGISTRARSE
-      </a>
-
+      </a> -->
     </section>
   </section>
 </main>

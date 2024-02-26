@@ -1,4 +1,5 @@
-import { AbstractControl } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { AbstractControl, FormGroup } from '@angular/forms';
 
 export function numericSpecialCharacterValidator(control: AbstractControl) {
   const specialCharacter = /[^a-zA-Zá-ýÁ-Ý\s]/g;
@@ -29,16 +30,27 @@ export function emailValidator(control: AbstractControl) {
   return null;
 }
 
-export function customPasswordValidator(control: AbstractControl) {
+export function passwordValidator(control: AbstractControl) {
   const regex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_+|!@#$%^&.])[A-Za-z\d_+\-|¡!@#$%^&\.]+$/g;
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_+|!@#$%^&.])(?!.*[-*"/(){}[\]=?¡¿'`~;,:<>\°])[A-Za-z\d_+\-|¡!@#$%^&\.]+$/g;
 
   const value = control.value as string;
   const isValid = regex.test(value);
 
   if (!isValid) {
-    return { password: true};
+    return { password: true };
   }
 
   return null;
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GeneralValidator {
+  hasError(form: FormGroup, control: string, error: string) {
+    return (
+      form.controls[control].touched && form.controls[control].hasError(error)
+    );
+  }
 }
