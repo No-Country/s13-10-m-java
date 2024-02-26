@@ -32,7 +32,7 @@ public class EmailServiceImpl implements IEmailService {
 	private final EmailRepository emailRepository;
 	private final UsuarioRepository usuarioRepository;
 
-	@Value("MAIL_USER")
+	@Value("${MAIL_USER}")
 	String Originmail;
 
 	@Override
