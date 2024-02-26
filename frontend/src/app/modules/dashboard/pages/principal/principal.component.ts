@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { greenpoint } from '@models/greenpoint.model';
+import { Component } from '@angular/core';import { greenpoint } from '@models/greenpoint.model';
 import { GreenpointService } from '@services/greenpoint.service';
 
 @Component({
@@ -8,9 +7,11 @@ import { GreenpointService } from '@services/greenpoint.service';
   styleUrls: ['./principal.component.scss'],
 })
 export class PrincipalComponent {
-  greenpoints: greenpoint[] = [];
-  filter = 'todos';
-  constructor(private greenpoint: GreenpointService) {}
+  greenpoints: greenpoint[]=[];
+  filter = "todos";
+  constructor(
+    private greenpoint:GreenpointService
+  ){}
 
   ngOnInit() {
     this.getGreenpoints();
@@ -24,4 +25,5 @@ export class PrincipalComponent {
       error: (err) => console.error('ocurrio un error', { err }),
     });
   }
+  
 }

@@ -16,25 +16,9 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="nombre"
         />
-        <div class="flex flex-col gap-1">
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('nombre', 'required')"
-            >El nombre es requerido</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('nombre', 'numericSpecialCharacter')"
-            >No se admiten caracteres numéricos ni especiales</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="
-              hasError('nombre', 'minlength') || hasError('nombre', 'maxlength')
-            "
-            >Debe tener entre 2 y 60 caracteres</strong
-          >
-        </div>
+        <strong class="text-sm font-semibold text-red-700">{{
+          nameErrorMessage
+        }}</strong>
       </div>
       <div>
         <label for="lastName" class="block text-lg text-gray-900"
@@ -46,26 +30,9 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="apellido"
         />
-        <div class="flex flex-col gap-1">
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('apellido', 'required')"
-            >El apellido es requerido</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('apellido', 'numericSpecialCharacter')"
-            >No se admiten caracteres numéricos ni especiales</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="
-              hasError('apellido', 'minlength') ||
-              hasError('apellido', 'maxlength')
-            "
-            >Debe tener entre 2 y 60 caracteres</strong
-          >
-        </div>
+        <strong class="text-sm font-semibold text-red-700">{{
+          lastNameErrorMessage
+        }}</strong>
       </div>
       <div>
         <label for="email" class="block text-lg text-gray-900">E-mail</label>
@@ -75,25 +42,9 @@
           class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
           formControlName="email"
         />
-        <div class="flex flex-col gap-1">
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('email', 'required')"
-            >El email es requerido</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('email', 'email')"
-            >Ingresa un email válido</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="
-              hasError('email', 'minlength') || hasError('email', 'maxlength')
-            "
-            >Debe tener entre 8 y 255 caracteres</strong
-          >
-        </div>
+        <strong class="text-sm font-semibold text-red-700">{{
+          emailErrorMessage
+        }}</strong>
       </div>
       <div>
         <label for="password" class="block text-lg text-gray-900"
@@ -114,27 +65,9 @@
             {{ showPassword ? "visibility" : "visibility_off" }}
           </button>
         </div>
-        <div class="flex flex-col gap-1">
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('password', 'required')"
-            >La contraseña es requerida</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="
-              hasError('password', 'minlength') ||
-              hasError('password', 'maxlength')
-            "
-            >Debe tener entre 8 y 128 caracteres</strong
-          >
-          <strong
-            class="text-sm font-semibold text-red-700"
-            *ngIf="hasError('password', 'password')"
-            >Debe contener al menos 1 minúscula, 1 mayúscula, 1 número y 1
-            caracter especial</strong
-          >
-        </div>
+        <strong class="text-sm font-semibold text-red-700">{{
+          passwordErrorMessage
+        }}</strong>
       </div>
       <div>
         <label for="repeatPassword" class="block text-lg text-gray-900"
@@ -155,11 +88,9 @@
             {{ showRepeatPassword ? "visibility" : "visibility_off" }}
           </button>
         </div>
-        <strong
-          class="text-sm font-semibold text-red-700"
-          *ngIf="hasError('repeatPassword', 'required')"
-          >Por favor, confirma tu contraseña</strong
-        >
+        <strong class="text-sm font-semibold text-red-700">{{
+          repeatPasswordErrorMessage
+        }}</strong>
       </div>
       <app-button type="submit" color="success" class="mt-8 m-auto"
         >CREAR CUENTA</app-button
