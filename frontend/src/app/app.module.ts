@@ -12,19 +12,21 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ShowsidebarDirective } from './modules/dashboard/components/showsidebar.directive';
+import { SharedModule } from "./modules/shared/shared.module";
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MaterialModule,
-    BrowserAnimationsModule,
-    NgxUiLoaderModule
-  ],
-	providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent, NotFoundComponent],
+    providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MaterialModule,
+        BrowserAnimationsModule,
+        NgxUiLoaderModule,
+        SharedModule
+    ]
 })
 export class AppModule {}
