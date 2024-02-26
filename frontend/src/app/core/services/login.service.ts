@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { environment } from '@environments/environment';
 import { Login } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  private apiUrl = 'https://s13-10-m-java.onrender.com/auth';
+  private apiUrl: string = `${environment.apiUrl}/auth`;
   public id?: number;
   public token?: string;
   private isLogedIn = new BehaviorSubject<boolean>(false);
