@@ -15,7 +15,6 @@ export class HomeComponent {
   isLogged = false;
 
   constructor(private readonly router: Router) {
-    // Verifica si hay un token presente en el localStorage al inicializar el componente
     this.isLogged = !!localStorage.getItem('token');
   }
 
