@@ -19,3 +19,28 @@ $size-hero: 9.63206rem;
   background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
   background-size: contain; /* Ajusta el tamaño del fondo */
 }
+
+
+.logo-item-left {
+  background-image: url('../../../assets/img/icon-home-left.svg');
+  background-repeat: no-repeat;
+  width: 10rem;
+  height: 10rem;
+  background-size: contain;
+}
+.logo-item-right {
+  background-image: url('../../../assets/img/icon-home-right.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10rem;
+  height: 10rem;
+}
+
+.background-image {
+  background-image: url('../../../assets/images/rectangle-two.PNG');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
