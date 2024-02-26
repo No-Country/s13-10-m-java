@@ -24,7 +24,7 @@ export class LoginComponent {
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, emailValidator]],
-      password: ['', Validators.required, Validators.minLength(8)],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -39,6 +39,7 @@ export class LoginComponent {
     if (this.loginForm.invalid) {
       return this.loginForm.markAllAsTouched();
     }
+    console.log(this.loginForm.value);
 
     this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
       this.loginService.id = res.id;
