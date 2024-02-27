@@ -1,0 +1,31 @@
+
+$size-hero: 9.63206rem;
+.logo-item-left {
+    background-image: url('../../../assets/img/icon-home-left.svg');
+    background-repeat: no-repeat;
+    width: 10rem;
+    height: 10rem;
+    background-size: contain;
+  }
+  .logo-item-right {
+    background-image: url('../../../assets/img/icon-home-right.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 10rem;
+    height: 10rem;
+  }
+  
+// Estilos para la clase .logo-ecohero
+.logo-ecohero {
+    background-image: url('../../../assets/img/clip-path.svg');
+    width: $size-hero; /* Utiliza la variable para el ancho */
+    height: $size-hero; /* Utiliza la variable para la altura */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+    background-size: contain; /* Ajusta el tamaño del fondo */
+  }
+  .bg-recicle{
+    background-image: url('../../../assets/img/bg-main-theme.svg');
+    background-position: center;
+    background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+    background-size: cover; /* Ajusta el tamaño del fondo */
+  }
