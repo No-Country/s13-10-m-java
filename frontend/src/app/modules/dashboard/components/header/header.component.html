@@ -4,11 +4,13 @@
   </button>
 </div>
 <div class="user text-sm hidden sm:flex px-2">
-  <span>{{"Juanito Alimaña"}}</span>
+  <span *ngIf="tokenData">{{tokenData.sub}}</span>
 </div>
 <!-- green point button---------------------------- -->
 <div class="greenpoint text-sm text-white flex-grow">
-  <button class="flex">
+  <button
+  (click)="showModal()"
+  class="flex">
     <img class="w-4" src="assets/img/greenpoint-icon.svg" alt="greenpoint-icon">
     <span>Crear un GreenPoint</span>
   </button>
