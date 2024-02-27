@@ -1,15 +1,21 @@
 package com.nocountrys13.ecoapp.dtos.request;
 
+import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.List;
+import java.util.UUID;
+
 public record ReciclajeDTO(
-        @NotEmpty @NotBlank String tipoMateriales,
-        Integer cantidadPlastico,
-        Integer cantidadPapel,
-        Integer cantidadCarton,
-        Integer cantidadVidrio,
-        Integer cantidadMetal,
-        Integer cantidadElectronico
+                @NotBlank
+                String emailUsuario,
+                @NotBlank
+                List<Material> materialesRecibidos,
+                @NotBlank
+                String descripcion,
+                @NotBlank
+                UUID idPuntoVerde
+
 ) {
 }
