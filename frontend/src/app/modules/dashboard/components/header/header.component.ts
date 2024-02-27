@@ -12,4 +12,9 @@ export class HeaderComponent {
   showSidebar(){
     this.emitShowSidebar.emit(true);
   }
+  showOptions(){
+   var boton= document.getElementById("dropdownDivider");
+   boton?.classList.toggle("hidden");
+  }
+
 }
