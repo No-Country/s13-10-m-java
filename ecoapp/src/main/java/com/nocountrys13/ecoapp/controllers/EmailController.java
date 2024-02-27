@@ -31,7 +31,7 @@ public class EmailController {
 
 		try {
 			emailServiceImpl.verifyEmail(token, userId);
-			return "redirect:https://site-ecoapp.netlify.app/account-verified";
+			return "redirect:https://site-ecoapp.netlify.app";
 
 		} catch (ResponseStatusException e) {
 			return "validado";
