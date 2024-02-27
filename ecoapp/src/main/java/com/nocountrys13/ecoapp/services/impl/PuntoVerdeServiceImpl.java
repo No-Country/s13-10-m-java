@@ -1,4 +1,5 @@
 package com.nocountrys13.ecoapp.services.impl;
+
 import com.nocountrys13.ecoapp.dtos.request.CrearPuntoVerdeDtoRequest;
 import com.nocountrys13.ecoapp.dtos.request.UpdatePuntoVerdeDtoRequest;
 import com.nocountrys13.ecoapp.dtos.response.PuntoVerdeDtoResponse;
@@ -15,8 +16,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-
-
 @RequiredArgsConstructor
 @Service
 public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
@@ -27,28 +26,26 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
     @Override
     public PuntoVerdeDtoResponse savePuntoVerde(CrearPuntoVerdeDtoRequest crearPuntoVerdeDtoRequest) {
         Usuario usuario = usuarioRepository.findById(crearPuntoVerdeDtoRequest.userId())
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario no existe"));
-        PuntoVerde  puntoVerde = new PuntoVerde();
-        puntoVerde.setUsuario(usuario);
-        puntoVerde.setNombrePv(crearPuntoVerdeDtoRequest.nombre());
-        puntoVerde.setDni(crearPuntoVerdeDtoRequest.dni());
-        puntoVerde.setDiasAtencion(crearPuntoVerdeDtoRequest.diasAtencion());
-        puntoVerde.setHorariosAtencion(crearPuntoVerdeDtoRequest.horarioAtencion());
-        puntoVerde.setMaterialesAceptados(crearPuntoVerdeDtoRequest.materialesAceptados());
-        puntoVerde.setTelefono(crearPuntoVerdeDtoRequest.telefono());
-        puntoVerde.setLatitud(crearPuntoVerdeDtoRequest.latitud());
-        puntoVerde.setLongitud(crearPuntoVerdeDtoRequest.longitud());
-        puntoVerde.setDireccion(crearPuntoVerdeDtoRequest.direccion());
-
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario no existe"));
+        PuntoVerde puntoVerde = new PuntoVerde(crearPuntoVerdeDtoRequest.nombre(),
+                crearPuntoVerdeDtoRequest.latitud(), crearPuntoVerdeDtoRequest.longitud(),
+                crearPuntoVerdeDtoRequest.telefono(), crearPuntoVerdeDtoRequest.dni(),
+                crearPuntoVerdeDtoRequest.horarioAtencion(), crearPuntoVerdeDtoRequest.diasAtencion(),
+                crearPuntoVerdeDtoRequest.direccion(), crearPuntoVerdeDtoRequest.materialesAceptados(),usuario);
 
         puntoVerdeRepository.save(puntoVerde);
         return puntoVerdeEntityADtoResponse(puntoVerde);
     }
 
     @Override
+    public PuntoVerdeDtoResponse getPuntoVerdeById(UUID id) {
+        return puntoVerdeEntityADtoResponse(findById(id));
+    }
+
+    @Override
     public List<PuntoVerdeDtoResponse> getAllPuntosVerde() {
         var puntosVerdes = puntoVerdeRepository.findAll();
-        if(puntosVerdes.isEmpty()){
+        if (puntosVerdes.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontraron puntos verdes.");
         }
         return puntosVerdes.stream()
@@ -56,22 +53,15 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
                 .collect(Collectors.toList());
     }
 
-
     @Override
     public void deletePuntoVerde(UUID id) {
-        try {
             var puntoVerde = findById(id);
             puntoVerdeRepository.delete(puntoVerde);
-        } catch (ResponseStatusException e) {
-            throw e;
-        }
     }
-
-
 
     @Override
     public PuntoVerdeDtoResponse updatePuntoVerde(UUID id, UpdatePuntoVerdeDtoRequest puntoVerdeDto) {
-        try {
+
             var puntoVerdeEncontrado = findById(id);
             puntoVerdeEncontrado.setNombrePv(puntoVerdeDto.nombre());
             puntoVerdeEncontrado.setTelefono(puntoVerdeDto.telefono());
@@ -82,15 +72,13 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
             puntoVerdeEncontrado.setLongitud(puntoVerdeDto.longitud());
 
             return puntoVerdeEntityADtoResponse(puntoVerdeRepository.save(puntoVerdeEncontrado));
-        } catch (ResponseStatusException e) {
-            throw e;
-        }
+
     }
 
     @Override
     public List<PuntoVerdeDtoResponse> getPuntosVerdeByUsuario(UUID id) {
         List<PuntoVerde> puntosVerde = puntoVerdeRepository.findAllByUsuarioUserId(id);
-        if(puntosVerde.isEmpty()){
+        if (puntosVerde.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontraron puntos verdes para el usuario.");
         }
         return puntosVerde.stream()
@@ -98,17 +86,17 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
                 .collect(Collectors.toList());
     }
 
-
     private PuntoVerde findById(UUID id) {
         return puntoVerdeRepository.findById(id)
-                .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        "No se encontro el punto verde con el id: "+id.toString() + "."));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "No se encontro el punto verde con el id: " + id.toString() + "."));
     }
 
-    private  PuntoVerdeDtoResponse  puntoVerdeEntityADtoResponse(PuntoVerde puntoVerde){
-        return new PuntoVerdeDtoResponse(puntoVerde.getPuntoVerdeId(),puntoVerde.getNombrePv(),
+    private PuntoVerdeDtoResponse puntoVerdeEntityADtoResponse(PuntoVerde puntoVerde) {
+        return new PuntoVerdeDtoResponse(puntoVerde.getPuntoVerdeId(), puntoVerde.getNombrePv(),
                 puntoVerde.getHorariosAtencion(), puntoVerde.getDiasAtencion(), puntoVerde.getLatitud(),
-                puntoVerde.getLongitud(),puntoVerde.getDireccion() ,puntoVerde.getTelefono(), puntoVerde.getMaterialesAceptados());
+                puntoVerde.getLongitud(), puntoVerde.getDireccion(), puntoVerde.getTelefono(),
+                puntoVerde.getMaterialesAceptados());
     }
 
 }
