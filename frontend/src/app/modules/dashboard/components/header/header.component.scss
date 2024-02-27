@@ -10,3 +10,9 @@
   background-color: map-get($colors, third);
   padding: 0.25rem;
 }
+
+#dropdownDivider{
+  position: absolute;
+    top: 50px;
+    right: 6px;
+}
