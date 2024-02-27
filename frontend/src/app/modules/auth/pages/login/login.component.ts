@@ -4,7 +4,7 @@ import { LoginService } from '@services/login.service';
 import { Router } from '@angular/router';
 import { Login } from '@models/login.model';
 
-import { NotifyService } from '@services/notify.service';
+// import { NotifyService } from '@services/notify.service';
 import { emailValidator } from '@utils/validator';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
-    private notifySvc: NotifyService,
+    // private notifySvc: NotifyService,
     private router: Router
   ) {
     this.loginForm = this.fb.group({
@@ -58,10 +58,10 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.invalid) {
       // Realizar la lógica de inicio de sesión
-      this.notifySvc.showError(
-        'Error al iniciar sesión',
-        'Error con tus datos'
-      );
+      // this.notifySvc.showError(
+      //   'Error al iniciar sesión',
+      //   'Error con tus datos'
+      // );
 
       return;
     }
