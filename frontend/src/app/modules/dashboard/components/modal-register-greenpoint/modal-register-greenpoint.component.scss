@@ -9,12 +9,10 @@
   padding: 1rem;
   overflow-y: scroll;
 }
-.field {
-  input {
-    all: initial;
-  }
-}
+
 .info {
-  border-bottom: 1px black solid !important;
-  grid-column: span 2 !important;
+  border-bottom: 1px black solid ;
+  grid-column: span 2 ;
+  width: 100% ;
 }
+

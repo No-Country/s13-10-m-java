@@ -62,7 +62,7 @@ export class MapService {
     return L.icon({
       iconUrl,
       iconSize: [38, 95],
-      iconAnchor: [22, 94],
+      iconAnchor: [20, 60],
       popupAnchor: [-3, -76],
     });
   }

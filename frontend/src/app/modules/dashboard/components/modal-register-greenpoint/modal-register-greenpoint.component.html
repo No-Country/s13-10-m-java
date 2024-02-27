@@ -1,65 +1,85 @@
 <section class="bg-white rounded-md p-4 md:flex md:w-full xl:w-10/12">
-  <form class="space-y-2"
-  [formGroup]="form"
-  (ngSubmit)="createGreenpoint()">
+  <form class="space-y-2" [formGroup]="form" (ngSubmit)="createGreenpoint()">
     <h4 class="text-center mb-3 text-xl font-bold">Agregar greenpoint</h4>
-    <div class="field info">
-      <input formControlName = "name" class="placeholder:text-black" type="text" placeholder="Nombre del punto verde">
+    <div class="field">
+      <input
+        formControlName="name"
+        class="placeholder:text-black info"
+        type="text"
+        placeholder="Nombre del punto verde"
+      />
+        <p class="prueba">aqui hay comunismo empobrecedor</p>
     </div>
-    <div class="field info">
-      <input formControlName="dni" class="placeholder:text-black" type="text" placeholder="DNI">
+    <div class="field">
+      <input
+        formControlName="dni"
+        class="placeholder:text-black info"
+        type="text"
+        placeholder="DNI"
+        (keypress)="onlyKeyNumber($event)"
+      />
     </div>
-    <div class="field info">
-      <input type="tel" formControlName="phone" class="placeholder:text-black" type="text" placeholder="Teléfono">
+    <div class="field">
+      <input
+        type="tel"
+        class="placeholder:text-black info"
+        formControlName="phone"
+        type="text"
+        placeholder="Teléfono"
+        (keypress)="onlyKeyNumber($event)"
+      />
     </div>
     <div class="field">
       <span>Horario de atenci&oacute;n</span>
       <div class="input_time">
-        <input formControlName="openTime" type="time">
+        <input formControlName="openTime" type="time" />
         <span class="mx-2">a</span>
-        <input formControlName="closeTime" type="time">
+        <input formControlName="closeTime" type="time" />
       </div>
       <span class="mr-2">de</span>
       <select class="border-none" formControlName="openDay">
-        <option
-        *ngFor="let day of days, let i = index"
-        [value]="i">{{day}}</option>
+        <option *ngFor="let day of days; let i = index" [value]="i">
+          {{ day }}
+        </option>
       </select>
       <span class="mx-2">a</span>
       <select class="border-none" formControlName="closeDay">
-        <option
-        *ngFor="let day of days, let i = index"
-        [value]="i">{{day}}</option>
+        <option *ngFor="let day of days; let i = index" [value]="i">
+          {{ day }}
+        </option>
       </select>
     </div>
     <div class="field_btn">
       <div *ngFor="let type of recicledTypes">
-        <input formControlName="type"
-        class="mr-2"
-        type="radio"
-        [id]="type"
-        [value]="type"
-        name="type">
-        <label [for]="type">{{type}}</label>
+        <input
+          formControlName="type"
+          class="mr-2"
+          type="radio"
+          [id]="type"
+          [value]="type"
+          name="type"
+        />
+        <label class="text-sm" [for]="type">{{ type }}</label>
       </div>
     </div>
-    <hr>
-    <h6>Haga <span class="font-bold">doble click</span> en el mapa para obtner estos campos</h6>
+    <hr />
+    <h6>
+      Haga <span class="font-bold">doble click</span> en el mapa para obtner
+      estos campos
+    </h6>
     <div class="field grid grid-cols-3 mb-3">
       <label for="address">Direcci&oacute;n: </label>
-      <input id="address" formControlName="address" type="text" class="info">
+      <input id="address" formControlName="address" type="text" class="info" />
       <label for="lat">Latitud: </label>
-      <input readonly id="lng" formControlName="lat" type="text" class="info">
+      <input readonly id="lng" formControlName="lat" type="text" class="info" />
       <label for="lng">Longitud: </label>
-      <input readonly id="lng" formControlName="lng" type="text" class="info">
+      <input readonly id="lng" formControlName="lng" type="text" class="info" />
     </div>
     <div class="pt-3 text-center">
-      <app-button
-      [type]="'submit'"
-      >Crear Greenpoint</app-button>
+      <app-button [type]="'submit'">Crear Greenpoint</app-button>
     </div>
   </form>
   <app-register-map
-  (positionEmiter)="receivePosition($event)"
+    (positionEmiter)="receivePosition($event)"
   ></app-register-map>
 </section>

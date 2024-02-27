@@ -11,6 +11,7 @@ import { LatLng } from 'leaflet';
 export class ModalRegisterGreenpointComponent {
   readonly days = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
   readonly recicledTypes = ["Plástico y metal", "Carton y papel", "Vidrio", "General"]
+
   form !: FormGroup
   constructor(
     private fb:FormBuilder
@@ -26,8 +27,8 @@ export class ModalRegisterGreenpointComponent {
   initForm(){
     this.form = this.fb.group({
       name:["", [Validators.required, Validators.minLength(5)]],
-      dni:["", [Validators.required]],
-      phone:["", [Validators.required]],
+      dni:["", [Validators.required, Validators.maxLength(15)]],
+      phone:["", [Validators.required, Validators.maxLength(15)]],
       openTime:["08:00", [Validators.required]],
       closeTime:["20:00", [Validators.required]],
       openDay:[0, [Validators.required]],
@@ -43,5 +44,12 @@ export class ModalRegisterGreenpointComponent {
       ...this.form.value,
       ...position
     })
+  }
+
+  onlyKeyNumber(event:KeyboardEvent){
+    const numberRegex =  /^[0-9]+$/
+    if(!numberRegex.test(event.key)){
+      event.preventDefault();
+    }
   }
 }
