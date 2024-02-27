@@ -38,4 +38,7 @@ public class PuntoVerde implements Serializable {
     @JoinColumn(name = "user_id")
     private Usuario usuario;
 
+    @OneToMany(mappedBy = "puntoVerde")
+    private List<Reciclaje> listadoReciclaje;
+
 }
