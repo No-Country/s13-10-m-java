@@ -30,23 +30,32 @@
       <!-- Mobile menu -->
       <div class="w-full absolute top-7 right-16" *ngIf="isMenuOpen">
         <!-- Mostrar el botón del Dashboard si el usuario está logueado -->
-        <a *ngIf="isLogged" routerLink="/dashboard" class="block py-2 px-4 text-gray-700">Dashboard</a>
+        <a *ngIf="isLogged" routerLink="/dashboard" class="block py-2 px-4 uppercase">Ir al dashboard</a>
         <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
         <ng-container *ngIf="!isLogged">
-          <a routerLink="/auth/login" class="block py-2 px-4 text-gray-700">Ingresar</a>
-          <a routerLink="/auth/register" class="block py-2 px-4 text-gray-700">Registrarse</a>
+          <a routerLink="/auth/login" class="block py-2 px-4">Ingresar</a>
+          <a routerLink="/auth/register" class="block py-2 px-4 ">Registrarse</a>
         </ng-container>
       </div>
     </div>
     <div class="hidden lg:flex gap-5 uppercase">
       <!-- Mostrar solo el enlace de Dashboard si el usuario está logueado -->
       <ng-container *ngIf="isLogged">
-        <a routerLink="/dashboard">Dashboard</a>
+        <div>
+          <a routerLink="/dashboard"
+            class="border border-[#006C34] px-4 py-2 text-[#006C34] hover:bg-green-900 hover:text-white">Ir al
+            dashboard</a>
+          <div class="rounded-full h-10 w-10 bg-gray-500"></div>
+        </div>
       </ng-container>
       <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
       <ng-container *ngIf="!isLogged">
-        <a routerLink="/auth/login">Ingresar</a>
-        <a routerLink="/auth/register">Registrarse</a>
+        <a routerLink="/auth/login"
+          class="border border-[#006C34] px-4 py-2   text-[#006C34] hover:bg-green-900 hover:text-white">Iniciar
+          sesion</a>
+
+        <a routerLink="/auth/register"
+          class="border border-[#006C34] px-4 py-2   text-white bg-[#FFC107] ">Registrarse</a>
       </ng-container>
     </div>
   </nav>
@@ -209,7 +218,13 @@
       <h2 class="text-black text-center font-space-grotesk text-2xl font-medium my-4">
         ANIMATE A HACER LA DIFERENCIA
       </h2>
-      <app-button (click)="goToRegister()">REGISTRARSE</app-button>
+
+      <a *ngIf="isLogged" routerLink="/dashboard"
+        class="text-[#006C34] hover:bg-green-900 hover:text-white uppercase">Ir al dashboard</a>
+      <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
+      <ng-container *ngIf="!isLogged">
+        <app-button (click)="goToRegister()">REGISTRARSE</app-button>
+      </ng-container>
       <!-- <a
         routerLink="/auth/register"
         class="inline-flex px-12 py-2 items-center gap-2 bg-[#006C34] text-white"
@@ -221,6 +236,7 @@
 
   <!-- Footer -->
   <section class="background-image flex flex-col lg:flex-row justify-around my-8 p-5">
+    <!-- <img src="../../../assets/images/fondo.png" alt="fgdssgf" class="new-bg-undernooth"> -->
     <div class="flex flex-col lg:justify-center lg:items-center">
       <div class="flex items-center">
         <i class="logo-ecoapp text-xl lg:text-2xl"></i>
@@ -233,33 +249,40 @@
     <div>
       <h1 class="font-bold text-md my-3">Contacto</h1>
       <ul class="list-disc">
-        <li>support@greenpoint.com</li>
-        <li>
+        <li class="font-bold">{{'support@greenpoint.com'}}</li>
+        <li class="font-bold">
 
           88 colin p kelly jr street
           San Francisco, CA 94107
 
-          </li>
-          <li>
-            +123456789012
-          </li>
+        </li>
+        <li class="font-bold">
+          +123456789012
+        </li>
       </ul>
     </div>
     <div class="w-28 h-4/6">
       <h1 class="font-bold text-md my-3">Nuestras redes</h1>
-
-      <img src="../../../assets/images/redes.png" alt="networking">
+      <div class="grid grid-cols-3 gap-1">
+        <div class=" text-center">
+          <img src="../../../assets/icons/icono-fb.png" alt="">
+        </div>
+        <div class=" text-center">
+          <img src="../../../assets/icons/icono-ig.png" alt="">
+        </div>
+        <div class=" text-center">
+          <img src="../../../assets/icons/icono-twt.png" alt="">
+        </div>
+        <div class=" text-center">
+          <img src="../../../assets/icons/icono-wts.png" alt="">
+        </div>
+        <div class=" text-center">
+          <img src="../../../assets/icons/icono-yt.png" alt="">
+        </div>
+        <div class=" text-center">
+          <img src="../../../assets/icons/snapchat -logo.jpg" alt="">
+        </div>
+      </div>
     </div>
   </section>
 </main>
-
-
-
-<!-- <div class="grid grid-cols-3 gap-1">
-        <div class="bg-gray-200 text-center p-4">1</div>
-        <div class="bg-gray-200 text-center p-4">2</div>
-        <div class="bg-gray-200 text-center p-4">3</div>
-        <div class="bg-gray-200 text-center p-4">4</div>
-        <div class="bg-gray-200 text-center p-4">5</div>
-        <div class="bg-gray-200 text-center p-4">6</div>
-      </div> -->

@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { LoginService } from '@services/login.service';
 import { Router } from '@angular/router';
 
-import { NotifyService } from '@services/notify.service';
+// import { NotifyService } from '@services/notify.service';
 import { emailValidator } from '@utils/validator';
 import Swal from 'sweetalert2';
 
@@ -20,7 +20,7 @@ export class LoginComponent {
   constructor(
     private loginService: LoginService,
     private readonly fb: FormBuilder,
-    private notifySvc: NotifyService,
+
     private router: Router
   ) {
     this.loginForm = this.fb.group({
