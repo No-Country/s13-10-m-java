@@ -17,5 +17,9 @@ export class HeaderComponent {
   goToProfile() {
     this.router.navigateByUrl('/dashboard/profile');
   }
+  showOptions(){
+   var boton= document.getElementById("dropdownDivider");
+   boton?.classList.toggle("hidden");
+  }
   
 }
