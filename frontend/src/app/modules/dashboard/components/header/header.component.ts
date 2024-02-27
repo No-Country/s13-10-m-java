@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { tokenData } from '@models/token.model';
+import { TokenService } from '@services/token.service';
 
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,18 +9,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  
-  constructor(private readonly router: Router){}
+
   @Output() emitShowSidebar = new  EventEmitter<boolean>();
+  @Output() emitShowModal = new  EventEmitter<boolean>();
+  tokenData !: tokenData | undefined;
+
+  constructor(
+    private tokenService:TokenService
+  ){}
+
+  ngOnInit(){
+    this.tokenData = this.tokenService.getTokenDecoded()
+  }
   showSidebar(){
     this.emitShowSidebar.emit(true);
   }
-  goToProfile() {
-    this.router.navigateByUrl('/dashboard/profile');
+
+  showModal(){
+    this.emitShowModal.emit(true);
   }
   showOptions(){
    var boton= document.getElementById("dropdownDivider");
    boton?.classList.toggle("hidden");
   }
-  
+
 }

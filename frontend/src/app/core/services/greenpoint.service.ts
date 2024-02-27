@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { greenpoint } from '../models/greenpoint.model';
+import { greenPointResponse, greenpoint, greenpointDTO } from '../models/greenpoint.model';
 import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GreenpointService {
-  // private readonly URL = environment.apiUrl+"/api/puntosVerde";
+  private readonly URL = environment.apiUrl+"/api/puntosVerde";
 
   constructor(private http: HttpClient) {}
   /**
@@ -26,5 +26,8 @@ export class GreenpointService {
         .catch((err) => observer.error(err));
     });
     // return this.http.get<greenpoint[]>(this.URL);
+  }
+  createGreenpoint(data:greenpointDTO){
+    return this.http.post<greenPointResponse>(this.URL, data);
   }
 }

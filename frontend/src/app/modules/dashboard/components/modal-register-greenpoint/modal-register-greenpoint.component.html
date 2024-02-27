@@ -1,0 +1,123 @@
+<section class="relative bg-white rounded-md p-4 md:flex md:w-full xl:w-10/12">
+  <form class="space-y-2" [formGroup]="form" (ngSubmit)="createGreenpoint()">
+    <h4 class="text-center mb-3 text-xl font-bold">Agregar greenpoint</h4>
+    <div class="field">
+      <input
+        formControlName="name"
+        class="placeholder:text-black info"
+        type="text"
+        placeholder="Nombre del punto verde"
+        (input)="validateField('name')"
+      />
+      <p
+        *ngIf="form.controls['name'].touched"
+        class="text-[0.5rem] text-red-500"
+      >
+        {{ errorsMessage["name"] }}
+      </p>
+    </div>
+    <div class="field">
+      <input
+        formControlName="dni"
+        class="placeholder:text-black info"
+        type="text"
+        placeholder="DNI o documento de identidad"
+        (input)="validateField('dni')"
+      />
+      <p
+      *ngIf="form.controls['dni'].touched"
+      class="text-[0.5rem] text-red-500"
+    >
+      {{ errorsMessage["dni"] }}
+    </p>
+    </div>
+    <div class="field">
+      <input
+        type="tel"
+        class="placeholder:text-black info"
+        formControlName="phone"
+        type="text"
+        placeholder="Teléfono"
+        (keypress)="onlyKeyNumber($event)"
+        (input)="validateField('phone')"
+      />
+      <p
+      *ngIf="form.controls['phone'].touched"
+      class="text-[0.5rem] text-red-500"
+    >
+      {{ errorsMessage["phone"] }}
+    </p>
+    </div>
+    <div class="field">
+      <span>Horario de atenci&oacute;n</span>
+      <div class="input_time">
+        <input (input)="validateTime()" formControlName="openTime" type="time" />
+        <span class="mx-2">a</span>
+        <input (input)="validateTime()" formControlName="closeTime" type="time" />
+      </div>
+      <span class="mr-2">de</span>
+      <select class="border-none" formControlName="openDay">
+        <option *ngFor="let day of days" [value]="day">
+          {{ day }}
+        </option>
+      </select>
+      <span class="mx-2">a</span>
+      <select class="border-none" formControlName="closeDay">
+        <option *ngFor="let day of days" [value]="day">
+          {{ day }}
+        </option>
+      </select>
+      <p
+      *ngIf="form.controls['openTime'].touched || form.controls['closeTime'].touched"
+      class="text-[0.5rem] text-red-500">
+      {{errorsMessage['openTime']}}
+    </p>
+    </div>
+    <div class="field_btn">
+      <div *ngFor="let type of recicledTypes">
+        <input
+          [formControlName]="type.toLowerCase()"
+          class="mr-2"
+          type="checkbox"
+          [id]="type"
+        />
+        <label class="text-sm" [for]="type">{{ type }}</label>
+      </div>
+    </div>
+    <hr />
+    <h6>
+      Haga <span class="font-bold">doble click</span> en el mapa para obtener
+      estos campos
+    </h6>
+    <div class="field grid grid-cols-3 mb-3">
+      <label for="address">Direcci&oacute;n: </label>
+      <input id="address"
+      formControlName="address"
+      type="text" class="info"
+      />
+      <label for="lat">Latitud: </label>
+      <input readonly id="lat" formControlName="lat" type="text" class="info" />
+      <label for="lng">Longitud: </label>
+      <input readonly id="lng" formControlName="lng" type="text" class="info" />
+    </div>
+    <p
+      *ngIf="this.form.controls['lat'].touched &&
+      (this.form.get('lat')?.invalid ||
+      this.form.get('address')?.invalid)"
+    class="text-sm text-red-500"
+  >
+    Estos campos son Requeridos
+  </p>
+    <div class="pt-3 text-center">
+      <app-button [type]="'submit'">Crear Greenpoint</app-button>
+    </div>
+  </form>
+  <app-register-map
+    (positionEmiter)="receivePosition($event)"
+  ></app-register-map>
+    <button
+    (click)="hiddenModal()"
+    class="absolute top-1 left-1 w-10 z- hover:bg-green-200 rounded-full ease-in-out duration-500">
+      <img src="assets/img/close.svg" alt="close-icon">
+    </button>
+</section>
