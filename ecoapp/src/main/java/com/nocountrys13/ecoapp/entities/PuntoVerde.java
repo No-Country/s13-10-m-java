@@ -19,6 +19,21 @@ import java.util.UUID;
 public class PuntoVerde implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    public PuntoVerde(String nombrePv, String latitud, String longitud, String telefono, String dni,
+                      String horariosAtencion, String diasAtencion, String direccion,
+                      List<Material> materialesAceptados, Usuario usuario) {
+        this.nombrePv = nombrePv;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.telefono = telefono;
+        this.dni = dni;
+        this.horariosAtencion = horariosAtencion;
+        this.diasAtencion = diasAtencion;
+        this.direccion = direccion;
+        this.materialesAceptados = materialesAceptados;
+        this.usuario = usuario;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID puntoVerdeId;
