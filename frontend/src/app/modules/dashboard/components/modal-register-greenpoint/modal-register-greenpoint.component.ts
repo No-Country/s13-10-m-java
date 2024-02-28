@@ -28,7 +28,7 @@ export class ModalRegisterGreenpointComponent {
 
   createGreenpoint(form: FormGroup) {
     const newGreenpoint = this.parseFormToGreenpoint(form);
-
+    console.log("greenpoint enviado: ", newGreenpoint)
     this.greenpointService.createGreenpoint(newGreenpoint).subscribe({
       next: (res) => {
         console.log("greepoint creado", res)

@@ -41,10 +41,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'report',
+        path: 'stadistic',
         loadChildren: () =>
-          import('./pages/report/report-routing.module').then(
-            (m) => m.ReportRoutingModule
+          import('./pages/stadistic/stadistic-routing.module').then(
+            (m) => m.StadisticRoutingModule
           ),
       },
       {

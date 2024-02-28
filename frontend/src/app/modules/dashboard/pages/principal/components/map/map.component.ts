@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { greenPointResponse, greenpoint } from '@models/greenpoint.model';
+import { greenPointResponse } from '@models/greenpoint.model';
 import { MapService } from '@services/map.service';
 
 @Component({
