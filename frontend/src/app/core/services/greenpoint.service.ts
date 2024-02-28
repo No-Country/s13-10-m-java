@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { greenPointResponse, greenpoint, greenpointDTO } from '../models/greenpoint.model';
+import { greenPointResponse, greenpointDTO } from '../models/greenpoint.model';
 import { environment } from '@environments/environment';
 
 @Injectable({
@@ -13,20 +13,21 @@ export class GreenpointService {
   constructor(private http: HttpClient) {}
   /**
    * this method returns an array observable of greenpoints
-   * @returns {Observable<greenpoint>}
+   * @returns {Observable<greenPointResponse[]>}
    */
-  getAllGreenpoints(): Observable<greenpoint[]> {
-    return new Observable<greenpoint[]>((observer) => {
-      fetch('assets/dummyData.json')
-        .then((res) => res.json())
-        .then((data) => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch((err) => observer.error(err));
-    });
-    // return this.http.get<greenpoint[]>(this.URL);
+  getAllGreenpoints(): Observable<greenPointResponse[]> {
+    // return new Observable<greenpoint[]>((observer) => {
+    //   fetch('assets/dummyData.json')
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       observer.next(data);
+    //       observer.complete();
+    //     })
+    //     .catch((err) => observer.error(err));
+    // });
+    return this.http.get<greenPointResponse[]>(this.URL);
   }
+
   createGreenpoint(data:greenpointDTO){
     return this.http.post<greenPointResponse>(this.URL, data);
   }

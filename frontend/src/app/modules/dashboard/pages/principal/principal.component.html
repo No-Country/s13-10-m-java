@@ -1,22 +1,19 @@
-<h2 class="text-white text-xl font-bold md:text-2xl mb-2"
->Bienvenido {{'Juanito Alimaña'}}.</h2>
+<h2 class="text-white text-xl font-bold md:text-2xl mb-2">
+  Bienvenido {{ "Juanito Alimaña" }}.
+</h2>
 <p class="text-white">
-  Aqu&iacute; encontraras los puntos de recepci&oacute;n de desechos reciclables mas cerca de tu casa.
+  Aqu&iacute; encontraras los puntos de recepci&oacute;n de desechos reciclables
+  mas cerca de tu casa.
 </p>
-<div class="appointment text-end mb-2">
-</div>
+<div class="appointment text-end mb-2"></div>
 <div class="filters mb-2">
   <span class="text-white mr-2">Tipo de reciclaje:</span>
-  <select class="outline-none"><!-- 
-  <select [(ngModel)]="filter" class="outline-none"> -->
+  <select [(ngModel)]="filter" class="outline-none">
     <option value="todos">Todos</option>
-    <option value="general">General</option>
-    <option value="plastico-metal">Pl&aacute;stico y envase met&aacute;lico</option>
-    <option value="vidrio">Vidrio</option>
-    <option value="papel">Papel</option>
+    <option value="METAL">Metal</option>
+    <option value="PLASTICO">Pl&aacute;stico</option>
+    <option value="VIDRIO">Vidrio</option>
+    <option value="PAPELCARTON">Papel y carton</option>
   </select>
 </div>
-<app-customMap
-[greenPoints]="greenpoints"
-[filters]="filter"
-></app-customMap>
+<app-customMap [greenPoints]="greenpoints" [filters]="filter"></app-customMap>
