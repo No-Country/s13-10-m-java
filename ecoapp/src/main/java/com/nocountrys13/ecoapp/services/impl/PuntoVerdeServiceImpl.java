@@ -3,7 +3,9 @@ package com.nocountrys13.ecoapp.services.impl;
 import com.nocountrys13.ecoapp.dtos.request.CrearPuntoVerdeDtoRequest;
 import com.nocountrys13.ecoapp.dtos.request.UpdatePuntoVerdeDtoRequest;
 import com.nocountrys13.ecoapp.dtos.response.PuntoVerdeDtoResponse;
+import com.nocountrys13.ecoapp.dtos.response.ReciclajeResponseDto;
 import com.nocountrys13.ecoapp.entities.PuntoVerde;
+import com.nocountrys13.ecoapp.entities.Reciclaje;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.PuntoVerdeRepository;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
@@ -12,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -31,7 +35,7 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
                 crearPuntoVerdeDtoRequest.latitud(), crearPuntoVerdeDtoRequest.longitud(),
                 crearPuntoVerdeDtoRequest.telefono(), crearPuntoVerdeDtoRequest.dni(),
                 crearPuntoVerdeDtoRequest.horarioAtencion(), crearPuntoVerdeDtoRequest.diasAtencion(),
-                crearPuntoVerdeDtoRequest.direccion(), crearPuntoVerdeDtoRequest.materialesAceptados(),usuario);
+                crearPuntoVerdeDtoRequest.direccion(), crearPuntoVerdeDtoRequest.materialesAceptados(), usuario);
 
         puntoVerdeRepository.save(puntoVerde);
         return puntoVerdeEntityADtoResponse(puntoVerde);
@@ -55,23 +59,23 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
 
     @Override
     public void deletePuntoVerde(UUID id) {
-            var puntoVerde = findById(id);
-            puntoVerdeRepository.delete(puntoVerde);
+        var puntoVerde = findById(id);
+        puntoVerdeRepository.delete(puntoVerde);
     }
 
     @Override
     public PuntoVerdeDtoResponse updatePuntoVerde(UUID id, UpdatePuntoVerdeDtoRequest puntoVerdeDto) {
 
-            var puntoVerdeEncontrado = findById(id);
-            puntoVerdeEncontrado.setNombrePv(puntoVerdeDto.nombre());
-            puntoVerdeEncontrado.setTelefono(puntoVerdeDto.telefono());
-            puntoVerdeEncontrado.setMaterialesAceptados(puntoVerdeDto.materialesAceptados());
-            puntoVerdeEncontrado.setHorariosAtencion(puntoVerdeDto.horarioAtencion());
-            puntoVerdeEncontrado.setDiasAtencion(puntoVerdeDto.diasAtencion());
-            puntoVerdeEncontrado.setLatitud(puntoVerdeDto.latitud());
-            puntoVerdeEncontrado.setLongitud(puntoVerdeDto.longitud());
+        var puntoVerdeEncontrado = findById(id);
+        puntoVerdeEncontrado.setNombrePv(puntoVerdeDto.nombre());
+        puntoVerdeEncontrado.setTelefono(puntoVerdeDto.telefono());
+        puntoVerdeEncontrado.setMaterialesAceptados(puntoVerdeDto.materialesAceptados());
+        puntoVerdeEncontrado.setHorariosAtencion(puntoVerdeDto.horarioAtencion());
+        puntoVerdeEncontrado.setDiasAtencion(puntoVerdeDto.diasAtencion());
+        puntoVerdeEncontrado.setLatitud(puntoVerdeDto.latitud());
+        puntoVerdeEncontrado.setLongitud(puntoVerdeDto.longitud());
 
-            return puntoVerdeEntityADtoResponse(puntoVerdeRepository.save(puntoVerdeEncontrado));
+        return puntoVerdeEntityADtoResponse(puntoVerdeRepository.save(puntoVerdeEncontrado));
 
     }
 
@@ -96,7 +100,19 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
         return new PuntoVerdeDtoResponse(puntoVerde.getPuntoVerdeId(), puntoVerde.getNombrePv(),
                 puntoVerde.getHorariosAtencion(), puntoVerde.getDiasAtencion(), puntoVerde.getLatitud(),
                 puntoVerde.getLongitud(), puntoVerde.getDireccion(), puntoVerde.getTelefono(),
-                puntoVerde.getMaterialesAceptados());
+                puntoVerde.getMaterialesAceptados(), entityToDto(puntoVerde.getListadoReciclaje()));
     }
 
+    private List<ReciclajeResponseDto> entityToDto(List<Reciclaje> reciclajes) {
+        return reciclajes != null
+                ? reciclajes.stream()
+                .map(r -> new ReciclajeResponseDto(
+                        r.getReciclajeId(),
+                        r.getMaterialesRecibidos(),
+                        r.getDescripcion(),
+                        r.getUsuario().getEmail(),
+                        r.getDia()
+                )).toList()
+                : new ArrayList<>();
+    }
 }
