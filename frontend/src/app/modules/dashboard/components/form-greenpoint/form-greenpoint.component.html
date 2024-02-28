@@ -54,18 +54,11 @@
       <span class="mx-2">a</span>
       <input (input)="validateTime()" formControlName="closeTime" type="time" />
     </div>
-    <span class="mr-2">de</span>
-    <select class="border-none" formControlName="openDay">
-      <option *ngFor="let day of days" [value]="day">
-        {{ day }}
-      </option>
-    </select>
-    <span class="mx-2">a</span>
-    <select class="border-none" formControlName="closeDay">
-      <option *ngFor="let day of days" [value]="day">
-        {{ day }}
-      </option>
-    </select>
+    <div>
+      <label [for]="day" class="mr-2" *ngFor="let day of days">
+        <input [id]="day" type="checkbox" [formControlName]="day" >{{day | titlecase}}
+      </label>
+    </div>
     <p
     *ngIf="form.controls['openTime'].touched || form.controls['closeTime'].touched"
     class="text-[0.5rem] text-red-500">
@@ -94,10 +87,8 @@
     formControlName="address"
     type="text" class="info"
     />
-    <label for="lat">Latitud: </label>
-    <input readonly id="lat" formControlName="lat" type="text" class="info" />
-    <label for="lng">Longitud: </label>
-    <input readonly id="lng" formControlName="lng" type="text" class="info" />
+    <input readonly id="lat" formControlName="lat" type="text" class="info hidden" />
+    <input readonly id="lng" formControlName="lng" type="text" class="info hidden" />
   </div>
   <p
     *ngIf="this.form.controls['lat'].touched &&

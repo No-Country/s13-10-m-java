@@ -7,19 +7,24 @@ export interface greenpoint {
 }
 export interface greenpointForm {
   address: string;
-  closeDay: string;
   closeTime: string;
   dni: string;
   lat: string;
   lng: string;
   name: string;
-  openDay: string;
   openTime: string;
   phone: string;
   papelcarton: boolean;
   plastico: boolean;
   vidrio: boolean;
   metal: boolean;
+  lunes:boolean;
+  martes:boolean;
+  miercoles:boolean;
+  jueves:boolean;
+  viernes:boolean;
+  sabado:boolean;
+  domingo:boolean;
 }
 export interface greenpointDTO {
   userId: string;
