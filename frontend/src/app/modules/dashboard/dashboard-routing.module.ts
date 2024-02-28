@@ -22,36 +22,36 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () =>
-          import('./pages/profile/profile-routing.module').then(
-            (m) => m.ProfileRoutingModule
+          import('./pages/profile/profile.module').then(
+            (m) => m.ProfileModule
           ),
       },
       {
         path: 'recycled',
         loadChildren: () =>
-          import('./pages/recycled/recycled-routing.module').then(
-            (m) => m.RecycledRoutingModule
+          import('./pages/recycled/recycled.module').then(
+            (m) => m.RecycledModule
           ),
       },
       {
         path: 'award',
         loadChildren: () =>
-          import('./pages/award/award-routing.module').then(
-            (m) => m.AwardRoutingModule
+          import('./pages/award/award.module').then(
+            (m) => m.AwardModule
           ),
       },
       {
         path: 'stadistic',
         loadChildren: () =>
-          import('./pages/stadistic/stadistic-routing.module').then(
-            (m) => m.StadisticRoutingModule
+          import('./pages/stadistic/stadistic.module').then(
+            (m) => m.StadisticModule
           ),
       },
       {
         path: 'greenpoints',
         loadChildren: () =>
-          import('./pages/greenpoints/greenpoints-routing.module').then(
-            (m) => m.GreenpointsRoutingModule
+          import('./pages/greenpoints/greenpoints.module').then(
+            (m) => m.GreenpointsModule
           ),
       },
     ],
