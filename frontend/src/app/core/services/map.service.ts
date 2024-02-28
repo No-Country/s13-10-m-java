@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { greenPointResponse } from '@models/greenpoint.model';
 import * as L from 'leaflet';
 
 @Injectable({
@@ -63,7 +64,26 @@ export class MapService {
       iconUrl,
       iconSize: [38, 95],
       iconAnchor: [20, 60],
-      popupAnchor: [-3, -76],
+      popupAnchor: [-3, -35],
     });
+  }
+  createContent(data:greenPointResponse){
+    const content =`
+      <div class="grid grid-cols-4 w-[300px] gap-y-2 items-start">
+        <span class="font-bold">Nombre: </span>
+        <span class="col-span-3">${data.nombre}</span>
+        <span class="font-bold">Tel&eacute;fono:</span>
+        <span class="col-span-3">${data.telefono}</span>
+        <span class="font-bold">Horario de atenci&oacute;n:</span>
+        <span class="col-span-3">${data.horarioAtencion}</span>
+        <span class="font-bold">D&iacute;as de atenci&oacute;n:</span>
+        <span class="col-span-3">${data.diasAtencion}</span>
+        <span class="font-bold">Materiales aceptados:</span>
+        <span class="col-span-3">${data.materialesAceptados.join(", ")}</span>
+        <span class="font-bold">Direcci&oacute;n:</span>
+        <span class="col-span-3">${data.direccion}</span>
+      </div>
+    `;
+    return content;
   }
 }
