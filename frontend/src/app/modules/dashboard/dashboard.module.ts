@@ -7,17 +7,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShowsidebarDirective } from './components/showsidebar.directive';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
     SidebarComponent,
     HeaderComponent,
-    ShowsidebarDirective
+    ShowsidebarDirective,
   ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule
-  ]
+  imports: [CommonModule, DashboardRoutingModule],
 })
-export class DashboardModule { }
+export class DashboardModule {}
