@@ -56,9 +56,10 @@ export class LoginComponent {
       next: () => {
         Swal.fire({
           title: '¡Ingreso exitoso!',
-          text: `¡Hola, ${this.loginService.Login}! Seras redirigido a nuestro inicio.`,
+          text: `¡Hola,Bienvenido a esta iniciativa ambiental¡.`,
           icon: 'success',
         }).then(() => this.loginForm.reset());
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         Swal.fire({
