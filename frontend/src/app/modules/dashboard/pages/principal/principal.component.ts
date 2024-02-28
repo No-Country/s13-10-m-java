@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';import { greenpoint } from '@models/greenpoint.model';
+import { Component } from '@angular/core';import { greenPointResponse, greenpoint } from '@models/greenpoint.model';
 import { GreenpointService } from '@services/greenpoint.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { GreenpointService } from '@services/greenpoint.service';
   styleUrls: ['./principal.component.scss'],
 })
 export class PrincipalComponent {
-  greenpoints: greenpoint[]=[];
+  greenpoints: greenPointResponse[]=[];
   filter = "todos";
   constructor(
     private greenpoint:GreenpointService
@@ -25,5 +25,5 @@ export class PrincipalComponent {
       error: (err) => console.error('ocurrio un error', { err }),
     });
   }
-  
+
 }

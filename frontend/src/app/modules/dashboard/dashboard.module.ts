@@ -10,6 +10,7 @@ import { ModalRegisterGreenpointComponent } from './components/modal-register-gr
 import { SharedModule } from '@modules/shared/shared.module';
 import { RegisterMapComponent } from './components/register-map/register-map.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormGreenpointComponent } from './components/form-greenpoint/form-greenpoint.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     ShowsidebarDirective,
     ModalRegisterGreenpointComponent,
-    RegisterMapComponent
+    RegisterMapComponent,
+    FormGreenpointComponent
   ],
   imports: [
     CommonModule,
