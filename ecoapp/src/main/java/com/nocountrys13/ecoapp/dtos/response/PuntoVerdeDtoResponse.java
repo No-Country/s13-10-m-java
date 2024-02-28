@@ -1,5 +1,6 @@
 package com.nocountrys13.ecoapp.dtos.response;
 
+import com.nocountrys13.ecoapp.entities.Reciclaje;
 import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.validation.constraints.*;
 
@@ -19,8 +20,8 @@ public record PuntoVerdeDtoResponse(
         @NotBlank String longitud,
         @NotBlank String direccion,
         @NotBlank @Pattern(regexp = "^549\\d{10}$") String telefono,
-        @NotEmpty List<Material> materialesAceptados
-
+        @NotEmpty List<Material> materialesAceptados,
+         List<Reciclaje> reciclajes
 
 
 ) {

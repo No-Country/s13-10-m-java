@@ -96,7 +96,7 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
         return new PuntoVerdeDtoResponse(puntoVerde.getPuntoVerdeId(), puntoVerde.getNombrePv(),
                 puntoVerde.getHorariosAtencion(), puntoVerde.getDiasAtencion(), puntoVerde.getLatitud(),
                 puntoVerde.getLongitud(), puntoVerde.getDireccion(), puntoVerde.getTelefono(),
-                puntoVerde.getMaterialesAceptados());
+                puntoVerde.getMaterialesAceptados(), puntoVerde.getListadoReciclaje());
     }
 
 }

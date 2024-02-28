@@ -30,8 +30,4 @@ public class Reciclaje implements Serializable {
     @JoinColumn(name = "user_id")
     private Usuario usuario;
 
-    @ManyToOne
-    @JoinColumn(name = "puntoverde_id")
-    private PuntoVerde puntoVerde;
-
 }

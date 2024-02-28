@@ -25,11 +25,11 @@ public class ReciclajeServiceImpl implements IReciclajeService {
         var usuario = usuarioRepository.findByEmail(reciclajeDTO.emailUsuario());
         Integer puntos = usuario.getPuntos() + 1;
         usuario.setPuntos(puntos);
-        var puntoVerde = puntoVerdeRepository.findById(reciclajeDTO.idPuntoVerde()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
         var reciclaje = new Reciclaje();
         BeanUtils.copyProperties(reciclajeDTO, reciclaje);
         reciclaje.setUsuario(usuario);
-        reciclaje.setPuntoVerde(puntoVerde);
+
         reciclajeRepository.save(reciclaje);
     }
 }
