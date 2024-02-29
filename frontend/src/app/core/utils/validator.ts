@@ -44,6 +44,18 @@ export function passwordValidator(control: AbstractControl) {
   return null;
 }
 
+export function validatorOpeningHour(controller: AbstractControl) {
+  const openTime: string = controller.root.get('openTime')?.value;
+  const closeTime: string = controller.root.get('closeTime')?.value;
+
+  const openDate = new Date(`2000-01-01T${openTime}`)
+  const closeDate = new Date(`2000-01-01T${closeTime}`)
+  if(openDate > closeDate){
+    return {invalidTime : true}
+  }
+  return null;
+}
+
 @Injectable({
   providedIn: 'root',
 })

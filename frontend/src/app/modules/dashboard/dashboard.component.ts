@@ -1,4 +1,6 @@
 import { Component, HostListener } from '@angular/core';
+import { tokenData } from '@models/token.model';
+import { TokenService } from '@services/token.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,12 @@ import { Component, HostListener } from '@angular/core';
 })
 export class DashboardComponent {
   isShowSidebar = false;
-
+  isShowModal = false;
   receiveSidebarStatus(status:boolean){
     this.isShowSidebar = status;
+  }
+  receiveModalStatus(status:boolean){
+    this.isShowModal = status;
   }
   @HostListener("window:resize", ["$event"])
   onResize(event : Event){

@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { LoginService } from '@services/login.service';
 import { Router } from '@angular/router';
-import { Login } from '@models/login.model';
 
 // import { NotifyService } from '@services/notify.service';
 import { emailValidator } from '@utils/validator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +14,18 @@ import { emailValidator } from '@utils/validator';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  showPassword: boolean = false;
+  error: string = 'Error en la aplicacion';
 
   constructor(
-    private fb: FormBuilder,
     private loginService: LoginService,
-    // private notifySvc: NotifyService,
+    private readonly fb: FormBuilder,
+
     private router: Router
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, emailValidator]],
-      password: ['', Validators.required, Validators.minLength(8)],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -39,53 +41,39 @@ export class LoginComponent {
       return this.loginForm.markAllAsTouched();
     }
 
+    console.log(this.loginForm.value);
+
     this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
       this.loginService.id = res.id;
       this.loginService.token = res.token;
-      //localStorage.setItem('id', res.id);
-      //localStorage.setItem('token', res.token);
-      this.router.navigate(['home']);
+      localStorage.setItem('id', res.id);
+      localStorage.setItem('token', res.token);
     });
 
-    console.log(this.loginForm.value);
-    console.log('conexion completada  redirigido a home');
-  }
+    console.log(this.loginForm.markAsTouched);
 
-  register() {
-    this.router.navigate(['home']);
-  }
-
-  onSubmit() {
-    if (this.loginForm.invalid) {
-      // Realizar la lógica de inicio de sesión
-      // this.notifySvc.showError(
-      //   'Error al iniciar sesión',
-      //   'Error con tus datos'
-      // );
-
-      return;
-    }
-    const user: Login = {
-      email: this.loginForm.value.email,
-      password: this.loginForm.value.password,
-    };
-    /* this.loginService.Login(user).subscribe({
+    this.loginService.Login(this.loginForm.value).subscribe({
       next: () => {
-        this.notifySvc.showSuccess(
-          'Inicio de sesión exitoso',
-          'Bienvenido a QuantumGamer'
-        );
-        this.router.navigate(['']);
-        setTimeout(() => {
-          location.href = '/quantum/home';
-        }, 3000);
+        Swal.fire({
+          title: '¡Ingreso exitoso!',
+          text: `¡Hola,Bienvenido a esta iniciativa ambiental¡.`,
+          icon: 'success',
+        }).then(() => this.loginForm.reset());
+        this.router.navigate(['/home']);
       },
-      error: (err) => {
-        this.notifySvc.showError(
-          'Error al iniciar sesión',
-          'Error con tus datos'
-        );
+      error: (error) => {
+        Swal.fire({
+          title: 'Ha ocurrido un error...',
+          text: error.error,
+          icon: 'error',
+        });
       },
-    }); */
+    });
+
+    return;
+  }
+
+  handleShowPassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }

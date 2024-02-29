@@ -6,6 +6,11 @@ import { DashboardComponent } from './dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ShowsidebarDirective } from './components/showsidebar.directive';
+import { ModalRegisterGreenpointComponent } from './components/modal-register-greenpoint/modal-register-greenpoint.component';
+import { SharedModule } from '@modules/shared/shared.module';
+import { RegisterMapComponent } from './components/register-map/register-map.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormGreenpointComponent } from './components/form-greenpoint/form-greenpoint.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +18,15 @@ import { ShowsidebarDirective } from './components/showsidebar.directive';
     SidebarComponent,
     HeaderComponent,
     ShowsidebarDirective,
+    ModalRegisterGreenpointComponent,
+    RegisterMapComponent,
+    FormGreenpointComponent,
   ],
-  imports: [CommonModule, DashboardRoutingModule],
+  imports: [
+    CommonModule,
+    DashboardRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+  ],
 })
 export class DashboardModule {}

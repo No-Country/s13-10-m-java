@@ -2,12 +2,11 @@ import {
   Component,
   ElementRef,
   Input,
-  SimpleChange,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { greenpoint } from '@models/greenpoint.model';
+import { greenPointResponse, greenpoint } from '@models/greenpoint.model';
 import { MapService } from '@services/map.service';
 
 @Component({
@@ -17,7 +16,7 @@ import { MapService } from '@services/map.service';
 })
 export class CustomMapComponent {
   @ViewChild('mapContainer') mapContainer!: ElementRef;
-  @Input() greenPoints: greenpoint[] = [];
+  @Input() greenPoints: greenPointResponse[] = [];
   @Input() filters = '';
   markers: L.Marker[] = [];
   map!: L.Map;
@@ -40,39 +39,27 @@ export class CustomMapComponent {
     }
   }
 
-  addMarkerToMap({ lat, lng, nombre, direccion, type }: greenpoint) {
-    let iconUrl = '';
-    switch (type) {
-      case 'vidrio':
-        iconUrl = 'assets/img/pin-green.svg';
-        break;
-      case 'plastico-metal':
-        iconUrl = 'assets/img/pin-yellow.svg';
-        break;
-      case 'papel':
-        iconUrl = 'assets/img/pin-blue.svg';
-        break;
-      default:
-        iconUrl = 'assets/img/pin-gray.svg';
-        break;
-    }
+  addMarkerToMap( data: greenPointResponse) {
+    let iconUrl = 'assets/img/custom-pinmap.svg';
+    const lat = parseFloat(data.latitud)
+    const lng = parseFloat(data.longitud)
     const icon = this.mapService.createIcon(iconUrl);
     const marker = this.mapService.createMarker([lat, lng], icon);
+    const content = this.mapService.createContent(data);
     marker
       .addTo(this.map)
-      .bindPopup(`${nombre}, en ${direccion}`)
+      .bindPopup(content)
       .on('click', () => marker.openPopup());
     this.markers.push(marker);
   }
 
   private filterMarkers(filter: string) {
     this.cleanMarkers();
-
     if (filter === 'todos') {
       this.greenPoints.forEach((point) => this.addMarkerToMap(point));
       return;
     }
-    let filteredData = this.greenPoints.filter((data) => data.type === filter);
+    let filteredData = this.greenPoints.filter((data) => data.materialesAceptados.includes(filter));
     filteredData.forEach((point) => this.addMarkerToMap(point));
   }
 

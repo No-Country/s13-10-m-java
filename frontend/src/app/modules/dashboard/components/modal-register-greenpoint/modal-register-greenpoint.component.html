@@ -1,0 +1,15 @@
+<section class="relative bg-white rounded-md p-4 md:flex md:w-full xl:w-10/12" [@fadeEffect]>
+  <app-form-greenpoint
+  (emitFormData)="createGreenpoint($event)"
+  [localization]="localization"
+  ></app-form-greenpoint>
+  <app-register-map
+    (positionEmiter)="receivePosition($event)"
+  >
+  </app-register-map>
+    <button
+    (click)="hiddenModal()"
+    class="absolute top-1 left-1 w-10 z- hover:bg-green-200 rounded-full ease-in-out duration-500">
+      <img src="assets/img/close.svg" alt="close-icon">
+    </button>
+</section>
