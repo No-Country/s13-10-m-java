@@ -29,7 +29,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         BeanUtils.copyProperties(usuarioDtoRequest, usuario);
         usuario = usuarioRepository.save(usuario);
 
-        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos());
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos(), usuario.getImgUrl());
 
     }
 
@@ -44,7 +44,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     private UsuarioDtoResponse convertToDto(Usuario usuario) {
-        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos());
+        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos(), usuario.getImgUrl());
 
     }
 
@@ -53,7 +53,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         if (usuario.isPresent()) {
             var usuarioResp = usuario.get();
 
-            return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail(), usuarioResp.getValidEmail(), usuarioResp.getPuntos());
+            return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail(), usuarioResp.getValidEmail(), usuarioResp.getPuntos(), usuarioResp.getImgUrl());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
     }
@@ -64,8 +64,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
             var usuario = usuarioBuscado.get();
             BeanUtils.copyProperties(usuarioDtoRequest, usuario);
             usuario = usuarioRepository.save(usuario);
-            
-            return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos());
+
+            return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos(), usuario.getImgUrl());
 
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");

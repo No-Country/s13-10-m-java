@@ -5,11 +5,13 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.util.UUID;
 
-public record UsuarioDtoResponse(@NotBlank UUID userId, 
-								 @NotBlank String nombre,
+public record UsuarioDtoResponse(@NotBlank UUID userId,
+                                 @NotBlank String nombre,
                                  @NotBlank String apellido,
                                  @Email @NotBlank String email,
                                  @NotBlank boolean validEmail,
-                                 @NotBlank Integer puntos) {
+                                 @NotBlank Integer puntos,
+                                 String imgUrl
+) {
 
 }
