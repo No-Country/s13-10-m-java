@@ -26,7 +26,9 @@
     <article
       class="rounded-lg drop-shadow-lg bg-white max-w-[340px] hover:scale-[1.01] hover:cursor-pointer"
     >
-      <header class="h-56 bg-[#d9d9d9] flex items-center justify-center">
+      <header
+        class="h-56 bg-[#d9d9d9] flex items-center justify-center rounded-tl-xl rounded-tr-xl"
+      >
         <span class="material-symbols-outlined text-9xl text-white">add</span>
       </header>
       <section class="px-3 py-4">
@@ -38,7 +40,7 @@
     <header>
       <h2 class="font-semibold text-gray-700 text-lg">
         Seleccionado:
-        <span style="color: #006c34">Pennsylvania Green Point</span>
+        <span class="text-[#006c34]">Pennsylvania Green Point</span>
       </h2>
     </header>
     <article
@@ -85,25 +87,26 @@
           <table class="table-fixed w-full">
             <thead>
               <tr>
-                <th class="text-left">Usuario</th>
-                <th class="text-left">Tipo</th>
-                <th class="text-left">Descripción</th>
-                <th class="text-left">Fecha</th>
-                <th class="text-left">Acciones</th>
+                <th class="text-left text-gray-600 py-2">Usuario</th>
+                <th class="text-left text-gray-600 py-2">Tipo</th>
+                <th class="text-left text-gray-600 py-2">Descripción</th>
+                <th class="text-left text-gray-600 py-2">Fecha</th>
+                <th class="text-left text-gray-600 py-2">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="flex items-center gap-1">
+                <td class="flex items-center gap-1 py-2 text-gray-700">
                   <span class="material-symbols-outlined">person</span>
                   Ludmila-gmail.com
                 </td>
-                <td>Cartón</td>
-                <td>5 kg de cartón proveniente...</td>
-                <td>02-01-24</td>
+                <td class="py-2 text-gray-700">Cartón</td>
+                <td class="py-2 text-gray-700">
+                  5 kg de cartón proveniente...
+                </td>
+                <td class="py-2 text-gray-700">02-01-24</td>
                 <td
-                  class="flex items-center gap-1 font-semibold"
-                  style="color: #ffc107"
+                  class="flex items-center gap-1 font-semibold py-2 text-[#ffc107]"
                 >
                   <span
                     class="material-symbols-outlined bg-[#FFC107] text-white rounded-full"
@@ -113,28 +116,32 @@
                 </td>
               </tr>
               <tr>
-                <td class="flex items-center gap-1">
+                <td class="flex items-center gap-1 py-2 text-gray-700">
                   <span class="material-symbols-outlined">person</span>
                   David-gmail.com
                 </td>
-                <td>Cartón</td>
-                <td></td>
-                <td>12-12-23</td>
-                <td style="color: #0fa24a">Puntos entregados</td>
+                <td class="py-2 text-gray-700">Cartón</td>
+                <td class="py-2 text-gray-700"></td>
+                <td class="py-2 text-gray-700">12-12-23</td>
+                <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
               </tr>
               <tr>
-                <td class="flex items-center gap-1">
+                <td class="flex items-center gap-1 py-2 text-gray-700">
                   <span class="material-symbols-outlined">person</span>
                   Indira-gmail.com
                 </td>
-                <td>Cartón, Metal</td>
-                <td>Metal, cobres y hierro en bu...</td>
-                <td>12-12-23</td>
-                <td style="color: #0fa24a">Puntos entregados</td>
+                <td class="py-2 text-gray-700">Cartón, Metal</td>
+                <td class="py-2 text-gray-700">
+                  Metal, cobres y hierro en bu...
+                </td>
+                <td class="py-2 text-gray-700">12-12-23</td>
+                <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
               </tr>
             </tbody>
           </table>
-          <app-button type="button">Añadir usuario reciclador</app-button>
+          <app-button type="button" class="mt-6"
+            >Añadir usuario reciclador</app-button
+          >
         </div>
       </section>
     </article>

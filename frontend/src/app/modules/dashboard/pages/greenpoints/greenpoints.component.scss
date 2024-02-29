@@ -23,3 +23,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
+
+table tbody tr:nth-of-type(odd) {
+  background-color: #f7f7f7;
+}
