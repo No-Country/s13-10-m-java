@@ -1,0 +1,19 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  padding-block: 2rem;
+  background:
+  linear-gradient(
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.6)),
+    url("/assets/img/custom-pinmap.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 250px;
+  flex-basis: clamp(300px, 100%, 350px);
+}

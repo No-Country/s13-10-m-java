@@ -9,7 +9,9 @@
   background-size: contain cover;
   background-position: top right;
   padding-inline: 1rem;
+  position: relative;
   @include md{
     background-size: contain;
+    padding-block: 2rem;
   }
 }

@@ -1,7 +1,17 @@
-<h3>Estad&iacute;sticas</h3>
-<h4>Resumen</h4>
-<div>
+<div
+  class="bg-slate-400 rounded-full w-20 absolute hidden lg:block top-4 lg:right-1/2 lg:translate-x-1/2"
+>
+  <img class="w-full" src="assets/img/profile-icon.svg" alt="profile-icon" />
 </div>
-<h4>Estad&iacute;sticas propias</h4>
-<div></div>
-<app-custom-chart></app-custom-chart>
+<h3 class="text-white text-xl lg:text-2xl font-bold">Estad&iacute;sticas</h3>
+<h4 class="text-white my-4 text-xl">Resumen</h4>
+<div class="charts lg:flex justify-evenly gap-x-4">
+  <app-custom-chart></app-custom-chart>
+  <app-custom-chart></app-custom-chart>
+</div>
+<h4 class="text-slate-700 my-4 text-xl font-semibold">Estad&iacute;sticas propias</h4>
+<div class="flex flex-wrap items-center justify-around">
+  <app-score>EcoPuntos acumulados</app-score>
+  <app-score>GreenPoint propios</app-score>
+  <app-score>GreenPoint visitado</app-score>
+</div>
