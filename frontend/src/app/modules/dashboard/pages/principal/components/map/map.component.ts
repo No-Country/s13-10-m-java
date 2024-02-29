@@ -27,6 +27,7 @@ export class CustomMapComponent {
     this.mapService.createMap(this.mapContainer.nativeElement).then((map) => {
       this.map = map;
       this.greenPoints.forEach((point) => this.addMarkerToMap(point));
+      this.addCurrentPositionMarkerToMap();
     });
   }
 
@@ -51,6 +52,19 @@ export class CustomMapComponent {
       .bindPopup(content)
       .on('click', () => marker.openPopup());
     this.markers.push(marker);
+  }
+
+  addCurrentPositionMarkerToMap(){
+    const iconUrl = "assets/img/human-male.svg";
+    const icon = this.mapService.createIcon(iconUrl);
+    this.mapService.getCurrentPosition()
+      .then((position)=>{
+        const marker = this.mapService.createMarker(position, icon);
+        marker.addTo(this.map).bindPopup("Tu estas aquí.")
+      })
+      .catch(()=>{
+        console.log("no se pudo obtener la posicion")
+      })
   }
 
   private filterMarkers(filter: string) {
