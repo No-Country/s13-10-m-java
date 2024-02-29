@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from '@environments/environment';
 import { Login } from '../models/login.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class LoginService {
   private isLogedIn = new BehaviorSubject<boolean>(false);
   public isLogedIn$ = this.isLogedIn.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     if (localStorage.getItem('token')) {
       this.isLogedIn.next(true);
     }
@@ -29,5 +30,8 @@ export class LoginService {
 
   Login(login: Login): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, login);
+  }
+  logout() {
+    this.router.navigate(['/auth/login']);
   }
 }
