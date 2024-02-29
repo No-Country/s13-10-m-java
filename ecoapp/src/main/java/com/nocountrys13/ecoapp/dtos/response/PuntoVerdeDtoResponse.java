@@ -21,7 +21,7 @@ public record PuntoVerdeDtoResponse(
         @NotBlank String direccion,
         @NotBlank @Pattern(regexp = "^549\\d{10}$") String telefono,
         @NotEmpty List<Material> materialesAceptados,
-         List<Reciclaje> reciclajes
+         List<ReciclajeResponseDto> reciclajes
 
 
 ) {

@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
+
 @Service
 @RequiredArgsConstructor
 public class ReciclajeServiceImpl implements IReciclajeService {
@@ -29,7 +31,12 @@ public class ReciclajeServiceImpl implements IReciclajeService {
         var reciclaje = new Reciclaje();
         BeanUtils.copyProperties(reciclajeDTO, reciclaje);
         reciclaje.setUsuario(usuario);
-
+        reciclaje.setDia(LocalDate.now());
         reciclajeRepository.save(reciclaje);
+
+        var puntoVerde = puntoVerdeRepository.findById(reciclajeDTO.idPuntoVerde()).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        puntoVerde.getListadoReciclaje().add(reciclaje);
+        puntoVerdeRepository.save(puntoVerde);
+
     }
 }
