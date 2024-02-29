@@ -2,12 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GreenpointsComponent } from './greenpoints.component';
 
-const routes: Routes = [
-  {path:"", component:GreenpointsComponent}
-];
+const routes: Routes = [{ path: '', component: GreenpointsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class GreenpointsRoutingModule { }
+export class GreenpointsRoutingModule {}
