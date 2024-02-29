@@ -1,6 +1,6 @@
 package com.nocountrys13.ecoapp.controllers;
 
-import com.nocountrys13.ecoapp.dtos.AuthenticationDTO;
+import com.nocountrys13.ecoapp.dtos.request.AuthenticationDTO;
 import com.nocountrys13.ecoapp.dtos.request.RegisterDtoRequest;
 import com.nocountrys13.ecoapp.services.IAuthenticationService;
 import jakarta.validation.Valid;

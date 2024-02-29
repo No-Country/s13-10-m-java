@@ -1,5 +1,6 @@
 package com.nocountrys13.ecoapp.dtos.response;
 
+import com.nocountrys13.ecoapp.entities.PuntoVerde;
 import com.nocountrys13.ecoapp.entities.Reciclaje;
 import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.validation.constraints.*;
