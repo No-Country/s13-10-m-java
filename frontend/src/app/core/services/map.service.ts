@@ -88,10 +88,13 @@ export class MapService {
     return content;
   }
 
-  createCircle(position:L.LatLngExpression){
+  createCircle(position:L.LatLngExpression, radius:number){
     const circle = L.circle(position, {
-      color:"red",
-      fillColor:"blue",
+      color:"#006C34",
+      fillColor:"#4DB087",
+      fillOpacity:0.5,
+      radius
     })
+    return circle;
   }
 }

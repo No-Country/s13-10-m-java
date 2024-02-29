@@ -27,7 +27,7 @@ export class CustomMapComponent {
     this.mapService.createMap(this.mapContainer.nativeElement).then((map) => {
       this.map = map;
       this.greenPoints.forEach((point) => this.addMarkerToMap(point));
-      this.addCurrentPositionMarkerToMap();
+      this.addCurrentPositionRadiusToMap();
     });
   }
 
@@ -54,12 +54,10 @@ export class CustomMapComponent {
     this.markers.push(marker);
   }
 
-  addCurrentPositionMarkerToMap(){
-    const iconUrl = "assets/img/human-male.svg";
-    const icon = this.mapService.createIcon(iconUrl);
+  addCurrentPositionRadiusToMap(){
     this.mapService.getCurrentPosition()
       .then((position)=>{
-        const marker = this.mapService.createMarker(position, icon);
+        const marker = this.mapService.createCircle(position, 1000);
         marker.addTo(this.map).bindPopup("Tu estas aquí.")
       })
       .catch(()=>{
