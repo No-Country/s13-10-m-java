@@ -12,7 +12,6 @@ import { RegisterMapComponent } from './components/register-map/register-map.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGreenpointComponent } from './components/form-greenpoint/form-greenpoint.component';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -21,13 +20,13 @@ import { FormGreenpointComponent } from './components/form-greenpoint/form-green
     ShowsidebarDirective,
     ModalRegisterGreenpointComponent,
     RegisterMapComponent,
-    FormGreenpointComponent
+    FormGreenpointComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

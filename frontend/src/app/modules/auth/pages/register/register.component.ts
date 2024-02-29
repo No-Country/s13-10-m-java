@@ -18,6 +18,7 @@ export class RegisterComponent {
   form: FormGroup;
   showPassword: boolean = false;
   showRepeatPassword: boolean = false;
+  isRegistered: boolean = false;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -79,9 +80,13 @@ export class RegisterComponent {
           title: '¡Registro exitoso!',
           text: `¡Hola, ${this.form.value.nombre}! Hemos enviado a tu correo un enlace de confirmación, por favor ingresa para validar tu cuenta.`,
           icon: 'success',
-        }).then(() => this.form.reset());
+        }).then(() => {
+          this.form.reset();
+          this.isRegistered = true;
+        });
       },
       error: (error) => {
+        console.log(error);
         Swal.fire({
           title: 'Ha ocurrido un error...',
           text: error.error,

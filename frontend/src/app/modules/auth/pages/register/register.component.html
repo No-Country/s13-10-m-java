@@ -3,10 +3,14 @@
     <h1 class="text-center">REGISTRO</h1>
   </header>
   <section>
+    <p *ngIf="isRegistered">
+      Tu registro fue exitoso, ingresa a tu email para validar tu cuenta
+    </p>
     <form
       class="flex flex-col gap-6"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
+      *ngIf="!isRegistered"
     >
       <div>
         <label for="name" class="block text-lg text-gray-900">Nombre</label>

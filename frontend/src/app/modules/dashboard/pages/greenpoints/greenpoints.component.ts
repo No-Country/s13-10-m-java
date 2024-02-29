@@ -3,8 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-greenpoints',
   templateUrl: './greenpoints.component.html',
-  styleUrls: ['./greenpoints.component.scss']
+  styleUrls: ['./greenpoints.component.scss'],
 })
 export class GreenpointsComponent {
+  selected: boolean = false;
 
+  handleSelected() {
+    this.selected = !this.selected;
+  }
 }
