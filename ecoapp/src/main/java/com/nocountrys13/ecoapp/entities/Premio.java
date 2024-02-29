@@ -19,9 +19,9 @@ public class Premio implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID premioId;
-    String nombrePremio;
-    Integer cantidad;
-    Integer puntos;
+    private String nombrePremio;
+    private Integer cantidad;
+    private Integer puntos;
 
     @ManyToOne
     @JoinColumn(name = "puntoverde_id")
