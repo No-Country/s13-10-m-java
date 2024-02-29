@@ -37,7 +37,6 @@ public class EmailVerification implements Serializable {
 	
 	@OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
-	@JsonIgnore
     private Usuario usuario;
   
 }
