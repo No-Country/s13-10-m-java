@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';import { greenPointResponse, greenpoint } from '@models/greenpoint.model';
+import { UserResponse } from '@models/user.model';
 import { GreenpointService } from '@services/greenpoint.service';
+import { TokenService } from '@services/token.service';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-principal',
@@ -9,12 +12,16 @@ import { GreenpointService } from '@services/greenpoint.service';
 export class PrincipalComponent {
   greenpoints: greenPointResponse[]=[];
   filter = "todos";
+  userData!:UserResponse
   constructor(
-    private greenpoint:GreenpointService
+    private greenpoint:GreenpointService,
+    private userService : UserService,
+    private tokenService:TokenService
   ){}
 
   ngOnInit() {
     this.getGreenpoints();
+    this.getUserData()
   }
   getGreenpoints() {
     this.greenpoint.getAllGreenpoints().subscribe({
@@ -24,6 +31,15 @@ export class PrincipalComponent {
       },
       error: (err) => console.error('ocurrio un error', { err }),
     });
+  }
+  getUserData(){
+    const userId = this.tokenService.getTokenDecoded()!;
+    this.userService.getUser(userId.USER_ID).subscribe({
+      next:(res)=>{
+        this.userData = res
+      },
+      error:(err)=>console.log("error al obtener user", err)
+    })
   }
 
 }
