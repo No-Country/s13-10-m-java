@@ -41,7 +41,7 @@ export class LoginComponent {
       return this.loginForm.markAllAsTouched();
     }
 
-    console.log(this.loginForm.value);
+    //console.log(this.loginForm.value);
 
     this.loginService.Login(this.loginForm.value).subscribe((res: any) => {
       this.loginService.id = res.id;
@@ -50,7 +50,7 @@ export class LoginComponent {
       localStorage.setItem('token', res.token);
     });
 
-    console.log(this.loginForm.markAsTouched);
+    //console.log(this.loginForm.markAsTouched);
 
     this.loginService.Login(this.loginForm.value).subscribe({
       next: () => {
