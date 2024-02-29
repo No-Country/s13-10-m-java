@@ -25,6 +25,9 @@ public class ReciclajeServiceImpl implements IReciclajeService {
     @Override
     public void save(ReciclajeDTO reciclajeDTO) {
         var usuario = usuarioRepository.findByEmail(reciclajeDTO.emailUsuario());
+        if (usuario == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Email de usuario no encontrado.");
+        }
         Integer puntos = usuario.getPuntos() + 1;
         usuario.setPuntos(puntos);
 
