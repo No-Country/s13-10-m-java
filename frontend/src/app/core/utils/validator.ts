@@ -56,6 +56,32 @@ export function validatorOpeningHour(controller: AbstractControl) {
   return null;
 }
 
+export function onlyAlphanumerics(controller:AbstractControl){
+  const value:string = controller.value;
+  const regex = /[^a-zA-Zá-ýÁ-Ý\s\d]/
+  if(regex.test(value)){
+    return {specialChar:true}
+  }
+  return null;
+}
+export function onlyNumbers(controller:AbstractControl){
+  const value:string = controller.value;
+  const regex = /[^\d]/
+  if(regex.test(value)){
+    return {
+      noNumericChar:true}
+    }
+    return null;
+  }
+  export function phoneValidator(controller:AbstractControl){
+    const value:string = controller.value;
+    const regex = /^\+549[\d]+$/
+    if(!regex.test(value)){
+      return { invalidPhone:true }
+    }
+    return null;
+}
+
 @Injectable({
   providedIn: 'root',
 })
