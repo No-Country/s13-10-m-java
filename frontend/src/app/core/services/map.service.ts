@@ -17,7 +17,7 @@ export class MapService {
       map.setView(currentPosition, 13);
     } catch (error) {
       currentPosition = [-18, -70];
-      map.setView(currentPosition, 3);
+      map.setView(currentPosition, 4);
     }
     this.addTileToMap(map);
 
@@ -31,6 +31,7 @@ export class MapService {
           function (position) {
             let lat = position.coords.latitude;
             let lng = position.coords.longitude;
+            console.log("posicion actual", [lat,lng])
             return resolve([lat, lng]);
           },
           function (error) {
@@ -85,5 +86,15 @@ export class MapService {
       </div>
     `;
     return content;
+  }
+
+  createCircle(position:L.LatLngExpression, radius:number){
+    const circle = L.circle(position, {
+      color:"#006C34",
+      fillColor:"#4DB087",
+      fillOpacity:0.5,
+      radius
+    })
+    return circle;
   }
 }

@@ -25,9 +25,10 @@ export class ModalRegisterGreenpointComponent {
     private tokenService: TokenService,
     private router:Router
   ) {}
+
   createGreenpoint(form: FormGroup) {
     const newGreenpoint = this.parseFormToGreenpoint(form);
-
+    console.log("greenpoint enviado: ", newGreenpoint)
     this.greenpointService.createGreenpoint(newGreenpoint).subscribe({
       next: (res) => {
         console.log("greepoint creado", res)
@@ -50,6 +51,7 @@ export class ModalRegisterGreenpointComponent {
   parseFormToGreenpoint(formGroup: FormGroup) {
     const tokenData = this.tokenService.getTokenDecoded()!;
     const data: greenpointForm = formGroup.value;
+    const days = this.parseDays(formGroup);
     let recicledType: string[] = [];
     if (data.metal) recicledType.push('METAL');
     if (data.papelcarton) recicledType.push('PAPELCARTON');
@@ -62,7 +64,7 @@ export class ModalRegisterGreenpointComponent {
       dni: data.dni,
       telefono: '549' + data.phone,
       horarioAtencion: `Abierto de ${data.openTime} a ${data.closeTime}`,
-      diasAtencion: `Atencion de ${data.openDay} a ${data.closeDay}`,
+      diasAtencion: `Atencion ${days.join(", ")}`,
       materialesAceptados: recicledType,
       direccion: data.address,
       latitud: data.lat,
@@ -73,5 +75,18 @@ export class ModalRegisterGreenpointComponent {
 
   hiddenModal() {
     this.closeModal.emit(false);
+  }
+
+  parseDays(formGroup: FormGroup){
+    const data: greenpointForm = formGroup.value;
+    let days :string[] = [];
+    if(data.lunes) days.push("lunes")
+    if(data.martes) days.push("martes")
+    if(data.miercoles) days.push("miercoles")
+    if(data.jueves) days.push("jueves")
+    if(data.viernes) days.push("viernes")
+    if(data.sabado) days.push("sabado")
+    if(data.domingo) days.push("domingo")
+    return days;
   }
 }
