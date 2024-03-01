@@ -1,6 +1,7 @@
 
 
-# GreenPoint ![Logo](https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png)
+# GreenPoint 
+![Logo](https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718823/Fotos/bq9s2qlhy1q9cdg5q6un.png)
 
 GreenPoint es una app web diseñada para ayudar a personas con interés en el cuidado del medio ambiente, a separar sus residuos en origen y vincularlos a través de la app con personas o entidades con la intención de recibir esos residuos para su posterior reciclaje.
 
