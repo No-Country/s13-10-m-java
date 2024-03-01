@@ -6,7 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import * as L from 'leaflet';
-import { greenPointResponse, greenpoint } from '@models/greenpoint.model';
+import { greenPointResponse } from '@models/greenpoint.model';
 import { MapService } from '@services/map.service';
 
 @Component({
@@ -27,6 +27,7 @@ export class CustomMapComponent {
     this.mapService.createMap(this.mapContainer.nativeElement).then((map) => {
       this.map = map;
       this.greenPoints.forEach((point) => this.addMarkerToMap(point));
+      this.addCurrentPositionRadiusToMap();
     });
   }
 
@@ -51,6 +52,17 @@ export class CustomMapComponent {
       .bindPopup(content)
       .on('click', () => marker.openPopup());
     this.markers.push(marker);
+  }
+
+  addCurrentPositionRadiusToMap(){
+    this.mapService.getCurrentPosition()
+      .then((position)=>{
+        const marker = this.mapService.createCircle(position, 1000);
+        marker.addTo(this.map).bindPopup("Tu estas aquí.")
+      })
+      .catch(()=>{
+        console.log("no se pudo obtener la posicion")
+      })
   }
 
   private filterMarkers(filter: string) {

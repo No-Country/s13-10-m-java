@@ -8,10 +8,7 @@
       placeholder="Nombre del punto verde"
       (input)="validateField('name')"
     />
-    <p
-      *ngIf="form.controls['name'].touched"
-      class="text-[0.5rem] text-red-500"
-    >
+    <p *ngIf="form.controls['name'].touched" class="text-[0.5rem] text-red-500">
       {{ errorsMessage["name"] }}
     </p>
   </div>
@@ -22,13 +19,11 @@
       type="text"
       placeholder="DNI o documento de identidad"
       (input)="validateField('dni')"
+      (keypress)="onlyKeyNumber($event)"
     />
-    <p
-    *ngIf="form.controls['dni'].touched"
-    class="text-[0.5rem] text-red-500"
-  >
-    {{ errorsMessage["dni"] }}
-  </p>
+    <p *ngIf="form.controls['dni'].touched" class="text-[0.5rem] text-red-500">
+      {{ errorsMessage["dni"] }}
+    </p>
   </div>
   <div class="field">
     <input
@@ -41,11 +36,11 @@
       (input)="validateField('phone')"
     />
     <p
-    *ngIf="form.controls['phone'].touched"
-    class="text-[0.5rem] text-red-500"
-  >
-    {{ errorsMessage["phone"] }}
-  </p>
+      *ngIf="form.controls['phone'].touched"
+      class="text-[0.5rem] text-red-500"
+    >
+      {{ errorsMessage["phone"] }}
+    </p>
   </div>
   <div class="field">
     <span>Horario de atenci&oacute;n</span>
@@ -54,25 +49,26 @@
       <span class="mx-2">a</span>
       <input (input)="validateTime()" formControlName="closeTime" type="time" />
     </div>
-    <span class="mr-2">de</span>
-    <select class="border-none" formControlName="openDay">
-      <option *ngFor="let day of days" [value]="day">
-        {{ day }}
-      </option>
-    </select>
-    <span class="mx-2">a</span>
-    <select class="border-none" formControlName="closeDay">
-      <option *ngFor="let day of days" [value]="day">
-        {{ day }}
-      </option>
-    </select>
+    <!-- ---------------------------------------------dias habiles -->
+    <div>
+      <label [for]="day" class="mr-2" *ngFor="let day of days">
+        <input [id]="day" type="checkbox" [formControlName]="day" />{{
+          day | titlecase
+        }}
+      </label>
+    </div>
     <p
-    *ngIf="form.controls['openTime'].touched || form.controls['closeTime'].touched"
-    class="text-[0.5rem] text-red-500">
-    {{errorsMessage['openTime']}}
-  </p>
+      *ngIf="
+        form.controls['openTime'].touched || form.controls['closeTime'].touched
+      "
+      class="text-[0.5rem] text-red-500"
+    >
+      {{ errorsMessage["openTime"] }}
+    </p>
+    <p *ngIf="invalidDay" class="text-[0.5rem] text-red-500">Debe seleccionar al menos dia de atenci&oacute;n</p>
   </div>
-  <div class="field_btn">
+  <!-- -----------------------------------------------tipos de reciclaje -->
+  <div class="field">
     <div *ngFor="let type of recicledTypes">
       <input
         [formControlName]="type.toLowerCase()"
@@ -82,6 +78,7 @@
       />
       <label class="text-sm" [for]="type">{{ type }}</label>
     </div>
+    <p *ngIf="invalidType" class="text-[0.5rem] text-red-500">Debe seleccionar al menos un tipo.</p>
   </div>
   <hr />
   <h6>
@@ -90,23 +87,31 @@
   </h6>
   <div class="field grid grid-cols-3 mb-3">
     <label for="address">Direcci&oacute;n: </label>
-    <input id="address"
-    formControlName="address"
-    type="text" class="info"
+    <input id="address" formControlName="address" type="text" class="info" (input)="validateField('address')" />
+    <input
+      readonly
+      id="lat"
+      formControlName="lat"
+      type="text"
+      class="info hidden"
     />
-    <label for="lat">Latitud: </label>
-    <input readonly id="lat" formControlName="lat" type="text" class="info" />
-    <label for="lng">Longitud: </label>
-    <input readonly id="lng" formControlName="lng" type="text" class="info" />
+    <input
+      readonly
+      id="lng"
+      formControlName="lng"
+      type="text"
+      class="info hidden"
+    />
   </div>
   <p
-    *ngIf="this.form.controls['lat'].touched &&
-    (this.form.get('lat')?.invalid ||
-    this.form.get('address')?.invalid)"
-  class="text-sm text-red-500"
->
-  Estos campos son Requeridos
-</p>
+    *ngIf="
+      this.form.controls['address'].touched &&
+      (this.form.get('lat')?.invalid || this.form.get('address')?.invalid)
+    "
+    class="text-[0.5rem] text-red-500"
+  >
+    {{this.errorsMessage['address']}}
+  </p>
   <div class="pt-3 text-center">
     <app-button [type]="'submit'">Crear Greenpoint</app-button>
   </div>

@@ -22,7 +22,9 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () =>
-          import('./pages/profile/profile.module').then((m) => m.ProfileModule),
+          import('./pages/profile/profile.module').then(
+            (m) => m.ProfileModule
+          ),
       },
       {
         path: 'recycled',
@@ -34,12 +36,16 @@ const routes: Routes = [
       {
         path: 'award',
         loadChildren: () =>
-          import('./pages/award/award.module').then((m) => m.AwardModule),
+          import('./pages/award/award.module').then(
+            (m) => m.AwardModule
+          ),
       },
       {
-        path: 'report',
+        path: 'stadistic',
         loadChildren: () =>
-          import('./pages/report/report.module').then((m) => m.ReportModule),
+          import('./pages/stadistic/stadistic.module').then(
+            (m) => m.StadisticModule
+          ),
       },
       {
         path: 'greenpoints',

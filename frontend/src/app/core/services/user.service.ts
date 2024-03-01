@@ -7,7 +7,7 @@ import { UserResponse } from '@models/user.model';
   providedIn: 'root',
 })
 export class UserService {
-  private readonly URL = environment.apiUrl + '/usuario';
+  private readonly URL = environment.apiUrl + '/api/usuario';
   constructor(private http: HttpClient) {}
 
   getUser(id: string | undefined) {

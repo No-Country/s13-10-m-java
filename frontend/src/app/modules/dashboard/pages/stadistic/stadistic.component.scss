@@ -9,22 +9,9 @@
   background-size: contain cover;
   background-position: top right;
   padding-inline: 1rem;
+  position: relative;
   @include md{
     background-size: contain;
+    padding-block: 2rem;
   }
-}
-
-.active {
-  border: 3px solid #0FA24A;
-  scale: 1.01;
-}
-
-.points {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.25rem;
-}
-
-table tbody tr:nth-of-type(odd) {
-  background-color: #f7f7f7;
 }
