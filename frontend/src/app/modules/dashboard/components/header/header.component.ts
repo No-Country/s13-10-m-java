@@ -20,7 +20,7 @@ export class HeaderComponent {
   ) {}
 
   ngOnInit() {
-    this.tokenData = this.tokenService.getTokenDecoded();
+    this.tokenData = this.tokenService.getDecodedToken();
   }
   showSidebar() {
     this.emitShowSidebar.emit(true);

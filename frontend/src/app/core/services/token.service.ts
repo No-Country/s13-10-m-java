@@ -10,7 +10,7 @@ export class TokenService {
 
   constructor() {}
 
-  getTokenDecoded(): tokenData | null | undefined {
+  getDecodedToken(): tokenData | null | undefined {
     const token = this.getToken();
 
     if (!token) {

@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   selector: 'app-modal-register-greenpoint',
   templateUrl: './modal-register-greenpoint.component.html',
   styleUrls: ['./modal-register-greenpoint.component.scss'],
-  animations:[fadeAnimation]
+  animations: [fadeAnimation],
 })
 export class ModalRegisterGreenpointComponent {
   @Output() closeModal = new EventEmitter<boolean>();
@@ -23,20 +23,20 @@ export class ModalRegisterGreenpointComponent {
   constructor(
     private greenpointService: GreenpointService,
     private tokenService: TokenService,
-    private router:Router
+    private router: Router
   ) {}
   createGreenpoint(form: FormGroup) {
     const newGreenpoint = this.parseFormToGreenpoint(form);
 
     this.greenpointService.createGreenpoint(newGreenpoint).subscribe({
       next: (res) => {
-        console.log("greepoint creado", res)
+        console.log('greepoint creado', res);
         Swal.fire({
-          icon:"success",
-          title:"<strong>Punto verde creado con éxito</strong>",
-        }).then(()=>{
-          window.location.reload()
-        })
+          icon: 'success',
+          title: '<strong>Punto verde creado con éxito</strong>',
+        }).then(() => {
+          window.location.reload();
+        });
       },
       error: (err) =>
         console.log('ocurrio un error al crear el greepoint', err),
@@ -48,7 +48,7 @@ export class ModalRegisterGreenpointComponent {
   }
 
   parseFormToGreenpoint(formGroup: FormGroup) {
-    const tokenData = this.tokenService.getTokenDecoded()!;
+    const tokenData = this.tokenService.getDecodedToken()!;
     const data: greenpointForm = formGroup.value;
     let recicledType: string[] = [];
     if (data.metal) recicledType.push('METAL');

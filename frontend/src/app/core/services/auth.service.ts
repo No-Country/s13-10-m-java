@@ -38,7 +38,7 @@ export class AuthService {
   getUserLogged() {
     return this.http
       .get<UserResponse>(
-        `${this.userUrl}/${this.tokenService.getTokenDecoded()?.USER_ID}`
+        `${this.userUrl}/${this.tokenService.getDecodedToken()?.USER_ID}`
       )
       .pipe(tap((res) => this.userLogged$.next(res)));
   }
