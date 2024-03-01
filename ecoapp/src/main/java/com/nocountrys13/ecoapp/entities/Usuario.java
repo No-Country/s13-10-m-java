@@ -28,7 +28,7 @@ public class Usuario implements Serializable {
     private Integer puntos;
     private String imgUrl;
 
-    @OneToMany
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PuntoVerde> puntosVerdes;
     
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

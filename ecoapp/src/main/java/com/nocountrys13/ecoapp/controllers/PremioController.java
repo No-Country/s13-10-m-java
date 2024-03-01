@@ -10,7 +10,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,23 +28,34 @@ public class PremioController {
     private final IPremioService premioService;
 
     @PostMapping
-    public ResponseEntity<PremioDtoResponse> savePrize(@RequestBody @Valid PremioDtoRequest premioDtoRequest) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(premioService.savePrize(premioDtoRequest));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<PremioDtoResponse>> getAllPrize() {
-        return ResponseEntity.status(HttpStatus.OK).body(premioService.getAllPrize());
+    public ResponseEntity<String> savePrize(
+            @RequestParam("imagen") MultipartFile multipartFile,
+            @RequestParam("nombrePremio") String nombrePremio,
+            @RequestParam("cantidad") Integer cantidad,
+            @RequestParam("puntos") Integer puntos,
+            @RequestParam("puntoVerdeId") UUID puntoVerdeId
+    ) {
+        try {
+            premioService.savePrize(multipartFile, nombrePremio, cantidad, puntos, puntoVerdeId);
+            return ResponseEntity.ok().body("Premio guardado.");
+        } catch (IOException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Verifica que la imagen no esté vacía.");
+        }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PremioDtoResponse> getOnePrize(@PathVariable(value = "id") UUID id) {
-        return ResponseEntity.status(HttpStatus.OK).body(premioService.getOnePrize(id));
+    public ResponseEntity<List<PremioDtoResponse>> getAllByPuntoVerdeId(@PathVariable UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(premioService.getAllByPuntoVerdeId(id));
     }
+
+//    @GetMapping("/{id}")
+//    public ResponseEntity<PremioDtoResponse> getOnePrize(@PathVariable(value = "id") UUID id) {
+//        return ResponseEntity.status(HttpStatus.OK).body(premioService.getOnePrize(id));
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<PremioDtoResponse> updatePrize(@PathVariable(value = "id") UUID id,
-                                              @RequestBody @Valid PremioDtoRequest premioDtoRequest) {
+                                                         @RequestBody @Valid PremioDtoRequest premioDtoRequest) {
         return ResponseEntity.status(HttpStatus.OK).body(premioService.updatePrize(id, premioDtoRequest));
     }
 

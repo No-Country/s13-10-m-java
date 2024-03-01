@@ -6,12 +6,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-public record ReciclajeResponseDto(
+public record ReciclajeUsuarioResponseDto(
         UUID reciclajeId,
         List<Material> materialesRecibidos,
         String descripcion,
         String email,
         LocalDate dia,
-        UUID userId
+        UUID userId,
+        String puntoVerdeNombre
 ) {
 }

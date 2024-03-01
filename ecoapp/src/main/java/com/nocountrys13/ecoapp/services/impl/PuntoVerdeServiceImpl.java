@@ -111,7 +111,8 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
                         r.getMaterialesRecibidos(),
                         r.getDescripcion(),
                         r.getUsuario().getEmail(),
-                        r.getDia()
+                        r.getDia(),
+                        r.getUsuario().getUserId()
                 )).toList()
                 : new ArrayList<>();
     }
