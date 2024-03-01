@@ -12,7 +12,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 - Estadísticas
 
 
-![Logo](https://drive.google.com/file/d/1tDta4pSbxJQk2vO9QryvUozcqXdcl5fK/view)
+![Logo](https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718823/Fotos/bq9s2qlhy1q9cdg5q6un.png)
 
 ## 🚀 Equipo
 
