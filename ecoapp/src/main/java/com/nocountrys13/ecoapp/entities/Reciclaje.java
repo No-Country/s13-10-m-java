@@ -1,5 +1,6 @@
 package com.nocountrys13.ecoapp.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -35,4 +36,7 @@ public class Reciclaje implements Serializable {
     @JoinColumn(name = "user_id")
     private Usuario usuario;
 
+    @ManyToOne
+    @JoinColumn(name = "punto_verde_id")
+    private PuntoVerde idPuntoVerde;
 }

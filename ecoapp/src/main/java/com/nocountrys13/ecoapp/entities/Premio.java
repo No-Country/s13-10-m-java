@@ -1,14 +1,14 @@
 package com.nocountrys13.ecoapp.entities;
 
+import com.nocountrys13.ecoapp.dtos.request.PremioDtoRequest;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -22,9 +22,15 @@ public class Premio implements Serializable {
     private String nombrePremio;
     private Integer cantidad;
     private Integer puntos;
+    private String imgUrl;
 
     @ManyToOne
     @JoinColumn(name = "puntoverde_id")
     private PuntoVerde puntoVerde;
 
+    public Premio(PremioDtoRequest premioDtoRequest) {
+        this.nombrePremio = premioDtoRequest.nombrePremio();
+        this.cantidad = premioDtoRequest.cantidad();
+        this.puntos = premioDtoRequest.puntos();
+    }
 }

@@ -35,8 +35,8 @@ public class EmailVerification implements Serializable {
 	private LocalDateTime creationTime;
 	private LocalDateTime expirationTime;
 	
-	@OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    @JoinColumn(name = "userId", referencedColumnName = "userId", nullable = false)
+	@OneToOne
+    @JoinColumn(name = "userId", nullable = false)
     private Usuario usuario;
   
 }
