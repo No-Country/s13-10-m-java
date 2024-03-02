@@ -8,7 +8,12 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { position } from '@models/address.model';
 import { StaticData } from '@utils/staticData';
-import { onlyAlphanumerics, onlyNumbers, phoneValidator, validatorOpeningHour } from '@utils/validator';
+import {
+  onlyAlphanumerics,
+  onlyNumbers,
+  phoneValidator,
+  validatorOpeningHour,
+} from '@utils/validator';
 
 type formErrorMessage = {
   [prop: string]: string;
@@ -57,7 +62,7 @@ export class FormGreenpointComponent {
       return;
     }
     this.emitFormData.emit(this.form);
-    this.form.reset();
+    //this.form.reset();
   }
 
   initForm() {
@@ -68,7 +73,7 @@ export class FormGreenpointComponent {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(60),
-          onlyAlphanumerics
+          onlyAlphanumerics,
         ],
       ],
       dni: [
@@ -77,7 +82,7 @@ export class FormGreenpointComponent {
           Validators.required,
           Validators.maxLength(15),
           Validators.minLength(6),
-          onlyNumbers
+          onlyNumbers,
         ],
       ],
       phone: [
@@ -86,7 +91,7 @@ export class FormGreenpointComponent {
           Validators.required,
           Validators.minLength(14),
           Validators.maxLength(14),
-          phoneValidator
+          phoneValidator,
         ],
       ],
       openTime: ['08:00', [Validators.required, validatorOpeningHour]],
@@ -102,7 +107,14 @@ export class FormGreenpointComponent {
       plastico: [false],
       vidrio: [false],
       metal: [false],
-      address: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
+      address: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255),
+        ],
+      ],
       lat: ['', [Validators.required]],
       lng: ['', [Validators.required]],
     });
@@ -121,14 +133,14 @@ export class FormGreenpointComponent {
     if (error['invalidTime']) {
       message = `Horario Inválido`;
     }
-    if(error['specialChar']){
-      message = "Solo caracteres alfanuméricos."
+    if (error['specialChar']) {
+      message = 'Solo caracteres alfanuméricos.';
     }
-    if(error['noNumericChar']){
-      message = "Solo caracteres numéricos."
+    if (error['noNumericChar']) {
+      message = 'Solo caracteres numéricos.';
     }
-    if(error['invalidPhone']){
-      message = "el numero debe comenzar con +549..."
+    if (error['invalidPhone']) {
+      message = 'el numero debe comenzar con +549...';
     }
     this.errorsMessage[field] = message;
   }
@@ -142,7 +154,7 @@ export class FormGreenpointComponent {
     this.validateField('openTime');
     this.validateField('closeTime');
   }
-  validateDay(){
+  validateDay() {
     const daysControl = [
       this.form.get('lunes')!,
       this.form.get('martes')!,
@@ -150,19 +162,21 @@ export class FormGreenpointComponent {
       this.form.get('jueves')!,
       this.form.get('viernes')!,
       this.form.get('sabado')!,
-      this.form.get('domingo')!
-    ]
-    this.invalidDay = !daysControl.some(day=>day.value===true);
+      this.form.get('domingo')!,
+    ];
+    this.invalidDay = !daysControl.some((day) => day.value === true);
   }
 
-  validateType(){
+  validateType() {
     const typesControl = [
-      this.form.get("papelcarton")!,
-      this.form.get("plastico")!,
-      this.form.get("metal")!,
-      this.form.get("vidrio")!,
-    ]
-    const isValidate = typesControl.some(typeControl=>typeControl.value===true)
+      this.form.get('papelcarton')!,
+      this.form.get('plastico')!,
+      this.form.get('metal')!,
+      this.form.get('vidrio')!,
+    ];
+    const isValidate = typesControl.some(
+      (typeControl) => typeControl.value === true
+    );
     this.invalidType = !isValidate;
   }
 
