@@ -9,5 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface ReciclajeRepository extends JpaRepository<Reciclaje, UUID> {
-
+    List<Reciclaje> findAllByUsuarioUserId(UUID userId);
 }
