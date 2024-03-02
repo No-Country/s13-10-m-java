@@ -4,3 +4,12 @@ export interface IAuthRegister {
   email: string;
   password: string;
 }
+
+export interface IAuthLoginReq {
+  email: string;
+  password: string;
+}
+
+export interface IAuthLoginRes {
+  token: string;
+}

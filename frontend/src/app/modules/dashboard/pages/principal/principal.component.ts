@@ -1,28 +1,29 @@
-import { Component } from '@angular/core';import { greenPointResponse, greenpoint } from '@models/greenpoint.model';
+import { Component, OnInit } from '@angular/core';
+import { greenPointResponse, greenpoint } from '@models/greenpoint.model';
 import { UserResponse } from '@models/user.model';
+import { AuthService } from '@services/auth.service';
 import { GreenpointService } from '@services/greenpoint.service';
-import { TokenService } from '@services/token.service';
-import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.scss'],
 })
-export class PrincipalComponent {
-  greenpoints: greenPointResponse[]=[];
-  filter = "todos";
-  userData!:UserResponse
+export class PrincipalComponent implements OnInit {
+  greenpoints: greenPointResponse[] = [];
+  filter = 'todos';
+  user: UserResponse | null = null;
+
   constructor(
-    private greenpoint:GreenpointService,
-    private userService : UserService,
-    private tokenService:TokenService
-  ){}
+    private greenpoint: GreenpointService,
+    private readonly authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.getGreenpoints();
-    this.getUserData()
+    this.authService.userLogged$.subscribe((res) => (this.user = res));
   }
+
   getGreenpoints() {
     this.greenpoint.getAllGreenpoints().subscribe({
       next: (res) => {
@@ -32,14 +33,4 @@ export class PrincipalComponent {
       error: (err) => console.error('ocurrio un error', { err }),
     });
   }
-  getUserData(){
-    const userId = this.tokenService.getTokenDecoded()!;
-    this.userService.getUser(userId.USER_ID).subscribe({
-      next:(res)=>{
-        this.userData = res
-      },
-      error:(err)=>console.log("error al obtener user", err)
-    })
-  }
-
 }

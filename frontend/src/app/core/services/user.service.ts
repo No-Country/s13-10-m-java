@@ -4,13 +4,13 @@ import { environment } from '@environments/environment';
 import { UserResponse } from '@models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  private readonly URL = environment.apiUrl+"/api/usuario"
-  constructor(private http:HttpClient) { }
+  private readonly URL = environment.apiUrl + '/api/usuario';
+  constructor(private http: HttpClient) {}
 
-  getUser(id:string){
-    return this.http.get<UserResponse>(this.URL+`/${id}`)
+  getUser(id: string | undefined) {
+    return this.http.get<UserResponse>(this.URL + `/${id}`);
   }
 }

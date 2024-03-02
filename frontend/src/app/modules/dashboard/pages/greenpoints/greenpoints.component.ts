@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SelectedGreenPointResponse } from '@models/greenpoint.model';
+import { GreenpointService } from '@services/greenpoint.service';
 
 @Component({
   selector: 'app-greenpoints',
@@ -6,9 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./greenpoints.component.scss'],
 })
 export class GreenpointsComponent {
-  selected: boolean = false;
+  greenpoints: SelectedGreenPointResponse[] = [];
+  selectedGreenpoint: SelectedGreenPointResponse | null = null;
 
-  handleSelected() {
-    this.selected = !this.selected;
+  constructor(private readonly greenpointService: GreenpointService) {
+    this.greenpointService.getUserGreenpoints().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.greenpoints = res;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  handleSelected(index: number) {
+    this.greenpoints.forEach((greenpoint, i) => {
+      greenpoint.selected = index === i;
+      this.selectedGreenpoint = index === i ? greenpoint : null;
+    });
   }
 }

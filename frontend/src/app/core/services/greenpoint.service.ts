@@ -3,14 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { greenPointResponse, greenpointDTO } from '../models/greenpoint.model';
 import { environment } from '@environments/environment';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GreenpointService {
-  private readonly URL = environment.apiUrl+"/api/puntosVerde";
+  private readonly URL = environment.apiUrl + '/api/puntosVerde';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private readonly tokenService: TokenService
+  ) {}
   /**
    * this method returns an array observable of greenpoints
    * @returns {Observable<greenPointResponse[]>}
@@ -28,7 +32,13 @@ export class GreenpointService {
     return this.http.get<greenPointResponse[]>(this.URL);
   }
 
-  createGreenpoint(data:greenpointDTO){
+  createGreenpoint(data: greenpointDTO) {
     return this.http.post<greenPointResponse>(this.URL, data);
+  }
+
+  getUserGreenpoints() {
+    return this.http.get<greenPointResponse[]>(
+      `${this.URL}/usuario/${this.tokenService.getDecodedToken()?.USER_ID}`
+    );
   }
 }

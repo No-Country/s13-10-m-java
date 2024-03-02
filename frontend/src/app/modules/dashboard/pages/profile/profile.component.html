@@ -1,27 +1,40 @@
-<p class="text-white font-inter text-3xl font-bold">
-    Perfil de usuario
-</p>
+<p class="text-white font-inter text-3xl font-bold">Perfil de usuario</p>
 <span class="text-white font-inter text-lg font-semibold my-8"></span>
-<section class="md:flex md:flex-row min-w-full h-5/6 rounded-md ">
-    <article class="md:w-1/2 my-4 mx-4 h-80 rounded-md bg-white  overflow-x-auto shadow-lg">
-        <div class="h-1/2  flex flex-col justify-end items-start ps-8" style="background-image: url('assets/img/bg-pixeles.png'); background-size: cover;">
-            
-            <div class="w-40 h-40 rounded-full bg-white">
-                <img src="
-                assets/img/GreenPoint.png" alt="imagen-perfil" >
-            </div>
-        </div>
-        <div class="h-1/2 p-8">
-            
-            <h1 class=" font-inter text-3xl font-bold">{{'Juanito Alimaña'}}</h1>
-            <h2 class=" font-inter text-lg font-semibold my-4">{{'Juanalimania@correo.com'}}</h2>
-
-        </div>
-    </article>
-    <article class="md:w-1/2  p-8 my-4 mx-4 h-80 rounded-md bg-white  overflow-x-auto  shadow-lg">
-        
-        <h1 class=" font-inter text-3xl font-bold">{{'Acerca de'}}</h1>
-        <h2 class=" font-inter text-lg font-semibold my-4">{{'Validado'}}</h2>
-        <h2 class=" font-inter text-lg font-semibold my-4">{{'150 EcoPuntos'}}</h2>
-    </article>
+<section class="md:flex md:flex-row min-w-full h-5/6 rounded-md">
+  <article
+    class="md:w-1/2 my-4 mx-4 h-80 rounded-md bg-white overflow-x-auto shadow-lg"
+  >
+    <div
+      class="h-1/2 flex flex-col justify-end items-start ps-8"
+      style="
+        background-image: url('assets/img/bg-pixeles.png');
+        background-size: cover;
+      "
+    >
+      <div class="w-40 h-40 rounded-full bg-white">
+        <img
+          src="
+                assets/img/GreenPoint.png"
+          alt="imagen-perfil"
+        />
+      </div>
+    </div>
+    <div class="h-1/2 p-8">
+      <h1 class="font-inter text-3xl font-bold">
+        {{ user?.nombre }} {{ user?.apellido }}
+      </h1>
+      <h2 class="font-inter text-lg font-semibold my-4">{{ user?.email }}</h2>
+    </div>
+  </article>
+  <article
+    class="md:w-1/2 p-8 my-4 mx-4 h-80 rounded-md bg-white overflow-x-auto shadow-lg"
+  >
+    <h1 class="font-inter text-3xl font-bold">{{ "Acerca de" }}</h1>
+    <h2 class="font-inter text-lg font-semibold my-4">
+      {{ user?.validEmail ? "Validado" : "Por validar" }}
+    </h2>
+    <h2 class="font-inter text-lg font-semibold my-4">
+      {{ user?.puntos }} Ecopuntos
+    </h2>
+  </article>
 </section>

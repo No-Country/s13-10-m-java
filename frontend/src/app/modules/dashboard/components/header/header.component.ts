@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { tokenData } from '@models/token.model';
 import { TokenService } from '@services/token.service';
-import { LoginService } from '../../../../core/services/login.service';
 import Swal from 'sweetalert2';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,15 +12,15 @@ import Swal from 'sweetalert2';
 export class HeaderComponent {
   @Output() emitShowSidebar = new EventEmitter<boolean>();
   @Output() emitShowModal = new EventEmitter<boolean>();
-  tokenData!: tokenData | undefined;
+  tokenData!: tokenData | null | undefined;
 
   constructor(
     private tokenService: TokenService,
-    private loginService: LoginService
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    this.tokenData = this.tokenService.getTokenDecoded();
+    this.tokenData = this.tokenService.getDecodedToken();
   }
   showSidebar() {
     this.emitShowSidebar.emit(true);
@@ -45,7 +45,7 @@ export class HeaderComponent {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.loginService.logout();
+        this.authService.logout();
       }
     });
   }

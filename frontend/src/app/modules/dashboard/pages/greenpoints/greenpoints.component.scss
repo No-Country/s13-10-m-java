@@ -22,6 +22,7 @@
 .points {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
 }
 
 table tbody tr:nth-of-type(odd) {

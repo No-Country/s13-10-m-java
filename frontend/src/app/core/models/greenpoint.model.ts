@@ -38,7 +38,10 @@ export interface greenpointDTO {
   latitud: string;
   longitud: string;
 }
-export interface greenPointResponse extends
-  Omit<greenpointDTO, 'userId' | 'dni'>{
-  puntoVerdeId:string
+export interface greenPointResponse
+  extends Omit<greenpointDTO, 'userId' | 'dni'> {
+  puntoVerdeId: string;
+}
+export interface SelectedGreenPointResponse extends greenPointResponse {
+  selected?: boolean;
 }

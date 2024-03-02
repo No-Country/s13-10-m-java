@@ -1,5 +1,5 @@
-<h2 *ngIf="userData" class="text-white text-xl font-bold md:text-2xl mb-2">
-  Bienvenido {{ userData.nombre | titlecase}}.
+<h2 class="text-white text-xl font-bold md:text-2xl mb-2">
+  Bienvenido {{ user?.nombre }} {{ user?.apellido }}.
 </h2>
 <p class="text-white">
   Aqu&iacute; encontraras los puntos de recepci&oacute;n de desechos reciclables
