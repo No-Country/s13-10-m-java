@@ -7,7 +7,7 @@ import java.util.List;
 
 public record UpdatePuntoVerdeDtoRequest(
         @NotBlank String nombre,
-        @NotBlank @Pattern(regexp = "^549\\d{10}$") String telefono,
+        @NotBlank @Pattern(regexp = "^5\\d{10}$") String telefono,
         @NotEmpty List<Material> materialesAceptados,
         @NotBlank @Size(max = 255) String horarioAtencion,
         @NotBlank @Size(max = 255) String diasAtencion,
@@ -15,5 +15,5 @@ public record UpdatePuntoVerdeDtoRequest(
         String latitud,
         String longitud
 
-        ) {
+) {
 }

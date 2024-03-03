@@ -1,7 +1,6 @@
 package com.nocountrys13.ecoapp.dtos.response;
 
 import com.nocountrys13.ecoapp.entities.Premio;
-import com.nocountrys13.ecoapp.entities.PuntoVerde;
 
 import java.util.UUID;
 

@@ -14,8 +14,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-	
-	 //tratando los errores de campos del registro para que no se reciba campos nulos, vacio etc.
+
+    //tratando los errores de campos del registro para que no se reciba campos nulos, vacio etc.
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidateExceptions(MethodArgumentNotValidException ex) {
@@ -29,13 +29,13 @@ public class GlobalExceptionHandler {
 
         return errors;
     }
-    
+
     //controlando el response estatus exception
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleResponseStatusException(ResponseStatusException ex) {
-  
+
         return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
     }
-    
- 
+
+
 }
