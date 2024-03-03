@@ -2,7 +2,6 @@ package com.nocountrys13.ecoapp.services.impl;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
@@ -13,13 +12,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.nocountrys13.ecoapp.dtos.response.ImagenDtoResponse;
 import com.nocountrys13.ecoapp.entities.Imagen;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.ImagenRepository;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
 import com.nocountrys13.ecoapp.services.IUsuarioService;
 import com.nocountrys13.ecoapp.services.ImagenService;
-import com.nocountrys13.ecoapp.services.impl.ClaudinaryServiceImpl.CloudinaryService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,13 +26,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ImagenServiceImpl implements ImagenService {
 	
-	private final CloudinaryService cloudinaryService;
+	private final CloudinaryServiceImpl cloudinaryService;
 	private final ImagenRepository imagenRepository;
 	private final IUsuarioService usuariService;
 	private final UsuarioRepository usuarioRepository;
 
 	
-	  public Imagen save(MultipartFile multipartFile , UserDetails userDetails) throws IOException{
+	  public ImagenDtoResponse save(MultipartFile multipartFile , UserDetails userDetails) throws IOException{
 	    	
 		  BufferedImage bi = ImageIO.read(multipartFile.getInputStream());
 			if (bi == null) {
@@ -55,17 +54,10 @@ public class ImagenServiceImpl implements ImagenService {
 			imagen.setCloudinaryId((String) result.get("public_id"));
 			imagen.setUsuario(UsuarioLoguado);
 			
-	        return imagenRepository.save(imagen); 
+	       imagenRepository.save(imagen); 
+	       
+	       return new ImagenDtoResponse(imagen.getName(), imagen.getImagenUrl());
 	        
-	    }
-
-	@Override
-	public List<Imagen> getAll() {
-		// TODO Auto-generated method stub
-		return imagenRepository.findAll();
-		}
+	    } 
 	  
-	  
-	  
-
 }

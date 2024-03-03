@@ -13,7 +13,7 @@ public interface IEmailService {
 	
 	public void verifyEmail(String token, UUID userId) throws Exception;
 	
-	public MimeMessage CreateMensaje(String template, Usuario user) throws MessagingException;
+	public MimeMessage CreateMensaje(String htmlContent, String email) throws MessagingException;
 	
 
 }

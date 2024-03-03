@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,10 +28,12 @@ public class Usuario implements Serializable {
     private Boolean validEmail;
     private Integer puntos;
     private String imgUrl;
+    private Boolean cuentaEliminada;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PuntoVerde> puntosVerdes;
+    private List<PuntoVerde> puntosVerdes= new ArrayList<>();
     
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private EmailVerification emailVerification;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Canje> canje;
+    
 }

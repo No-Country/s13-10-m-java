@@ -28,34 +28,33 @@ public class ResumenServiceImp implements IResumenService {
 	public Object ResumenUser(UserDetails userLogueado) {
 		
 		Optional <Usuario> user = Optional.of( usuarioRepository.findByEmail(userLogueado.getUsername()));
-									
+						
 		if(user.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Noexiste el usuario");
 		}
 		
 		List<PuntoVerde> listaPV = user.get().getPuntosVerdes();
 		
-		if ( listaPV.isEmpty()) {
+		System.out.println("******* ----> " + listaPV.isEmpty());
+		
+		if (listaPV.isEmpty()) {
 			return resumenUserRole(user.get());
 		} else {
-			return resumenUserPuntoVErde(listaPV );
+			return resumenUserPuntoVErde(user.get() );
 
 		}
 
 	}
 
 	
-	
 	// estadisticas del usuario comun(registrado)
-	private ResumenUsuarioResponse resumenUserRole(Usuario user) {
-		ResumenUsuarioResponse userResponse = new ResumenUsuarioResponse();
-		return userResponse;
+	private ResumenUsuarioResponse resumenUserRole(Usuario user) {	
+		return  new ResumenUsuarioResponse(user);
 	}
 
 	// estadisticas del usuario con punto verde
-	private ResumenPuntoVerdeResponse resumenUserPuntoVErde(List<PuntoVerde> listaPV) {
-		ResumenPuntoVerdeResponse userConPuntoVerd = new ResumenPuntoVerdeResponse();
-		return userConPuntoVerd;
+	private ResumenPuntoVerdeResponse resumenUserPuntoVErde(Usuario user) {
+		return new ResumenPuntoVerdeResponse(user);
 	}
 
 }
