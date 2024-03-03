@@ -13,21 +13,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
-import com.nocountrys13.ecoapp.services.impl.ClaudinaryServiceImpl.CloudinaryService;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class PremioServiceImpl implements IPremioService {
 
     private final PremioRepository premioRepository;
-    private final CloudinaryService cloudinaryService;
+    private final CloudinaryServiceImpl cloudinaryService;
     private final PuntoVerdeRepository puntoVerdeRepository;
 
     @Override

@@ -74,7 +74,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public String deleteUser(UUID id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
-            usuarioRepository.delete(usuario.get());
+        	var user = usuario.get();
+        	user.setCuentaEliminada(true);
+        	usuarioRepository.save(user);
+            //usuarioRepository.delete(usuario.get());
             return "El usuario fue eliminado";
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");

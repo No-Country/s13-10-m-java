@@ -2,7 +2,6 @@ package com.nocountrys13.ecoapp.controllers;
 
 import com.nocountrys13.ecoapp.dtos.request.CrearPuntoVerdeDtoRequest;
 import com.nocountrys13.ecoapp.dtos.request.UpdatePuntoVerdeDtoRequest;
-import com.nocountrys13.ecoapp.dtos.response.PuntoVerdeDtoResponse;
 import com.nocountrys13.ecoapp.services.IPuntoVerdeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

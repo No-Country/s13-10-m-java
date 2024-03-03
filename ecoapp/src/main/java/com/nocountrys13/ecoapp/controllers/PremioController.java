@@ -2,7 +2,6 @@ package com.nocountrys13.ecoapp.controllers;
 
 import com.nocountrys13.ecoapp.dtos.request.PremioDtoRequest;
 import com.nocountrys13.ecoapp.dtos.response.PremioDtoResponse;
-import com.nocountrys13.ecoapp.entities.Premio;
 import com.nocountrys13.ecoapp.services.IPremioService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

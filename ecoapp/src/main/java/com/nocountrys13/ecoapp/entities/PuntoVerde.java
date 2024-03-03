@@ -41,6 +41,9 @@ public class PuntoVerde implements Serializable {
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Reciclaje> listadoReciclaje;
+    
+    @OneToMany(mappedBy = "puntoVerde", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Premio> listPremio;
 
 
     public PuntoVerde(String nombrePv, String latitud, String longitud, String telefono, String dni,

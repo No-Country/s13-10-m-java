@@ -33,9 +33,7 @@ public class GlobalExceptionHandler {
     //controlando el response estatus exception
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleResponseStatusException(ResponseStatusException ex) {
-
         return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
     }
-
 
 }

@@ -44,10 +44,17 @@ public class EmailServiceImpl implements IEmailService {
 			emailVeridication.setCreationTime(LocalDateTime.now());
 			emailVeridication.setExpirationTime(LocalDateTime.now().plusMinutes(10));
 			emailVeridication.setUsuario(user);
-			user.setEmailVerification(emailVeridication);
+			//user.setEmailVerification(emailVeridication);
 			emailRepository.save(emailVeridication);
+			
+			Context context = new Context();
+			context.setVariable("token", emailVeridication.getToken());
+			context.setVariable("userName", user.getNombre() + " " + user.getApellido());
+			context.setVariable("userId", user.getUserId());
 
-			emailSender.send(CreateMensaje("bienvenida", user));
+			String htmlContent = templateEngine.process("bienvenida", context);
+
+			emailSender.send(CreateMensaje(htmlContent, user.getEmail()));
 
 		} catch (Exception e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
@@ -55,20 +62,13 @@ public class EmailServiceImpl implements IEmailService {
 	}
 
 	@Override
-	public MimeMessage CreateMensaje(String template, Usuario user) throws MessagingException {
-
-		Context context = new Context();
-		context.setVariable("token", user.getEmailVerification().getToken());
-		context.setVariable("userName", user.getNombre() + " " + user.getApellido());
-		context.setVariable("userId", user.getUserId());
-
-		String htmlContent = templateEngine.process(template, context);
+	public MimeMessage CreateMensaje(String htmlContent, String email) throws MessagingException {
 
 		MimeMessage message = emailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
 		helper.setFrom(Originmail);
-		helper.setTo(user.getEmail());
+		helper.setTo(email);
 		helper.setSubject("GREEPOINT");
 		helper.setText(htmlContent, true);
 
@@ -96,7 +96,14 @@ public class EmailServiceImpl implements IEmailService {
 			email.setToken(generateVerificationCode());
 			emailRepository.save(email);
 			
-			emailSender.send(CreateMensaje("reenviarEmail",  user));
+			Context context = new Context();
+			context.setVariable("token", email.getToken());
+			context.setVariable("userName", user.getNombre() + " " + user.getApellido());
+			context.setVariable("userId", user.getUserId());
+			String htmlContent = templateEngine.process("reenviaremail", context);
+
+			
+			emailSender.send(CreateMensaje(htmlContent, user.getEmail()));
 			
 	        throw new Exception("La validación ha expirado y se ha enviado un nuevo enlace por correo electrónico");
 			
