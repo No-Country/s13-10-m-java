@@ -83,61 +83,89 @@
       <section role="region" class="flex flex-col gap-2.5">
         <h2 class="text-white font-semibold text-lg">Premiar a los usuarios</h2>
         <div class="bg-white p-4 rounded-xl">
-          <table class="table-fixed w-full">
-            <thead>
-              <tr>
-                <th class="text-left text-gray-600 py-2">Usuario</th>
-                <th class="text-left text-gray-600 py-2">Tipo</th>
-                <th class="text-left text-gray-600 py-2">Descripción</th>
-                <th class="text-left text-gray-600 py-2">Fecha</th>
-                <th class="text-left text-gray-600 py-2">Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="flex items-center gap-1 py-2 text-gray-700">
-                  <span class="material-symbols-outlined">person</span>
-                  Ludmila-gmail.com
-                </td>
-                <td class="py-2 text-gray-700">Cartón</td>
-                <td class="py-2 text-gray-700">
-                  5 kg de cartón proveniente...
-                </td>
-                <td class="py-2 text-gray-700">02-01-24</td>
-                <td
-                  class="flex items-center gap-1 font-semibold py-2 text-[#ffc107]"
-                >
-                  <span
-                    class="material-symbols-outlined bg-[#FFC107] text-white rounded-full"
-                    >add</span
+          <div class="overflow-x-auto">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th class="text-left text-gray-600 py-2 px-5">Usuario</th>
+                  <th class="text-left text-gray-600 py-2 px-5">Tipo</th>
+                  <th class="text-left text-gray-600 py-2 px-5">Descripción</th>
+                  <th class="text-left text-gray-600 py-2 px-5">Fecha</th>
+                  <th class="text-left text-gray-600 py-2 px-5">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reciclaje of selectedGreenpoint.reciclajes">
+                  <td
+                    class="flex items-center gap-1 py-2 px-5 text-gray-700 whitespace-nowrap"
                   >
-                  Otorgar EcoPuntos
-                </td>
-              </tr>
-              <tr>
-                <td class="flex items-center gap-1 py-2 text-gray-700">
-                  <span class="material-symbols-outlined">person</span>
-                  David-gmail.com
-                </td>
-                <td class="py-2 text-gray-700">Cartón</td>
-                <td class="py-2 text-gray-700"></td>
-                <td class="py-2 text-gray-700">12-12-23</td>
-                <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
-              </tr>
-              <tr>
-                <td class="flex items-center gap-1 py-2 text-gray-700">
-                  <span class="material-symbols-outlined">person</span>
-                  Indira-gmail.com
-                </td>
-                <td class="py-2 text-gray-700">Cartón, Metal</td>
-                <td class="py-2 text-gray-700">
-                  Metal, cobres y hierro en bu...
-                </td>
-                <td class="py-2 text-gray-700">12-12-23</td>
-                <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
-              </tr>
-            </tbody>
-          </table>
+                    <span class="material-symbols-outlined">person</span>
+                    {{ reciclaje.email }}
+                  </td>
+                  <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
+                    {{ reciclaje.materialesRecibidos }}
+                  </td>
+                  <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
+                    {{ reciclaje.descripcion }}
+                  </td>
+                  <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
+                    {{ reciclaje.dia }}
+                  </td>
+                  <td
+                    class="flex items-center gap-1 font-semibold py-2 px-5 text-[#ffc107] whitespace-nowrap"
+                  >
+                    <span
+                      class="material-symbols-outlined bg-[#FFC107] text-white rounded-full"
+                      >add</span
+                    >
+                    Otorgar EcoPuntos
+                  </td>
+                </tr>
+                <!-- <tr>
+                    <td class="flex items-center gap-1 py-2 text-gray-700">
+                      <span class="material-symbols-outlined">person</span>
+                      Ludmila-gmail.com
+                    </td>
+                    <td class="py-2 text-gray-700">Cartón</td>
+                    <td class="py-2 text-gray-700">
+                      5 kg de cartón proveniente...
+                    </td>
+                    <td class="py-2 text-gray-700">02-01-24</td>
+                    <td
+                      class="flex items-center gap-1 font-semibold py-2 text-[#ffc107]"
+                    >
+                      <span
+                        class="material-symbols-outlined bg-[#FFC107] text-white rounded-full"
+                        >add</span
+                      >
+                      Otorgar EcoPuntos
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="flex items-center gap-1 py-2 text-gray-700">
+                      <span class="material-symbols-outlined">person</span>
+                      David-gmail.com
+                    </td>
+                    <td class="py-2 text-gray-700">Cartón</td>
+                    <td class="py-2 text-gray-700"></td>
+                    <td class="py-2 text-gray-700">12-12-23</td>
+                    <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
+                  </tr>
+                  <tr>
+                    <td class="flex items-center gap-1 py-2 text-gray-700">
+                      <span class="material-symbols-outlined">person</span>
+                      Indira-gmail.com
+                    </td>
+                    <td class="py-2 text-gray-700">Cartón, Metal</td>
+                    <td class="py-2 text-gray-700">
+                      Metal, cobres y hierro en bu...
+                    </td>
+                    <td class="py-2 text-gray-700">12-12-23</td>
+                    <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
+                  </tr> -->
+              </tbody>
+            </table>
+          </div>
           <app-button type="button" class="mt-6"
             >Añadir usuario reciclador</app-button
           >

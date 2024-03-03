@@ -1,3 +1,5 @@
+import { IRecyclingRes } from './recycling.model';
+
 export interface greenpoint {
   nombre: string;
   direccion: string;
@@ -18,13 +20,13 @@ export interface greenpointForm {
   plastico: boolean;
   vidrio: boolean;
   metal: boolean;
-  lunes:boolean;
-  martes:boolean;
-  miercoles:boolean;
-  jueves:boolean;
-  viernes:boolean;
-  sabado:boolean;
-  domingo:boolean;
+  lunes: boolean;
+  martes: boolean;
+  miercoles: boolean;
+  jueves: boolean;
+  viernes: boolean;
+  sabado: boolean;
+  domingo: boolean;
 }
 export interface greenpointDTO {
   userId: string;
@@ -41,6 +43,7 @@ export interface greenpointDTO {
 export interface greenPointResponse
   extends Omit<greenpointDTO, 'userId' | 'dni'> {
   puntoVerdeId: string;
+  reciclajes: IRecyclingRes[];
 }
 export interface SelectedGreenPointResponse extends greenPointResponse {
   selected?: boolean;
