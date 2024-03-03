@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  constructor(private readonly router: Router){
+  constructor(private readonly router: Router) {
     this.isLogged = !!localStorage.getItem('token');
-  };
+  }
   isMenuOpen: boolean = false;
 
   toggleMenu() {

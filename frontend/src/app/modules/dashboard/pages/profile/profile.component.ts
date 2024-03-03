@@ -9,7 +9,7 @@ import { GeneralValidator, emailValidator, numericSpecialCharacterValidator } fr
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
   form: FormGroup;
@@ -57,7 +57,7 @@ export class ProfileComponent {
   }); }
 
   ngOnInit() {
-    this.tokenData = this.tokenService.getTokenDecoded()!;
+    this.tokenData = this.tokenService.getDecodedToken()!;
 
     this.userService.getUser(this.tokenData.USER_ID).subscribe({
       next: (response) => {
@@ -239,5 +239,6 @@ export class ProfileComponent {
   }
 
 
+  
 }
 

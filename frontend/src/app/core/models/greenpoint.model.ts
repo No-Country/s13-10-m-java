@@ -7,19 +7,24 @@ export interface greenpoint {
 }
 export interface greenpointForm {
   address: string;
-  closeDay: string;
   closeTime: string;
   dni: string;
   lat: string;
   lng: string;
   name: string;
-  openDay: string;
   openTime: string;
   phone: string;
   papelcarton: boolean;
   plastico: boolean;
   vidrio: boolean;
   metal: boolean;
+  lunes:boolean;
+  martes:boolean;
+  miercoles:boolean;
+  jueves:boolean;
+  viernes:boolean;
+  sabado:boolean;
+  domingo:boolean;
 }
 export interface greenpointDTO {
   userId: string;
@@ -33,7 +38,10 @@ export interface greenpointDTO {
   latitud: string;
   longitud: string;
 }
-export interface greenPointResponse extends
-  Omit<greenpointDTO, 'userId' | 'dni'>{
-  puntoVerdeId:string
+export interface greenPointResponse
+  extends Omit<greenpointDTO, 'userId' | 'dni'> {
+  puntoVerdeId: string;
+}
+export interface SelectedGreenPointResponse extends greenPointResponse {
+  selected?: boolean;
 }

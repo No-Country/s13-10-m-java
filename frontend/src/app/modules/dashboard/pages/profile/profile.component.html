@@ -1,6 +1,4 @@
-<p class="text-white font-inter text-3xl font-bold">
-    Perfil de usuario
-</p>
+<p class="text-white font-inter text-3xl font-bold">Perfil de usuario</p>
 <span class="text-white font-inter text-lg font-semibold my-8"></span>
 <section class="md:flex md:flex-row min-w-full h-5/6 rounded-md ">
     <article class="md:w-1/2 my-4 mx-4 h-80 rounded-md bg-white  overflow-x-auto shadow-lg">
@@ -46,57 +44,4 @@
                 cuenta</app-button>
         </div>
     </article>
-</section>
-<section id="edit" class="hidden">
-    <article class="my-4 mx-4 p-8  rounded-md bg-white  overflow-x-auto  shadow-lg flex flex-col justify-end">
-        <!-- [formGroup]="form" -->
-        <!-- no me permite colocar esto -->
-        <form  
-        
-        (ngSubmit)="onSubmit()" class="flex flex-col gap-6">
-
-            <div>
-                <label for="name" class="block text-lg text-gray-900">Nombre</label>
-                <input type="text" value="{{userData.nombre}}" id="name"
-                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-                    formControlName="nombre" />
-                <strong class="text-sm font-semibold text-red-700">{{
-                    nameErrorMessage
-                    }}</strong>
-            </div>
-            <div>
-                <label for="lastName" class="block text-lg text-gray-900">Apellido</label>
-                <input type="text" value="{{userData.apellido}}" id="lastName"
-                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-                    formControlName="apellido" />
-                <strong class="text-sm font-semibold text-red-700">{{
-                    lastNameErrorMessage
-                    }}</strong>
-            </div>
-            <div>
-                <label for="email" class="block text-lg text-gray-900">E-mail</label>
-                <input type="email" value="{{userData.email}}" id="email"
-                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
-                    formControlName="email" />
-                <strong class="text-sm font-semibold text-red-700">{{
-                    emailErrorMessage
-                    }}</strong>
-            </div>
-            <div><label for="img-picker" class="block text-lg text-gray-900">Seleccione una
-                    imagen:</label>
-                <input type="file" id="img-picker" name="img-picker" accept=".png,.jpg.jpeg"
-                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500">
-                
-            </div>
-            <div class="flex justify-center items-center">
-
-                    <div class="w-28 h-28 rounded-full bg-white flex justify-center items-center">
-                        <img id="preview" src="{{userData.imgUrl}}" alt="imagen-perfil"
-                            class="w-28 h-28 rounded-full bg-white ">
-                    </div>
-                </div>
-            <app-button type="submit" color="success" class="mt-8 m-auto">Guardar cambios</app-button>
-        </form>
-    </article>
-
 </section>

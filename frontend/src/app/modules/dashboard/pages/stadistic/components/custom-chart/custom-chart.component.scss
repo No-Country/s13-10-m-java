@@ -1,0 +1,13 @@
+@import "/src/app/core/styles/breakpoints";
+:host{
+  display: block;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.25);
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  width: clamp(300px, 80%, 600px);
+  @include lg{
+  }
+}
