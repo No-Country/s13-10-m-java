@@ -20,7 +20,6 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid RegisterDtoRequest dto) {
-        
         return ResponseEntity.status(201).body(service.register(dto));
     }
 

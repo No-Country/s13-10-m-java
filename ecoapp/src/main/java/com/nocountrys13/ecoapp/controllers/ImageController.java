@@ -28,27 +28,20 @@ import static com.nocountrys13.ecoapp.controllers.ApiConstant.*;
 @PreAuthorize(ROLE_USER)
 public class ImageController {
 
-	private final ImagenService imagenService;
+    private final ImagenService imagenService;
+
 
 	@PostMapping
 	@Transactional
 	public ResponseEntity<ImagenDtoResponse> upload(	@RequestParam("imagen") MultipartFile multipartFile,
-														@AuthenticationPrincipal UserDetails userDetails ){
-		/*											
-
+														@AuthenticationPrincipal UserDetails userDetails ){	
 		try {
 			return ResponseEntity.ok().body(imagenService.save(multipartFile, userDetails));
 			
 		} catch (IOException e) {
 			throw new ResponseStatusException( HttpStatus.BAD_REQUEST , " error al guardar el archivo" );
 		}
-		
-		*/
-														
-														return null;
-
-		
+	
 	}
 
-	
 }

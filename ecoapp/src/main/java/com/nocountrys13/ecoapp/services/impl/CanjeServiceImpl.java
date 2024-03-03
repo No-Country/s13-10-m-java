@@ -1,6 +1,5 @@
 package com.nocountrys13.ecoapp.services.impl;
 
-import com.nocountrys13.ecoapp.dtos.request.CanjeRequest;
 import com.nocountrys13.ecoapp.entities.Canje;
 import com.nocountrys13.ecoapp.repositories.CanjeRepository;
 import com.nocountrys13.ecoapp.repositories.PremioRepository;

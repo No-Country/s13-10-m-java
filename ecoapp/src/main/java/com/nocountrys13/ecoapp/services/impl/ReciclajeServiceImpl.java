@@ -1,7 +1,6 @@
 package com.nocountrys13.ecoapp.services.impl;
 
 import com.nocountrys13.ecoapp.dtos.request.ReciclajeDTO;
-import com.nocountrys13.ecoapp.dtos.response.ReciclajeResponseDto;
 import com.nocountrys13.ecoapp.dtos.response.ReciclajeUsuarioResponseDto;
 import com.nocountrys13.ecoapp.entities.Reciclaje;
 import com.nocountrys13.ecoapp.repositories.PuntoVerdeRepository;
@@ -11,13 +10,11 @@ import com.nocountrys13.ecoapp.services.IReciclajeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service

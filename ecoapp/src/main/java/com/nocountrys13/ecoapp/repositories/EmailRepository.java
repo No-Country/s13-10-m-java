@@ -12,12 +12,10 @@ import com.nocountrys13.ecoapp.entities.EmailVerification;
 
 @Repository
 public interface EmailRepository extends JpaRepository<EmailVerification, UUID> {
-	
-	
-	@Query("SELECT ev FROM EmailVerification ev JOIN  ev.usuario u WHERE  u.userId = :usuarioId")
-	Optional<EmailVerification> findByTokenAndUsuarioId( @Param("usuarioId") UUID usuarioId);
-	
 
-	
+    @Query("SELECT ev FROM EmailVerification ev JOIN  ev.usuario u WHERE  u.userId = :usuarioId")
+    Optional<EmailVerification> findByTokenAndUsuarioId(@Param("usuarioId") UUID usuarioId);
+
+
 }
 

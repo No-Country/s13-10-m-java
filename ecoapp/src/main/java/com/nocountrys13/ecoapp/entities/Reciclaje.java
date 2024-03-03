@@ -1,6 +1,5 @@
 package com.nocountrys13.ecoapp.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

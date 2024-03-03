@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,8 +14,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-	
-	 //tratando los errores de campos del registro para que no se reciba campos nulos, vacio etc.
+
+    //tratando los errores de campos del registro para que no se reciba campos nulos, vacio etc.
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidateExceptions(MethodArgumentNotValidException ex) {
@@ -30,14 +29,11 @@ public class GlobalExceptionHandler {
 
         return errors;
     }
-    
+
     //controlando el response estatus exception
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleResponseStatusException(ResponseStatusException ex) {
-  
         return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
     }
-    
- 
- 
+
 }

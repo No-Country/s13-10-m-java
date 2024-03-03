@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("api/v1/email")
 @RequiredArgsConstructor
 public class EmailController {
-	
+
 	private final EmailServiceImpl emailServiceImpl;
 
 	@GetMapping("/verify")
@@ -26,8 +26,9 @@ public class EmailController {
 			emailServiceImpl.verifyEmail(token, userId);
 			return "redirect:https://site-ecoapp.netlify.app";
 
-		} catch (ResponseStatusException e) {
-			return "validado";
+
+        } catch (ResponseStatusException e) {
+            return "validado";
 
 		} catch (Exception ex) {
 			return "enlaceExpirado";

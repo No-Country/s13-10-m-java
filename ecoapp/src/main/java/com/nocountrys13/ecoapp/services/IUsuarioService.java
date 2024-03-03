@@ -3,7 +3,6 @@ package com.nocountrys13.ecoapp.services;
 import com.nocountrys13.ecoapp.dtos.request.UsuarioDtoRequest;
 import com.nocountrys13.ecoapp.dtos.response.UsuarioDtoResponse;
 import com.nocountrys13.ecoapp.entities.Usuario;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.UUID;

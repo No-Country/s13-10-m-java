@@ -42,18 +42,18 @@ public class CloudinaryServiceImpl {
 	
 	
 
-	public Map<String, String> upload(MultipartFile multipartFile) throws IOException {
+	public Map<?, ?> upload(MultipartFile multipartFile) throws IOException {
 		initCloudinary();
 	
 		File file = convert(multipartFile);
-		Map<String, String> result = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder", "Fotos/"));
+		Map<?, ?> result = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder", "Fotos/"));
 		file.delete();
 		
 		return result;
 	}
 
-	public Map<String, String> delete(String id) throws IOException {
-		Map<String, String> result = cloudinary.uploader().destroy(id, ObjectUtils.emptyMap());
+	public Map<?, ?> delete(String id) throws IOException {
+		Map<?, ?> result = cloudinary.uploader().destroy(id, ObjectUtils.emptyMap());
 		return result;
 	}
 

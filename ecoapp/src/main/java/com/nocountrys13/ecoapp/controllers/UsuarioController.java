@@ -2,7 +2,6 @@ package com.nocountrys13.ecoapp.controllers;
 
 import com.nocountrys13.ecoapp.dtos.request.UsuarioDtoRequest;
 import com.nocountrys13.ecoapp.dtos.response.UsuarioDtoResponse;
-import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.services.IUsuarioService;
 
 import jakarta.validation.Valid;
