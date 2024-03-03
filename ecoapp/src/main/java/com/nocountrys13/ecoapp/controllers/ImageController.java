@@ -25,18 +25,18 @@ import static com.nocountrys13.ecoapp.controllers.ApiConstant.*;
 @PreAuthorize(ROLE_USER)
 public class ImageController {
 
-	private final ImagenService imagenService;
+    private final ImagenService imagenService;
 
-	@PostMapping
-	@Transactional
-	public ResponseEntity<String> upload(@RequestParam("imagen") MultipartFile multipartFile,
-			@AuthenticationPrincipal UserDetails userDetails
-			) throws IOException {
+    @PostMapping
+    @Transactional
+    public ResponseEntity<String> upload(@RequestParam("imagen") MultipartFile multipartFile,
+                                         @AuthenticationPrincipal UserDetails userDetails
+    ) throws IOException {
 
-		imagenService.save(multipartFile, userDetails);
+        imagenService.save(multipartFile, userDetails);
 
-		return ResponseEntity.ok().body("Imagen guardada con exito");
-	}
+        return ResponseEntity.ok().body("Imagen guardada con exito");
+    }
 
-	
+
 }

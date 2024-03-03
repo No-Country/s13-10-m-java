@@ -20,32 +20,31 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("api/v1/email")
 @RequiredArgsConstructor
 public class EmailController {
-	
-	private final EmailServiceImpl emailServiceImpl;
-	private final EmailRepository emailRepository;
+
+    private final EmailServiceImpl emailServiceImpl;
+    private final EmailRepository emailRepository;
 
 
-	@GetMapping("/verify")
-	public String verificarEmail( @RequestParam("token") String token, 
-							   @RequestParam("userId") UUID userId) {
+    @GetMapping("/verify")
+    public String verificarEmail(@RequestParam("token") String token,
+                                 @RequestParam("userId") UUID userId) {
 
-		try {
-			emailServiceImpl.verifyEmail(token, userId);
-			return "redirect:https://site-ecoapp.netlify.app";
+        try {
+            emailServiceImpl.verifyEmail(token, userId);
+            return "redirect:https://site-ecoapp.netlify.app";
 
-		} catch (ResponseStatusException e) {
-			return "validado";
+        } catch (ResponseStatusException e) {
+            return "validado";
 
-		} catch (Exception ex) {
-			return "enlaceExpirado";
-		}	
-	}
-	
-	
+        } catch (Exception ex) {
+            return "enlaceExpirado";
+        }
+    }
 
-	@GetMapping
-	public ResponseEntity<List<EmailVerification>> findALL() {
-		List<EmailVerification> emailVerifications = emailRepository.findAll();
-		return ResponseEntity.ok(emailVerifications);
-	}
+
+    @GetMapping
+    public ResponseEntity<List<EmailVerification>> findALL() {
+        List<EmailVerification> emailVerifications = emailRepository.findAll();
+        return ResponseEntity.ok(emailVerifications);
+    }
 }
