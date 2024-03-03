@@ -12,7 +12,7 @@ export class GreenpointsComponent {
   selectedGreenpoint: SelectedGreenPointResponse | null = null;
 
   constructor(private readonly greenpointService: GreenpointService) {
-    this.greenpointService.getUserGreenpoints().subscribe({
+    this.greenpointService.getAllGreenpoints().subscribe({
       next: (res) => {
         console.log(res);
         this.greenpoints = res;
