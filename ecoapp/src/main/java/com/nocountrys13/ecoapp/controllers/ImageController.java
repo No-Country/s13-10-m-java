@@ -3,6 +3,7 @@ package com.nocountrys13.ecoapp.controllers;
 import java.io.IOException;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -31,7 +32,7 @@ public class ImageController {
     private final ImagenService imagenService;
 
 
-	@PostMapping
+	@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@Transactional
 	public ResponseEntity<ImagenDtoResponse> upload(	@RequestParam("imagen") MultipartFile multipartFile,
 														@AuthenticationPrincipal UserDetails userDetails ){	

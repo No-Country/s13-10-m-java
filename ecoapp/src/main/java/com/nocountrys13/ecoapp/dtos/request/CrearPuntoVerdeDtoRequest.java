@@ -11,7 +11,7 @@ public record CrearPuntoVerdeDtoRequest(
         @NotBlank String nombre,
         @NotBlank @Size(max = 11) @Pattern(regexp = "^[0-9]+$") String dni,
 
-        @NotBlank @Pattern(regexp = "^5\\d{10}$") String telefono,
+        @NotBlank @Pattern(message = "Verificar que comience con nº5 y luego 10 digitos", regexp = "^5\\d{10}$") String telefono,
         @NotBlank @Size(max = 255) String horarioAtencion,
         @NotBlank @Size(max = 255) String diasAtencion,
         @NotEmpty List<Material> materialesAceptados,

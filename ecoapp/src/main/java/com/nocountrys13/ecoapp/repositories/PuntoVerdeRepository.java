@@ -12,4 +12,6 @@ public interface PuntoVerdeRepository extends JpaRepository<PuntoVerde, UUID> {
 
     List<PuntoVerde> findAllByUsuarioUserId(UUID userId);
 
+    boolean existsByDireccion(String direccion);
+
 }

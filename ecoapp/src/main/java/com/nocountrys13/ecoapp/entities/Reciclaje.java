@@ -2,9 +2,7 @@ package com.nocountrys13.ecoapp.entities;
 
 import com.nocountrys13.ecoapp.utils.Material;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.io.Serializable;
@@ -12,7 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity

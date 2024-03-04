@@ -11,9 +11,10 @@ public record UpdatePuntoVerdeDtoRequest(
         @NotEmpty List<Material> materialesAceptados,
         @NotBlank @Size(max = 255) String horarioAtencion,
         @NotBlank @Size(max = 255) String diasAtencion,
+        @NotBlank String direccion,
 
-        String latitud,
-        String longitud
+        @NotBlank String latitud,
+        @NotBlank String longitud
 
 ) {
 }

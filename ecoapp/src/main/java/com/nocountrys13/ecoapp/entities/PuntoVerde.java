@@ -35,11 +35,11 @@ public class PuntoVerde implements Serializable {
     @Enumerated(EnumType.STRING)
     private List<Material> materialesAceptados;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private Usuario usuario;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Reciclaje> listadoReciclaje;
     
     @OneToMany(mappedBy = "puntoVerde", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

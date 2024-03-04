@@ -29,6 +29,9 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
 
     @Override
     public PuntoVerdeDtoResponse savePuntoVerde(CrearPuntoVerdeDtoRequest crearPuntoVerdeDtoRequest) {
+        if (puntoVerdeRepository.existsByDireccion(crearPuntoVerdeDtoRequest.direccion())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La dirección ya está registrada.");
+        }
         Usuario usuario = usuarioRepository.findById(crearPuntoVerdeDtoRequest.userId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario no existe"));
         PuntoVerde puntoVerde = new PuntoVerde(crearPuntoVerdeDtoRequest.nombre(),
@@ -65,7 +68,9 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
 
     @Override
     public PuntoVerdeDtoResponse updatePuntoVerde(UUID id, UpdatePuntoVerdeDtoRequest puntoVerdeDto) {
-
+        if (puntoVerdeRepository.existsByDireccion(puntoVerdeDto.direccion())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La dirección ya está registrada.");
+        }
         var puntoVerdeEncontrado = findById(id);
         puntoVerdeEncontrado.setNombrePv(puntoVerdeDto.nombre());
         puntoVerdeEncontrado.setTelefono(puntoVerdeDto.telefono());
@@ -74,6 +79,7 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
         puntoVerdeEncontrado.setDiasAtencion(puntoVerdeDto.diasAtencion());
         puntoVerdeEncontrado.setLatitud(puntoVerdeDto.latitud());
         puntoVerdeEncontrado.setLongitud(puntoVerdeDto.longitud());
+        puntoVerdeEncontrado.setDireccion(puntoVerdeDto.direccion());
 
         return puntoVerdeEntityADtoResponse(puntoVerdeRepository.save(puntoVerdeEncontrado));
 
