@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-recycler-user-modal',
@@ -7,6 +7,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class RecyclerUserModalComponent {
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
+  @Input() idPuntoVerde: string | undefined = '';
 
   open() {
     this.modal.nativeElement.showModal();

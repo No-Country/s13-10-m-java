@@ -173,7 +173,10 @@
             >Añadir usuario reciclador</app-button
           >
         </div>
-        <app-recycler-user-modal></app-recycler-user-modal>
+        <app-recycler-user-modal
+          [idPuntoVerde]="idPuntoVerde"
+          (successEmitter)="success()"
+        ></app-recycler-user-modal>
       </section>
     </article>
   </section>

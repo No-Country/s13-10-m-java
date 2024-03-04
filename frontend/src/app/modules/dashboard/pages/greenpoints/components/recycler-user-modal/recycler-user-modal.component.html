@@ -1,4 +1,7 @@
-<dialog #modal class="m-auto bg-white rounded-md p-4">
+<dialog
+  #modal
+  class="m-auto bg-white rounded-md p-4 backdrop:bg-black backdrop:bg-opacity-50"
+>
   <div class="relative">
     <button
       (click)="close()"
@@ -9,6 +12,9 @@
     <h4 class="text-center mb-3 text-xl font-bold">
       Agregar usuario reciclador
     </h4>
-    <app-recycler-user-form></app-recycler-user-form>
+    <app-recycler-user-form
+      [idPuntoVerde]="idPuntoVerde"
+      (closeEmitter)="close()"
+    ></app-recycler-user-form>
   </div>
 </dialog>
