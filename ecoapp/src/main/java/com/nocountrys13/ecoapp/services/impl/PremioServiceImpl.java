@@ -54,6 +54,14 @@ public class PremioServiceImpl implements IPremioService {
     }
 
     @Override
+    public List<PremioDtoResponse> getAllPrizes() {
+        return Optional
+                .of(premioRepository.findAll())
+                .map(p -> p.stream().map(PremioDtoResponse::new).toList())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @Override
     public PremioDtoResponse getOnePrize(UUID id) {
         Optional<Premio> premio = premioRepository.findById(id);
         if (premio.isPresent()) {

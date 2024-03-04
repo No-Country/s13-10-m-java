@@ -48,6 +48,11 @@ public class PremioController {
         return ResponseEntity.status(HttpStatus.OK).body(premioService.getAllByPuntoVerdeId(id));
     }
 
+    @GetMapping
+    public ResponseEntity<List<PremioDtoResponse>> getAllPrizes() {
+        return ResponseEntity.status(HttpStatus.OK).body(premioService.getAllPrizes());
+    }
+
 //    @GetMapping("/{id}")
 //    public ResponseEntity<PremioDtoResponse> getOnePrize(@PathVariable(value = "id") UUID id) {
 //        return ResponseEntity.status(HttpStatus.OK).body(premioService.getOnePrize(id));
