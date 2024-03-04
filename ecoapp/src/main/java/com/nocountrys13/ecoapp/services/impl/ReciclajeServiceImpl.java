@@ -27,6 +27,7 @@ public class ReciclajeServiceImpl implements IReciclajeService {
 
     @Override
     public void save(ReciclajeDTO reciclajeDTO) {
+        var puntoVerde = puntoVerdeRepository.findById(reciclajeDTO.idPuntoVerde()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         var usuario = usuarioRepository.findByEmail(reciclajeDTO.emailUsuario());
         if (usuario == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Email de usuario no encontrado.");
@@ -38,9 +39,9 @@ public class ReciclajeServiceImpl implements IReciclajeService {
         BeanUtils.copyProperties(reciclajeDTO, reciclaje);
         reciclaje.setUsuario(usuario);
         reciclaje.setDia(LocalDate.now());
+        reciclaje.setIdPuntoVerde(puntoVerde);
         reciclajeRepository.save(reciclaje);
 
-        var puntoVerde = puntoVerdeRepository.findById(reciclajeDTO.idPuntoVerde()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         puntoVerde.getListadoReciclaje().add(reciclaje);
         puntoVerdeRepository.save(puntoVerde);
     }
