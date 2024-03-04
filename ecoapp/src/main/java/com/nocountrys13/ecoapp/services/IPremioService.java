@@ -14,6 +14,8 @@ public interface IPremioService {
 
     public List<PremioDtoResponse> getAllByPuntoVerdeId(UUID id);
 
+    public List<PremioDtoResponse> getAllPrizes();
+
     public PremioDtoResponse getOnePrize(UUID id);
 
     public PremioDtoResponse updatePrize(UUID id, PremioDtoRequest premioDtoRequest);
