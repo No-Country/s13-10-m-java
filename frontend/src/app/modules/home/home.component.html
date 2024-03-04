@@ -28,9 +28,9 @@
         </svg>
       </button>
       <!-- Mobile menu -->
-      <div class="w-full absolute top-7 right-16" *ngIf="isMenuOpen">
+      <div class=" absolute top-7 right-14" *ngIf="isMenuOpen">
         <!-- Mostrar el botón del Dashboard si el usuario está logueado -->
-        <a *ngIf="isLogged" routerLink="/dashboard" class="block py-2 px-4 uppercase">Ir al dashboard</a>
+        <a *ngIf="isLogged" routerLink="/dashboard" class="block uppercase cursor-pointer">Ir al dashboard</a>
         <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
         <ng-container *ngIf="!isLogged">
           <a routerLink="/auth/login" class="block py-2 px-4">Ingresar</a>
