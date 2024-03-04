@@ -9,6 +9,7 @@ public record UsuarioDtoResponse(
         String email,
         boolean validEmail,
         Integer puntos,
-        String imgUrl
+        String imgUrl,
+        Boolean cuentaEliminada
 ) {
 }
