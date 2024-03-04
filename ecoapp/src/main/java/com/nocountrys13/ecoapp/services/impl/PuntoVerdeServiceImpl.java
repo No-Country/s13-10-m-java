@@ -29,6 +29,9 @@ public class PuntoVerdeServiceImpl implements IPuntoVerdeService {
 
     @Override
     public PuntoVerdeDtoResponse savePuntoVerde(CrearPuntoVerdeDtoRequest crearPuntoVerdeDtoRequest) {
+        if (puntoVerdeRepository.existsByDireccion(crearPuntoVerdeDtoRequest.direccion())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La dirección ya está registrada.");
+        }
         Usuario usuario = usuarioRepository.findById(crearPuntoVerdeDtoRequest.userId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "El usuario no existe"));
         PuntoVerde puntoVerde = new PuntoVerde(crearPuntoVerdeDtoRequest.nombre(),
