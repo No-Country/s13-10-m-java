@@ -166,10 +166,17 @@
               </tbody>
             </table>
           </div>
-          <app-button type="button" class="mt-6"
+          <app-button
+            type="button"
+            (click)="recyclerUserModal.open()"
+            class="mt-6"
             >Añadir usuario reciclador</app-button
           >
         </div>
+        <app-recycler-user-modal
+          [idPuntoVerde]="idPuntoVerde"
+          (successEmitter)="success()"
+        ></app-recycler-user-modal>
       </section>
     </article>
   </section>

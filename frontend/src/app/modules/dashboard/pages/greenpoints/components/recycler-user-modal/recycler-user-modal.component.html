@@ -1,0 +1,20 @@
+<dialog
+  #modal
+  class="m-auto bg-white rounded-md p-4 backdrop:bg-black backdrop:bg-opacity-50"
+>
+  <div class="relative">
+    <button
+      (click)="close()"
+      class="absolute -top-3 -left-3 w-10 hover:bg-green-200 rounded-full ease-in-out duration-500"
+    >
+      <img src="assets/img/close.svg" alt="close-icon" />
+    </button>
+    <h4 class="text-center mb-3 text-xl font-bold">
+      Agregar usuario reciclador
+    </h4>
+    <app-recycler-user-form
+      [idPuntoVerde]="idPuntoVerde"
+      (closeEmitter)="close()"
+    ></app-recycler-user-form>
+  </div>
+</dialog>
