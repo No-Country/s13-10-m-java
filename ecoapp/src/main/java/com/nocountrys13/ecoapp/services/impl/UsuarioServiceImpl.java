@@ -29,8 +29,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
         BeanUtils.copyProperties(usuarioDtoRequest, usuario);
         usuario = usuarioRepository.save(usuario);
 
-        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos(), usuario.getImgUrl());
-
+        return new UsuarioDtoResponse(
+                usuario.getUserId(),
+                usuario.getNombre(),
+                usuario.getApellido(),
+                usuario.getEmail(),
+                usuario.getValidEmail(),
+                usuario.getPuntos(),
+                usuario.getImgUrl(),
+                usuario.getCuentaEliminada()
+        );
     }
 
     public List<UsuarioDtoResponse> getAllUsers() {
@@ -44,7 +52,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     private UsuarioDtoResponse convertToDto(Usuario usuario) {
-        return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos(), usuario.getImgUrl());
+        return new UsuarioDtoResponse(
+                usuario.getUserId(),
+                usuario.getNombre(),
+                usuario.getApellido(),
+                usuario.getEmail(),
+                usuario.getValidEmail(),
+                usuario.getPuntos(),
+                usuario.getImgUrl(),
+                usuario.getCuentaEliminada()
+        );
 
     }
 
@@ -53,7 +70,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
         if (usuario.isPresent()) {
             var usuarioResp = usuario.get();
 
-            return new UsuarioDtoResponse(usuarioResp.getUserId(), usuarioResp.getNombre(), usuarioResp.getApellido(), usuarioResp.getEmail(), usuarioResp.getValidEmail(), usuarioResp.getPuntos(), usuarioResp.getImgUrl());
+            return new UsuarioDtoResponse(
+                    usuarioResp.getUserId(),
+                    usuarioResp.getNombre(),
+                    usuarioResp.getApellido(),
+                    usuarioResp.getEmail(),
+                    usuarioResp.getValidEmail(),
+                    usuarioResp.getPuntos(),
+                    usuarioResp.getImgUrl(),
+                    usuarioResp.getCuentaEliminada()
+            );
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
     }
@@ -65,7 +91,16 @@ public class UsuarioServiceImpl implements IUsuarioService {
             BeanUtils.copyProperties(usuarioDtoRequest, usuario);
             usuario = usuarioRepository.save(usuario);
 
-            return new UsuarioDtoResponse(usuario.getUserId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(), usuario.getValidEmail(), usuario.getPuntos(), usuario.getImgUrl());
+            return new UsuarioDtoResponse(
+                    usuario.getUserId(),
+                    usuario.getNombre(),
+                    usuario.getApellido(),
+                    usuario.getEmail(),
+                    usuario.getValidEmail(),
+                    usuario.getPuntos(),
+                    usuario.getImgUrl(),
+                    usuario.getCuentaEliminada()
+            );
 
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
@@ -74,10 +109,9 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public String deleteUser(UUID id) {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
-        	var user = usuario.get();
-        	user.setCuentaEliminada(true);
-        	usuarioRepository.save(user);
-            //usuarioRepository.delete(usuario.get());
+            var user = usuario.get();
+            user.setCuentaEliminada(true);
+            usuarioRepository.save(user);
             return "El usuario fue eliminado";
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");
