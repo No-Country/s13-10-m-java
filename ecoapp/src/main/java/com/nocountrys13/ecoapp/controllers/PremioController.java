@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.MediaType;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,16 +27,16 @@ public class PremioController {
 
     private final IPremioService premioService;
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> savePrize(
-            @RequestParam("imagen") MultipartFile multipartFile,
+            @RequestParam("imagen") MultipartFile imagen,
             @RequestParam("nombrePremio") String nombrePremio,
             @RequestParam("cantidad") Integer cantidad,
             @RequestParam("puntos") Integer puntos,
             @RequestParam("puntoVerdeId") UUID puntoVerdeId
     ) {
         try {
-            premioService.savePrize(multipartFile, nombrePremio, cantidad, puntos, puntoVerdeId);
+            premioService.savePrize(imagen, nombrePremio, cantidad, puntos, puntoVerdeId);
             return ResponseEntity.ok().body("Premio guardado.");
         } catch (IOException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Verifica que la imagen no esté vacía.");
