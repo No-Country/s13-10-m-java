@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SelectedGreenPointResponse } from '@models/greenpoint.model';
 import { UserResponse } from '@models/user.model';
 import { AuthService } from '@services/auth.service';
-import { RecycleService } from '@services/recycle.service';
+import { GreenpointService } from '@services/greenpoint.service';
 
 @Component({
   selector: 'app-recycled',
@@ -10,61 +11,33 @@ import { RecycleService } from '@services/recycle.service';
 })
 export class RecycledComponent implements OnInit {
 
-
-  // user: UserResponse | null = null;
-
-  // constructor(private readonly authService: AuthService,
-  //   private recycledService: RecycleService) { }
-
-  // @Input() reciclajeId: string | undefined;
-  // reciclajeData: any[] = [];
-  // ngOnInit() {
-  //   this.authService.userLogged$.subscribe(res => this.user = res)
-
-  //   if (this.reciclajeId) {
-  //     this.recycledService.getRecycle(this.reciclajeId)
-  //       .subscribe(
-  //         data => {
-  //           this.reciclajeData = data;
-  //           console.log('Datos de reciclaje:', this.reciclajeData);
-  //         },
-  //         error => {
-  //           console.error('Error al obtener los datos de reciclaje:', error);
-  //         }
-  //       );
-  //   } else {
-  //     console.error('ID de reciclaje no proporcionado.');
-  //   }
-  // }
-
   user: UserResponse | null = null;
-  reciclajeData: any[] = [];
+  greenpoints: SelectedGreenPointResponse[] = [];
+  showDetails: boolean[] = []
 
   constructor(
     private readonly authService: AuthService,
-    private recycledService: RecycleService
+    private readonly greenpointService: GreenpointService
   ) { }
 
   ngOnInit(): void {
-    this.authService.userLogged$.subscribe(res => {
-      this.user = res;
-      if (this.user && this.user.userId) {
-        this.getRecycleData(this.user.userId);
-      }
+    this.authService.userLogged$.subscribe(res => this.user = res);
+    this.greenpointService.getAllGreenpoints().subscribe({
+      next: (res) => {
+        this.greenpoints = res;
+        this.greenpoints.forEach((greenpoint) => {
+          // console.log('Reciclajes del punto verde:', greenpoint);
+          greenpoint
+        });
+      },
+      error: (error) => {
+        console.log(error);
+      },
     });
   }
 
-  getRecycleData(userId: string): void {
-    this.recycledService.getRecycle(userId)
-      .subscribe(
-        data => {
-          this.reciclajeData = data;
-          console.log('Datos de reciclaje:', this.reciclajeData);
-        },
-        error => {
-          console.error('Error al obtener los datos de reciclaje:', error);
-        }
-      );
+  toggleDetails(index: number): void {
+    this.showDetails[index] = !this.showDetails[index];
   }
 
 }
