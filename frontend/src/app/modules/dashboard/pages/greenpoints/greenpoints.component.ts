@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SelectedGreenPointResponse } from '@models/greenpoint.model';
 import { GreenpointService } from '@services/greenpoint.service';
+import { RecyclerUserModalComponent } from './components/recycler-user-modal/recycler-user-modal.component';
 
 @Component({
   selector: 'app-greenpoints',
@@ -8,6 +9,8 @@ import { GreenpointService } from '@services/greenpoint.service';
   styleUrls: ['./greenpoints.component.scss'],
 })
 export class GreenpointsComponent {
+  @ViewChild(RecyclerUserModalComponent)
+  recyclerUserModal!: RecyclerUserModalComponent;
   greenpoints: SelectedGreenPointResponse[] = [];
   selectedGreenpoint: SelectedGreenPointResponse | null = null;
 
