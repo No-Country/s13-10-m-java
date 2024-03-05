@@ -48,9 +48,13 @@
 </section>
 <section id="edit" class="hidden">
     <article class="my-4 mx-4 p-8  rounded-md bg-white  overflow-x-auto  shadow-lg flex flex-col justify-end">
+       
+       
+       
         <!-- [formGroup]="form" -->
         <!-- no me permite colocar esto -->
-        <form  (submit)="onSubmit($event)"  class="flex flex-col gap-6">
+        <form [formGroup]="form"
+        (submit)="onSubmit()"  class="flex flex-col gap-6">
             <!-- (submit)="onSubmit($event) -->
             <div>
                 <label for="name" class="block text-lg text-gray-900">Nombre</label>
@@ -114,6 +118,7 @@
             <div><label for="img-picker" class="block text-lg text-gray-900">Seleccione una
                     imagen:</label>
                 <input type="file" id="img-picker" name="img-picker" accept=".png,.jpg.jpeg"
+                formControlName="imagen"
                     class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500">
 
             </div>

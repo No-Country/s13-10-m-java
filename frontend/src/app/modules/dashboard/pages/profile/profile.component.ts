@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralValidator, emailValidator, numericSpecialCharacterValidator, passwordValidator } from '@utils/validator';
 import { AuthService } from '@services/auth.service';
 import Swal from 'sweetalert2';
+import { UserImage } from '@models/image.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +17,7 @@ import Swal from 'sweetalert2';
 export class ProfileComponent {
   form: FormGroup;
 
-  UserResponse: UserResponse| null = null;
+  UserResponse: UserResponse | null = null;
   tokenData!: tokenData;
 
   showPassword: boolean = false;
@@ -27,8 +28,8 @@ export class ProfileComponent {
     private readonly validator: GeneralValidator,
 
     private tokenService: TokenService,
-    private userService: UserService,private readonly authService: AuthService,
-    
+    private userService: UserService, private readonly authService: AuthService,
+
   ) {
     this.form = this.fb.group({
       nombre: [
@@ -68,6 +69,9 @@ export class ProfileComponent {
         ],
       ],
       repeatPassword: ['', Validators.required],
+
+      imagen: ['', Validators.required],
+
     });
   }
 
@@ -89,8 +93,8 @@ export class ProfileComponent {
     } else {
         console.error('this.tokenData es undefined');
     }*/
-    this.updateImage(); 
-}
+    this.updateImage();
+  }
 
   updateImage() {
     const input = document.querySelector<HTMLInputElement>("#img-picker");
@@ -109,6 +113,7 @@ export class ProfileComponent {
 
       if (file) {
         reader.readAsDataURL(file);
+
       }
     }
   }
@@ -121,40 +126,55 @@ export class ProfileComponent {
 
 
 
-  onSubmit(event: Event) {
+  onSubmit() {
     // Evitar que el formulario se actualice al hacer submit
-    event.preventDefault();
-    
+
     if (
       this.form.invalid ||
       this.form.value.password !== this.form.value.repeatPassword
     ) {
       return this.form.markAllAsTouched();
     }
-    
-        this.userService.updateUser(this.UserResponse!.userId,this.form.value).subscribe({
-          next: () => {
+    this.selectedImage = {
+      imagen: this.form.get("imagen")?.value
+    }
+
+
+    this.userService.updateUser(this.UserResponse!.userId, this.form.value).subscribe({
+      next: () => {
+
+        console.log(this.selectedImage!)
+        this.userService.PostImageUser(this.selectedImage!).subscribe({
+          next: (res) => {
+            console.log("Esta es la respuesta: " + res)
+
             Swal.fire({
               title: '¡Datos guardados exitosamente!',
               text: `Tus datos han sido actualizado`,
               icon: 'success',
-            }).then(() => {
-              this.form.reset();
-              //this.isRegistered = true;
-            });
-          },
-          error: (error) => {
-            console.log(error);
-            Swal.fire({
-              title: 'Ha ocurrido un error...',
-              text: error.error,
-              icon: 'error',
-            });
-          },
-        });
-  }
+            }).then(() => {//window.location.reload()
+            }
+            );
 
-  selectedImage: File | null = null;
+          }
+
+        })
+
+
+      },
+      error: (error) => {
+        console.log(error);
+        Swal.fire({
+          title: 'Ha ocurrido un error...',
+          text: error.error,
+          icon: 'error',
+        });
+      },
+    });
+
+
+  }
+  selectedImage: UserImage | null = null;
   imageUrl: string | null = null;
 
 
@@ -162,7 +182,7 @@ export class ProfileComponent {
     this.selectedImage = event.target.files[0];
   }
 
- 
+
 
   handleShowPassword(): void {
     this.showPassword = !this.showPassword;
