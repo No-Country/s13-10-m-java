@@ -73,9 +73,7 @@ export class ProfileComponent {
           passwordValidator,
         ],
       ],
-      repeatPassword: ['', Validators.required],
-
-      imagen: [''],
+      repeatPassword: ['', Validators.required]
     });
   }
 
@@ -85,8 +83,17 @@ export class ProfileComponent {
   }
 
   updateImage() {
+
     const input = document.querySelector<HTMLInputElement>('#img-picker');
     const preview = document.querySelector<HTMLImageElement>('#preview');
+
+    const miImagen = document.querySelector<HTMLInputElement>('#miImagen')!.addEventListener('click', function() {
+      console.log("Clicando")
+      input!.click();
+      
+    })
+    console.log(miImagen)
+  
 
     input!.addEventListener('change', updateImageDisplay);
 
