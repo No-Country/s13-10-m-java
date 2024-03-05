@@ -11,7 +11,7 @@ import java.util.UUID;
 public record ReciclajeDTO(
         @NotBlank
         String emailUsuario,
-        @Size(min = 1)
+        @Size(min = 1, message = "La cantidad de materiales no puede estar vacía") @NotNull
         List<Material> materialesRecibidos,
         @NotBlank
         String descripcion,
