@@ -31,12 +31,13 @@ public class PremioController {
     public ResponseEntity<String> savePrize(
             @RequestParam("imagen") MultipartFile imagen,
             @RequestParam("nombrePremio") String nombrePremio,
+            @RequestParam("descripcion") String descripcion,
             @RequestParam("cantidad") Integer cantidad,
             @RequestParam("puntos") Integer puntos,
             @RequestParam("puntoVerdeId") UUID puntoVerdeId
     ) {
         try {
-            premioService.savePrize(imagen, nombrePremio, cantidad, puntos, puntoVerdeId);
+            premioService.savePrize(imagen, nombrePremio, descripcion, cantidad, puntos, puntoVerdeId);
             return ResponseEntity.ok().body("Premio guardado.");
         } catch (IOException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Verifica que la imagen no esté vacía.");

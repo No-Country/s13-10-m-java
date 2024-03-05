@@ -29,18 +29,18 @@ public class PremioServiceImpl implements IPremioService {
     private final PuntoVerdeRepository puntoVerdeRepository;
 
     @Override
-    public PremioDtoResponse savePrize(MultipartFile multipartFile, String nombrePremio, Integer cantidad, Integer puntos, UUID puntoVerdeId) throws IOException {
+    public PremioDtoResponse savePrize(MultipartFile multipartFile, String nombrePremio, String descripcion, Integer cantidad, Integer puntos, UUID puntoVerdeId) throws IOException {
         Map<?, ?> result = cloudinaryService.upload(multipartFile);
 
         Optional<PuntoVerde> puntoVerde = puntoVerdeRepository.findById(puntoVerdeId);
         if (puntoVerde.isPresent()) {
             var puntoVerdeResp = puntoVerde.get();
-            PremioDtoRequest premioDtoRequest = new PremioDtoRequest(puntoVerdeId, nombrePremio, cantidad, puntos);
+            PremioDtoRequest premioDtoRequest = new PremioDtoRequest(puntoVerdeId, nombrePremio, descripcion, cantidad, puntos);
             var premio = new Premio(premioDtoRequest);
             premio.setImgUrl((String) result.get("url"));
             premio.setPuntoVerde(puntoVerdeResp);
             premioRepository.save(premio);
-            return new PremioDtoResponse(premio.getPremioId(), premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos(), premio.getImgUrl(), premio.getPuntoVerde().getPuntoVerdeId());
+            return new PremioDtoResponse(premio.getPremioId(), premio.getNombrePremio(), premio.getDescripcion(), premio.getCantidad(), premio.getPuntos(), premio.getImgUrl(), premio.getPuntoVerde().getPuntoVerdeId());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El Punto Verde no se encuentra registrado.");
     }
@@ -66,7 +66,7 @@ public class PremioServiceImpl implements IPremioService {
         Optional<Premio> premio = premioRepository.findById(id);
         if (premio.isPresent()) {
             var premioResp = premio.get();
-            return new PremioDtoResponse(premioResp.getPremioId(), premioResp.getNombrePremio(), premioResp.getCantidad(), premioResp.getPuntos(), premioResp.getImgUrl(), premioResp.getPuntoVerde().getPuntoVerdeId());
+            return new PremioDtoResponse(premioResp.getPremioId(), premioResp.getNombrePremio(), premioResp.getDescripcion(), premioResp.getCantidad(), premioResp.getPuntos(), premioResp.getImgUrl(), premioResp.getPuntoVerde().getPuntoVerdeId());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Premio no encontrado");
     }
@@ -78,7 +78,7 @@ public class PremioServiceImpl implements IPremioService {
             var premio = premioBuscado.get();
             BeanUtils.copyProperties(premioDtoRequest, premio);
             premio = premioRepository.save(premio);
-            return new PremioDtoResponse(premio.getPremioId(), premio.getNombrePremio(), premio.getCantidad(), premio.getPuntos(), premio.getImgUrl(), premio.getPuntoVerde().getPuntoVerdeId());
+            return new PremioDtoResponse(premio.getPremioId(), premio.getNombrePremio(), premio.getDescripcion(), premio.getCantidad(), premio.getPuntos(), premio.getImgUrl(), premio.getPuntoVerde().getPuntoVerdeId());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el premio buscado");
     }
