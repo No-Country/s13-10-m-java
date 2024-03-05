@@ -48,9 +48,9 @@
 </section>
 <section id="edit" class="hidden">
     <article class="my-4 mx-4 p-8  rounded-md bg-white  overflow-x-auto  shadow-lg flex flex-col justify-end">
-       
-       
-       
+
+
+
         <!-- [formGroup]="form" -->
         <!-- no me permite colocar esto -->
         <form [formGroup]="form"
@@ -83,7 +83,7 @@
                     emailErrorMessage
                     }}</strong>
             </div>
-            
+
             <div>
                 <label for="password" class="block text-lg text-gray-900">Contraseña</label>
                 <div class="relative">
@@ -119,6 +119,7 @@
                     imagen:</label>
                 <input type="file" id="img-picker" name="img-picker" accept=".png,.jpg.jpeg"
                 formControlName="imagen"
+                (change)="uploadImage($event)"
                     class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500">
 
             </div>

@@ -4,7 +4,12 @@ import { UserService } from '@services/user.service';
 import { tokenData } from '@models/token.model';
 import { TokenService } from '@services/token.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GeneralValidator, emailValidator, numericSpecialCharacterValidator, passwordValidator } from '@utils/validator';
+import {
+  GeneralValidator,
+  emailValidator,
+  numericSpecialCharacterValidator,
+  passwordValidator,
+} from '@utils/validator';
 import { AuthService } from '@services/auth.service';
 import Swal from 'sweetalert2';
 import { UserImage } from '@models/image.model';
@@ -28,8 +33,8 @@ export class ProfileComponent {
     private readonly validator: GeneralValidator,
 
     private tokenService: TokenService,
-    private userService: UserService, private readonly authService: AuthService,
-
+    private userService: UserService,
+    private readonly authService: AuthService
   ) {
     this.form = this.fb.group({
       nombre: [
@@ -70,50 +75,32 @@ export class ProfileComponent {
       ],
       repeatPassword: ['', Validators.required],
 
-      imagen: ['', Validators.required],
-
+      imagen: [''],
     });
   }
 
   ngOnInit(): void {
-
-
     this.authService.userLogged$.subscribe((res) => (this.UserResponse = res));
-    /* this.tokenData = this.tokenService.getDecodedToken()!;
-    if (this.tokenData) {
-        this.userService.getUser(this.tokenData.USER_ID).subscribe({
-            next: (response) => {
-                this.UserResponse = response;
-                console.log(this.UserResponse);
-            },
-            error: (error) => {
-                console.log(error);
-            }
-        });
-    } else {
-        console.error('this.tokenData es undefined');
-    }*/
     this.updateImage();
   }
 
   updateImage() {
-    const input = document.querySelector<HTMLInputElement>("#img-picker");
-    const preview = document.querySelector<HTMLImageElement>("#preview");
+    const input = document.querySelector<HTMLInputElement>('#img-picker');
+    const preview = document.querySelector<HTMLImageElement>('#preview');
 
-    input!.addEventListener("change", updateImageDisplay);
+    input!.addEventListener('change', updateImageDisplay);
 
     function updateImageDisplay() {
-      console.log("update image");
+      console.log('update image');
       const file = input!.files![0];
       const reader = new FileReader();
 
       reader.onload = function () {
-        preview!.setAttribute("src", reader.result as string);
-      }
+        preview!.setAttribute('src', reader.result as string);
+      };
 
       if (file) {
         reader.readAsDataURL(file);
-
       }
     }
   }
@@ -123,9 +110,20 @@ export class ProfileComponent {
     sectionEdit?.classList.toggle('hidden');
   }
 
+  uploadImage(event: any) {
+    const file = event.target!.files[0];
+    if (file) {
+      const formData = new FormData();
+      formData.append('imagen', file);
 
-
-
+      this.userService.PostImageUser(formData).subscribe({
+        next: (res) => console.log(res),
+        error(err) {
+          console.log('error con la imagen', err);
+        },
+      });
+    }
+  }
   onSubmit() {
     // Evitar que el formulario se actualice al hacer submit
 
@@ -135,54 +133,36 @@ export class ProfileComponent {
     ) {
       return this.form.markAllAsTouched();
     }
-    this.selectedImage = {
-      imagen: this.form.get("imagen")?.value
-    }
 
-
-    this.userService.updateUser(this.UserResponse!.userId, this.form.value).subscribe({
-      next: () => {
-
-        console.log(this.selectedImage!)
-        this.userService.PostImageUser(this.selectedImage!).subscribe({
-          next: (res) => {
-            console.log("Esta es la respuesta: " + res)
-
-            Swal.fire({
-              title: '¡Datos guardados exitosamente!',
-              text: `Tus datos han sido actualizado`,
-              icon: 'success',
-            }).then(() => {//window.location.reload()
-            }
-            );
-
-          }
-
-        })
-
-
-      },
-      error: (error) => {
-        console.log(error);
-        Swal.fire({
-          title: 'Ha ocurrido un error...',
-          text: error.error,
-          icon: 'error',
-        });
-      },
-    });
-
-
+    this.userService
+      .updateUser(this.UserResponse!.userId, this.form.value)
+      .subscribe({
+        next: () => {
+          console.log(this.selectedImage!);
+          Swal.fire({
+            title: '¡Datos guardados exitosamente!',
+            text: `Tus datos han sido actualizado`,
+            icon: 'success',
+          }).then(() => {
+            window.location.reload();
+          });
+        },
+        error: (error) => {
+          console.log(error);
+          Swal.fire({
+            title: 'Ha ocurrido un error...',
+            text: error.error,
+            icon: 'error',
+          });
+        },
+      });
   }
   selectedImage: UserImage | null = null;
   imageUrl: string | null = null;
 
-
   onFileSelected(event: any) {
     this.selectedImage = event.target.files[0];
   }
-
-
 
   handleShowPassword(): void {
     this.showPassword = !this.showPassword;
@@ -289,8 +269,4 @@ export class ProfileComponent {
 
     return '';
   }
-
-
-
 }
-
