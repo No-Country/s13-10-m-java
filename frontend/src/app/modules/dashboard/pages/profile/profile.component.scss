@@ -13,3 +13,11 @@
     background-size: contain;
   }
 }
+#add {
+  opacity: 0;
+}
+#add:hover {
+  opacity: 1;
+  background-color: rgba(0,0,0,.5);
+  visibility: visible;
+}
