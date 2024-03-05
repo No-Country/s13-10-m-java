@@ -75,7 +75,7 @@ export function onlyNumbers(controller:AbstractControl){
   }
   export function phoneValidator(controller:AbstractControl){
     const value:string = controller.value;
-    const regex = /^\+549[\d]+$/
+    const regex = /^5[\d]+$/
     if(!regex.test(value)){
       return { invalidPhone:true }
     }
