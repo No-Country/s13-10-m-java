@@ -17,7 +17,7 @@ export class GreenpointsComponent {
   idPuntoVerde: string | undefined = '';
 
   constructor(private readonly greenpointService: GreenpointService) {
-    this.greenpointService.getAllGreenpoints().subscribe({
+    this.greenpointService.getUserGreenpoints().subscribe({
       next: (res) => {
         console.log(res);
         this.greenpoints = res;
@@ -32,22 +32,21 @@ export class GreenpointsComponent {
     console.log(index);
     this.greenpoints.forEach((greenpoint, i) => {
       greenpoint.selected = index === i;
-      // this.selectedGreenpoint = index === i ? greenpoint : null;
     });
-    this.selectedGreenpoint = this.greenpoints[index]
+    this.selectedGreenpoint = this.greenpoints[index];
 
     this.idPuntoVerde = this.selectedGreenpoint?.puntoVerdeId;
   }
 
-  success(value:boolean) {
+  success(value: boolean) {
     console.log('inside the success method');
     Swal.fire({
       title: 'Registro exitoso',
       text: 'El usuario ha sido registrado exitosamente',
       icon: 'success',
-    });
+    }).then(() => window.location.reload());
 
-    // this.greenpointService.getAllGreenpoints().subscribe({
+    // this.greenpointService.getUserGreenpoints().subscribe({
     //   next: (res) => {
     //     this.greenpoints = res;
     //   },

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,18 +6,30 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  isLogged = false;
+  isMenuOpen: boolean = false;
+
   constructor(private readonly router: Router) {
     this.isLogged = !!localStorage.getItem('token');
   }
-  isMenuOpen: boolean = false;
+
+  ngOnInit(): void {
+    // window.addEventListener('storage', this.handleStorageChange);
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
-  isLogged = false;
 
   goToRegister() {
     this.router.navigateByUrl('/auth/register');
+  }
+
+  handleStorageChange(event: any) {
+    console.log(event);
+    if (event.key === 'token') {
+      window.location.reload();
+    }
   }
 }
