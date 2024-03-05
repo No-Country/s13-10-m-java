@@ -2,11 +2,11 @@
 <span class="text-white font-inter text-lg font-semibold my-8"
   >Puntos creados</span
 >
-<main class="flex flex-col gap-5">
-  <section class="points">
+<main class="flex flex-col items-center gap-5">
+  <section class="points ">
     <article
       *ngFor="let greenpoint of greenpoints; index as i"
-      class="rounded-xl drop-shadow-lg bg-white max-w-[340px] hover:scale-[1.01] hover:cursor-pointer"
+      class="rounded-xl drop-shadow-lg bg-white max-w-[300px] hover:scale-[1.01] hover:cursor-pointer"
       [class.active]="greenpoint.selected"
       (click)="handleSelected(i)"
     >
@@ -30,7 +30,7 @@
       >
         <span class="material-symbols-outlined text-9xl text-white">add</span>
       </header>
-      <section class="px-3 py-4">
+      <section class="px-3 py-4 max-w-[300px]">
         <h3 class="text-gray-800 text-xl font-semibold">Agregar punto verde</h3>
       </section>
     </article>
@@ -43,7 +43,7 @@
       </h2>
     </header>
     <article
-      class="bg-[#656565] rounded-xl pt-5 pb-10 px-8 flex flex-col gap-12"
+      class="bg-[#656565] rounded-xl pt-5 pb-10 px-4 flex flex-col gap-12"
     >
       <section role="region" class="flex flex-col gap-2.5">
         <h2 class="text-white font-semibold text-lg">Información</h2>
@@ -80,18 +80,19 @@
           }}</span>
         </div>
       </section>
+      <!-- --------------------------------------------------------------------------tabla -->
       <section role="region" class="flex flex-col gap-2.5">
         <h2 class="text-white font-semibold text-lg">Premiar a los usuarios</h2>
         <div class="bg-white p-4 rounded-xl">
-          <div class="overflow-x-auto">
-            <table class="w-full">
+          <div class="w-full overflow-x-scroll">
+            <table class="">
               <thead>
                 <tr>
-                  <th class="text-left text-gray-600 py-2 px-5">Usuario</th>
-                  <th class="text-left text-gray-600 py-2 px-5">Tipo</th>
-                  <th class="text-left text-gray-600 py-2 px-5">Descripción</th>
-                  <th class="text-left text-gray-600 py-2 px-5">Fecha</th>
-                  <th class="text-left text-gray-600 py-2 px-5">Acciones</th>
+                  <th class="text-left text-gray-600 px-2 py-1">Usuario</th>
+                  <th class="text-left text-gray-600 px-2 py-1">Tipo</th>
+                  <th class="text-left text-gray-600 px-2 py-1">Descripción</th>
+                  <th class="text-left text-gray-600 px-2 py-1">Fecha</th>
+                  <th class="text-left text-gray-600 px-2 py-1">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -175,7 +176,7 @@
         </div>
         <app-recycler-user-modal
           [idPuntoVerde]="idPuntoVerde"
-          (successEmitter)="success()"
+          (prueba)="success($event)"
         ></app-recycler-user-modal>
       </section>
     </article>

@@ -32,13 +32,14 @@ export class GreenpointsComponent {
     console.log(index);
     this.greenpoints.forEach((greenpoint, i) => {
       greenpoint.selected = index === i;
-      this.selectedGreenpoint = index === i ? greenpoint : null;
+      // this.selectedGreenpoint = index === i ? greenpoint : null;
     });
+    this.selectedGreenpoint = this.greenpoints[index]
 
     this.idPuntoVerde = this.selectedGreenpoint?.puntoVerdeId;
   }
 
-  success() {
+  success(value:boolean) {
     console.log('inside the success method');
     Swal.fire({
       title: 'Registro exitoso',
@@ -46,13 +47,13 @@ export class GreenpointsComponent {
       icon: 'success',
     });
 
-    this.greenpointService.getAllGreenpoints().subscribe({
-      next: (res) => {
-        this.greenpoints = res;
-      },
-      error: (error) => {
-        console.error('Error', error);
-      },
-    });
+    // this.greenpointService.getAllGreenpoints().subscribe({
+    //   next: (res) => {
+    //     this.greenpoints = res;
+    //   },
+    //   error: (error) => {
+    //     console.error('Error', error);
+    //   },
+    // });
   }
 }

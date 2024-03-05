@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-recycler-user-modal',
@@ -8,6 +8,7 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 export class RecyclerUserModalComponent {
   @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
   @Input() idPuntoVerde: string | undefined = '';
+  @Output() prueba = new EventEmitter<boolean>();
 
   open() {
     this.modal.nativeElement.showModal();
@@ -15,5 +16,11 @@ export class RecyclerUserModalComponent {
 
   close() {
     this.modal.nativeElement.close();
+  }
+  sendPrueba(){
+    this.prueba.emit(true);
+  }
+  receivePrueba(valor:boolean){
+    this.sendPrueba()
   }
 }
