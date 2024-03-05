@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>GreenPoint - Premios</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            border-radius: 20px;
+            color:black;
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+            text-align: justify;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        .alert {
+            font-weight: bold;
+            color:red;
+            font-size: small;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            background-color:  #006C34;
+            border-radius: 10px;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px;
+            margin: auto;
+            width: 40%;
+            font-weight: bold;
+            color: white !important;
+        }
+
+        a:hover {
+            background-color: #FFC107;
+            color: #006C34 !important;
+        }
+
+        .nombre {
+
+            color: #006C34;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+
+        .nota {
+            font-size: small;
+        }
+
+        .about {
+            color: grey;
+            text-align: center;
+        }
+
+         .icono-logo {
+            height: 80px;
+            width: 80px;
+            filter: grayscale(100%)!important;
+            display: block;
+            margin: 0 auto;
+
+        }
+        .logo-completo {
+            width: 200px;
+            display: block;
+            margin: 0 auto;
+
+        }
+
+       .imgPremio {
+            text-align: center;
+        }
+
+        .imgPremio img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container">
+    <img class="logo-completo"
+         src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718823/Fotos/bq9s2qlhy1q9cdg5q6un.png">
+
+    <h1>¡[[${userName}]], ahora podrás canejar tu premio!</h1>
+    <h2>Información del premio:</h2>
+    <p>Numero de operación: #[[${id}]]</p>
+    <h2>Premio: [[${titulo}]]</h2>
+    <p>Descripción: [[${descripcion}]]</p>
+    <p>Lugar de canje: [[${direccion}]]</p>
+    <div class="imgPremio">
+        <img th:src="${imagen}" alt="Premio">
+    </div>
+
+    <hr>
+    <img class="icono-logo"
+         src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png">
+</div>
+</body>
+
+</html>

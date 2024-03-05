@@ -44,7 +44,6 @@ public class EmailServiceImpl implements IEmailService {
 			emailVeridication.setCreationTime(LocalDateTime.now());
 			emailVeridication.setExpirationTime(LocalDateTime.now().plusMinutes(10));
 			emailVeridication.setUsuario(user);
-			//user.setEmailVerification(emailVeridication);
 			emailRepository.save(emailVeridication);
 			
 			Context context = new Context();

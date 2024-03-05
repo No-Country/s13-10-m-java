@@ -20,6 +20,7 @@ public class Premio implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID premioId;
     private String nombrePremio;
+    private String descripcion;
     private Integer cantidad;
     private Integer puntos;
     private String imgUrl;
@@ -30,6 +31,7 @@ public class Premio implements Serializable {
 
     public Premio(PremioDtoRequest premioDtoRequest) {
         this.nombrePremio = premioDtoRequest.nombrePremio();
+        this.descripcion = premioDtoRequest.descripcion();
         this.cantidad = premioDtoRequest.cantidad();
         this.puntos = premioDtoRequest.puntos();
     }

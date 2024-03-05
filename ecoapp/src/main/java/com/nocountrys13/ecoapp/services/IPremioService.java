@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface IPremioService {
 
-    public PremioDtoResponse savePrize(MultipartFile multipartFile, String nombrePremio, Integer cantidad, Integer puntos, UUID puntoVerdeId) throws IOException;
+    public PremioDtoResponse savePrize(MultipartFile multipartFile, String nombrePremio, String descripcion, Integer cantidad, Integer puntos, UUID puntoVerdeId) throws IOException;
 
     public List<PremioDtoResponse> getAllByPuntoVerdeId(UUID id);
 
