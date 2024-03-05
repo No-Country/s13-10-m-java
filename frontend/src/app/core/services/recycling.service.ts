@@ -13,7 +13,7 @@ export class RecyclingService {
   constructor(
     private readonly http: HttpClient,
     private readonly tokenService: TokenService
-  ) {}
+  ) { }
 
   save(req: IRecyclingReq) {
     return this.http.post<IRecyclingRes>(`${this.url}/save`, req);

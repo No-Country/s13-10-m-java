@@ -2,43 +2,18 @@
   Premios
 </h2>
 
-<section class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8 z-30 my-3">
-  <section class="">
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8 z-30 my-3" *ngIf="awards.length > 0">
+
+  <section  *ngFor="let award of awards">
     <h3 class="text-white mb-4 lg:mb-10 px-3">Canjeas tus premios</h3>
     <article class="shadow-md bg-white lg:h-[10rem] h-44 rounded-xl">
-      <div class="w-full h-3/6 bg-[#656565] rounded-xl"></div>
-      <div class="flex justify-between p-3">
-        <div class="w-5/6">
-          <h3 class="font-bold">Descuento para burger king</h3>
-          <p class="truncate w-[200px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, optio?
-          </p>
-        </div>
-        <button class="bg-green-800 px-2 rounded-md text-white">Canjear</button>
+      <div class="w-full h-3/6 bg-[#656565] rounded-xl">
+        <img [src]="award.imgUrl" class="w-full h-full rounded-xl" alt="Imagen del premio">
       </div>
-    </article>
-  </section>
-  <section class="">
-    <h3 class="text-black lg:text-white mb-4 lg:mb-10 px-3">Canjeas tus premios</h3>
-    <article class="shadow-md bg-white h-[10rem] rounded-xl">
-      <div class="w-full h-3/6 bg-[#656565] rounded-xl"></div>
       <div class="flex justify-between p-3">
         <div class="w-5/6">
-          <h3 class="font-bold">Descuento de impuestos</h3>
-          <p class="truncate w-[200px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, optio?
-          </p>
-        </div>
-        <button class="bg-green-800 px-2 rounded-md text-white">Canjear</button>
-      </div>
-    </article>
-  </section>
-  <section class="">
-    <h3 class="text-black lg:text-white mb-4 lg:mb-10 px-3">Canjeas tus premios</h3>
-    <article class="shadow-md bg-white h-[10rem] rounded-xl">
-      <div class="w-full h-3/6 bg-[#656565] rounded-xl"></div>
-      <div class="flex justify-between p-3">
-        <div class="w-5/6">
-          <h3 class="font-bold">Viaja con gastos pagados</h3>
-          <p class="truncate w-[200px]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, optio?
+          <h3 class="font-bold">{{ award.nombrePremio }}</h3>
+          <p class="truncate w-[200px]">Puntos requeridos: {{ award.puntos }}
           </p>
         </div>
         <button class="bg-green-800 px-2 rounded-md text-white">Canjear</button>
@@ -47,7 +22,9 @@
   </section>
 </section>
 
-
+<div *ngIf="awards.length === 0">
+  <p>No se encontraron premios.</p>
+</div>
 
 <section class="min-w-full h-5/6 rounded-md bg-[#656565] p-2 mt-3  overflow-x-auto">
   <h2 class="text-white text-xl mb-2">Listado</h2>
@@ -56,64 +33,35 @@
       <thead>
         <tr class="overflow-scroll">
           <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Usuario
+            Nombre de Premio
           </th>
           <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Tipo
+            Cantidad
           </th>
           <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Fecha
+            Puntos
           </th>
           <th class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Estado
+            Imagen
           </th>
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
         <!-- Filas de la tabla -->
-        <tr>
+        <tr *ngFor="let table of awards">
           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            John Doe
+            {{ table.nombrePremio }}
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            Vidrio
+            {{ table.cantidad }}
           </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            2023-05-12
+            {{ table.puntos }}
           </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-green-500">
-            Activo
+          <td class="px-6 py-4 whitespace-nowrap text-sm">
+            <img [src]="table.imgUrl" class="w-10 h-10 rounded-xl" alt="Imagen del premio" >
           </td>
         </tr>
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            Jane Smith
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            Carton
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            2023-06-25
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500">
-            Inactivo
-          </td>
-        </tr>
-        <tr>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            Robert Johnson
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            Carton
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-            2023-07-18
-          </td>
-          <td class="px-6 py-4 whitespace-nowrap text-sm text-yellow-500">
-            Pendiente
-          </td>
-        </tr>
-        <!-- Agrega más filas según sea necesario -->
       </tbody>
 
     </table>

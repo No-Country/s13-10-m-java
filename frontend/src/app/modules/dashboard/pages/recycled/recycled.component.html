@@ -68,32 +68,24 @@
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
         <!-- Filas de la tabla -->
-        <ng-container *ngFor="let greenpoint of greenpoints ; let i = index;">
+        <ng-container *ngFor="let greenpoint of recyclingData ; let i = index;">
           <tr>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 cursor-pointer"
-              (click)="toggleDetails(i)">
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 cursor-pointer">
               <div class="flex justify-start items-center">
-                <i class="{{ showDetails[i] ? 'arrow-expand' : 'arrow-right' }}"></i>
-                {{ greenpoint.nombre }}
+                <!-- <i class="{{ showDetails[i] ? 'arrow-expand' : 'arrow-right' }}"></i> -->
+                {{ greenpoint.puntoVerdeNombre }}
               </div>
             </td>
-          </tr>
-
-          <tr *ngIf="showDetails[i]">
-            <td></td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               <ul class="list-disc list-inside">
-                <li *ngFor="let reciclaje of greenpoint.reciclajes">{{ reciclaje.materialesRecibidos }}</li>
+                <li>{{ greenpoint.materialesRecibidos }}</li>
               </ul>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
               <ul class="list-disc list-inside">
-                <li *ngFor="let reciclaje of greenpoint.reciclajes">{{ reciclaje.dia }}</li>
+                <li>{{ greenpoint.dia }}</li>
               </ul>
             </td>
-            <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-              {{ greenpoint.horarioAtencion }}
-            </td> -->
           </tr>
         </ng-container>
       </tbody>

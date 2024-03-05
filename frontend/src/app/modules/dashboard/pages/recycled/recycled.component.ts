@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SelectedGreenPointResponse } from '@models/greenpoint.model';
 import { UserResponse } from '@models/user.model';
 import { AuthService } from '@services/auth.service';
-import { GreenpointService } from '@services/greenpoint.service';
+import { IRecyclingRes } from '@models/recycling.model';
+import { RecyclingService } from '@services/recycling.service'
 
 @Component({
   selector: 'app-recycled',
@@ -12,32 +13,31 @@ import { GreenpointService } from '@services/greenpoint.service';
 export class RecycledComponent implements OnInit {
 
   user: UserResponse | null = null;
-  greenpoints: SelectedGreenPointResponse[] = [];
-  showDetails: boolean[] = []
+  // showDetails: boolean[] = []
+
+  recyclingData: IRecyclingRes[] = [];
 
   constructor(
     private readonly authService: AuthService,
-    private readonly greenpointService: GreenpointService
+    private recyclingService: RecyclingService
   ) { }
 
   ngOnInit(): void {
-    this.authService.userLogged$.subscribe(res => this.user = res);
-    this.greenpointService.getAllGreenpoints().subscribe({
-      next: (res) => {
-        this.greenpoints = res;
-        this.greenpoints.forEach((greenpoint) => {
-          // console.log('Reciclajes del punto verde:', greenpoint);
-          greenpoint
-        });
+    this.authService.userLogged$.subscribe(res => { this.user = res, console.log(res?.userId)});
+
+    this.recyclingService.get().subscribe(
+      (data: IRecyclingRes[]) => {
+        this.recyclingData = data;
+        console.log(data)
       },
-      error: (error) => {
-        console.log(error);
-      },
-    });
+      (error) => {
+        console.error('Error al obtener los datos de reciclaje:', error);
+      }
+    );
   }
 
-  toggleDetails(index: number): void {
-    this.showDetails[index] = !this.showDetails[index];
-  }
+  // toggleDetails(index: number): void {
+  //   this.showDetails[index] = !this.showDetails[index];
+  // }
 
 }
