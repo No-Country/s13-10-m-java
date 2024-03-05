@@ -16,12 +16,12 @@ export class UserService {
   getUser(id:string){
     return this.http.get<UserResponse>(this.UrlUser+`/${id}`)
   }
-  
+
   updateUser(id:string,req: IAuthRegister) {
     return this.http.put(this.UrlUser+`/${id}`, req);
   }
 
-  PostImageUser( image: UserImage){
+  PostImageUser( image: any){
     return this.http.post<UserImageResponse>(this.UrlImage, image );
   }
 }

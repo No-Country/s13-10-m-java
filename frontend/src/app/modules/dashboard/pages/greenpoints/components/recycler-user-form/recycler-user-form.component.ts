@@ -13,7 +13,7 @@ export class RecyclerUserFormComponent {
   form: FormGroup;
   @Input() idPuntoVerde: string | undefined = '';
   @Output() closeEmitter = new EventEmitter<boolean>(false);
-  @Output() successEmitter = new EventEmitter<boolean>(true);
+  @Output() successEmitter = new EventEmitter<boolean>();
 
   constructor(
     private readonly fb: FormBuilder,
