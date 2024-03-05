@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { userData } from '@models/user.model';
+import { UserResponse } from '@models/user.model';
 import { UserService } from '@services/user.service';
 import { tokenData } from '@models/token.model';
 import { TokenService } from '@services/token.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GeneralValidator, emailValidator, numericSpecialCharacterValidator } from '@utils/validator';
+import { GeneralValidator, emailValidator, numericSpecialCharacterValidator, passwordValidator } from '@utils/validator';
+import { AuthService } from '@services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-profile',
@@ -14,9 +16,9 @@ import { GeneralValidator, emailValidator, numericSpecialCharacterValidator } fr
 export class ProfileComponent {
   form: FormGroup;
 
-  userData!: userData;
+  UserResponse: UserResponse| null = null;
   tokenData!: tokenData;
-  
+
   showPassword: boolean = false;
   showRepeatPassword: boolean = false;
 
@@ -25,53 +27,70 @@ export class ProfileComponent {
     private readonly validator: GeneralValidator,
 
     private tokenService: TokenService,
-    private userService: UserService
-  ) {this.form = this.fb.group({
-    nombre: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(60),
-        numericSpecialCharacterValidator,
+    private userService: UserService,private readonly authService: AuthService,
+    
+  ) {
+    this.form = this.fb.group({
+      nombre: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(60),
+          numericSpecialCharacterValidator,
+        ],
       ],
-    ],
-    apellido: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(60),
-        numericSpecialCharacterValidator,
+      apellido: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(60),
+          numericSpecialCharacterValidator,
+        ],
       ],
-    ],
-    email: [
-      '',
-      [
-        Validators.required,
-        Validators.minLength(8),
-        Validators.maxLength(255),
-        emailValidator,
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(255),
+          emailValidator,
+        ],
       ],
-    ]
-  }); }
-
-  ngOnInit() {
-    this.tokenData = this.tokenService.getDecodedToken()!;
-
-    this.userService.getUser(this.tokenData.USER_ID).subscribe({
-      next: (response) => {
-        this.userData = response;
-      },
-      //funcion landda
-      error: (error) => {
-        console.log(error);
-      }
-    })
-    console.log(this.userData);
-
-    this.updateImage()
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(128),
+          passwordValidator,
+        ],
+      ],
+      repeatPassword: ['', Validators.required],
+    });
   }
+
+  ngOnInit(): void {
+
+
+    this.authService.userLogged$.subscribe((res) => (this.UserResponse = res));
+    /* this.tokenData = this.tokenService.getDecodedToken()!;
+    if (this.tokenData) {
+        this.userService.getUser(this.tokenData.USER_ID).subscribe({
+            next: (response) => {
+                this.UserResponse = response;
+                console.log(this.UserResponse);
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        });
+    } else {
+        console.error('this.tokenData es undefined');
+    }*/
+    this.updateImage(); 
+}
 
   updateImage() {
     const input = document.querySelector<HTMLInputElement>("#img-picker");
@@ -102,35 +121,48 @@ export class ProfileComponent {
 
 
 
-  onSubmit() {
+  onSubmit(event: Event) {
+    // Evitar que el formulario se actualice al hacer submit
+    event.preventDefault();
+    
     if (
       this.form.invalid ||
       this.form.value.password !== this.form.value.repeatPassword
     ) {
       return this.form.markAllAsTouched();
     }
-/* 
-    this.authService.register(this.form.value).subscribe({
-      next: () => {
-        Swal.fire({
-          title: '¡Registro exitoso!',
-          text: `¡Hola, ${this.form.value.nombre}! Hemos enviado a tu correo un enlace de confirmación, por favor ingresa para validar tu cuenta.`,
-          icon: 'success',
-        }).then(() => {
-          this.form.reset();
-          this.isRegistered = true;
+    
+        this.userService.updateUser(this.UserResponse!.userId,this.form.value).subscribe({
+          next: () => {
+            Swal.fire({
+              title: '¡Datos guardados exitosamente!',
+              text: `Tus datos han sido actualizado`,
+              icon: 'success',
+            }).then(() => {
+              this.form.reset();
+              //this.isRegistered = true;
+            });
+          },
+          error: (error) => {
+            console.log(error);
+            Swal.fire({
+              title: 'Ha ocurrido un error...',
+              text: error.error,
+              icon: 'error',
+            });
+          },
         });
-      },
-      error: (error) => {
-        console.log(error);
-        Swal.fire({
-          title: 'Ha ocurrido un error...',
-          text: error.error,
-          icon: 'error',
-        });
-      },
-    }); */
   }
+
+  selectedImage: File | null = null;
+  imageUrl: string | null = null;
+
+
+  onFileSelected(event: any) {
+    this.selectedImage = event.target.files[0];
+  }
+
+ 
 
   handleShowPassword(): void {
     this.showPassword = !this.showPassword;
@@ -239,6 +271,6 @@ export class ProfileComponent {
   }
 
 
-  
+
 }
 

@@ -53,6 +53,16 @@ export class RegisterComponent {
           emailValidator,
         ],
       ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.maxLength(128),
+          passwordValidator,
+        ],
+      ],
+      repeatPassword: ['', Validators.required],
     });
   }
 
