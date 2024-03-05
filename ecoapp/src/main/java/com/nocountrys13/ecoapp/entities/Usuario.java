@@ -29,10 +29,16 @@ public class Usuario implements Serializable {
     private String imgUrl;
     private Boolean cuentaEliminada;
 
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private EmailVerification emailVerification;
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PuntoVerde> puntosVerdes= new ArrayList<>();
-    
+    private List<Imagen> imagen;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PuntoVerde> puntosVerdes = new ArrayList<>();
+
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Canje> canje;
-    
+
 }
