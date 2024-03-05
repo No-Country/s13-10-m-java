@@ -6,6 +6,7 @@ import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
 import com.nocountrys13.ecoapp.services.IUsuarioService;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.BeanUtils;
@@ -110,8 +111,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isPresent()) {
             var user = usuario.get();
-            user.setCuentaEliminada(true);
-            usuarioRepository.save(user);
+            usuarioRepository.delete(user);
+//            user.setCuentaEliminada(true);
+//            usuarioRepository.save(user);
+
             return "El usuario fue eliminado";
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontró el usuario buscado");

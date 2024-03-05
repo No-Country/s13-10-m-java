@@ -56,14 +56,18 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
     
     @Override
     public Jwt login(AuthenticationDTO dto) {
-        var user = Optional
-                .of(repository.findByEmail(dto.email()))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Correo o contraseña incorrecta."));
+        var user = repository.findByEmail(dto.email());
+        if(user == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "No existe el usuario.");
+        }
+//        var user = Optional
+//                .of(repository.findByEmail(dto.email()))
+//                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Correo o contraseña incorrecta."));
 
         if (encoder.matches(dto.password(), user.getPassword()))
             return jwtProvider.generateToken(user);
         else
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Correo o contraseña incorrecta.");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Contraseña incorrecta.");
     }
 
 }
