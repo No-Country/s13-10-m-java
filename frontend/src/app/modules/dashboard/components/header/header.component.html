@@ -3,8 +3,8 @@
     <img class="w-12" src="assets/img/menubar.svg" alt="menubar-icon" />
   </button>
 </div>
-<div class="user text-sm hidden sm:flex px-2">
-  <span *ngIf="tokenData">{{ tokenData.sub }}</span>
+<div class="user text-sm hidden sm:flex px-2 font-bold">
+  <span *ngIf="tokenData">{{ UserResponse?.email }}</span>
 </div>
 <!-- green point button---------------------------- -->
 <div class="greenpoint text-sm text-white flex-grow">
@@ -19,13 +19,13 @@
 </div>
 <!-- icons------------------------------------- -->
 <div class="utils space-x-2">
-  <button>
+  <!-- <button>
     <img
       class="w-4 md:w-6 aspect-square"
       src="assets/img/dark-icon.svg"
       alt="dark-icon"
     />
-  </button>
+  </button> -->
   <button>
     <img
       class="w-4 md:w-6 aspect-square"
@@ -40,8 +40,8 @@
     (click)="showOptions()"
   >
     <img
-      class="w-4 md:w-6 aspect-square"
-      src="assets/img/user-icon.svg"
+      class="w-4 md:w-6 aspect-square rounded-full border border-green-700"
+      src="{{UserResponse?.imgUrl}}"
       alt="user-icon"
     />
   </button>

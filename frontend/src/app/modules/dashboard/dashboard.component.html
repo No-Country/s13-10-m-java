@@ -4,7 +4,7 @@ show-sidebar
 [isShowSidebar]="isShowSidebar"
 ></app-sidebar>
 
-<div class="dashboardContainer basis-full flex flex-col">
+<div class="dashboardContainer basis-full min-w-[76%] flex flex-col">
   <app-header
   (emitShowSidebar)="receiveSidebarStatus($event)"
   (emitShowModal)="receiveModalStatus($event)"

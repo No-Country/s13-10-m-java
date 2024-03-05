@@ -3,6 +3,7 @@ import { tokenData } from '@models/token.model';
 import { TokenService } from '@services/token.service';
 import Swal from 'sweetalert2';
 import { AuthService } from '@services/auth.service';
+import { UserResponse } from '@models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,8 @@ export class HeaderComponent {
   @Output() emitShowSidebar = new EventEmitter<boolean>();
   @Output() emitShowModal = new EventEmitter<boolean>();
   tokenData!: tokenData | null | undefined;
+  
+  UserResponse: UserResponse | null = null;
 
   constructor(
     private tokenService: TokenService,
@@ -21,6 +24,7 @@ export class HeaderComponent {
 
   ngOnInit() {
     this.tokenData = this.tokenService.getDecodedToken();
+      this.authService.userLogged$.subscribe((res) => (this.UserResponse = res));
   }
   showSidebar() {
     this.emitShowSidebar.emit(true);
