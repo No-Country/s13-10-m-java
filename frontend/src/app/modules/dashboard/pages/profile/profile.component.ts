@@ -73,9 +73,7 @@ export class ProfileComponent {
           passwordValidator,
         ],
       ],
-      repeatPassword: ['', Validators.required],
-
-      imagen: [''],
+      repeatPassword: ['', Validators.required]
     });
   }
 
@@ -85,8 +83,17 @@ export class ProfileComponent {
   }
 
   updateImage() {
+
     const input = document.querySelector<HTMLInputElement>('#img-picker');
     const preview = document.querySelector<HTMLImageElement>('#preview');
+
+    const miImagen = document.querySelector<HTMLInputElement>('#miImagen')!.addEventListener('click', function() {
+      console.log("Clicando")
+      input!.click();
+      
+    })
+    console.log(miImagen)
+  
 
     input!.addEventListener('change', updateImageDisplay);
 
@@ -117,7 +124,15 @@ export class ProfileComponent {
       formData.append('imagen', file);
 
       this.userService.PostImageUser(formData).subscribe({
-        next: (res) => console.log(res),
+        next: (res) => {console.log(res)
+          Swal.fire({
+            title: 'Imagen actualizada!',
+            text: `Tus imagen han sido actualizado  exitosamente`,
+            icon: 'success',
+          }).then(() => {
+            /* window.location.reload(); */
+          });
+        },
         error(err) {
           console.log('error con la imagen', err);
         },

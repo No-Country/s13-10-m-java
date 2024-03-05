@@ -22,11 +22,13 @@ export class TokenService {
     try {
       const userData = helper.decodeToken(token);
 
+      console.log(userData);
+
       if (!this.isValidToken(userData)) {
         this.clearToken();
       }
 
-      return helper.decodeToken(token);
+      return userData;
     } catch (error) {
       this.clearToken();
       return;
@@ -77,5 +79,13 @@ export class TokenService {
     if (token) {
       localStorage.removeItem(this.key);
     }
+  }
+
+  isExpired() {
+    const expTime = new Date(this.getDecodedToken()!.exp * 1000);
+    // const expTime = new Date(1709645553 * 1000);
+    const currentTime = new Date();
+
+    return expTime < currentTime;
   }
 }

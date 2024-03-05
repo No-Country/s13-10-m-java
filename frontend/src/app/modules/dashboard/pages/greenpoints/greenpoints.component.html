@@ -2,11 +2,11 @@
 <span class="text-white font-inter text-lg font-semibold my-8"
   >Puntos creados</span
 >
-<main class="flex flex-col items-center gap-5">
-  <section class="points ">
+<main class="flex flex-col items-center justify-center gap-5 w-full">
+  <section class="points flex flex-wrap gap-5 justify-center">
     <article
       *ngFor="let greenpoint of greenpoints; index as i"
-      class="rounded-xl drop-shadow-lg bg-white max-w-[300px] hover:scale-[1.01] hover:cursor-pointer"
+      class="rounded-xl drop-shadow-lg bg-white w-[300px] hover:scale-[1.01] hover:cursor-pointer"
       [class.active]="greenpoint.selected"
       (click)="handleSelected(i)"
     >
@@ -23,7 +23,7 @@
       </section>
     </article>
     <article
-      class="rounded-lg drop-shadow-lg bg-white max-w-[340px] hover:scale-[1.01] hover:cursor-pointer"
+      class="rounded-lg drop-shadow-lg bg-white w-[300px] hover:scale-[1.01] hover:cursor-pointer"
     >
       <header
         class="h-56 bg-[#d9d9d9] flex items-center justify-center rounded-tl-xl rounded-tr-xl"
@@ -35,7 +35,7 @@
       </section>
     </article>
   </section>
-  <section class="flex flex-col gap-5" *ngIf="selectedGreenpoint">
+  <section class="flex flex-col gap-5 w-full" *ngIf="selectedGreenpoint">
     <header>
       <h2 class="font-semibold text-gray-700 text-lg">
         Seleccionado:
@@ -43,7 +43,7 @@
       </h2>
     </header>
     <article
-      class="bg-[#656565] rounded-xl pt-5 pb-10 px-4 flex flex-col gap-12"
+      class="bg-[#656565] rounded-xl pt-5 pb-10 px-4 flex flex-col gap-12 w-full"
     >
       <section role="region" class="flex flex-col gap-2.5">
         <h2 class="text-white font-semibold text-lg">Información</h2>
@@ -81,7 +81,7 @@
         </div>
       </section>
       <!-- --------------------------------------------------------------------------tabla -->
-      <section role="region" class="flex flex-col gap-2.5">
+      <section role="region" class="flex flex-col gap-2.5 ">
         <h2 class="text-white font-semibold text-lg">Premiar a los usuarios</h2>
         <div class="bg-white p-4 rounded-xl">
           <div class="w-full overflow-x-scroll">
