@@ -62,7 +62,6 @@ export class FormGreenpointComponent {
       return;
     }
     this.emitFormData.emit(this.form);
-    //this.form.reset();
   }
 
   initForm() {
@@ -86,11 +85,11 @@ export class FormGreenpointComponent {
         ],
       ],
       phone: [
-        '+549',
+        '5',
         [
           Validators.required,
-          Validators.minLength(14),
-          Validators.maxLength(14),
+          Validators.minLength(11),
+          Validators.maxLength(11),
           phoneValidator,
         ],
       ],

@@ -62,7 +62,7 @@ export class ModalRegisterGreenpointComponent {
       userId: tokenData.USER_ID,
       nombre: data.name,
       dni: data.dni,
-      telefono: '549' + data.phone,
+      telefono: data.phone,
       horarioAtencion: `Abierto de ${data.openTime} a ${data.closeTime}`,
       diasAtencion: `Atencion ${days.join(", ")}`,
       materialesAceptados: recicledType,
