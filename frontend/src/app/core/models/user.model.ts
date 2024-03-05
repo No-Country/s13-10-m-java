@@ -5,4 +5,5 @@ export interface UserResponse {
   email: string;
   validEmail: boolean;
   puntos: number;
+  imgUrl: string;
 }
