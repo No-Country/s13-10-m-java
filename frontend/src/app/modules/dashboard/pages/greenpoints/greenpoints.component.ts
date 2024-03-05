@@ -29,6 +29,7 @@ export class GreenpointsComponent {
   }
 
   handleSelected(index: number) {
+    console.log(index);
     this.greenpoints.forEach((greenpoint, i) => {
       greenpoint.selected = index === i;
       this.selectedGreenpoint = index === i ? greenpoint : null;
