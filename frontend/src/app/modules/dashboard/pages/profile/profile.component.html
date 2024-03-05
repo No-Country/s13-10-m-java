@@ -1,40 +1,136 @@
 <p class="text-white font-inter text-3xl font-bold">Perfil de usuario</p>
 <span class="text-white font-inter text-lg font-semibold my-8"></span>
-<section class="md:flex md:flex-row min-w-full h-5/6 rounded-md">
-  <article
-    class="md:w-1/2 my-4 mx-4 h-80 rounded-md bg-white overflow-x-auto shadow-lg"
-  >
-    <div
-      class="h-1/2 flex flex-col justify-end items-start ps-8"
-      style="
-        background-image: url('assets/img/bg-pixeles.png');
-        background-size: cover;
-      "
-    >
-      <div class="w-40 h-40 rounded-full bg-white">
-        <img
-          src="
-                assets/img/GreenPoint.png"
-          alt="imagen-perfil"
-        />
-      </div>
-    </div>
-    <div class="h-1/2 p-8">
-      <h1 class="font-inter text-3xl font-bold">
-        {{ user?.nombre }} {{ user?.apellido }}
-      </h1>
-      <h2 class="font-inter text-lg font-semibold my-4">{{ user?.email }}</h2>
-    </div>
-  </article>
-  <article
-    class="md:w-1/2 p-8 my-4 mx-4 h-80 rounded-md bg-white overflow-x-auto shadow-lg"
-  >
-    <h1 class="font-inter text-3xl font-bold">{{ "Acerca de" }}</h1>
-    <h2 class="font-inter text-lg font-semibold my-4">
-      {{ user?.validEmail ? "Validado" : "Por validar" }}
-    </h2>
-    <h2 class="font-inter text-lg font-semibold my-4">
-      {{ user?.puntos }} Ecopuntos
-    </h2>
-  </article>
+<section class="md:flex md:flex-row min-w-full h-5/6 rounded-md ">
+    <article class="md:w-1/2 my-4 mx-4 h-80 rounded-md bg-white  overflow-x-auto shadow-lg">
+        <div class="h-2/5  flex flex-col justify-end items-start ps-8"
+            style="background-image: url('assets/img/bg-pixeles.png'); background-size: cover;">
+
+            <div class="w-28 h-28 rounded-full bg-white flex justify-center items-center">
+                <img *ngIf="UserResponse" src="{{UserResponse.imgUrl}}" alt="imagen-perfil"
+                    class="w-28 h-28 rounded-full bg-white ">
+            </div>
+        </div>
+        <div class="h-2/5 p-8">
+
+            <h1 class=" font-inter text-3xl font-bold" *ngIf="UserResponse">{{UserResponse.nombre + " "+
+                UserResponse.apellido}}
+            </h1>
+
+
+            <h2 class=" font-inter text-lg font-semibold my-4" *ngIf="UserResponse">{{UserResponse.email}}</h2>
+
+        </div>
+        <div class="h-1/5 flex justify-end items-end w-full">
+
+            <app-button type="submit" color="success" class="m-auto
+            " (click)="showEdit()">Editar perfil</app-button>
+        </div>
+    </article>
+    <article
+        class="md:w-1/2   my-4 mx-4 h-80 rounded-md bg-white  overflow-x-auto  shadow-lg flex flex-col justify-between ">
+        <div class="h-4/5 p-8">
+
+            <h1 class=" font-inter text-3xl font-bold">{{'Acerca de'}}</h1>
+            <h2 class=" font-inter text-lg font-semibold my-4" *ngIf="UserResponse">
+
+                <p class="text-green-600" *ngIf="UserResponse.validEmail">Cuenta verificada</p>
+                <p class="text-blue-600" *ngIf="!UserResponse.validEmail">Debe Verificar su cuenta</p>
+            </h2>
+            <h2 class=" font-inter text-lg font-semibold my-4" *ngIf="UserResponse">{{UserResponse.puntos + "
+                EcoPuntos"}}</h2>
+        </div>
+        <div class="h-1/5 flex justify-end items-end w-full">
+
+            <app-button type="submit" color="success" class="m-auto" *ngIf="!UserResponse!.validEmail">Verificar
+                cuenta</app-button>
+        </div>
+    </article>
+</section>
+<section id="edit" class="hidden">
+    <article class="my-4 mx-4 p-8  rounded-md bg-white  overflow-x-auto  shadow-lg flex flex-col justify-end">
+       
+       
+       
+        <!-- [formGroup]="form" -->
+        <!-- no me permite colocar esto -->
+        <form [formGroup]="form"
+        (submit)="onSubmit()"  class="flex flex-col gap-6">
+            <!-- (submit)="onSubmit($event) -->
+            <div>
+                <label for="name" class="block text-lg text-gray-900">Nombre</label>
+                <input type="text" value="{{UserResponse!.nombre}}" id="name"
+                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+                    formControlName="nombre" />
+                <strong class="text-sm font-semibold text-red-700">{{
+                    nameErrorMessage
+                    }}</strong>
+            </div>
+            <div>
+                <label for="lastName" class="block text-lg text-gray-900">Apellido</label>
+                <input type="text" value="{{UserResponse!.apellido}}" id="lastName"
+                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+                    formControlName="apellido" />
+                <strong class="text-sm font-semibold text-red-700">{{
+                    lastNameErrorMessage
+                    }}</strong>
+            </div>
+            <div>
+                <label for="email" class="block text-lg text-gray-900">E-mail</label>
+                <input type="email" value="{{UserResponse!.email}}" id="email"
+                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+                    formControlName="email" />
+                <strong class="text-sm font-semibold text-red-700">{{
+                    emailErrorMessage
+                    }}</strong>
+            </div>
+            
+            <div>
+                <label for="password" class="block text-lg text-gray-900">Contraseña</label>
+                <div class="relative">
+                    <input [type]="showPassword ? 'text' : 'password'" id="password"
+                        class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+                        formControlName="password" />
+                    <button class="material-symbols-outlined absolute right-2 cursor-pointer"
+                        (click)="handleShowPassword()" type="button">
+                        {{ showPassword ? "visibility" : "visibility_off" }}
+                    </button>
+                </div>
+                <strong class="text-sm font-semibold text-red-700">{{
+                    passwordErrorMessage
+                    }}</strong>
+            </div>
+            <div>
+                <label for="repeatPassword" class="block text-lg text-gray-900">Confirmación de contraseña</label>
+                <div class="relative">
+                    <input [type]="showRepeatPassword ? 'text' : 'password'" id="repeatPassword"
+                        class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+                        formControlName="repeatPassword" />
+                    <button class="material-symbols-outlined absolute right-2 cursor-pointer"
+                        (click)="handleShowRepeatPassword()" type="button">
+                        {{ showRepeatPassword ? "visibility" : "visibility_off" }}
+                    </button>
+                </div>
+                <strong class="text-sm font-semibold text-red-700">{{
+                    repeatPasswordErrorMessage
+                    }}</strong>
+            </div>
+
+            <div><label for="img-picker" class="block text-lg text-gray-900">Seleccione una
+                    imagen:</label>
+                <input type="file" id="img-picker" name="img-picker" accept=".png,.jpg.jpeg"
+                formControlName="imagen"
+                    class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500">
+
+            </div>
+            <div class="flex justify-center items-center">
+
+                <div class="w-28 h-28 rounded-full bg-white flex justify-center items-center">
+                    <img id="preview" src="{{UserResponse!.imgUrl}}" alt="imagen-perfil"
+                        class="w-28 h-28 rounded-full bg-white ">
+                </div>
+            </div>
+            <app-button type="submit" color="success" class="mt-8 m-auto">Guardar cambios</app-button>
+        </form>
+    </article>
+
 </section>
