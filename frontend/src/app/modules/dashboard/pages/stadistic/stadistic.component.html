@@ -12,9 +12,19 @@
 <h4 class="text-slate-700 my-4 text-xl font-semibold">Estad&iacute;sticas propias</h4>
 <div class="flex flex-wrap items-center justify-around">
   <app-score
+  *ngIf="data.CantPuntosVerde"
   [points]="data.CantPuntosVerde"
   >Cantidad de Puntos Verdes</app-score>
   <app-score
+  *ngIf="data.cantPremio"
   [points]="data.cantPremio"
   >Cantidad de premios</app-score>
+  <app-score
+  *ngIf="data.puntos"
+  [points]="data.puntos"
+  >Puntos</app-score>
+  <app-score
+  *ngIf="data.premiosObtenidos"
+  [points]="data.premiosObtenidos"
+  >Premios Obtenidos</app-score>
 </div>
