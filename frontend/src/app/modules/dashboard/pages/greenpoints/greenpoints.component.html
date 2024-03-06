@@ -22,6 +22,19 @@
         <small class="text-xs text-gray-600">{{ greenpoint.direccion }}</small>
       </section>
     </article>
+    <article
+      (click)="this.isShowModal = true"
+      class="rounded-lg drop-shadow-lg bg-white max-w-[340px] hover:scale-[1.01] hover:cursor-pointer"
+    >
+      <header
+        class="h-56 bg-[#d9d9d9] flex items-center justify-center rounded-tl-xl rounded-tr-xl"
+      >
+        <span class="material-symbols-outlined text-9xl text-white">add</span>
+      </header>
+      <section class="px-3 py-4">
+        <h3 class="text-gray-800 text-xl font-semibold">Agregar punto verde</h3>
+      </section>
+    </article>
   </section>
   <section class="flex flex-col gap-5 w-full" *ngIf="selectedGreenpoint">
     <header>
