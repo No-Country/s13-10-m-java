@@ -2,7 +2,7 @@ export interface IRecyclingReq {
   emailUsuario: string;
   materialesRecibidos: string[];
   descripcion: string;
-  idPuntoVerde: string;
+  idPuntoVerde: string | undefined;
 }
 
 export interface IRecyclingRes {

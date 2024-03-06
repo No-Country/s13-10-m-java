@@ -4,7 +4,8 @@ import { environment } from '@environments/environment';
 import {
   IAuthLoginReq,
   IAuthLoginRes,
-  IAuthRegister,
+  IAuthRegisterReq,
+  IAuthRegisterRes,
 } from '@models/auth.model';
 import { TokenService } from './token.service';
 import { BehaviorSubject, tap } from 'rxjs';
@@ -25,8 +26,8 @@ export class AuthService {
     private readonly router: Router
   ) {}
 
-  register(req: IAuthRegister) {
-    return this.http.post(`${this.authUrl}/register`, req);
+  register(req: IAuthRegisterReq) {
+    return this.http.post<IAuthRegisterRes>(`${this.authUrl}/register`, req);
   }
 
   login(req: IAuthLoginReq) {
