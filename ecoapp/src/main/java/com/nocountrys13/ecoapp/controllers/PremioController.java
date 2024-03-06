@@ -54,11 +54,6 @@ public class PremioController {
         return ResponseEntity.status(HttpStatus.OK).body(premioService.getAllPrizes());
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<PremioDtoResponse> getOnePrize(@PathVariable(value = "id") UUID id) {
-//        return ResponseEntity.status(HttpStatus.OK).body(premioService.getOnePrize(id));
-//    }
-
     @PutMapping("/{id}")
     public ResponseEntity<PremioDtoResponse> updatePrize(@PathVariable(value = "id") UUID id,
                                                          @RequestBody @Valid PremioDtoRequest premioDtoRequest) {

@@ -62,16 +62,6 @@ public class PremioServiceImpl implements IPremioService {
     }
 
     @Override
-    public PremioDtoResponse getOnePrize(UUID id) {
-        Optional<Premio> premio = premioRepository.findById(id);
-        if (premio.isPresent()) {
-            var premioResp = premio.get();
-            return new PremioDtoResponse(premioResp.getPremioId(), premioResp.getNombrePremio(), premioResp.getDescripcion(), premioResp.getCantidad(), premioResp.getPuntos(), premioResp.getImgUrl(), premioResp.getPuntoVerde().getPuntoVerdeId());
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Premio no encontrado");
-    }
-
-    @Override
     public PremioDtoResponse updatePrize(UUID id, PremioDtoRequest premioDtoRequest) {
         Optional<Premio> premioBuscado = premioRepository.findById(id);
         if (premioBuscado.isPresent()) {
