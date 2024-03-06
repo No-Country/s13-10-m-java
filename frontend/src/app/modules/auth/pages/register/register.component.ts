@@ -8,6 +8,7 @@ import {
   numericSpecialCharacterValidator,
   passwordValidator,
 } from '@utils/validator';
+import { IAuthRegisterRes } from '@models/auth.model';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ export class RegisterComponent {
   showPassword: boolean = false;
   showRepeatPassword: boolean = false;
   isRegistered: boolean = false;
+  userRegistered: IAuthRegisterRes | null = null;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -75,10 +77,12 @@ export class RegisterComponent {
     }
 
     this.authService.register(this.form.value).subscribe({
-      next: () => {
+      next: (res) => {
+        this.userRegistered = res;
+
         Swal.fire({
           title: '¡Registro exitoso!',
-          text: `¡Hola, ${this.form.value.nombre}! Hemos enviado a tu correo un enlace de confirmación, por favor ingresa para validar tu cuenta.`,
+          text: `¡Hola, ${res.nombre}! Hemos enviado a tu correo un enlace de confirmación, por favor ingresa para validar tu cuenta.`,
           icon: 'success',
         }).then(() => {
           this.form.reset();
