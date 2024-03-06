@@ -5,21 +5,6 @@
       <h1 class="text-2xl pb-4"> <strong class="text-[#006C34]">Green</strong><strong
           class="text-[#FFC107]">Point</strong> </h1>
     </div>
-    <!-- <div class="lg:hidden relative">
-      <button id="burgerButton" class="text-gray-700 focus:outline-none" (click)="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-        </svg>
-      </button>
-      <div class=" w-full absolute top-7 right-16 " *ngIf="isMenuOpen">
-        <a routerLink="/auth/login" class="block py-2 px-4 text-gray-700">Ingresar</a>
-        <a routerLink="/auth/register" class="block py-2 px-4 text-gray-700">Registrarse</a>
-      </div>
-    </div>
-    <div class="hidden lg:flex gap-5 uppercase">
-      <a routerLink="/auth/login">Ingresar</a>
-      <a routerLink="/auth/register">Registrarse</a>
-    </div> -->
     <div class="lg:hidden relative">
       <!-- Burger icon -->
       <button id="burgerButton" class="text-gray-700 focus:outline-none" (click)="toggleMenu()">
@@ -30,7 +15,7 @@
       <!-- Mobile menu -->
       <div class=" absolute top-7 right-14" *ngIf="isMenuOpen">
         <!-- Mostrar el botón del Dashboard si el usuario está logueado -->
-        <a *ngIf="isLogged" routerLink="/dashboard" class="block uppercase cursor-pointer">Ir al dashboard</a>
+        <a *ngIf="isLogged" routerLink="/dashboard" class="block uppercase cursor-pointer">Menú Principal</a>
         <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
         <ng-container *ngIf="!isLogged">
           <a routerLink="/auth/login" class="block py-2 px-4">Ingresar</a>
@@ -43,8 +28,8 @@
       <ng-container *ngIf="isLogged">
         <div class="flex gap-2">
           <a routerLink="/dashboard"
-            class="border border-[#006C34] px-4 py-2 text-[#006C34] hover:bg-green-900 hover:text-white">Ir al
-            dashboard</a>
+            class="border border-[#006C34] px-4 py-2 text-[#006C34] hover:bg-green-900 hover:text-white">Menú
+            Principal</a>
           <div class="rounded-full h-10 w-10 bg-gray-500"></div>
         </div>
       </ng-container>
@@ -59,8 +44,6 @@
       </ng-container>
     </div>
   </nav>
-
-
 
   <section class="px-4 lg:px-8 xl:px-16 py-12 lg:py-24">
     <section class="flex justify-center md:justify-between lg:items-start w-full">
@@ -79,8 +62,8 @@
         Nuestra misión es promover la conciencia ambiental y facilitar la
         participación activa de la comunidad en la gestión responsable de los
         residuos. Nos esforzamos por crear un espacio donde los ciudadanos puedan
-        encontrar fácilmente los puntos verdes cercanos a su ubicación, así como
-        información relevante sobre cómo separar y desechar adecuadamente sus
+        encontrar fácilmente los GreenPoints cercanos a su ubicación, así como
+        información relevante sobre cómo separar y disponer adecuadamente sus
         residuos.
       </p>
     </div>
@@ -96,9 +79,12 @@
 
   <section>
     <article class="my-16">
-      <h2 class="text-black text-center font-space-grotesk text-2xl font-medium">
-        ¿QUÉ MATERIALES RECICLAMOS?
-      </h2>
+      <div class="flex flex-col gap-2">
+        <h2 class="text-black text-center font-space-grotesk text-2xl font-medium">
+          ¿QUÉ MATERIALES RECICLAMOS?
+        </h2>
+        <span class="text-xl font-bold text-center">Siempre limpios y secos</span>
+      </div>
 
       <ul class="flex justify-around flex-wrap my-10">
         <li>
@@ -125,7 +111,7 @@
               <img src="../../../assets/img/plastics.png" alt="#" class="w-full h-full object-cover" />
             </div>
 
-            <span>Plasticos</span>
+            <span>Plásticos</span>
           </div>
         </li>
         <li>
@@ -179,15 +165,15 @@
     </article>
   </section>
   <section class="my-16">
-    <h2 class="text-black text-center font-space-grotesk text-2xl font-medium my-16">
-      GRACIAS AL ES EZFUERZO DE LA COMUNIDAS HEMOS AYUDADO A
+    <h2 class="text-black text-center font-space-grotesk text-2xl font-medium my-16 uppercase">
+      Gracias a la participación de la comunidad se puede lograr:”
     </h2>
 
     <section class="mx-auto w-11/12 lg:w-8/12 max-w-full">
       <article class="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-4">
         <div class="flex justify-start lg:justify-start items-center">
-          <p class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide">
-            Reducir las emisiones de dióxido de carbono en un 95%
+          <p class="text-black font-roboto text-xl lg:text-2xl font-normal leading-normal tracking-wide">
+            Reducir las emisiones de CO2: 1,5 kg de CO2 por cada kilo de plástico reciclado.
           </p>
         </div>
         <img src="../../../assets/img/pollution-3.png" class="lg:w-[325px] w-full max-w-full h-32"
@@ -197,7 +183,7 @@
       <div class="flex lg:flex-row-reverse flex-col justify-between w-full lg:my-0 my-4 lg:gap-0 gap-4">
         <p
           class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide lg:px-14 lg:py-2">
-          Ahorrar hasta 5,774 kWh de energía
+          Reducir la tala de árboles, el consumo de agua en un 86% y el de energía en un 65%.
         </p>
         <img src="../../../assets/img/pollution-2.png" class="lg:w-[305px] w-full max-w-full h-32"
           alt="Descripción de la imagen" />
@@ -206,7 +192,7 @@
       <article class="grid grid-cols-1 lg:grid-cols-2 lg:gap-0 gap-4">
         <div class="flex justify-start lg:justify-center items-center">
           <p class="text-black font-roboto text-2xl lg:text-3xl font-normal leading-normal tracking-wide">
-            Ahorrar hasta 5,774 kWh de energía
+            Reciclando 3000 botellas de vidrio, ahorramos 130 kg de petróleo y 1200 kg de materias primas.
           </p>
         </div>
         <img src="../../../assets/img/pollution.png" class="lg:w-[325px] w-full max-w-full h-32"
@@ -220,7 +206,7 @@
       </h2>
 
       <a *ngIf="isLogged" routerLink="/dashboard"
-        class="text-[#006C34] hover:bg-green-900 hover:text-white uppercase">Ir al dashboard</a>
+        class="text-[#006C34] hover:bg-green-900 hover:text-white uppercase p-3">Menú Principal</a>
       <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
       <ng-container *ngIf="!isLogged">
         <app-button (click)="goToRegister()">REGISTRARSE</app-button>
@@ -243,7 +229,7 @@
         <h1 class="text-2xl pb-4"> <strong class="text-[#006C34]">Green</strong><strong
             class="text-[#FFC107]">Point</strong> </h1>
       </div>
-      <p>Fomentando una <br>
+      <p class="font-bold">Fomentando una <br>
         cultura de reciclaje <br> y sostenibilidad.</p>
     </div>
     <div>

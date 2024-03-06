@@ -1,10 +1,10 @@
-<div class="sidebarContainer basis-9/12 md:basis-auto p-3 h-auto bg-white ">
+<div class="sidebarContainer basis-9/12 md:basis-auto p-3 h-auto bg-white ga ">
   <img class="mb-3" src="assets/images/logo.png" alt="logo-icon" />
   <!-- link to dashboard------------------------------------------------ -->
   <ul>
     <li>
       <a
-        class="flex items-center mb-2 rounded-xl px-2"
+        class="flex items-center mb-2 rounded-xl p-2"
         routerLink="principal"
         routerLinkActive="active text-white"
         (click)="hiddenSidebar()"
@@ -17,12 +17,12 @@
             alt="dashboard_icon"
           />
         </div>
-        <span>Dashboard</span>
+        <span>Menu principal</span>
       </a>
     </li>
     <li>
       <a
-        class="flex items-center mb-2 rounded-xl px-2"
+        class="flex items-center mb-2 rounded-xl p-2"
         routerLink="../home"
         routerLinkActive="active text-white"
         (click)="hiddenSidebar()"
@@ -45,7 +45,7 @@
     <!-- links of navigation -------------------------------------------->
     <ul>
       <li
-        class="mb-2 text-sm rounded-xl px-2"
+        class="mb-2 text-sm rounded-xl p-2"
         routerLinkActive="active text-white"
         (click)="hiddenSidebar()"
       >
@@ -63,7 +63,7 @@
       </li>
       <li
       routerLinkActive="active text-white"
-      class="mb-2 text-sm rounded-xl px-2"
+      class="mb-2 text-sm rounded-xl p-2"
       (click)="hiddenSidebar()">
         <a class="flex items-center" routerLink="stadistic">
           <div class="overflow-y-hidden">
@@ -77,7 +77,7 @@
           <span>Estad&iacute;sticas</span>
         </a>
       </li>
-      <li routerLinkActive="active text-white" class="mb-2 text-sm rounded-xl px-2" (click)="hiddenSidebar()">
+      <li routerLinkActive="active text-white" class="mb-2 text-sm rounded-xl p-2" (click)="hiddenSidebar()">
         <a class="flex items-center" routerLink="award">
           <div class="overflow-y-hidden">
             <img
@@ -93,7 +93,7 @@
     </ul>
     <h4 class="mb-2 text-sm">Administrador de puntos</h4>
     <ul>
-      <li routerLinkActive="active text-white"  class="mb-2 text-sm rounded-xl px-2" (click)="hiddenSidebar()">
+      <li routerLinkActive="active text-white"  class="mb-2 text-sm rounded-xl p-2" (click)="hiddenSidebar()">
         <a class="flex items-center" routerLink="greenpoints">
           <div class="overflow-y-hidden">
             <img

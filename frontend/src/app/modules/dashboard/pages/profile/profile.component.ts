@@ -124,7 +124,15 @@ export class ProfileComponent {
       formData.append('imagen', file);
 
       this.userService.PostImageUser(formData).subscribe({
-        next: (res) => console.log(res),
+        next: (res) => {console.log(res)
+          Swal.fire({
+            title: 'Imagen actualizada!',
+            text: `Tus imagen han sido actualizado  exitosamente`,
+            icon: 'success',
+          }).then(() => {
+            /* window.location.reload(); */
+          });
+        },
         error(err) {
           console.log('error con la imagen', err);
         },

@@ -23,9 +23,9 @@
 </section>
 
 <div *ngIf="awards.length === 0">
-  <p>No se encontraron premios.</p>
+  <p class="text-white">No se encontraron premios.</p>
 </div>
-
+<!--
 <section class="min-w-full h-5/6 rounded-md bg-[#656565] p-2 mt-3  overflow-x-auto">
   <h2 class="text-white text-xl mb-2">Listado</h2>
   <section class="min-w-full h-full rounded-md bg-white  overflow-x-auto">
@@ -47,7 +47,6 @@
         </tr>
       </thead>
       <tbody class="bg-white divide-y divide-gray-200">
-        <!-- Filas de la tabla -->
         <tr *ngFor="let table of awards">
           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
             {{ table.nombrePremio }}
@@ -63,7 +62,6 @@
           </td>
         </tr>
       </tbody>
-
     </table>
   </section>
-</section>
+</section> -->

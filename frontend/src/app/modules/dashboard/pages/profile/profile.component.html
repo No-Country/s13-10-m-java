@@ -5,9 +5,11 @@
         <div class="h-2/5  flex flex-col justify-end items-start ps-8"
             style="background-image: url('assets/img/bg-pixeles.png'); background-size: cover;">
 
-            <div class="w-28 h-28 rounded-full bg-white flex justify-center items-center" id="miImagen">
+            <div class="w-28 h-28 rounded-full bg-white flex justify-center items-center cursor-pointer" id="miImagen" title="Click aqui para cambiar la imagen.">
                 <img id="preview" src="{{UserResponse!.imgUrl}}" alt="imagen-perfil"
                     class="w-28 h-28 rounded-full bg-white ">
+                    
+        <span id="add" class="material-symbols-outlined text-8xl text-white absolute rounded-full">add</span>
                 <input type="file" id="img-picker" name="img-picker" accept=".png,.jpg.jpeg" 
                     (change)="uploadImage($event)" class="hidden">
             </div>
