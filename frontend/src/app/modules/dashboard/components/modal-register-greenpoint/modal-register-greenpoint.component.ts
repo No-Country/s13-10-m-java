@@ -82,10 +82,10 @@ export class ModalRegisterGreenpointComponent {
     let days :string[] = [];
     if(data.lunes) days.push("lunes")
     if(data.martes) days.push("martes")
-    if(data.miercoles) days.push("miercoles")
+    if(data.miercoles) days.push("miércoles")
     if(data.jueves) days.push("jueves")
     if(data.viernes) days.push("viernes")
-    if(data.sabado) days.push("sabado")
+    if(data.sabado) days.push("sábado")
     if(data.domingo) days.push("domingo")
     return days;
   }

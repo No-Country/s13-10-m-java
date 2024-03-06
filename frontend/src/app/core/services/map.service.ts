@@ -69,6 +69,7 @@ export class MapService {
     });
   }
   createContent(data:greenPointResponse){
+    const types = this.parseTypesFormat(data);
     const content =`
       <div class="grid grid-cols-4 w-[300px] gap-y-2 items-start">
         <span class="font-bold">Nombre: </span>
@@ -80,7 +81,7 @@ export class MapService {
         <span class="font-bold">D&iacute;as de atenci&oacute;n:</span>
         <span class="col-span-3">${data.diasAtencion}</span>
         <span class="font-bold">Materiales aceptados:</span>
-        <span class="col-span-3">${data.materialesAceptados.join(", ")}</span>
+        <span class="col-span-3">${types.join(", ")}</span>
         <span class="font-bold">Direcci&oacute;n:</span>
         <span class="col-span-3">${data.direccion}</span>
       </div>
@@ -96,5 +97,15 @@ export class MapService {
       radius
     })
     return circle;
+  }
+  private parseTypesFormat(data:greenPointResponse){
+    let parseData:string[] = [];
+    data.materialesAceptados.forEach((type)=>{
+        if(type === "PLASTICO") parseData.push("Plástico")
+        if(type === "PAPELCARTON") parseData.push("Papel y carton")
+        if(type === "METAL") parseData.push("Metal")
+        if(type === "VIDRIO") parseData.push("Vidrio")
+    })
+    return parseData;
   }
 }
