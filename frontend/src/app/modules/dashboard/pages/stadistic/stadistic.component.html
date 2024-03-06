@@ -10,15 +10,15 @@
   <app-custom-chart></app-custom-chart>
 </div>
 <h4 class="text-slate-700 my-4 text-xl font-semibold">Estad&iacute;sticas propias</h4>
-<div class="flex flex-wrap items-center justify-around">
+<div class="flex flex-wrap items-center justify-around" *ngIf="data">
   <app-score
   *ngIf="data.CantPuntosVerde"
   [points]="data.CantPuntosVerde"
   >Cantidad de Puntos Verdes</app-score>
   <app-score
-  *ngIf="data.cantPremio"
+  *ngIf="data.cantPremio !== undefined"
   [points]="data.cantPremio"
-  >Cantidad de premios</app-score>
+  >Premios creados</app-score>
   <app-score
   *ngIf="data.puntos"
   [points]="data.puntos"

@@ -32,7 +32,7 @@
             Principal</a>
           <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownDivider" type="button"
             (click)="showOptions()">
-            <img class="w-4 md:w-6 aspect-square rounded-full border border-green-700" src="{{UserResponse?.imgUrl}}"
+            <img class="w-4 md:w-6 aspect-square rounded-full border border-green-700" *ngIf="UserResponse" [src]="UserResponse.imgUrl"
               alt="user-icon" />
           </button>
 

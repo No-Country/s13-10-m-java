@@ -6,10 +6,16 @@
   <section class="points flex flex-wrap gap-5 justify-center">
     <article
       *ngFor="let greenpoint of greenpoints; index as i"
-      class="rounded-xl drop-shadow-lg bg-white w-[300px] hover:scale-[1.01] hover:cursor-pointer"
+      class="rounded-xl drop-shadow-lg bg-white w-[300px] hover:scale-[1.01] hover:cursor-pointer relative"
       [class.active]="greenpoint.selected"
       (click)="handleSelected(i)"
     >
+    <button
+      (click)="deleteGreenpoint(greenpoint.puntoVerdeId)"
+      type="button"
+      class="deleteBtn overflow-hidden absolute right-2 top-2">
+      <img class="w-8 aspect-square" src="assets/img/delete.svg" alt="delete-icon">
+    </button>
       <header
         class="h-56 bg-[#d9d9d9] flex items-center justify-center rounded-tl-xl rounded-tr-xl"
       >

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { UserResponse } from '@models/user.model';
 import Swal from 'sweetalert2';
+import { UserService } from '@services/user.service';
+import { TokenService } from '@services/token.service';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +19,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
+    private userService: UserService,
+    private tokenService:TokenService,
+    
     private authService: AuthService
   ) {
     this.isLogged = !!localStorage.getItem('token');
@@ -28,6 +33,14 @@ export class HomeComponent implements OnInit {
        this.UserResponse = res;
         console.log(res); 
     });
+
+    const tokenData = this.tokenService.getDecodedToken();
+    if(this.isLogged){
+      this.userService.getUser(tokenData!.USER_ID).subscribe({
+        next:(res)=>this.UserResponse=res,
+        error:(err)=>console.log("erorr al obtener el user", err)
+      })
+    }
   }
 
   toggleMenu() {
