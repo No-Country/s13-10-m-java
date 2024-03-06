@@ -31,7 +31,7 @@
             class="border border-[#006C34] px-4 py-2 text-[#006C34] hover:bg-green-900 hover:text-white">Menú
             Principal</a>
           <!-- <div class="rounded-full h-10 w-10 bg-gray-500"></div> -->
-          <img [src]="UserResponse?.imgUrl" class="rounded-full h-10 w-10 bg-gray-500" alt="image">
+          <img *ngIf="UserResponse" [src]="UserResponse.imgUrl" class="rounded-full h-10 w-10 bg-gray-500" alt="image">
         </div>
       </ng-container>
       <!-- Si el usuario no está logueado, mostrar los enlaces de Ingresar y Registrarse -->
