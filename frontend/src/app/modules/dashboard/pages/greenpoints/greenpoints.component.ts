@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./greenpoints.component.scss'],
 })
 export class GreenpointsComponent {
+
   @ViewChild(RecyclerUserModalComponent)
   recyclerUserModal!: RecyclerUserModalComponent;
   greenpoints: SelectedGreenPointResponse[] = [];
@@ -17,7 +18,11 @@ export class GreenpointsComponent {
   idPuntoVerde: string | undefined = '';
   isShowModal = false;
 
-  constructor(private readonly greenpointService: GreenpointService) {
+  constructor(private readonly greenpointService: GreenpointService) {  }
+  ngOnInit(){
+    this.getGreenpointsData()
+  }
+  getGreenpointsData(){
     this.greenpointService.getUserGreenpoints().subscribe({
       next: (res) => {
         console.log('res: ', res);
@@ -58,6 +63,27 @@ export class GreenpointsComponent {
     //     console.error('Error', error);
     //   },
     // });
+  }
+
+  deleteGreenpoint(id:string) {
+    Swal.fire({
+      icon:"question",
+      title:"Seguro que deseas eliminar el greenpoint?",
+      showCancelButton:true,
+      showConfirmButton:true,
+      confirmButtonColor:"red"
+    })
+    .then((confirm)=>{
+      if(confirm.isConfirmed){
+        this.greenpointService.deleteGreenpoint(id).subscribe({
+          next:(res)=>{
+            this.getGreenpointsData()
+            console.log("greenpoint eliminado", res)
+          },
+          error:(err)=>console.log("error al borrar el greenpoint", err)
+        })
+      }
+    })
   }
 
   showNewGreenPointModal() {
