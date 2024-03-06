@@ -2,28 +2,29 @@
   <h2 class="text-white font-inter text-3xl font-bold">
     Premios
   </h2>
-  <div class="text-white font-bold text-2xl bg-yellow-400 p-2 rounded-xl"> Tus puntos: {{user?.puntos}}</div>
+  <div class="text-[#006C34] font-bold text-2xl bg-white py-2 px-4  rounded-xl"> Tus EcoPuntos: {{user?.puntos}}</div>
 </div>
-<h3 class="text-white font-inter text-lg font-semibold my-8">Canjeas tus premios</h3>
+<h3 class="text-white font-inter text-lg font-semibold my-8">Canjea tus premios</h3>
 <main class="flex flex-col items-center justify-center gap-5 w-full">
   <section *ngIf="awards.length > 0" class="points flex flex-wrap gap-5 justify-center">
-    <article *ngFor="let award of awards"  
-    class="rounded-xl drop-shadow-lg bg-white w-[300px] hover:scale-[1.01] hover:cursor-pointer"
-      >
-      <div class="w-full h-full bg-[#656565] rounded-xl">
-        <img [src]="award.imgUrl" class="w-full h-full object-cover" alt="Imagen del premio">
-      </div>
-      <div class="flex justify-between p-3 bg-white ">
+    <article *ngFor="let award of awards"
+      class="rounded-xl drop-shadow-lg bg-white w-[300px] hover:scale-[1.01] hover:cursor-pointer">
+
+      <header class="h-56 bg-[#d9d9d9] flex items-center justify-center rounded-tl-xl rounded-tr-xl">
+        <img [src]="award.imgUrl" class="w-full h-full object-cover  rounded-tl-xl rounded-tr-xl" alt="Imagen del premio">
+
+      </header>
+      <section class="px-3 py-4 flex justify-between  bg-white  rounded-bl-xl rounded-br-xl ">
         <div class="w-5/6">
-          <h3 class="font-bold">{{ award.nombrePremio }}</h3>
-          <p class="truncate w-[200px]">Puntos requeridos: {{ award.puntos }}
-          </p>
+          <h3 class="text-gray-800 text-xl font-semibold">{{ award.nombrePremio }}</h3>
+          <small class="text-xs text-gray-600">EcoPuntos requeridos: {{ award.puntos }}
+          </small>
         </div>
         <!-- <button class="bg-green-800 px-2 rounded-md text-white">Canjear</button> -->
 
         <button class="bg-green-800 px-2 rounded-md text-white" (click)="redeemAward(award.premioId)">Canjear</button>
 
-      </div>
+      </section>
     </article>
   </section>
 </main>

@@ -37,14 +37,23 @@ $size-hero: 9.63206rem;
 }
 
 .background-image {
-  background-image: url('../../../assets/images/rectangle-two.PNG');
+  background-image: url('../../../assets/images/fondo.png');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position-y:bottom ;
   width: 100%;
+  min-height: 38px;
   background-color: rgba(255, 255, 255, 0.6);
 }
 
 .new-bg-undernooth{
   opacity: 0.1;
   width: 100%;
+}
+
+
+#dropdownDivider{
+  position: absolute;
+    top: 84px;
+    right: 6px;
 }
