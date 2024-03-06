@@ -160,3 +160,7 @@
     </article>
   </section>
 </main>
+<app-modal-register-greenpoint
+*ngIf="isShowModal"
+(closeModal)="receiveModalStatus($event)"
+></app-modal-register-greenpoint>
