@@ -10,10 +10,7 @@
   <span class="text-white mr-2">Tipo de reciclaje:</span>
   <select [(ngModel)]="filter" class="outline-none">
     <option value="todos">Todos</option>
-    <option value="METAL">Metal</option>
-    <option value="PLASTICO">Pl&aacute;stico</option>
-    <option value="VIDRIO">Vidrio</option>
-    <option value="PAPELCARTON">Papel y carton</option>
+    <option *ngFor="let type of filters" [value]="type">{{type | typeFormat}}</option>
   </select>
 </div>
 <app-customMap [greenPoints]="greenpoints" [filters]="filter"></app-customMap>

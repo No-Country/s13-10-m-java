@@ -5,6 +5,7 @@ import { PrincipalRoutingModule } from './principal-routing.module';
 import { PrincipalComponent } from './principal.component';
 import { CustomMapComponent } from './components/map/map.component';
 import { FormsModule } from '@angular/forms';
+import { TypeFormatPipe } from 'app/core/pipes/type-format.pipe';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     PrincipalRoutingModule,
-    FormsModule
+    FormsModule,
+    TypeFormatPipe
   ]
 })
 export class PrincipalModule { }

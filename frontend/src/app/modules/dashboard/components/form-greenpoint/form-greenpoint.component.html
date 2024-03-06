@@ -1,11 +1,11 @@
 <form class="space-y-2" [formGroup]="form" (submit)="sendForm()">
-  <h4 class="text-center mb-3 text-xl font-bold">Agregar greenpoint</h4>
+  <h4 class="text-center mb-3 text-xl font-bold">Agregar GreenPoint</h4>
   <div class="field">
     <input
       formControlName="name"
       class="placeholder:text-black info"
       type="text"
-      placeholder="Nombre del punto verde"
+      placeholder="Nombre del GreenPoint"
       (input)="validateField('name')"
     />
     <p *ngIf="form.controls['name'].touched" class="text-[0.5rem] text-red-500">
@@ -53,7 +53,7 @@
     <div>
       <label [for]="day" class="mr-2" *ngFor="let day of days">
         <input [id]="day" type="checkbox" [formControlName]="day" />{{
-          day | titlecase
+          day| day | titlecase
         }}
       </label>
     </div>
@@ -76,7 +76,7 @@
         type="checkbox"
         [id]="type"
       />
-      <label class="text-sm" [for]="type">{{ type }}</label>
+      <label class="text-sm " [for]="type">{{ type | typeFormat}}</label>
     </div>
     <p *ngIf="invalidType" class="text-[0.5rem] text-red-500">Debe seleccionar al menos un tipo.</p>
   </div>
@@ -113,6 +113,6 @@
     {{this.errorsMessage['address']}}
   </p>
   <div class="pt-3 text-center">
-    <app-button [type]="'submit'">Crear Greenpoint</app-button>
+    <app-button [type]="'submit'">Crear GreenPoint</app-button>
   </div>
 </form>

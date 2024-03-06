@@ -11,6 +11,8 @@ import { SharedModule } from '@modules/shared/shared.module';
 import { RegisterMapComponent } from './components/register-map/register-map.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGreenpointComponent } from './components/form-greenpoint/form-greenpoint.component';
+import { DayPipe } from 'app/core/pipes/day.pipe';
+import { TypeFormatPipe } from 'app/core/pipes/type-format.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { FormGreenpointComponent } from './components/form-greenpoint/form-green
     DashboardRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    DayPipe,
+    TypeFormatPipe
   ],
 })
 export class DashboardModule {}
