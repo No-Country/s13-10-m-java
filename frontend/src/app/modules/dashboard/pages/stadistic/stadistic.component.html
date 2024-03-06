@@ -11,7 +11,10 @@
 </div>
 <h4 class="text-slate-700 my-4 text-xl font-semibold">Estad&iacute;sticas propias</h4>
 <div class="flex flex-wrap items-center justify-around">
-  <app-score>EcoPuntos acumulados</app-score>
-  <app-score>GreenPoint propios</app-score>
-  <app-score>GreenPoint visitado</app-score>
+  <app-score
+  [points]="data.CantPuntosVerde"
+  >Cantidad de Puntos Verdes</app-score>
+  <app-score
+  [points]="data.cantPremio"
+  >Cantidad de premios</app-score>
 </div>

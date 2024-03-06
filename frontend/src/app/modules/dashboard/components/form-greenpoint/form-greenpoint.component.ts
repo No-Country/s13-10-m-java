@@ -139,7 +139,7 @@ export class FormGreenpointComponent {
       message = 'Solo caracteres numéricos.';
     }
     if (error['invalidPhone']) {
-      message = 'el numero debe comenzar con +549...';
+      message = 'el numero debe comenzar con 5...';
     }
     this.errorsMessage[field] = message;
   }
