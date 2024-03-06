@@ -41,4 +41,8 @@ export class GreenpointService {
       `${this.URL}/usuario/${this.tokenService.getDecodedToken()?.USER_ID}`
     );
   }
+
+  deleteGreenpoint(id:string){
+    return this.http.delete(this.URL+`/${id}`)
+  }
 }

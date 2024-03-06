@@ -1,8 +1,4 @@
-<div
-  class="bg-slate-400 rounded-full w-20 absolute hidden lg:block top-4 lg:right-1/2 lg:translate-x-1/2"
->
-  <img class="w-full" src="assets/img/profile-icon.svg" alt="profile-icon" />
-</div>
+
 <h3 class="text-white text-xl lg:text-2xl font-bold">Estad&iacute;sticas</h3>
 <h4 class="text-white my-4 text-xl">Resumen</h4>
 <div class="charts lg:flex justify-evenly gap-x-4">
@@ -10,15 +6,15 @@
   <app-custom-chart></app-custom-chart>
 </div>
 <h4 class="text-slate-700 my-4 text-xl font-semibold">Estad&iacute;sticas propias</h4>
-<div class="flex flex-wrap items-center justify-around">
+<div class="flex flex-wrap items-center justify-around" *ngIf="data">
   <app-score
   *ngIf="data.CantPuntosVerde"
   [points]="data.CantPuntosVerde"
   >Cantidad de Puntos Verdes</app-score>
   <app-score
-  *ngIf="data.cantPremio"
+  *ngIf="data.cantPremio !== undefined"
   [points]="data.cantPremio"
-  >Cantidad de premios</app-score>
+  >Premios creados</app-score>
   <app-score
   *ngIf="data.puntos"
   [points]="data.puntos"
