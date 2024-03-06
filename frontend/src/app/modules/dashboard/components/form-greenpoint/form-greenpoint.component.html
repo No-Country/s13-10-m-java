@@ -83,8 +83,10 @@
   <p *ngIf="
       this.form.controls['address'].touched &&
       (this.form.get('lat')?.invalid || this.form.get('address')?.invalid)
-    " class="text-[0.5rem] text-red-500">
-    {{this.errorsMessage['address']}}
+    "
+    class="text-[0.5rem] text-red-500"
+  >
+    {{this.errorsMessage['address']}}{{this.errorsMessage['lat']?"Debes marcar un punto en el mapa":""}}
   </p>
   <div class="pt-3 text-center">
     <app-button [type]="'submit'">Crear GreenPoint</app-button>

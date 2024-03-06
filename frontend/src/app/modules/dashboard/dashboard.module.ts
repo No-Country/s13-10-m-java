@@ -32,5 +32,9 @@ import { TypeFormatPipe } from 'app/core/pipes/type-format.pipe';
     DayPipe,
     TypeFormatPipe
   ],
+  exports:[
+    ModalRegisterGreenpointComponent,
+    RegisterMapComponent,
+  ]
 })
 export class DashboardModule {}

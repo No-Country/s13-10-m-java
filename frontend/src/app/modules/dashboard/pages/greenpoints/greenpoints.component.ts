@@ -15,6 +15,7 @@ export class GreenpointsComponent {
   greenpoints: SelectedGreenPointResponse[] = [];
   selectedGreenpoint: SelectedGreenPointResponse | null = null;
   idPuntoVerde: string | undefined = '';
+  isShowModal = false;
 
   constructor(private readonly greenpointService: GreenpointService) {
     this.greenpointService.getUserGreenpoints().subscribe({
@@ -26,6 +27,9 @@ export class GreenpointsComponent {
         console.log(error);
       },
     });
+  }
+  receiveModalStatus(status: boolean) {
+    this.isShowModal = status;
   }
 
   handleSelected(index: number) {

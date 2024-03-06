@@ -7,6 +7,7 @@ import { SharedModule } from '@modules/shared/shared.module';
 import { RecyclerUserModalComponent } from './components/recycler-user-modal/recycler-user-modal.component';
 import { RecyclerUserFormComponent } from './components/recycler-user-form/recycler-user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardModule } from '@modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     GreenpointsRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    DashboardModule
   ],
 })
 export class GreenpointsModule {}
