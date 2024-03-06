@@ -36,25 +36,27 @@ export class RecyclerUserFormComponent {
     this.materiales = this.staticData.recicledTypes;
   }
 
-  private toValue() {
-    const materiales = [
-      this.form.get('plastico'),
-      this.form.get('vidrio'),
-      this.form.get('metal'),
-      this.form.get('papelcarton'),
-    ];
+  private method() {
+    const value = this.form.value;
+    const strings: string[] = [];
 
-    const materialesRecibidos: string[] = [];
+    if (value.plastico) {
+      strings.push('PLASTICO');
+    }
 
-    materiales.forEach((material) => {
-      if (material?.value) {
-        materialesRecibidos.push(`${material}`);
-      }
-    });
+    if (value.papelcarton) {
+      strings.push('PAPELCARTON');
+    }
 
-    console.log(materialesRecibidos);
+    if (value.vidrio) {
+      strings.push('VIDRIO');
+    }
 
-    return materialesRecibidos;
+    if (value.metal) {
+      strings.push('METAL');
+    }
+
+    return strings;
   }
 
   onSubmit() {
@@ -65,7 +67,7 @@ export class RecyclerUserFormComponent {
     const request: IRecyclingReq = {
       emailUsuario: this.form.value.emailUsuario,
       descripcion: this.form.value.descripcion,
-      materialesRecibidos: this.toValue(),
+      materialesRecibidos: this.method(),
       idPuntoVerde: this.idPuntoVerde,
     };
 
