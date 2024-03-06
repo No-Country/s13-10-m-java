@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IRecyclingReq } from '@models/recycling.model';
 import { RecyclingService } from '@services/recycling.service';
+import { StaticData } from '@utils/staticData';
 import { GeneralValidator, emailValidator } from '@utils/validator';
 import Swal from 'sweetalert2';
 
@@ -8,9 +10,11 @@ import Swal from 'sweetalert2';
   selector: 'app-recycler-user-form',
   templateUrl: './recycler-user-form.component.html',
   styleUrls: ['./recycler-user-form.component.scss'],
+  providers: [StaticData],
 })
 export class RecyclerUserFormComponent {
   form: FormGroup;
+  materiales: string[] = [];
   @Input() idPuntoVerde: string | undefined = '';
   @Output() closeEmitter = new EventEmitter<boolean>(false);
   @Output() successEmitter = new EventEmitter<boolean>();
@@ -18,12 +22,39 @@ export class RecyclerUserFormComponent {
   constructor(
     private readonly fb: FormBuilder,
     private readonly recyclingService: RecyclingService,
-    private readonly validator: GeneralValidator
+    private readonly validator: GeneralValidator,
+    private readonly staticData: StaticData
   ) {
     this.form = this.fb.group({
       emailUsuario: ['', [Validators.required, emailValidator]],
+      plastico: [false],
+      papelcarton: [false],
+      vidrio: [false],
+      metal: [false],
       descripcion: ['', Validators.required],
     });
+    this.materiales = this.staticData.recicledTypes;
+  }
+
+  private toValue() {
+    const materiales = [
+      this.form.get('plastico'),
+      this.form.get('vidrio'),
+      this.form.get('metal'),
+      this.form.get('papelcarton'),
+    ];
+
+    const materialesRecibidos: string[] = [];
+
+    materiales.forEach((material) => {
+      if (material?.value) {
+        materialesRecibidos.push(`${material}`);
+      }
+    });
+
+    console.log(materialesRecibidos);
+
+    return materialesRecibidos;
   }
 
   onSubmit() {
@@ -31,8 +62,10 @@ export class RecyclerUserFormComponent {
       return this.form.markAllAsTouched();
     }
 
-    const request = {
-      ...this.form.value,
+    const request: IRecyclingReq = {
+      emailUsuario: this.form.value.emailUsuario,
+      descripcion: this.form.value.descripcion,
+      materialesRecibidos: this.toValue(),
       idPuntoVerde: this.idPuntoVerde,
     };
 

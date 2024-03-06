@@ -1,16 +1,70 @@
 <main class="w-full">
-  <header class="mb-16 text-4xl font-semibold">
-    <h1 class="text-center">REGISTRO</h1>
-  </header>
-  <section>
-    <p *ngIf="isRegistered">
-      Tu registro fue exitoso, ingresa a tu email para validar tu cuenta
-    </p>
+  <section
+    *ngIf="isRegistered"
+    class="flex flex-col gap-10 items-center justify-center"
+  >
+    <header>
+      <figure>
+        <img src="../../../../../assets/images/logo.png" alt="logo" />
+      </figure>
+    </header>
+    <article
+      class="rounded-3xl border-2 border-green-800 px-4 py-6 flex flex-col gap-4"
+    >
+      <header>
+        <h2 class="font-bold text-xl">
+          Bienvenido a GREENPOINT:
+          <span class="text-green-800"
+            >{{ userRegistered?.nombre?.toUpperCase() }}
+            {{ userRegistered?.apellido?.toUpperCase() }}</span
+          >
+        </h2>
+      </header>
+      <div class="h-px bg-gray-400"></div>
+      <section class="text-gray-800">
+        <p class="italic">
+          Estamos emocionados de tenerte como parte de nuestra comunidad
+          comprometida con el medio ambiente. Al unirte a nosotros, estás
+          contribuyendo activamente a la conservación de nuestro planeta. En
+          nuestra aplicación de reciclaje, encontrarás herramientas intuitivas y
+          recursos útiles para fomentar prácticas sostenibles.
+        </p>
+      </section>
+      <section>
+        <p class="italic text-green-800 font-bold">
+          El código tiene una duración de 10 min
+        </p>
+      </section>
+      <div class="h-px bg-gray-400"></div>
+      <footer class="text-gray-800">
+        <p class="text-sm">
+          <strong>Nota</strong>: Esta invitación fue dirigida a
+          <span class="italic">{{ userRegistered?.email }}</span> por motivos de
+          registro en nuestra plataforma <strong>GREENPOINT</strong>. Si no
+          reconoces esta información, puedes ignorar este correo electrónico. No
+          es necesario que respondas este mensaje.
+        </p>
+      </footer>
+    </article>
+    <footer
+      class="flex flex-col items-center justify-center gap-3.5 text-gray-500"
+    >
+      <div class="logo-ecoapp"></div>
+      <h2 class="text-3xl font-bold">ECOAPP</h2>
+      <p class="font-semibold">88 Colin P Kelly Jr Street</p>
+      <address class="font-semibold not-italic">
+        San Francisco, CA 94107
+      </address>
+    </footer>
+  </section>
+  <section *ngIf="!isRegistered">
+    <header class="mb-16 text-4xl font-semibold">
+      <h1 class="text-center">REGISTRO</h1>
+    </header>
     <form
       class="flex flex-col gap-6"
       [formGroup]="form"
       (ngSubmit)="onSubmit()"
-      *ngIf="!isRegistered"
     >
       <div>
         <label for="name" class="block text-lg text-gray-900">Nombre</label>

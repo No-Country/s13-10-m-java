@@ -10,22 +10,27 @@
     <strong>{{ emailErrorMessage }}</strong>
   </div>
   <div class="flex items-center gap-5">
-    <div class="flex items-center gap-2">
-      <input type="radio" id="carton-papel" />
-      <label for="carton-papel">Cartón y Papel</label>
+    <div class="flex items-center gap-2" *ngFor="let material of materiales">
+      <input
+        type="checkbox"
+        [id]="material"
+        [formControlName]="material.toLowerCase()"
+        [value]="material"
+      />
+      <label [for]="material">{{ material }}</label>
     </div>
-    <div class="flex items-center gap-2">
-      <input type="radio" id="vidrio" />
+    <!-- <div class="flex items-center gap-2">
+      <input type="radio" id="vidrio" formControlName="materialesRecibidos" value="" />
       <label for="vidrio">Vidrio</label>
     </div>
     <div class="flex items-center gap-2">
-      <input type="radio" id="plastico" />
+      <input type="radio" id="plastico" formControlName="materialesRecibidos" value="" />
       <label for="plastico">Plástico</label>
     </div>
     <div class="flex items-center gap-2">
-      <input type="radio" id="metal" />
+      <input type="radio" id="metal" formControlName="materialesRecibidos" value="" />
       <label for="metal">Metal</label>
-    </div>
+    </div> -->
   </div>
   <div>
     <label for="description">Ingrese una descripción</label>
