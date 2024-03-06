@@ -19,7 +19,7 @@ export class GreenpointsComponent {
   constructor(private readonly greenpointService: GreenpointService) {
     this.greenpointService.getUserGreenpoints().subscribe({
       next: (res) => {
-        console.log(res);
+        console.log('res: ', res);
         this.greenpoints = res;
       },
       error: (error) => {
@@ -54,5 +54,9 @@ export class GreenpointsComponent {
     //     console.error('Error', error);
     //   },
     // });
+  }
+
+  showNewGreenPointModal() {
+    alert('ajksd');
   }
 }
