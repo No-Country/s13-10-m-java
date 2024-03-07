@@ -8,6 +8,7 @@ import { RecyclerUserModalComponent } from './components/recycler-user-modal/rec
 import { RecyclerUserFormComponent } from './components/recycler-user-form/recycler-user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardModule } from '@modules/dashboard/dashboard.module';
+import { TypeFormatPipe } from 'app/core/pipes/type-format.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DashboardModule } from '@modules/dashboard/dashboard.module';
     GreenpointsRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    DashboardModule
+    DashboardModule,
+    TypeFormatPipe
   ],
 })
 export class GreenpointsModule {}

@@ -110,7 +110,7 @@
                     {{ reciclaje.email }}
                   </td>
                   <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
-                    {{ reciclaje.materialesRecibidos.join(", ") }}
+                    <span *ngFor="let type of reciclaje.materialesRecibidos">{{type | typeFormat}}, </span>
                   </td>
                   <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
                     {{ reciclaje.descripcion }}
