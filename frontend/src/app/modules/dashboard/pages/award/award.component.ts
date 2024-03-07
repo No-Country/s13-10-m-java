@@ -21,7 +21,9 @@ export class AwardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAwards();
-    this.authService.userLogged$.subscribe((res) => (this.user = res));
+    this.authService.userLogged$.subscribe((res) => {
+      this.user = res;
+    });
   }
 
   getAwards() {
@@ -35,13 +37,13 @@ export class AwardComponent implements OnInit {
 
   redeemAward(id: string) {
     this.award.postPrize(id).subscribe(
-      (response) => {
+      () => {
         Swal.fire({
           title: 'Felicidades',
           html: 'Revisa tu correo para confirmar <br> ¡Has ganado un premio!',
           icon: 'success',
-          confirmButtonText: 'Recibido'
-        });
+          confirmButtonText: 'Recibido',
+        }).then(() => window.location.reload());
       },
       (error) => {
         Swal.fire({
