@@ -16,7 +16,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 <img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Estadísticas
 
 
-### 🚀 Links del proyecto
+### Links del proyecto
 
  +  ♻️ [GreenPoint - Sitio Web](https://site-ecoapp.netlify.app/home)
 
@@ -29,7 +29,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
  +  🎬 [Video de presentación](https://www.canva.com/design/DAF-Rciv4bM/3_RpxwPIS5qLRlbY6hj1iw/watch?utm_content=DAF-Rciv4bM&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 
-### 🚀 Tecnologías utilizadas
+### Tecnologías utilizadas
 - Back End: Java - SpringBoot - SpringSecurity - SpringData - PostgreSQL - Swagger - Thymeleaf - Render
 
 - Front End: Angular - TypeScript - Chart js - Leaflet js - Tailwind - Netlify - Figma
