@@ -1,0 +1,116 @@
+<div class="sidebarContainer basis-9/12 md:basis-auto p-3 h-auto bg-white ga ">
+  <img class="mb-3" src="assets/images/logo.png" alt="logo-icon" />
+  <!-- link to dashboard------------------------------------------------ -->
+  <ul>
+    <li>
+      <a
+        class="flex items-center mb-2 rounded-xl p-2"
+        routerLink="principal"
+        routerLinkActive="active text-white"
+        (click)="hiddenSidebar()"
+      >
+        <div class="overflow-y-hidden">
+          <img
+            routerLinkActive="iconActive"
+            class="icon mr-2 w-6"
+            src="assets/img/dashboard_icon.svg"
+            alt="dashboard_icon"
+          />
+        </div>
+        <span>Menu principal</span>
+      </a>
+    </li>
+    <li>
+      <a
+        class="flex items-center mb-2 rounded-xl p-2"
+        routerLink="../home"
+        routerLinkActive="active text-white"
+        (click)="hiddenSidebar()"
+      >
+        <div class="overflow-y-hidden">
+          <img
+            routerLinkActive="iconActive"
+            class="icon mr-2 w-6"
+            src="assets/img/home_icon.svg"
+            alt="home_icon"
+          />
+        </div>
+        <span>Volver al home</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="border-t-2 pt-2">
+    <h4 class="mb-2 text-sm">Administrador de reciclajes</h4>
+    <!-- links of navigation -------------------------------------------->
+    <ul>
+      <li
+        class="mb-2 text-sm rounded-xl p-2"
+        routerLinkActive="active text-white"
+        (click)="hiddenSidebar()"
+      >
+        <a class="flex items-center" routerLink="recycled">
+          <div class="overflow-y-hidden">
+            <img
+              routerLinkActive="iconActive"
+              class="icon mr-2 w-6"
+              src="assets/img/list_icon.svg"
+              alt="list_icon"
+            />
+          </div>
+          <span>Lista de Reciclados</span>
+        </a>
+      </li>
+      <li
+      routerLinkActive="active text-white"
+      class="mb-2 text-sm rounded-xl p-2"
+      (click)="hiddenSidebar()">
+        <a class="flex items-center" routerLink="stadistic">
+          <div class="overflow-y-hidden">
+            <img
+              routerLinkActive="iconActive"
+              class="icon mr-2 w-6"
+              src="assets/img/flag_icon.svg"
+              alt="flag_icon"
+            />
+          </div>
+          <span>Estad&iacute;sticas</span>
+        </a>
+      </li>
+      <li routerLinkActive="active text-white" class="mb-2 text-sm rounded-xl p-2" (click)="hiddenSidebar()">
+        <a class="flex items-center" routerLink="award">
+          <div class="overflow-y-hidden">
+            <img
+            routerLinkActive="iconActive"
+              class="icon mr-2 w-6"
+              src="assets/img/award-icon.svg"
+              alt="award-icon"
+            />
+          </div>
+          <span>Premios</span>
+        </a>
+      </li>
+    </ul>
+    <h4 class="mb-2 text-sm">Administrador de GreenPoints</h4>
+    <ul>
+      <li routerLinkActive="active text-white"  class="mb-2 text-sm rounded-xl p-2" (click)="hiddenSidebar()">
+        <a class="flex items-center" routerLink="greenpoints">
+          <div class="overflow-y-hidden">
+            <img
+            routerLinkActive="iconActive"
+              class="icon mr-2 w-6"
+              src="assets/img/pin-map-icon.svg"
+              alt="pin-map-icon"
+            />
+          </div>
+          <span>Mis GreenPoints</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- lateral shadow------------------------------------------------- -->
+<div
+(click)="hiddenSidebar()"
+class="sidebarShadow md:hidden basis-3/12"
+></div>

@@ -1,0 +1,12 @@
+:host{
+  display: block;
+  width: 100%;
+}
+
+.logo-ecoapp {
+  background-image: url('../../../../../assets/img/clip-path-gray.svg');
+  width: 6rem; /* Utiliza la variable para el ancho */
+  height: 6rem; /* Utiliza la variable para la altura */
+  background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+  background-size: contain; /* Ajusta el tamaño del fondo */
+}

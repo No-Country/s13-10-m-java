@@ -1,0 +1,170 @@
+<div class="my-4">
+
+  <a routerLink="/"  class="border border-[#006C34]  px-4 py-2 text-[#006C34] hover:bg-green-900 hover:text-white">
+    INICIO
+  </a>
+</div>
+<main class="w-full px-4">
+  <section
+    *ngIf="isRegistered"
+    class="flex flex-col gap-10 items-center justify-center"
+  >
+    <header>
+      <figure>
+        <img src="../../../../../assets/images/logo.png" alt="logo" />
+      </figure>
+    </header>
+    <article
+      class="rounded-3xl border-2 border-green-800 px-4 py-6 flex flex-col gap-4"
+    >
+      <header>
+        <h2 class="font-bold text-xl">
+          Bienvenido a GREENPOINT:
+          <span class="text-green-800"
+            >{{ userRegistered?.nombre?.toUpperCase() }}
+            {{ userRegistered?.apellido?.toUpperCase() }}</span
+          >
+        </h2>
+      </header>
+      <div class="h-px bg-gray-400"></div>
+      <section class="text-gray-800">
+        <p class="italic">
+          Estamos emocionados de tenerte como parte de nuestra comunidad
+          comprometida con el medio ambiente. Al unirte a nosotros, estás
+          contribuyendo activamente a la conservación de nuestro planeta. En
+          nuestra aplicación de reciclaje, encontrarás herramientas intuitivas y
+          recursos útiles para fomentar prácticas sostenibles.
+        </p>
+      </section>
+      <section>
+        <p class="italic text-green-800 font-bold">
+          El código tiene una duración de 10 min
+        </p>
+      </section>
+      <div class="h-px bg-gray-400"></div>
+      <footer class="text-gray-800">
+        <p class="text-sm">
+          <strong>Nota</strong>: Esta invitación fue dirigida a
+          <span class="italic">{{ userRegistered?.email }}</span> por motivos de
+          registro en nuestra plataforma <strong>GREENPOINT</strong>. Si no
+          reconoces esta información, puedes ignorar este correo electrónico. No
+          es necesario que respondas este mensaje.
+        </p>
+      </footer>
+    </article>
+    <footer
+      class="flex flex-col items-center justify-center gap-3.5 text-gray-500"
+    >
+      <div class="logo-ecoapp"></div>
+      <h2 class="text-3xl font-bold">ECOAPP</h2>
+      <p class="font-semibold">88 Colin P Kelly Jr Street</p>
+      <address class="font-semibold not-italic">
+        San Francisco, CA 94107
+      </address>
+    </footer>
+  </section>
+  <section *ngIf="!isRegistered">
+    <header class="mb-16 text-4xl font-semibold">
+      <h1 class="text-center">REGISTRO</h1>
+    </header>
+    <form
+      class="flex flex-col gap-6"
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div>
+        <label for="name" class="block text-lg text-gray-900">Nombre</label>
+        <input
+          type="text"
+          id="name"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="nombre"
+        />
+        <strong class="text-sm font-semibold text-red-700">{{
+          nameErrorMessage
+        }}</strong>
+      </div>
+      <div>
+        <label for="lastName" class="block text-lg text-gray-900"
+          >Apellido</label
+        >
+        <input
+          type="text"
+          id="lastName"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="apellido"
+        />
+        <strong class="text-sm font-semibold text-red-700">{{
+          lastNameErrorMessage
+        }}</strong>
+      </div>
+      <div>
+        <label for="email" class="block text-lg text-gray-900">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          class="w-full pt-0 px-3 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+          formControlName="email"
+        />
+        <strong class="text-sm font-semibold text-red-700">{{
+          emailErrorMessage
+        }}</strong>
+      </div>
+      <div>
+        <label for="password" class="block text-lg text-gray-900"
+          >Contraseña</label
+        >
+        <div class="relative">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            id="password"
+            class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            formControlName="password"
+          />
+          <button
+            class="material-symbols-outlined absolute right-2 cursor-pointer"
+            (click)="handleShowPassword()"
+            type="button"
+          >
+            {{ showPassword ? "visibility" : "visibility_off" }}
+          </button>
+        </div>
+        <strong class="text-sm font-semibold text-red-700">{{
+          passwordErrorMessage
+        }}</strong>
+      </div>
+      <div>
+        <label for="repeatPassword" class="block text-lg text-gray-900"
+          >Confirmación de contraseña</label
+        >
+        <div class="relative">
+          <input
+            [type]="showRepeatPassword ? 'text' : 'password'"
+            id="repeatPassword"
+            class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+            formControlName="repeatPassword"
+          />
+          <button
+            class="material-symbols-outlined absolute right-2 cursor-pointer"
+            (click)="handleShowRepeatPassword()"
+            type="button"
+          >
+            {{ showRepeatPassword ? "visibility" : "visibility_off" }}
+          </button>
+        </div>
+        <strong class="text-sm font-semibold text-red-700">{{
+          repeatPasswordErrorMessage
+        }}</strong>
+      </div>
+      <app-button type="submit" color="success" class="mt-8 m-auto"
+        >CREAR CUENTA</app-button
+      >
+    </form>
+    <p class="font-bold text-center text-lg text-gray-800 mt-8">
+      ¿Ya tienes cuenta?
+      <a routerLink="../login" class="text-green-700 hover:text-green-600"
+        >Iniciar sesi&oacute;n</a
+      >
+    </p>
+  </section>
+</main>

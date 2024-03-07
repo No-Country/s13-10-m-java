@@ -1,0 +1,48 @@
+<form class="space-y-2" (ngSubmit)="onSubmit()" [formGroup]="form">
+  <div>
+    <label for="email">Ingrese el correo del usuario</label>
+    <input
+      type="email"
+      id="email"
+      class="info"
+      formControlName="emailUsuario"
+    />
+    <strong>{{ emailErrorMessage }}</strong>
+  </div>
+  <div class="flex items-center gap-5">
+    <div class="flex items-center gap-2" *ngFor="let material of materiales">
+      <input
+        type="checkbox"
+        [id]="material"
+        [formControlName]="material.toLowerCase()"
+        [value]="material"
+      />
+      <label [for]="material">{{ material | typeFormat}}</label>
+    </div>
+    <!-- <div class="flex items-center gap-2">
+      <input type="radio" id="vidrio" formControlName="materialesRecibidos" value="" />
+      <label for="vidrio">Vidrio</label>
+    </div>
+    <div class="flex items-center gap-2">
+      <input type="radio" id="plastico" formControlName="materialesRecibidos" value="" />
+      <label for="plastico">Plástico</label>
+    </div>
+    <div class="flex items-center gap-2">
+      <input type="radio" id="metal" formControlName="materialesRecibidos" value="" />
+      <label for="metal">Metal</label>
+    </div> -->
+  </div>
+  <div>
+    <label for="description">Ingrese una descripción</label>
+    <input
+      type="text"
+      id="description"
+      class="info"
+      formControlName="descripcion"
+    />
+    <strong>{{ descriptionErrorMessage }}</strong>
+  </div>
+  <div class="pt-3 text-center">
+    <app-button type="submit">Agregar y dar puntos</app-button>
+  </div>
+</form>

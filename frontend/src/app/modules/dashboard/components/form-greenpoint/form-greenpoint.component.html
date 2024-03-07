@@ -1,0 +1,94 @@
+<form class="space-y-2" [formGroup]="form" (submit)="sendForm()">
+  <h4 class="text-center font-inter text-3xl font-bold my-8">Agregar GreenPoint</h4>
+  <div class="field">
+    <input
+      class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+      formControlName="name" type="text" placeholder="Nombre del GreenPoint" (input)="validateField('name')" />
+    <p *ngIf="form.controls['name'].touched" class="text-[0.5rem] text-red-500">
+      {{ errorsMessage["name"] }}
+    </p>
+  </div>
+  <div class="field">
+    <input
+      class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+      formControlName="dni" type="text" placeholder="DNI o documento de identidad" (input)="validateField('dni')"
+      (keypress)="onlyKeyNumber($event)" />
+    <p *ngIf="form.controls['dni'].touched" class="text-[0.5rem] text-red-500">
+      {{ errorsMessage["dni"] }}
+    </p>
+  </div>
+  <div class="field">
+    <input
+      class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+      type="tel" formControlName="phone" type="text" placeholder="Teléfono" (keypress)="onlyKeyNumber($event)"
+      (input)="validateField('phone')" />
+    <p *ngIf="form.controls['phone'].touched" class="text-[0.5rem] text-red-500">
+      {{ errorsMessage["phone"] }}
+    </p>
+  </div>
+  <div class="field">
+    <h2 class="font-inter text-lg font-semibold my-4">Horario de atenci&oacute;n</h2>
+    <div class="input_time">
+      <input class="pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+        (input)="validateTime()" formControlName="openTime" type="time" />
+      <span class="mx-2">a</span>
+      <input class="pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+        (input)="validateTime()" formControlName="closeTime" type="time" />
+    </div>
+    
+    <!-- ---------------------------------------------dias habiles -->
+    <div class=" flex flex-wrap my-4">
+      <div class="mr-3" *ngFor="let day of days">
+        <input [id]="day" type="checkbox" [formControlName]="day" />
+        <label class="text-sm " [for]="day">
+          {{
+          day| day | titlecase
+          }}
+        </label>
+      </div>
+    </div>
+    <p *ngIf="
+        form.controls['openTime'].touched || form.controls['closeTime'].touched
+      " class="text-[0.5rem] text-red-500">
+      {{ errorsMessage["openTime"] }}
+    </p>
+    <p *ngIf="invalidDay" class="text-[0.5rem] text-red-500">Debe seleccionar al menos dia de atenci&oacute;n</p>
+  </div>
+  <!-- -----------------------------------------------tipos de reciclaje -->
+  <div class="field">
+
+    <h2 class="font-inter text-lg font-semibold my-4">Tipos de materiales a recibir</h2>
+
+    <div class=" flex flex-wrap">
+    <div *ngFor="let type of recicledTypes" class="mr-3">
+      <input [formControlName]="type.toLowerCase()" class="mr-2" type="checkbox" [id]="type" />
+      <label class="text-sm " [for]="type">{{ type | typeFormat}}</label>
+    </div>
+    </div>
+    <p *ngIf="invalidType" class="text-[0.5rem] text-red-500">Debe seleccionar al menos un tipo.</p>
+  </div>
+  <hr />
+  <h6>
+    Haga <span class="font-bold">doble click</span> en el mapa para obtener
+    estos campos
+  </h6>
+  <div class="field  mb-3">
+    <label for="address">Direcci&oacute;n: </label>
+    <input
+      class="w-full pt-0 pl-3 pr-10 pb-1 text-gray-800 outline-none border-b-2 border-gray-400 focus:border-sky-500"
+      id="address" formControlName="address" type="text" (input)="validateField('address')" />
+    <input readonly id="lat" formControlName="lat" type="text" class="info hidden" />
+    <input readonly id="lng" formControlName="lng" type="text" class="info hidden" />
+  </div>
+  <p *ngIf="
+      this.form.controls['address'].touched &&
+      (this.form.get('lat')?.invalid || this.form.get('address')?.invalid)
+    "
+    class="text-[0.5rem] text-red-500"
+  >
+    {{this.errorsMessage['address']}}{{this.errorsMessage['lat']?"Debes marcar un punto en el mapa":""}}
+  </p>
+  <div class="pt-3 text-center">
+    <app-button [type]="'submit'">Crear GreenPoint</app-button>
+  </div>
+</form>

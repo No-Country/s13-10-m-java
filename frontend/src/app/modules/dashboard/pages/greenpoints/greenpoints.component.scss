@@ -1,0 +1,54 @@
+@import "/src/app/core/styles/breakpoints";
+@import "/src/app/core/styles/mixin";
+:host{
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+  height: 100%;
+  overflow-x: scroll;
+  background:url("/assets/img/stripe_dashboard.svg");
+  background-repeat: no-repeat;
+  background-size: contain cover;
+  background-position: top right;
+  padding-inline: 1rem;
+  max-width: 100%;
+  @include md{
+    background-size: contain;
+  }
+}
+
+.active {
+  border: 3px solid #0FA24A;
+  scale: 1.01;
+}
+
+.logo-ecoapp {
+  background-image: url('../../../../../assets/img/clip-path.svg');
+  width: 8rem; /* Utiliza la variable para el ancho */
+  height: 8rem; /* Utiliza la variable para la altura */
+  background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+  background-size: contain; /* Ajusta el tamaño del fondo */
+}
+
+table tbody tr:nth-of-type(odd) {
+  background-color: #f7f7f7;
+}
+.deleteBtn{
+  &:hover{
+    animation: shake infinite linear 0.1s;
+    img{
+      @include changeColorImg(#E84424);
+    }
+  }
+}
+@keyframes shake{
+  0%{
+    transform: rotate(10deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(-10deg);
+  }
+}

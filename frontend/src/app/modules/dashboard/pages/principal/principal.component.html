@@ -1,0 +1,16 @@
+<h2 class="text-white text-xl font-bold md:text-2xl mb-2">
+  Bienvenid@ {{ user?.nombre }} {{ user?.apellido }}.
+</h2>
+<p class="text-white">
+  Aqu&iacute; encontrar&aacute;s los puntos de recepci&oacute;n de materiales reciclables
+  m&aacute;s cerca de tu casa.
+</p>
+<div class="appointment text-end mb-2"></div>
+<div class="filters mb-2">
+  <span class="text-white mr-2">Tipo de reciclaje:</span>
+  <select [(ngModel)]="filter" class="outline-none">
+    <option value="todos">Todos</option>
+    <option *ngFor="let type of filters" [value]="type">{{type | typeFormat}}</option>
+  </select>
+</div>
+<app-customMap [greenPoints]="greenpoints" [filters]="filter"></app-customMap>

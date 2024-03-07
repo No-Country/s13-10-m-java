@@ -1,0 +1,79 @@
+[
+  {
+    "nombre": "Parque Central",
+    "direccion": "Avenida Principal 123",
+    "lat": 40.7128,
+    "lng": -74.006,
+    "type":"general"
+  },
+  {
+    "nombre": "Plaza del Sol",
+    "direccion": "Calle Principal 456",
+    "lat": 34.0522,
+    "lng": -118.2437,
+    "type":"vidrio"
+  },
+  {
+    "nombre": "Jardín Botánico",
+    "direccion": "Avenida Flores 789",
+    "lat": 41.8781,
+    "lng": -87.6298,
+    "type":"plastico-metal"
+  },
+  {
+    "nombre": "Centro Comercial",
+    "direccion": "Calle Compras 101",
+    "lat": 37.7749,
+    "lng": -122.4194,
+    "type":"papel"
+  },
+  {
+    "nombre": "Parque de la Ciudad",
+    "direccion": "Calle Recreación 202",
+    "lat": 51.5074,
+    "lng": -0.1278,
+    "type":"general"
+  },
+  {
+    "nombre": "Mirador Montaña",
+    "direccion": "Cerro Vista 303",
+    "lat": -22.9083,
+    "lng": -43.1964,
+    "type":"plastico-metal"
+  },
+  {
+    "nombre": "Playa Dorada",
+    "direccion": "Avenida Arena 404",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "type":"vidrio"
+  },
+  {
+    "nombre": "Bosque Encantado",
+    "direccion": "Camino Místico 505",
+    "lat": 45.4215,
+    "lng": -75.6993,
+    "type":"general"
+  },
+  {
+    "nombre": "Estadio Deportivo",
+    "direccion": "Avenida Deporte 606",
+    "lat": -34.6037,
+    "lng": -58.3816,
+    "type":"general"
+  },
+  {
+    "nombre": "Fuente de la Plaza",
+    "direccion": "Plaza Agua 707",
+    "lat": 55.7558,
+    "lng": 37.6176,
+    "type":"papel"
+  },
+  {
+    "nombre": "El tacho de basura de mi cuadra",
+    "direccion": "Ca abraham valdelomar S/N",
+    "lat": -18.0544,
+    "lng": -70.2474,
+    "type":"plastico-metal"
+  }
+]

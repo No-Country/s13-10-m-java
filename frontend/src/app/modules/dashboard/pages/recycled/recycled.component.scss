@@ -1,0 +1,31 @@
+@import "/src/app/core/styles/breakpoints";
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+  height: 100%;
+  background: url("/assets/img/stripe_dashboard.svg");
+  background-repeat: no-repeat;
+  background-size: contain cover;
+  background-position: top right;
+  padding-inline: 1rem;
+  @include md {
+    background-size: contain;
+  }
+}
+
+.arrow-right {
+  background-image: url("../../../../../assets/icons/chevron_right.svg");
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+}
+
+.arrow-expand {
+  background-image: url("../../../../../assets/icons/expand_more.svg");
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+}

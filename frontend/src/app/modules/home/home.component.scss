@@ -1,0 +1,59 @@
+// Definir una variable para el tamaño común de las imágenes
+$size-nav: 3.65481rem;
+
+$size-hero: 9.63206rem;
+// Estilos para la clase .logo-ecoapp
+.logo-ecoapp {
+  background-image: url('../../../assets/img/clip-path.svg');
+  width: $size-nav; /* Utiliza la variable para el ancho */
+  height: $size-nav; /* Utiliza la variable para la altura */
+  background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+  background-size: contain; /* Ajusta el tamaño del fondo */
+}
+
+// Estilos para la clase .logo-ecohero
+.logo-ecohero {
+  background-image: url('../../../assets/img/clip-path.svg');
+  width: $size-hero; /* Utiliza la variable para el ancho */
+  height: $size-hero; /* Utiliza la variable para la altura */
+  background-repeat: no-repeat; /* Evita la repetición de la imagen de fondo */
+  background-size: contain; /* Ajusta el tamaño del fondo */
+}
+
+
+.logo-item-left {
+  background-image: url('../../../assets/img/icon-home-left.svg');
+  background-repeat: no-repeat;
+  width: 10rem;
+  height: 10rem;
+  background-size: contain;
+}
+.logo-item-right {
+  background-image: url('../../../assets/img/icon-home-right.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10rem;
+  height: 10rem;
+}
+
+.background-image {
+  background-image: url('../../../assets/images/fondo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y:bottom ;
+  width: 100%;
+  min-height: 38px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.new-bg-undernooth{
+  opacity: 0.1;
+  width: 100%;
+}
+
+
+#dropdownDivider{
+  position: absolute;
+    top: 84px;
+    right: 6px;
+}

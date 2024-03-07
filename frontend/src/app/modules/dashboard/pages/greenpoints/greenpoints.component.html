@@ -1,0 +1,185 @@
+<h2 class="text-white font-inter text-3xl font-bold">Mis GreenPoint</h2>
+<span class="text-white font-inter text-lg font-semibold my-8"
+  >Points creados</span
+>
+<main class="flex flex-col items-center justify-center gap-5 w-full">
+  <section class="points flex flex-wrap gap-5 justify-center">
+    <article
+      *ngFor="let greenpoint of greenpoints; index as i"
+      class="rounded-xl drop-shadow-lg bg-white w-[300px] hover:scale-[1.01] hover:cursor-pointer relative"
+      [class.active]="greenpoint.selected"
+      (click)="handleSelected(i)"
+    >
+    <button
+      (click)="deleteGreenpoint(greenpoint.puntoVerdeId)"
+      type="button"
+      class="deleteBtn overflow-hidden absolute right-2 top-2">
+      <img class="w-8 aspect-square" src="assets/img/delete.svg" alt="delete-icon">
+    </button>
+      <header
+        class="h-56 bg-[#d9d9d9] flex items-center justify-center rounded-tl-xl rounded-tr-xl"
+      >
+        <i class="logo-ecoapp"></i>
+      </header>
+      <section class="px-3 py-4">
+        <h3 class="text-gray-800 text-xl font-semibold">
+          {{ greenpoint.nombre }}
+        </h3>
+        <small class="text-xs text-gray-600">{{ greenpoint.direccion }}</small>
+      </section>
+    </article>
+    <article
+      (click)="this.isShowModal = true"
+      class="rounded-lg drop-shadow-lg bg-white max-w-[340px] hover:scale-[1.01] hover:cursor-pointer"
+    >
+      <header
+        class="h-56 bg-[#d9d9d9] flex items-center justify-center rounded-tl-xl rounded-tr-xl"
+      >
+        <span class="material-symbols-outlined text-9xl text-white">add</span>
+      </header>
+      <section class="px-3 py-4">
+        <h3 class="text-gray-800 text-xl font-semibold">Agregar punto verde</h3>
+      </section>
+    </article>
+  </section>
+  <section class="flex flex-col gap-5 w-full" *ngIf="selectedGreenpoint">
+    <header>
+      <h2 class="font-semibold text-gray-700 text-lg">
+        Seleccionado:
+        <span class="text-[#006c34]">{{ selectedGreenpoint.nombre }}</span>
+      </h2>
+    </header>
+    <article
+      class="bg-[#656565] rounded-xl pt-5 pb-10 px-4 flex flex-col gap-12 w-full"
+    >
+      <section role="region" class="flex flex-col gap-2.5">
+        <h2 class="text-white font-semibold text-lg">Información</h2>
+        <div class="bg-white p-4 rounded-xl grid grid-cols-3 gap-3">
+          <span class="font-semibold text-gray-800 text-sm">Nombre</span>
+          <span class="text-gray-600 text-sm italic col-span-2">{{
+            selectedGreenpoint.nombre
+          }}</span>
+          <span class="font-semibold text-gray-800 text-sm">Teléfono</span>
+          <span class="text-gray-600 text-sm italic col-span-2">{{
+            selectedGreenpoint.telefono
+          }}</span>
+          <span class="font-semibold text-gray-800 text-sm"
+            >Horario de atención</span
+          >
+          <span class="text-gray-600 text-sm italic col-span-2">{{
+            selectedGreenpoint.horarioAtencion
+          }}</span>
+          <span class="font-semibold text-gray-800 text-sm"
+            >Días de atención</span
+          >
+          <span class="text-gray-600 text-sm italic col-span-2">{{
+            selectedGreenpoint.diasAtencion
+          }}</span>
+          <span class="font-semibold text-gray-800 text-sm"
+            >Materiales aceptados</span
+          >
+          <span class="text-gray-600 text-sm italic col-span-2">{{
+            selectedGreenpoint.materialesAceptados
+          }}</span>
+          <span class="font-semibold text-gray-800 text-sm">Dirección</span>
+          <span class="text-gray-600 text-sm italic col-span-2">{{
+            selectedGreenpoint.direccion
+          }}</span>
+        </div>
+      </section>
+      <!-- --------------------------------------------------------------------------tabla -->
+      <section role="region" class="flex flex-col gap-2.5">
+        <h2 class="text-white font-semibold text-lg">Premiar a los usuarios</h2>
+        <div class="bg-white p-4 rounded-xl">
+          <div class="w-full overflow-x-scroll">
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th class="text-left text-gray-600 px-5 py-1">Usuario</th>
+                  <th class="text-left text-gray-600 px-5 py-1">Tipo</th>
+                  <th class="text-left text-gray-600 px-5 py-1">Descripción</th>
+                  <th class="text-left text-gray-600 px-5 py-1">Fecha</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let reciclaje of selectedGreenpoint.reciclajes">
+                  <td
+                    class="flex items-center gap-1 py-2 px-5 text-gray-700 whitespace-nowrap"
+                  >
+                    <span class="material-symbols-outlined">person</span>
+                    {{ reciclaje.email }}
+                  </td>
+                  <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
+                    <span *ngFor="let type of reciclaje.materialesRecibidos">{{type | typeFormat}}, </span>
+                  </td>
+                  <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
+                    {{ reciclaje.descripcion }}
+                  </td>
+                  <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
+                    {{ reciclaje.dia }}
+                  </td>
+                </tr>
+                <!-- <tr>
+                    <td class="flex items-center gap-1 py-2 text-gray-700">
+                      <span class="material-symbols-outlined">person</span>
+                      Ludmila-gmail.com
+                    </td>
+                    <td class="py-2 text-gray-700">Cartón</td>
+                    <td class="py-2 text-gray-700">
+                      5 kg de cartón proveniente...
+                    </td>
+                    <td class="py-2 text-gray-700">02-01-24</td>
+                    <td
+                      class="flex items-center gap-1 font-semibold py-2 text-[#ffc107]"
+                    >
+                      <span
+                        class="material-symbols-outlined bg-[#FFC107] text-white rounded-full"
+                        >add</span
+                      >
+                      Otorgar EcoPuntos
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="flex items-center gap-1 py-2 text-gray-700">
+                      <span class="material-symbols-outlined">person</span>
+                      David-gmail.com
+                    </td>
+                    <td class="py-2 text-gray-700">Cartón</td>
+                    <td class="py-2 text-gray-700"></td>
+                    <td class="py-2 text-gray-700">12-12-23</td>
+                    <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
+                  </tr>
+                  <tr>
+                    <td class="flex items-center gap-1 py-2 text-gray-700">
+                      <span class="material-symbols-outlined">person</span>
+                      Indira-gmail.com
+                    </td>
+                    <td class="py-2 text-gray-700">Cartón, Metal</td>
+                    <td class="py-2 text-gray-700">
+                      Metal, cobres y hierro en bu...
+                    </td>
+                    <td class="py-2 text-gray-700">12-12-23</td>
+                    <td class="py-2 text-[#0fa24a]">Puntos entregados</td>
+                  </tr> -->
+              </tbody>
+            </table>
+          </div>
+          <app-button
+            type="button"
+            (click)="recyclerUserModal.open()"
+            class="mt-6"
+            >Añadir usuario reciclador</app-button
+          >
+        </div>
+        <app-recycler-user-modal
+          [idPuntoVerde]="idPuntoVerde"
+          (prueba)="success($event)"
+        ></app-recycler-user-modal>
+      </section>
+    </article>
+  </section>
+</main>
+<app-modal-register-greenpoint
+*ngIf="isShowModal"
+(closeModal)="receiveModalStatus($event)"
+></app-modal-register-greenpoint>
