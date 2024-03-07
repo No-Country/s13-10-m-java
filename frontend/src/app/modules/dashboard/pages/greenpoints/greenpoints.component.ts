@@ -89,4 +89,5 @@ export class GreenpointsComponent {
   showNewGreenPointModal() {
     alert('ajksd');
   }
+
 }

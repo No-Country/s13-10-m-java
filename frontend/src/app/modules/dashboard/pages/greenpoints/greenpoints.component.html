@@ -110,7 +110,7 @@
                     {{ reciclaje.email }}
                   </td>
                   <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
-                    {{ reciclaje.materialesRecibidos.join(", ") }}
+                    {{(reciclaje.materialesRecibidos | typeFormatArray).join(", ")}}
                   </td>
                   <td class="py-2 px-5 text-gray-700 whitespace-nowrap">
                     {{ reciclaje.descripcion }}

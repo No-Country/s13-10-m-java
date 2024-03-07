@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { UserResponse } from '@models/user.model';
-import { AuthService } from '@services/auth.service';
 import { AwardService } from '@services/award.service';
 import { award as ModalAward } from '@models/award.model';
 import Swal from 'sweetalert2';
+import { UserService } from '@services/user.service';
+import { TokenService } from '@services/token.service';
 
 @Component({
   selector: 'app-award',
@@ -16,12 +17,13 @@ export class AwardComponent implements OnInit {
   selectedAwardId: string | null = null;
   constructor(
     private award: AwardService,
-    private readonly authService: AuthService
+    private userService:UserService,
+    private tokenService:TokenService
   ) {}
 
   ngOnInit(): void {
     this.getAwards();
-    this.authService.userLogged$.subscribe((res) => (this.user = res));
+    this.getUserData()
   }
 
   getAwards() {
@@ -36,12 +38,16 @@ export class AwardComponent implements OnInit {
   redeemAward(id: string) {
     this.award.postPrize(id).subscribe(
       (response) => {
+        console.log("canjeo exitos", response)
         Swal.fire({
           title: 'Felicidades',
           html: 'Revisa tu correo para confirmar <br> ¡Has ganado un premio!',
           icon: 'success',
           confirmButtonText: 'Recibido'
-        });
+        })
+        .then(()=>{
+          this.getUserData()
+        })
       },
       (error) => {
         Swal.fire({
@@ -52,5 +58,12 @@ export class AwardComponent implements OnInit {
         });
       }
     );
+  }
+  getUserData(){
+    const id = this.tokenService.getDecodedToken()!.USER_ID;
+    this.userService.getUser(id).subscribe({
+      next:(res)=>this.user = res,
+      error:(err)=>console.log("error al obtener el usuario", err)
+    })
   }
 }
