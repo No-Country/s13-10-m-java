@@ -5,12 +5,11 @@ import com.nocountrys13.ecoapp.dtos.response.UsuarioDtoResponse;
 import com.nocountrys13.ecoapp.entities.Usuario;
 import com.nocountrys13.ecoapp.repositories.UsuarioRepository;
 import com.nocountrys13.ecoapp.services.IUsuarioService;
-
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,11 +18,13 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+
 @Service
 @RequiredArgsConstructor
 public class UsuarioServiceImpl implements IUsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder encoder;
 
     public UsuarioDtoResponse saveUser(UsuarioDtoRequest usuarioDtoRequest) {
         var usuario = new Usuario();
@@ -90,6 +91,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
         if (usuarioBuscado.isPresent()) {
             var usuario = usuarioBuscado.get();
             BeanUtils.copyProperties(usuarioDtoRequest, usuario);
+            usuario.setPassword(encoder.encode(usuarioDtoRequest.password()));
             usuario = usuarioRepository.save(usuario);
 
             return new UsuarioDtoResponse(
