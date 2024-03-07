@@ -9,6 +9,7 @@ import { RecyclerUserFormComponent } from './components/recycler-user-form/recyc
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardModule } from '@modules/dashboard/dashboard.module';
 import { TypeFormatPipe } from 'app/core/pipes/type-format.pipe';
+import { TypeFormatArrayPipe } from 'app/core/pipes/type-format-array.pipe';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TypeFormatPipe } from 'app/core/pipes/type-format.pipe';
     SharedModule,
     ReactiveFormsModule,
     DashboardModule,
+    TypeFormatArrayPipe,
     TypeFormatPipe
   ],
 })
