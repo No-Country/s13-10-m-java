@@ -16,6 +16,27 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 <img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Estadísticas
 
 
+### 🚀 Links del proyecto
+
+♻️ [GreenPoint - Sitio Web](https://site-ecoapp.netlify.app/home)
+
+🖌 [Diseño en Figma](https://www.figma.com/file/As3NIUoInScW0XQX4tkUa5/GreenPoint-s13-10-M-Java?type=design&node-id=0%3A1&mode=design&t=3UbTV2mSEOfQCBPI-1)
+
+✅ [Swagger](https://s13-10-m-java.onrender.com/swagger-ui/index.html)
+
+📈 [Reportes de QA](https://drive.google.com/drive/folders/1QvESAGD0fjDap6YM8AUZP-zjK3S0EMjr?authuser=0)
+
+🎬 [Video de presentación](https://www.canva.com/design/DAF-Rciv4bM/3_RpxwPIS5qLRlbY6hj1iw/watch?utm_content=DAF-Rciv4bM&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
+
+### 🚀 Tecnologías utilizadas
+- Back End: Java - SpringBoot - SpringSecurity - SpringData - PostgreSQL - Swagger - Thymeleaf - Render
+
+- Front End: Angular - TypeScript - Chart js - Leaflet js - Tailwind - Netlify - Figma
+
+- QA: Trello - Jira - XRay - Postman
+
+
 ## 🚀 Equipo
 
 ### 📌 Front End  
