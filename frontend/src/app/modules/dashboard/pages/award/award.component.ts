@@ -37,8 +37,8 @@ export class AwardComponent implements OnInit {
 
   redeemAward(id: string) {
     this.award.postPrize(id).subscribe(
-      (response) => {
-        console.log("canjeo exitos", response)
+      () => {
+        // console.log("canjeo exitos", response)
         Swal.fire({
           title: 'Felicidades',
           html: 'Revisa tu correo para confirmar <br> ¡Has ganado un premio!',
