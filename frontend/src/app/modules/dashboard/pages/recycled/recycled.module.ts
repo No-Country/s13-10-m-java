@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RecycledRoutingModule } from './recycled-routing.module';
 import { RecycledComponent } from './recycled.component';
+import { TypeFormatArrayPipe } from 'app/core/pipes/type-format-array.pipe';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { RecycledComponent } from './recycled.component';
   ],
   imports: [
     CommonModule,
-    RecycledRoutingModule
+    RecycledRoutingModule,
+    TypeFormatArrayPipe
   ]
 })
 export class RecycledModule { }

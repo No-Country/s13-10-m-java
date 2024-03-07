@@ -17,12 +17,13 @@
       <section class="px-3 py-4 flex justify-between  bg-white  rounded-bl-xl rounded-br-xl ">
         <div class="w-5/6">
           <h3 class="text-gray-800 text-xl font-semibold">{{ award.nombrePremio }}</h3>
-          <small class="text-xs text-gray-600">EcoPuntos requeridos: {{ award.puntos }}
-          </small>
+          <small class="text-xs  font-bold text-gray-800">EcoPuntos requeridos: {{ award.puntos }}</small>
+          <br>
+          <small class="text-xs text-gray-600">{{award.descripcion}}</small>
         </div>
         <!-- <button class="bg-green-800 px-2 rounded-md text-white">Canjear</button> -->
 
-        <button class="bg-green-800 px-2 rounded-md text-white" (click)="redeemAward(award.premioId)">Canjear</button>
+        <button class="bg-green-800 px-2 rounded-md text-white max-h-14" (click)="redeemAward(award.premioId)">Canjear</button>
 
       </section>
     </article>

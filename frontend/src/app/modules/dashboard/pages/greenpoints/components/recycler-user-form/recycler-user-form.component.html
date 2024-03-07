@@ -17,7 +17,7 @@
         [formControlName]="material.toLowerCase()"
         [value]="material"
       />
-      <label [for]="material">{{ material }}</label>
+      <label [for]="material">{{ material | typeFormat}}</label>
     </div>
     <!-- <div class="flex items-center gap-2">
       <input type="radio" id="vidrio" formControlName="materialesRecibidos" value="" />
