@@ -39,7 +39,11 @@ Imágenes y una breve explicación
 
 ***
 
-- Back End: Java - SpringBoot - SpringSecurity - SpringData - PostgreSQL - Swagger - Thymeleaf - Render
+- Back End:
+  ![Java](https://github.com/No-Country/s13-10-m-java/assets/150487299/d4111cc0-751f-402f-bbc1-98466a60053a)
+![Prueba](https://github.com/No-Country/s13-10-m-java/assets/150487299/016fec39-cdba-41a0-8abb-bab8c0fd621e)
+
+  SpringBoot -  SpringSecurity -   SpringData   - PostgreSQL - Swagger - Thymeleaf - Render
 
 - Front End: Angular - TypeScript - Chart js - Leaflet js - Tailwind - Netlify - Figma
 
