@@ -2,6 +2,8 @@
 
 # <img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718823/Fotos/bq9s2qlhy1q9cdg5q6un.png" alt="greenpoint"  height=70 align="center"/>
 
+***
+
 GreenPoint es una app web diseñada para ayudar a personas con interés en el cuidado del medio ambiente, a separar sus residuos en origen y vincularlos a través de la app con personas o entidades con la intención de recibir esos residuos para su posterior reciclaje.
 
 ### Funcionalidades
@@ -35,6 +37,9 @@ Imágenes y una breve explicación
 
 
 ### Tecnologías utilizadas
+
+***
+
 - Back End: Java - SpringBoot - SpringSecurity - SpringData - PostgreSQL - Swagger - Thymeleaf - Render
 
 - Front End: Angular - TypeScript - Chart js - Leaflet js - Tailwind - Netlify - Figma
@@ -43,6 +48,8 @@ Imágenes y una breve explicación
 
 
 ## 🚀 Equipo
+
+***
 
 ### 📌 Front End  
 
@@ -75,3 +82,6 @@ Imágenes y una breve explicación
 
 
 ## Agradecimientos
+
+***
+
