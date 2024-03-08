@@ -21,6 +21,8 @@ Imágenes y una breve explicación
 
 ### Links del proyecto
 
+***
+
  +  ♻️ [GreenPoint - Sitio Web](https://site-ecoapp.netlify.app/home)
 
  +  🖌 [Diseño en Figma](https://www.figma.com/file/As3NIUoInScW0XQX4tkUa5/GreenPoint-s13-10-M-Java?type=design&node-id=0%3A1&mode=design&t=3UbTV2mSEOfQCBPI-1)
