@@ -20,7 +20,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 Imágenes y una breve explicación
 
-## Links del proyecto
+## **Links del proyecto**
 
 ***
 
@@ -35,7 +35,7 @@ Imágenes y una breve explicación
  +  🎬 [Video de presentación](https://www.canva.com/design/DAF-Rciv4bM/3_RpxwPIS5qLRlbY6hj1iw/watch?utm_content=DAF-Rciv4bM&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 
-## Tecnologías utilizadas
+## **Tecnologías utilizadas**
 
 ***
 
@@ -46,7 +46,7 @@ Imágenes y una breve explicación
 - QA: Trello - Jira - XRay - Postman
 
 
-## 🚀 Equipo
+### 🚀 **Equipo**
 
 ***
 
@@ -80,7 +80,7 @@ Imágenes y una breve explicación
 | Liliana Muñoz  |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lilianamunoz331/)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/liliana331)|
 
 
-## Agradecimientos
+## **Agradecimientos**
 
 ***
 
