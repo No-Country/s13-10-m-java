@@ -61,52 +61,24 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 - **Back End**
 
 <img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SpringBoot"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" alt="PostgreSQL"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger"  height=60 />
-<img src="" alt=""  height=60 />
+
 
   Thymeleaf, Render
 
 
-
-
  - **Front End**
+   <img src="https://user-images.githubusercontent.com/25181517/183890595-779a7e64-3f43-4634-bad2-eceef4e80268.png" alt="Angular"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="Typescript"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" alt="Tailwind"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma"  height=60 />
+   <img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f" alt="Netlify"  height=60 />
    
-    ![Angular](https://user-images.githubusercontent.com/25181517/183890595-779a7e64-3f43-4634-bad2-eceef4e80268.png)
-    ![Typescript](https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png)
-    ![Tailwind](https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png)
-    ![Figma](https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png)
-   
-    Netlify, Chart js, Leaflet js
-    ![Netlify]()
-    ![Chart js]()
-    ![Leaflet js]()
-    
-   | **Front End** | 
-   | :---:         |
-   | ![Angular](https://github.com/No-Country/s13-10-m-java/assets/150487299/05c1cab1-a650-421b-9454-e5dabfe8087c)| 
-   ![Typescript](https://github.com/No-Country/s13-10-m-java/assets/150487299/6276708c-482b-4561-9541-0a67dd851ba3)| 
-    Chart js | 
-    Leaflet js | 
-    Tailwind |
-    ![Netlify](https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f)|
-    ![Figma](https://github.com/No-Country/s13-10-m-java/assets/150487299/0132f283-2544-4a25-8515-e29d15da3b3a)|
+Chart js, Leaflet js
+
 
  - **QA**
+ <img src="[Jira](https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png)" alt="Postman"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60 /> <img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/076e764e-f789-4787-ac06-0445905f2058" alt="Xray"  height=60 />
 
-   ![Trello]()
-   ![Jira](https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png)
-   ![Xray]()
-   ![Postman](https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png)
+- ** Organización y comunicación
 
-  
-   | **QA** | 
-   | :---:         |    
-   |![Trello](https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda) | 
-   ![Jira](https://github.com/No-Country/s13-10-m-java/assets/150487299/321a1f85-5e7c-48b9-bc7e-045af847860e) |
-   ![Xray](https://github.com/No-Country/s13-10-m-java/assets/150487299/076e764e-f789-4787-ac06-0445905f2058)|
-   ![Postman](https://github.com/No-Country/s13-10-m-java/assets/150487299/909f2f7e-a0da-4b15-8dff-7935933eb175 "Postman")|
-
-![GitHub](https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png)
-
+<img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda" alt="Trello"  height=60 />  <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60 /> <img src="[https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klipartz.com%2Fes%2Fsticker-png-fygxj&psig=AOvVaw033caX8xqZxgzrD9IWhK7c&ust=1710083775426000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwijmYTRvOeEAxW-qZUCHaX0BqkQjRx6BAgAEBY)" alt="Discord"  height=60 /> 
 
 ### 🚀 **Equipo**
 
