@@ -18,7 +18,14 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 ### Una visita por GreenPoint
 
-Imágenes y una breve explicación
+Al entrar en la pagina vemos
+
+<img src="https://discord.com/channels/1204047700660592730/1204050961585406032/1215658047490363474" alt="home"  height=20 /> 
+
+
+
+
+
 
 ### **Links del proyecto**
 
