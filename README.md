@@ -67,6 +67,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 
  - **Front End**
+   
    <img src="https://user-images.githubusercontent.com/25181517/183890595-779a7e64-3f43-4634-bad2-eceef4e80268.png" alt="Angular"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="Typescript"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" alt="Tailwind"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma"  height=60 />
    <img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f" alt="Netlify"  height=60 />
    
@@ -74,7 +75,9 @@ Chart js, Leaflet js
 
 
  - **QA**
- <img src="[Jira](https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png)" alt="Postman"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60 /> <img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/076e764e-f789-4787-ac06-0445905f2058" alt="Xray"  height=60 />
+   
+ <img src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png
+" alt="Postman"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60 /> <img src="https://play-lh.googleusercontent.com/DTMp4aVzalUoCFj6XGPBMXg6pEvhL2entVp6_LS7nVpuPZzdF5CI3AzIOYIsqiAyND8u" alt="Xray"  height=60 />
 
 - ** Organización y comunicación
 
