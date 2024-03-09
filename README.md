@@ -133,5 +133,6 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 ***
 
-Una mencion especial para nuestro 
+Una mención especial para nuestro Team Leader 🚀 René Silva, quién nos guió, aconsejó y acompañó durante el desarrollo del proyecto. Gracias!
+Y a No Country por brindarnos esta posibilidad de generar experiencia, validar e incrementar los conocimientos técnicos, potenciar nuestras habilidades blandas y ampliar nuestra red con personas de diversas culturas.
 
