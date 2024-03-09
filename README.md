@@ -13,9 +13,9 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 <img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Consulta de GreenPoints más cercanos a la ubicación del usuario, visualización en el mapa y acceso a su información detallada
 
-<img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Programa de acumulación de puntos y acceso a premios al separar y disponer los residuos en un GreenPoint
+<img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Programa de acumulación de puntos y acceso a premios, al separar y disponer los residuos en un GreenPoint
 
-<img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Visualización de estadísticas de actividades realizadas, tanto para usuario como adminitradores de GreenPoints
+<img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Visualización de estadísticas de actividades realizadas, tanto para usuarios como adminitradores de GreenPoints
 
 ## **Una visita por GreenPoint**
 
@@ -73,7 +73,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 - **Organización y comunicación**
 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhN8NWoR9uSZKueIfU_gLaG_q7DxCD7-jRm82dlWwmAoQpOa6yCTWed78QcsMe3oC4XQk&usqp=CAU" alt="Trello"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60/> <img src="https://i.pinimg.com/736x/d6/11/54/d61154b2cae2e1c123477eaecbdbd487.jpg" alt="Discord"  height=60/> 
+<img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60/> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhN8NWoR9uSZKueIfU_gLaG_q7DxCD7-jRm82dlWwmAoQpOa6yCTWed78QcsMe3oC4XQk&usqp=CAU" alt="Trello"  height=60/> <img src="https://i.pinimg.com/736x/d6/11/54/d61154b2cae2e1c123477eaecbdbd487.jpg" alt="Discord"  height=60/> 
 
 ## 🚀 **Equipo**
 
