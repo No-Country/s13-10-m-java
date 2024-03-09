@@ -99,7 +99,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 ***
 
-### 📌 Front End  
+#### 📌 Front End  
 
 | Nombre | Linkedin | GitHub |
 | :---:         |     :---:      |          :---: |
@@ -110,7 +110,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 | Juan Oscco |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juanoscco)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/jcom-dev) |
 
 
-### 📌 Back End  
+#### 📌 Back End  
 
 | Nombre | Linkedin | GitHub |
 | :---:         |     :---:      |          :---: |
@@ -119,7 +119,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 | Leonardo Vargas |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leonardo-vargas1/)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/leonardofvp) |
 | Pablo Aquino  |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jpabloaquino/)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/webDevCod)|
 
-### 📌 QA 
+#### 📌 QA 
 
 | Nombre | Linkedin | GitHub |
 | :---:         |     :---:      |          :---: |
