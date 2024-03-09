@@ -60,37 +60,21 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 ***
 - **Back End**
 
-<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SpringBoot"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" alt="PostgreSQL"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger"  height=60 />
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpPIvUS_jgtX1GaJeZaPO723cbk_a0ZUxyaIb3nMW_NekEnd_qJz41Jd6BQefrhbc&usqp=CAU" alt="Thymeleaf"  height=60/>
-<img src="https://avatars.githubusercontent.com/u/36424661?s=200&v=4" alt="Render"  height=60/>
+<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java"  height=60/>< img src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SpringBoot"  height=60/>< img src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" alt="PostgreSQL"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger"  height=60 /> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpPIvUS_jgtX1GaJeZaPO723cbk_a0ZUxyaIb3nMW_NekEnd_qJz41Jd6BQefrhbc&usqp=CAU" alt="Thymeleaf"  height=60/> <img src="https://avatars.githubusercontent.com/u/36424661?s=200&v=4" alt="Render"  height=60/>
 
 
  - **Front End**
    
-<img src="https://user-images.githubusercontent.com/25181517/183890595-779a7e64-3f43-4634-bad2-eceef4e80268.png" alt="Angular"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="Typescript"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" alt="Tailwind"  height=60 > 
-<img src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma"  height=60/> 
-<img src="https://w7.pngwing.com/pngs/80/196/png-transparent-netlify-hd-logo.png" alt="Netlify"  height=60/>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIcxvtqClbmdo6W_S_wbVm1F8d3DrZtlsNg&usqp=CAU" alt="Chart js"  height=60/> 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQthaa1KMO33bnyDZY43y_S6pQScyvilI4eJyd4tMl-NIoKoOtrzetn_ljb9FBeJwCCIZk&usqp=CAU" alt="Leaflet js"  height=60/>
+<img src="https://user-images.githubusercontent.com/25181517/183890595-779a7e64-3f43-4634-bad2-eceef4e80268.png" alt="Angular"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/183890598-19a0ac2d-e88a-4005-a8df-1ee36782fde1.png" alt="Typescript"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/202896760-337261ed-ee92-4979-84c4-d4b829c7355d.png" alt="Tailwind"  height=60 > <img src="https://user-images.githubusercontent.com/25181517/189715289-df3ee512-6eca-463f-a0f4-c10d94a06b2f.png" alt="Figma"  height=60/> <img src="https://w7.pngwing.com/pngs/80/196/png-transparent-netlify-hd-logo.png" alt="Netlify"  height=60/> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOIcxvtqClbmdo6W_S_wbVm1F8d3DrZtlsNg&usqp=CAU" alt="Chart js"  height=60/>  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQthaa1KMO33bnyDZY43y_S6pQScyvilI4eJyd4tMl-NIoKoOtrzetn_ljb9FBeJwCCIZk&usqp=CAU" alt="Leaflet js"  height=60/>
 
 
  - **QA**
    
-<img src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60/>
-<img src="https://play-lh.googleusercontent.com/DTMp4aVzalUoCFj6XGPBMXg6pEvhL2entVp6_LS7nVpuPZzdF5CI3AzIOYIsqiAyND8u" alt="Xray"  height=60/>
+<img src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60/> <img src="https://play-lh.googleusercontent.com/DTMp4aVzalUoCFj6XGPBMXg6pEvhL2entVp6_LS7nVpuPZzdF5CI3AzIOYIsqiAyND8u" alt="Xray"  height=60/>
 
 - **Organización y comunicación**
 
-<img src="https://w7.pngwing.com/pngs/574/370/png-transparent-square-trello-logo-network-social-bloomies-webdesign-tools-icon.png" alt="Trello"  height=60/>
-<img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60/>
-<img src="https://e1.pngegg.com/pngimages/373/977/png-clipart-discord-for-macos-white-and-blue-logo-art.png" alt="Discord"  height=60/> 
+<img src="https://w7.pngwing.com/pngs/574/370/png-transparent-square-trello-logo-network-social-bloomies-webdesign-tools-icon.png" alt="Trello"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60/> <img src="https://e1.pngegg.com/pngimages/373/977/png-clipart-discord-for-macos-white-and-blue-logo-art.png" alt="Discord"  height=60/> 
 
 ### 🚀 **Equipo**
 
