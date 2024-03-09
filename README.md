@@ -76,12 +76,11 @@ Chart js, Leaflet js
 
  - **QA**
    
- <img src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png
-" alt="Postman"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60 /> <img src="https://play-lh.googleusercontent.com/DTMp4aVzalUoCFj6XGPBMXg6pEvhL2entVp6_LS7nVpuPZzdF5CI3AzIOYIsqiAyND8u" alt="Xray"  height=60 />
+ <img src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png" alt="Postman"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60 /> <img src="https://play-lh.googleusercontent.com/DTMp4aVzalUoCFj6XGPBMXg6pEvhL2entVp6_LS7nVpuPZzdF5CI3AzIOYIsqiAyND8u" alt="Xray"  height=60 />
 
 - **Organización y comunicación**
 
-<img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda" alt="Trello"  height=60 />  <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60 /> <img src="[https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klipartz.com%2Fes%2Fsticker-png-fygxj&psig=AOvVaw033caX8xqZxgzrD9IWhK7c&ust=1710083775426000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwijmYTRvOeEAxW-qZUCHaX0BqkQjRx6BAgAEBY)" alt="Discord"  height=60 /> 
+<img src="https://e7.pngegg.com/pngimages/232/650/png-clipart-blue-collage-frame-trello-logo-icons-logos-emojis-tech-companies.png" alt="Trello"  height=60 />  <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60 /> <img src="https://c0.klipartz.com/pngpicture/842/992/gratis-png-discord-ordenadores-servidores-teamspeak-discord-icon-thumbnail.png" alt="Discord"  height=60 /> 
 
 ### 🚀 **Equipo**
 
