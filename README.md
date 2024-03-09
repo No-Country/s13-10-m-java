@@ -20,7 +20,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 Al entrar en la pagina vemos
 
-<img src="https://discord.com/channels/1204047700660592730/1204050961585406032/1215658047490363474" alt="home"  height=20 /> 
+[https://discord.com/channels/1204047700660592730/1204050961585406032/1215658047490363474](https://images-ext-2.discordapp.net/external/BGUOxNg3SznDAnH0nsPGguOgAP6XdvtPmo2ILGWsNw0/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905853/Fotos/home_gyddmz.png?format=webp&quality=lossless&width=347&height=393) 
 
 
 
