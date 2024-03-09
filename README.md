@@ -53,15 +53,15 @@ Imágenes y una breve explicación
 
  - **Front End**
     
-  | **Front End** | 
-  | :---:         |
-  | ![Angular](https://github.com/No-Country/s13-10-m-java/assets/150487299/05c1cab1-a650-421b-9454-e5dabfe8087c)| 
+   | **Front End** | 
+   | :---:         |
+   | ![Angular](https://github.com/No-Country/s13-10-m-java/assets/150487299/05c1cab1-a650-421b-9454-e5dabfe8087c)| 
    ![Typescript](https://github.com/No-Country/s13-10-m-java/assets/150487299/6276708c-482b-4561-9541-0a67dd851ba3)| 
-   Chart js | 
-   Leaflet js | 
-   Tailwind |
-   ![Netlify](https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f)|
-   ![Figma](https://github.com/No-Country/s13-10-m-java/assets/150487299/0132f283-2544-4a25-8515-e29d15da3b3a)|
+    Chart js | 
+    Leaflet js | 
+    Tailwind |
+    ![Netlify](https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f)|
+    ![Figma](https://github.com/No-Country/s13-10-m-java/assets/150487299/0132f283-2544-4a25-8515-e29d15da3b3a)|
 
  - **QA**
   
