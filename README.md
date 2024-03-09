@@ -43,11 +43,10 @@ Imágenes y una breve explicación
 
 - Front End: Angular - TypeScript - Chart js - Leaflet js - Tailwind - Netlify - Figma
   
-   
-
-- **QA:**
-  | Trello | Jira | Xray |Postman |
-  | :---:         |     :---:      |          :---: | :---: |
+  
+  
+  | **QA** | 
+  | :---:         |    
   |![Trello](https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda) | 
   ![Jira](https://github.com/No-Country/s13-10-m-java/assets/150487299/321a1f85-5e7c-48b9-bc7e-045af847860e) |
   ![Xray](https://github.com/No-Country/s13-10-m-java/assets/150487299/076e764e-f789-4787-ac06-0445905f2058)|
