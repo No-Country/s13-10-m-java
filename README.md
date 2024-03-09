@@ -16,7 +16,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 <img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718776/Fotos/rbixha9otawtlboiuyqc.png" alt="greenpoint"  height=20 /> Estadísticas
 
-### **Una visita por GreenPoint**
+## **Una visita por GreenPoint**
 
 - Al comenzar esta aventura de la clasificación en origen de los residuos por GreenPoint, se encontrará información de utilidad para contribuir al cuidado del ambiente.
 
@@ -40,7 +40,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 
 
-### **Links del proyecto**
+## **Links del proyecto**
 
 ***
 
@@ -55,7 +55,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
  +  🎬 [Video de presentación](https://www.canva.com/design/DAF-Rciv4bM/3_RpxwPIS5qLRlbY6hj1iw/watch?utm_content=DAF-Rciv4bM&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 
-### **Tecnologías utilizadas**
+## **Tecnologías utilizadas**
 
 ***
 - **Back End**
@@ -76,11 +76,11 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhN8NWoR9uSZKueIfU_gLaG_q7DxCD7-jRm82dlWwmAoQpOa6yCTWed78QcsMe3oC4XQk&usqp=CAU" alt="Trello"  height=60/> <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60/> <img src="https://i.pinimg.com/736x/d6/11/54/d61154b2cae2e1c123477eaecbdbd487.jpg" alt="Discord"  height=60/> 
 
-### 🚀 **Equipo**
+## 🚀 **Equipo**
 
 ***
 
-#### 📌 Front End  
+### 📌 Front End  
 
 | Nombre | Linkedin | GitHub |
 | :---:         |     :---:      |          :---: |
@@ -91,7 +91,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 | Juan Oscco |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juanoscco)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/jcom-dev) |
 
 
-#### 📌 Back End  
+### 📌 Back End  
 
 | Nombre | Linkedin | GitHub |
 | :---:         |     :---:      |          :---: |
@@ -100,7 +100,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 | Leonardo Vargas |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/leonardo-vargas1/)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/leonardofvp) |
 | Pablo Aquino  |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jpabloaquino/)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/webDevCod)|
 
-#### 📌 QA 
+### 📌 QA 
 
 | Nombre | Linkedin | GitHub |
 | :---:         |     :---:      |          :---: |
@@ -110,7 +110,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 | Liliana Muñoz  |[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lilianamunoz331/)   | [![GitHub](https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/liliana331)|
 
 
-### **Agradecimientos**
+## **Agradecimientos**
 
 ***
 
