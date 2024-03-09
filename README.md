@@ -28,7 +28,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 ![Usuario](https://images-ext-1.discordapp.net/external/qTiXIj_j7ZSKdqd5rwvEJNvkfatmdcVo1pfXYL40rDg/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905901/Fotos/image_p3rhlt.png?format=webp&quality=lossless&width=527&height=393)
 
 
-- Ver premios disponibles y reclamarlos
+- Otra de las funcionalidades principales de GreenPoint, es la administración de puntos y premios. Tu contribución al ambiente te brindará el acceso a diversos premios que podrás canjear en la app.
 
 ![Premios](https://images-ext-2.discordapp.net/external/lHZC4z6xjcd-byNPmlfkYgJa68dAoGzQ8lh3xW9rnUQ/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905723/Fotos/dasboard_bwpzhc.png?format=webp&quality=lossless&width=535&height=393) 
 ![PremioEmail](https://media.discordapp.net/attachments/1204050961585406032/1215657970613100564/image.png?ex=65fd8cb6&is=65eb17b6&hm=609a5046413dff06b7c57fdb35798035297a5510de199c9543e78be06553bda1&=&format=webp&quality=lossless&width=347&height=393) 
