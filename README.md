@@ -46,10 +46,10 @@ Imágenes y una breve explicación
    
 
 - **QA:**       
-         - Trello <img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda" align="center"/>
-          - ![Jira](https://github.com/No-Country/s13-10-m-java/assets/150487299/321a1f85-5e7c-48b9-bc7e-045af847860e)
-         - ![Xray](https://github.com/No-Country/s13-10-m-java/assets/150487299/076e764e-f789-4787-ac06-0445905f2058)
-         - ![Postman](https://github.com/No-Country/s13-10-m-java/assets/150487299/909f2f7e-a0da-4b15-8dff-7935933eb175)
+ <img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda" align="center"/>Trello
+ ![Jira](https://github.com/No-Country/s13-10-m-java/assets/150487299/321a1f85-5e7c-48b9-bc7e-045af847860e)
+ ![Xray](https://github.com/No-Country/s13-10-m-java/assets/150487299/076e764e-f789-4787-ac06-0445905f2058)
+ ![Postman](https://github.com/No-Country/s13-10-m-java/assets/150487299/909f2f7e-a0da-4b15-8dff-7935933eb175)
 
 
 
