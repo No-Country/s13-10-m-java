@@ -47,8 +47,7 @@ Imágenes y una breve explicación
   SpringSecurity | 
   SpringData | 
   ![PostgreSQL](https://github.com/No-Country/s13-10-m-java/assets/150487299/4b723a6c-78b6-4d1b-a6f1-e77a22af6584)| 
-  ![Swagger](https://github.com/No-Country/s13-10-m-java/assets/150487299/af34e9aa-51b4-416b-8820-b36847b06562)
-| 
+  ![Swagger](https://github.com/No-Country/s13-10-m-java/assets/150487299/af34e9aa-51b4-416b-8820-b36847b06562)| 
   Thymeleaf |
   Render |
 
@@ -64,7 +63,7 @@ Imágenes y una breve explicación
   ![Netlify](https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f)|
   ![Figma](https://github.com/No-Country/s13-10-m-java/assets/150487299/0132f283-2544-4a25-8515-e29d15da3b3a)|
 
-  -**QA**
+  - **QA**
   
   | **QA** | 
   | :---:         |    
