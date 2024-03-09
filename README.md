@@ -18,7 +18,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 ### Una visita por GreenPoint
 
-- Al comenzar esta aventura de la clasificación en origen de los residuos por GreenPoint, encontrarás información de utilidad para contribuir al cuidado del ambiente.
+- Al comenzar esta aventura de la clasificación en origen de los residuos por GreenPoint, se encontrará información de utilidad para contribuir al cuidado del ambiente.
 
 ![Home](https://images-ext-2.discordapp.net/external/BGUOxNg3SznDAnH0nsPGguOgAP6XdvtPmo2ILGWsNw0/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905853/Fotos/home_gyddmz.png?format=webp&quality=lossless&width=347&height=393) ![Home2](https://images-ext-1.discordapp.net/external/n3nDNtAoNtP9WWS2ZrWAksTKQ7k9JtzedrbmixZg6y4/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905876/Fotos/home2_brejy6.png?format=webp&quality=lossless&width=392&height=393) 
 
