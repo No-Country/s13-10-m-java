@@ -41,12 +41,25 @@ Imágenes y una breve explicación
 
   | **Back End** | 
   | :---:         |
-  |Java | SpringBoot |  SpringSecurity |   SpringData |   PostgreSQL | Swagger | Thymeleaf | Render |
+  |Java | 
+  SpringBoot | 
+  SpringSecurity | 
+  SpringData | 
+  PostgreSQL | 
+  Swagger | 
+  Thymeleaf |
+  Render |
 
   
   | **Front End** | 
   | :---:         |
-  |Angular| TypeScript | Chart js | Leaflet js | Tailwind | Netlify |Figma |
+  |Angular| 
+  TypeScript | 
+  Chart js | 
+  Leaflet js | 
+  Tailwind |
+  Netlify |
+  Figma |
      
   | **QA** | 
   | :---:         |    
