@@ -1,6 +1,6 @@
 
 
-# <img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718823/Fotos/bq9s2qlhy1q9cdg5q6un.png" alt="greenpoint"  height=70 align="center"/>
+# <img src="https://res.cloudinary.com/drm1nkbxu/image/upload/v1708718823/Fotos/bq9s2qlhy1q9cdg5q6un.png" alt="greenpoint"  height=80 align="center"/>
 
 
 GreenPoint es una app web diseñada para ayudar a personas con interés en el cuidado del medio ambiente, a separar sus residuos en origen y vincularlos a través de la app con personas o entidades con la intención de recibir esos residuos para su posterior reciclaje.
@@ -79,7 +79,7 @@ Chart js, Leaflet js
  <img src="https://user-images.githubusercontent.com/25181517/192109061-e138ca71-337c-4019-8d42-4792fdaa7128.png
 " alt="Postman"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183912952-83784e94-629d-4c34-a961-ae2ae795b662.png" alt="Jira"  height=60 /> <img src="https://play-lh.googleusercontent.com/DTMp4aVzalUoCFj6XGPBMXg6pEvhL2entVp6_LS7nVpuPZzdF5CI3AzIOYIsqiAyND8u" alt="Xray"  height=60 />
 
-- ** Organización y comunicación
+- **Organización y comunicación**
 
 <img src="https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda" alt="Trello"  height=60 />  <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60 /> <img src="[https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.klipartz.com%2Fes%2Fsticker-png-fygxj&psig=AOvVaw033caX8xqZxgzrD9IWhK7c&ust=1710083775426000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwijmYTRvOeEAxW-qZUCHaX0BqkQjRx6BAgAEBY)" alt="Discord"  height=60 /> 
 
