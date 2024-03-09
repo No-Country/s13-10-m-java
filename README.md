@@ -34,7 +34,7 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 ![PremioEmail](https://media.discordapp.net/attachments/1204050961585406032/1215657970613100564/image.png?ex=65fd8cb6&is=65eb17b6&hm=609a5046413dff06b7c57fdb35798035297a5510de199c9543e78be06553bda1&=&format=webp&quality=lossless&width=347&height=393) 
 
 
-- Y para los usuarios que son administardores de GreenPoints, podrán acceder a un panel de gestión en donde podrán crearlos, como también otorgar los puntos, a traves del registro de los materiales entregados para reciclar por parte de los ciudadanos.
+- Se desarrolló un panel de gestión para los administradores de GreenPoints. En el mismo podrán crearlos, visualizar un historial de visitas, registrar los materiales entregados para reciclar por parte de los cuidadanos y otorgar puntos.
 
 ![Home2](https://images-ext-1.discordapp.net/external/W4sxE4F1NljkypZceH8vnKBxERbY7gLjg1H3JIrHWTg/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905805/Fotos/dasboard2_nbfz8t.png?format=webp&quality=lossless&width=535&height=393) 
 
