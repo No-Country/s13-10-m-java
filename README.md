@@ -38,7 +38,8 @@ Imágenes y una breve explicación
 ### **Tecnologías utilizadas**
 
 ***
-
+- **Back End**
+  
   | **Back End** | 
   | :---:         |
   | ![Java](https://github.com/No-Country/s13-10-m-java/assets/150487299/6b60ace9-9e43-4ac3-bbb1-cf7c5022abc4)| 
@@ -46,11 +47,13 @@ Imágenes y una breve explicación
   SpringSecurity | 
   SpringData | 
   ![PostgreSQL](https://github.com/No-Country/s13-10-m-java/assets/150487299/4b723a6c-78b6-4d1b-a6f1-e77a22af6584)| 
-  Swagger | 
+  ![Swagger](https://github.com/No-Country/s13-10-m-java/assets/150487299/af34e9aa-51b4-416b-8820-b36847b06562)
+| 
   Thymeleaf |
   Render |
 
-  
+  - **Front End**
+    
   | **Front End** | 
   | :---:         |
   | ![Angular](https://github.com/No-Country/s13-10-m-java/assets/150487299/05c1cab1-a650-421b-9454-e5dabfe8087c)| 
@@ -60,7 +63,9 @@ Imágenes y una breve explicación
   Tailwind |
   ![Netlify](https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f)|
   ![Figma](https://github.com/No-Country/s13-10-m-java/assets/150487299/0132f283-2544-4a25-8515-e29d15da3b3a)|
-     
+
+  -**QA**
+  
   | **QA** | 
   | :---:         |    
   |![Trello](https://github.com/No-Country/s13-10-m-java/assets/150487299/054017b8-a024-4a4d-80bb-f6c30b0d5eda) | 
