@@ -80,7 +80,7 @@ Chart js, Leaflet js
 
 - **Organización y comunicación**
 
-<img src="https://e7.pngegg.com/pngimages/232/650/png-clipart-blue-collage-frame-trello-logo-icons-logos-emojis-tech-companies.png" alt="Trello"  height=60 />  <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60 /> <img src="https://c0.klipartz.com/pngpicture/842/992/gratis-png-discord-ordenadores-servidores-teamspeak-discord-icon-thumbnail.png" alt="Discord"  height=60 /> 
+<img src="https://w7.pngwing.com/pngs/574/370/png-transparent-square-trello-logo-network-social-bloomies-webdesign-tools-icon.png" alt="Trello"  height=60 />  <img src="https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png" alt="GitHub"  height=60 /> <img src="https://c0.klipartz.com/pngpicture/842/992/gratis-png-discord-ordenadores-servidores-teamspeak-discord-icon-thumbnail.png" alt="Discord"  height=60 /> 
 
 ### 🚀 **Equipo**
 
