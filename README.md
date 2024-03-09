@@ -60,28 +60,13 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 ***
 - **Back End**
 
-<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java"  height=45 /> <img src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring"  height=45 /> <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SpringBoot"  height=45 /> <img src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" alt="PostgreSQL"  height=45 /> <img src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger"  height=45 />
-<img src="" alt=""  height=30 />
+<img src="https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png" alt="Java"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png" alt="Spring"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png" alt="SpringBoot"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" alt="PostgreSQL"  height=60 /> <img src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" alt="Swagger"  height=60 />
+<img src="" alt=""  height=60 />
 
-  ![Java](https://user-images.githubusercontent.com/25181517/117201156-9a724800-adec-11eb-9a9d-3cd0f67da4bc.png)
-  ![Spring](https://user-images.githubusercontent.com/25181517/117201470-f6d56780-adec-11eb-8f7c-e70e376cfd07.png)
-  ![SpringBoot](https://user-images.githubusercontent.com/25181517/183891303-41f257f8-6b3d-487c-aa56-c497b880d0fb.png)
-  ![PostgreSQL](https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png)
-  ![Swagger](https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png)
   Thymeleaf, Render
 
 
-  
-  | **Back End** | 
-  | :---:         |
-  | ![Java](https://github.com/No-Country/s13-10-m-java/assets/150487299/6b60ace9-9e43-4ac3-bbb1-cf7c5022abc4)| 
-  SpringBoot | 
-  SpringSecurity | 
-  SpringData | 
-  ![PostgreSQL](https://github.com/No-Country/s13-10-m-java/assets/150487299/4b723a6c-78b6-4d1b-a6f1-e77a22af6584)| 
-  ![Swagger](https://github.com/No-Country/s13-10-m-java/assets/150487299/af34e9aa-51b4-416b-8820-b36847b06562)| 
-  Thymeleaf |
-  Render |
+
 
  - **Front End**
    
