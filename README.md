@@ -41,11 +41,11 @@ Imágenes y una breve explicación
 
   | **Back End** | 
   | :---:         |
-  |Java | 
+  |Java ![image](https://github.com/No-Country/s13-10-m-java/assets/150487299/6b60ace9-9e43-4ac3-bbb1-cf7c5022abc4)| 
   SpringBoot | 
   SpringSecurity | 
   SpringData | 
-  PostgreSQL | 
+  PostgreSQL ![image](https://github.com/No-Country/s13-10-m-java/assets/150487299/4b723a6c-78b6-4d1b-a6f1-e77a22af6584)| 
   Swagger | 
   Thymeleaf |
   Render |
@@ -53,13 +53,13 @@ Imágenes y una breve explicación
   
   | **Front End** | 
   | :---:         |
-  |Angular| 
-  TypeScript | 
+  |Angular ![image](https://github.com/No-Country/s13-10-m-java/assets/150487299/05c1cab1-a650-421b-9454-e5dabfe8087c)| 
+  TypeScript ![image](https://github.com/No-Country/s13-10-m-java/assets/150487299/6276708c-482b-4561-9541-0a67dd851ba3)| 
   Chart js | 
   Leaflet js | 
   Tailwind |
-  Netlify |
-  Figma |
+  Netlify ![image](https://github.com/No-Country/s13-10-m-java/assets/150487299/c3c85889-47d8-46c0-9458-fba0c4c1c12f)|
+  Figma ![image](https://github.com/No-Country/s13-10-m-java/assets/150487299/0132f283-2544-4a25-8515-e29d15da3b3a)|
      
   | **QA** | 
   | :---:         |    
