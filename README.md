@@ -22,8 +22,11 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 
 ![Home](https://images-ext-2.discordapp.net/external/BGUOxNg3SznDAnH0nsPGguOgAP6XdvtPmo2ILGWsNw0/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905853/Fotos/home_gyddmz.png?format=webp&quality=lossless&width=347&height=393) ![Home2](https://images-ext-1.discordapp.net/external/n3nDNtAoNtP9WWS2ZrWAksTKQ7k9JtzedrbmixZg6y4/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905876/Fotos/home2_brejy6.png?format=webp&quality=lossless&width=392&height=393) 
 
+
 - Como usuario se va a poder ver un mapa iteractivo con todoslos GreenPoints creados y al hacer click en uno de ellos se observará la información del mismo.
+  
 ![Usuario](https://images-ext-1.discordapp.net/external/qTiXIj_j7ZSKdqd5rwvEJNvkfatmdcVo1pfXYL40rDg/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905901/Fotos/image_p3rhlt.png?format=webp&quality=lossless&width=527&height=393)
+
 
 - Ver premios disponibles y reclamarlos
 
@@ -36,13 +39,6 @@ GreenPoint es una app web diseñada para ayudar a personas con interés en el cu
 ![Home2](https://images-ext-1.discordapp.net/external/W4sxE4F1NljkypZceH8vnKBxERbY7gLjg1H3JIrHWTg/https/res.cloudinary.com/drm1nkbxu/image/upload/v1709905805/Fotos/dasboard2_nbfz8t.png?format=webp&quality=lossless&width=535&height=393) 
 
 
-
-
-
-![Home2]() 
-
-![Home2]() 
-![Home2]() 
 
 ### **Links del proyecto**
 
